@@ -1,0 +1,3 @@
+
+sangeki/secret/kyakuhon_list/*.php
+!sangeki/secret/kyakuhon_list/2006.php
