@@ -11,6 +11,7 @@ $oSangeki = (object)array(
         '神のサイコロ',
         '魔女のお茶会',
     ),
+    'special_rule' => "",
     'loop' => 5,
     'day' => 4,
     'character' => array(
