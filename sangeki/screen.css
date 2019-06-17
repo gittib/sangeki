@@ -1,0 +1,272 @@
+* {
+    margin: 0 auto;
+    padding: 0;
+    font-family: sans-serif;
+    max-width: 960px;
+}
+body {
+    padding-bottom: 32px;
+}
+a, a:visited {
+    color: #0000EE;
+}
+table {
+    border-collapse: collapse;
+}
+dl:after {
+    content: '';
+    display: block;
+    clear: both;
+}
+li {
+    list-style: none;
+}
+form input[type=submit] {
+    display: block;
+    margin-top: 16px;
+}
+body > div {
+    margin: 0 8px;
+}
+
+.error {
+    color: red;
+    border: solid 1px red;
+    font-weight: bold;
+    margin: 6px;
+    padding: 2px;
+}
+span.rule_prefix {
+    color: white;
+    border-radius: 3px;
+    padding: 1px 3px;
+}
+span.rule_prefix.BTX {
+    background-color: blue;
+}
+span.rule_prefix.MZ {
+    background-color: purple;
+}
+span.rule_prefix.MC,
+span.rule_prefix.MCX {
+    background-color: red;
+}
+span.rule_prefix.HSA {
+    background-color: darkblue;
+}
+span.rule_prefix.WM {
+    background-color: darkgreen;
+}
+ul.question_list {
+    padding: 8px;
+}
+ul.question_list > li {
+    width: 100%;
+    border-bottom: solid black 1px;
+    padding: 2px;
+}
+ul.question_list > li:first-child {
+    border-top: solid black 1px;
+}
+ul.question_list > li > div.a {
+    margin: 4px;
+    border-top: solid lightgray 1px;
+    padding-top: 2px;
+}
+ul.question_list > li > div.a label {
+    padding-left: 8px;
+}
+
+body.sangeki_check h2 {
+    text-align: center;
+}
+body.sangeki_check h2 span {
+    display: inline-block;
+}
+
+body.kyakuhon_list h2 {
+    text-align: center;
+}
+body.kyakuhon_list h2 span {
+    display: inline-block;
+}
+body.kyakuhon_list .kyakuhon_list {
+    max-width: 512px;
+    margin: 0 auto;
+}
+body.kyakuhon_list .kyakuhon_list > dl {
+    margin: 12px 4px;
+    border-bottom: solid 1px;
+}
+body.kyakuhon_list .kyakuhon_list > dl > dt {
+    margin: 4px;
+    border-top: solid 1px;
+    padding-top: 4px;
+}
+body.kyakuhon_list .kyakuhon_list > dl > dt,
+body.kyakuhon_list .kyakuhon_list > dl > dd {
+    padding-left: 8px;
+    padding-right: 8px;
+    padding-bottom: 2px;
+    text-align: center;
+}
+body.kyakuhon_list .kyakuhon_list > dl > dd {
+    font-size: 0.75em;
+}
+body.kyakuhon_list .kyakuhon_list > dl > dd strong {
+    font-size: 1.7em;
+}
+body.kyakuhon_list .kyakuhon_list > dl > dd .difficulity .tag {
+    background-color: black;
+    color: white;
+    padding: 0 3px;
+    font-weight: bold;
+    min-width: 42px;
+    display: inline-block;
+    text-align: center;
+    border-radius: 4px;
+}
+body.kyakuhon_list dt span.real_title {
+    display: none;
+}
+body.kyakuhon_list dt span.writer {
+    font-size: 0.68em;
+    margin-left: 8px;
+}
+body.kyakuhon_list button {
+    margin: 32px auto;
+    display: block;
+}
+
+body.detail * {
+    font-size: inherit;
+}
+body.detail h2 {
+    font-size: 1.5em;
+}
+body.detail h3 {
+    font-size: 1.17em;
+}
+body.detail span.difficulity_name {
+    padding: 0px 10px;
+    background-color: black;
+    color: white;
+    border-radius: 4px;
+    font-weight: bold;
+}
+body.detail table.summary th {
+    padding-left: 4px;
+    padding-right: 12px;
+    border-bottom: solid 1px;
+}
+body.detail table.summary td {
+    padding-left: 12px;
+    padding-right: 4px;
+    border-bottom: solid 1px;
+}
+body.detail .special_rule {
+    border: double;
+    width: 90%;
+    min-height: 30px;
+    padding: 2px;
+    box-sizing: border-box;
+}
+body.detail table {
+    margin: 8px 5%;
+    width: 90%;
+}
+body.detail table > thead * {
+    background-color: black;
+    color: white;
+    font-family: "游明朝", YuMincho, "ヒラギノ明朝 ProN W3", "Hiragino Mincho ProN", "HG明朝E", "ＭＳ Ｐ明朝", "ＭＳ 明朝", serif;
+}
+body.detail table td, table th {
+    border: 1px solid;
+}
+body.detail table td {
+    padding-left: 2px;
+}
+body.detail .public {
+    max-width: 640px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 8px;
+}
+body.detail .private {
+    border: solid 1px;
+    margin-top: 32px;
+    padding: 3px;
+    display: none;
+}
+body.detail .private_sheet_wrapper {
+    max-width: 584px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 8px;
+}
+body.detail .private .title {
+    width: 80%;
+    text-align: center;
+    border-bottom-style: double;
+    margin-bottom: 16px;
+}
+body.detail .private h3.people_title {
+    display: inline-block;
+    margin-top:16px;
+}
+body.detail .private .people_count {
+    font-size: 0.68em;
+    display: inline-block;
+}
+body.detail .private table.character {
+    font-size: 0.75em;
+}
+body.detail table.character td.role span {
+    display: inline-block;
+    width: 12px;
+}
+body.detail table.character td.role span.black_heart {
+    font-size: 0.7em;
+}
+body.detail table.character td.special {
+    font-weight: bold;
+}
+body.detail table.init_place td {
+    width: 50%;
+    vertical-align: top;
+}
+body.detail .init_place span.chara {
+    display: inline-block;
+    font-size: 0.75em;
+    margin-right: 6px;
+    border-style: outset;
+    border-width: 1px;
+    margin-bottom: 2px;
+    height: 1.5em;
+}
+body.detail .private.advice {
+    border: none;
+}
+body.detail .private.advice h3 {
+    margin-top: 20px;
+}
+body.detail .private.advice .template {
+    max-width: 512px;
+    padding-bottom: 56px;
+}
+body.detail .private.advice .template dl dd {
+    padding-left: 1em;
+}
+body.detail .toggle_private {
+    margin: 32px auto;
+    display: block;
+    font-size: 0.8em;
+}
+
+
+
+footer {
+    margin-top: 20px;
+    padding:12px;
+    font-size: 0.7em;
+}
