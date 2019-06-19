@@ -192,6 +192,16 @@ body.detail .public {
     margin-right: auto;
     padding: 8px;
 }
+body.detail .public .rule_set_qr {
+    position: absolute;
+    top: 2px;
+    right: 2px;
+    text-align: center;
+}
+body.detail .public .rule_set_qr img {
+    width: 55px;
+    height: 55px;
+}
 body.detail .private {
     border: solid 1px;
     margin-top: 32px;
