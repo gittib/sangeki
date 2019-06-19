@@ -45,6 +45,9 @@ function df ($difficulity) {
         <dl class="kyakuhon_list">
         <? foreach ($files as $val):
             $id = str_replace('.php', '', $val);
+            if (strpos($id, '0') === 0) {
+                continue;
+            }
             require('./secret/kyakuhon_list/' . $val);
             if (empty($oSangeki->title) || !empty($oSangeki->secret)) {
                 continue;
