@@ -146,11 +146,6 @@ switch ($oSangeki->set) {
     <a href="/sangeki/" style="margin: 12px;">一覧へ</a>
     <div class="public">
         <h2>公開シート</h2>
-        <?php if (empty($oSangeki->hide_qr)): ?>
-        <div class="rule_set_qr">
-            <img src="/sangeki/qr/<?= $oSangeki->set ?>.jpg" alt="惨劇セット"><br>
-        </div>
-        <? endif; ?>
         <span>
             難易度：
             <span class="difficulity_name"><?= difficulityName($oSangeki->difficulity) ?></span>
