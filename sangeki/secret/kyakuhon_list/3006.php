@@ -15,6 +15,8 @@ $oSangeki = (object)array(
     'loop' => 4,
     'day' => 6,
     'character' => array(
+        '異世界人' => array(
+        ),
         '入院患者' => array(
         ),
         'アイドル' => array(
@@ -24,12 +26,12 @@ $oSangeki = (object)array(
             'role' => 'パラノイア',
         ),
         'お嬢様' => array(
-            'role' => 'セラピスト',
-        ),
-        '男子学生' => array(
             'role' => 'フール',
         ),
+        '男子学生' => array(
+        ),
         '教師' => array(
+            'role' => 'セラピスト',
         ),
         '手先' => array(
             'role' => 'ゼッタイシャ',
@@ -46,7 +48,7 @@ $oSangeki = (object)array(
         ),
         3 => array(
             'name' => '偽装自殺',
-            'criminal' => 'お嬢様',
+            'criminal' => '異世界人',
         ),
         4 => array(
             'name' => '偽装自殺',
@@ -54,11 +56,11 @@ $oSangeki = (object)array(
         ),
         5 => array(
             'name' => '偽装自殺',
-            'criminal' => '教師',
+            'criminal' => 'お嬢様',
         ),
         6 => array(
             'name' => '偽装自殺',
-            'criminal' => '情報屋',
+            'criminal' => '教師',
         ),
     ),
     'advice' => (object)array(
@@ -66,11 +68,12 @@ $oSangeki = (object)array(
         'summary' => "",
         'detail' => "",
         'template' => array(
-            '1ループ目' => array(
+            '各ループ共通' => array(
                 0 => '手先は病院に配置する',
                 1 => array(
                     '手先' => '不安+1',
                     'アイドル' => '不安+1',
+                    '男子学生' => '友好禁止',
                 ),
             ),
         ),
