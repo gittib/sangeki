@@ -19,11 +19,14 @@ $(function() {
     $div.on('click', function() {
         $(this).remove();
     })
-    $div.append($('<div>').css({
+    $div.append($('<span>').css({
         'font-size': '48px',
         'font-weight': 'bold',
         'color': 'white',
     }).text('TEST'));
+    $div.append($('<span>').css({
+        'color': 'white',
+    }).text('タップしてテストヘッダを隠す'));
     $('body').prepend($div);
 })
 </script>
