@@ -80,6 +80,9 @@ body.sangeki_check h2 {
 body.sangeki_check h2 span {
     display: inline-block;
 }
+body.sangeki_check form {
+    padding-bottom: 32px;
+}
 
 body.kyakuhon_list h2 {
     text-align: center;
