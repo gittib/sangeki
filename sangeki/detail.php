@@ -133,7 +133,6 @@ switch ($oSangeki->set) {
         break;
     default:
         $oSangeki->rule_str = '謎の惨劇セット';
-        $oSangeki->hide_qr = true;
         break;
 }
 ?>
@@ -170,14 +169,6 @@ switch ($oSangeki->set) {
                 <th>1ループ日数</th>
                 <td><?= e($oSangeki->day) ?>日</td>
             </tr>
-            <?/*
-                <td colspan=2>
-                    <img class="term_icon" src="/sangeki/images/chip_09.png" alt="ループ数：">
-                    <?= e($oSangeki->loop) ?>ループ
-                    <img class="term_icon" src="/sangeki/images/chip_07.png" alt="1ループ日数：">
-                    <?= e($oSangeki->day) ?>日
-                </td>
-            */?>
         </table>
         <h3 style="margin-top:16px">特殊ルール</h3>
         <div class="special_rule"><?
@@ -383,7 +374,7 @@ switch ($oSangeki->set) {
         </div>
         <? endif; ?>
     </div>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<?php require('./secret/sangeki_footer.php') ?>
     <script>
     $('.toggle_private').on('click', function() {
         var $self = $(this);

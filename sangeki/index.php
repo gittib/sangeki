@@ -81,7 +81,6 @@ function df ($difficulity) {
     </div>
     <button class="show_title">脚本タイトルを表示</button>
 <?php require('./secret/sangeki_footer.php') ?>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
     <script>
     $('.show_title').on('click', function() {
         if ($('.hide_title').is(':visible')) {
