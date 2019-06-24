@@ -2,7 +2,6 @@
 
 $oSangeki = (object)array(
     'title' => 'そして誰もいなくなった？',
-    'secret' => true,
     'writer' => 'ペンスキー',
     'difficulity' => 4,
     'set' => 'MCX',
@@ -70,8 +69,6 @@ $oSangeki = (object)array(
                 0 => '手先は都市に配置すること',
                 1 => array(
                     '手先' => '不安+1',
-                    '男子学生' => '不安+1',
-                    'アイドル' => '友好禁止',
                 ),
             ),
         ),
