@@ -105,13 +105,13 @@ function difficulityName($difficulity) {
 }
 
 if (!isset($_GET['id'])) {
-    header('Location: /sangeki/');
+    header('Location: .');
     exit;
 }
 $id = $_GET['id'];
 $kyakuhonPath = './secret/kyakuhon_list/'.$id.'.php';
 if (!file_exists($kyakuhonPath)) {
-    header('Location: /sangeki/');
+    header('Location: .');
     exit;
 }
 require($kyakuhonPath);
@@ -143,7 +143,7 @@ switch ($oSangeki->set) {
     <title><?= e($oSangeki->rule_str) ?> 脚本</title>
 </head>
 <body class="detail">
-    <a href="/sangeki/" style="margin: 12px;">一覧へ</a>
+    <a href="." style="margin: 12px;">一覧へ</a>
     <div class="public">
         <h2>公開シート</h2>
         <span>
