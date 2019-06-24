@@ -10,3 +10,19 @@ if (realpath($_SERVER["SCRIPT_FILENAME"]) == realpath(__FILE__)) {
 <link rel="shortcut icon" href="favicon.ico" type="image/vnd.microsoft.icon" /> 
 <link rel="icon" href="favicon.ico" type="image/vnd.microsoft.icon" />
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<?php if (strpos($_SERVER['REQUEST_URI'], 'sangeki_test') !== FALSE): ?>
+<script>
+$(function() {
+    var $div = $('<div>').css({
+        'height': '50px',
+        'background-color': 'red',
+    });
+    $div.append($('<div>').css({
+        'height': '50px',
+        'background-color': 'red',
+        'color': 'white',
+    }).text('TEST'));
+    $('body').prepend($div);
+})
+</script>
+<?php endif; ?>
