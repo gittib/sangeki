@@ -13,6 +13,7 @@ if (realpath($_SERVER["SCRIPT_FILENAME"]) == realpath(__FILE__)) {
 </footer>
 <?php if (strpos($_SERVER['REQUEST_URI'], 'sangeki_test') !== FALSE): ?>
 <div style="height: 30px; background-color: red;">
+    <div style="height: 30px; position:fixed; left:0; bottom:0; background-color:red; color:white;">TEST</div>
     <div style="height: 30px; position:fixed; right:0; bottom:0; background-color:red; color:white;">TEST</div>
 </div>
 <?php endif; ?>
