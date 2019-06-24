@@ -4,9 +4,6 @@
     font-family: sans-serif;
     max-width: 960px;
 }
-body {
-    padding-bottom: 32px;
-}
 a, a:visited {
     color: #0000EE;
 }
@@ -264,7 +261,9 @@ body.detail .toggle_private {
 }
 
 
-
+footer {
+    margin-bottom: 32px;
+}
 body > footer > div.credit {
     margin-top: 20px;
     padding:12px;
