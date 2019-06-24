@@ -14,12 +14,11 @@ if (realpath($_SERVER["SCRIPT_FILENAME"]) == realpath(__FILE__)) {
 <script>
 $(function() {
     var $div = $('<div>').css({
-        'height': '50px',
         'background-color': 'red',
     });
     $div.append($('<div>').css({
-        'height': '50px',
-        'background-color': 'red',
+        'font-size': '48px',
+        'font-weight': 'bold',
         'color': 'white',
     }).text('TEST'));
     $('body').prepend($div);
