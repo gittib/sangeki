@@ -16,6 +16,9 @@ $(function() {
     var $div = $('<div>').css({
         'background-color': 'red',
     });
+    $div.on('click', function() {
+        $(this).remove();
+    })
     $div.append($('<div>').css({
         'font-size': '48px',
         'font-weight': 'bold',
