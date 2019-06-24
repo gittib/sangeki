@@ -265,7 +265,7 @@ body.detail .toggle_private {
 
 
 
-footer {
+body > footer > div.credit {
     margin-top: 20px;
     padding:12px;
     font-size: 0.7em;
