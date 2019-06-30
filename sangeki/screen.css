@@ -80,6 +80,9 @@ body.sangeki_check h2 {
 body.sangeki_check h2 span {
     display: inline-block;
 }
+body.sangeki_check form {
+    padding-bottom: 32px;
+}
 
 body.kyakuhon_list h2 {
     text-align: center;
@@ -108,10 +111,10 @@ body.kyakuhon_list .kyakuhon_list > dl > dd {
     text-align: center;
 }
 body.kyakuhon_list .kyakuhon_list > dl > dd {
-    font-size: 0.75em;
+    font-size: 0.75rem;
 }
 body.kyakuhon_list .kyakuhon_list > dl > dd strong {
-    font-size: 1.7em;
+    font-size: 1.7rem;
 }
 body.kyakuhon_list .kyakuhon_list > dl > dd .difficulity .tag {
     background-color: black;
@@ -127,7 +130,7 @@ body.kyakuhon_list dt span.real_title {
     display: none;
 }
 body.kyakuhon_list dt span.writer {
-    font-size: 0.68em;
+    font-size: 0.68rem;
     margin-left: 8px;
 }
 body.kyakuhon_list button {
@@ -135,14 +138,11 @@ body.kyakuhon_list button {
     display: block;
 }
 
-body.detail * {
-    font-size: inherit;
-}
 body.detail h2 {
-    font-size: 1.5em;
+    font-size: 1.5rem;
 }
 body.detail h3 {
-    font-size: 1.17em;
+    font-size: 1.17rem;
 }
 body.detail span.difficulity_name {
     padding: 0px 10px;
@@ -212,18 +212,18 @@ body.detail .private h3.people_title {
     margin-top:16px;
 }
 body.detail .private .people_count {
-    font-size: 0.68em;
+    font-size: 0.68rem;
     display: inline-block;
 }
 body.detail .private table.character {
-    font-size: 0.75em;
+    font-size: 0.75rem;
 }
 body.detail table.character td.role span {
     display: inline-block;
     width: 12px;
 }
 body.detail table.character td.role span.black_heart {
-    font-size: 0.7em;
+    font-size: 0.6rem;
 }
 body.detail table.character td.special {
     font-weight: bold;
@@ -234,7 +234,7 @@ body.detail table.init_place td {
 }
 body.detail .init_place span.chara {
     display: inline-block;
-    font-size: 0.75em;
+    font-size: 0.75rem;
     margin-right: 6px;
     border-style: outset;
     border-width: 1px;
@@ -257,7 +257,7 @@ body.detail .private.advice .template dl dd {
 body.detail .toggle_private {
     margin: 32px auto;
     display: block;
-    font-size: 0.8em;
+    font-size: 0.8rem;
 }
 
 
@@ -267,5 +267,5 @@ footer {
 body > footer > div.credit {
     margin-top: 20px;
     padding:12px;
-    font-size: 0.7em;
+    font-size: 0.7rem;
 }
