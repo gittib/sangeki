@@ -1,7 +1,7 @@
 <?
 
 $oSangeki = (object)array(
-    'title' => '',
+    'title' => '噂の果ての真相',
     'writer' => 'ペンスキー',
     'difficulity' => 3,
     'set' => 'BTX',
@@ -16,7 +16,7 @@ $oSangeki = (object)array(
         '神格' => array(
             'note' => '3ループ目',
         ),
-        '鑑識官' => array(
+        '情報屋' => array(
         ),
         'アイドル' => array(
             'role' => 'ウィッチ',
