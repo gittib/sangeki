@@ -45,11 +45,11 @@ function df ($difficulity) {
         <dl class="kyakuhon_list">
         <? foreach ($files as $val):
             $id = str_replace('.php', '', $val);
-            if (strpos($id, '0') === 0 || $id === 'index') {
+            if (strpos($id, '0') === 0) {
                 continue;
             }
             require('./secret/kyakuhon_list/' . $val);
-            if (empty($oSangeki->title) || !empty($oSangeki->secret)) {
+            if (empty($oSangeki) || empty($oSangeki->title) || !empty($oSangeki->secret)) {
                 continue;
             }
         ?>
@@ -76,7 +76,10 @@ function df ($difficulity) {
                     <span class="tag"><?= df($oSangeki->difficulity) ?></span>
                 </span>
             </dd>
-        <? endforeach; ?>
+        <?
+            unset($oSangeki);
+            endforeach;
+        ?>
         </dl>
     </div>
     <button class="show_title">脚本タイトルを表示</button>
