@@ -25,7 +25,7 @@ $oSangeki = (object)array(
         ),
         'サラリーマン' => array(
         ),
-        '男子学生' => array(
+        '委員長' => array(
             'role' => 'ミスリーダー',
         ),
         'お嬢様' => array(
@@ -41,7 +41,7 @@ $oSangeki = (object)array(
         ),
         4 => array(
             'name' => '病院の事件',
-            'criminal' => '男子学生',
+            'criminal' => '委員長',
         ),
         5 => array(
             'name' => '自殺',
