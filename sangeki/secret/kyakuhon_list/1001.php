@@ -13,9 +13,6 @@ $oSangeki = (object)array(
     'loop' => 4,
     'day' => 5,
     'character' => array(
-        '神格' => array(
-            'note' => '3ループ目',
-        ),
         '異世界人' => array(
         ),
         '情報屋' => array(
