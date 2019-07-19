@@ -3,7 +3,7 @@
 $oSangeki = (object)array(
     'title' => '隠れ潜むタイムトラベラー',
     'writer' => 'ペンスキー',
-    'difficulity' => 4,
+    'difficulity' => 5,
     'set' => 'BTX',
     'rule' => array(
         '未来改変プラン',
