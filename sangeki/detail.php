@@ -117,13 +117,13 @@ if (!file_exists($kyakuhonPath)) {
 require($kyakuhonPath);
 switch ($oSangeki->set) {
     case 'BTX':
-        $oSangeki->rule_str = 'Basic Tragedy X';
+        $oSangeki->rule_str = 'Basic Tragedy Χ';
         break;
     case 'MZ':
         $oSangeki->rule_str = 'Midnight Zone';
         break;
     case 'MCX':
-        $oSangeki->rule_str = 'Mistery Circle X';
+        $oSangeki->rule_str = 'Mistery Circle Χ';
         break;
     case 'HSA':
         $oSangeki->rule_str = 'Hounted State A';
