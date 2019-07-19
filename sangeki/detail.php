@@ -115,6 +115,10 @@ if (!file_exists($kyakuhonPath)) {
     exit;
 }
 require($kyakuhonPath);
+if (empty($oSangeki)) {
+    header('Location: .');
+    exit;
+}
 switch ($oSangeki->set) {
     case 'BTX':
         $oSangeki->rule_str = 'Basic Tragedy Χ';
