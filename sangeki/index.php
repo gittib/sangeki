@@ -57,7 +57,7 @@ function df ($difficulity) {
                 <span class="rule_prefix <?= $oSangeki->set ?>"><?= $oSangeki->set ?></span>
                 <a href="./detail.php?id=<?= $id ?>">
                     <span class="real_title"><?= e($oSangeki->title) ?></span>
-                    <span class="hide_title">****タイトル****</span>
+                    <span class="hide_title">脚本[<?= $id ?>]</span>
                 </a>
                 <span class="writer">作者: <?= e($oSangeki->writer) ?></span>
             </dt>
