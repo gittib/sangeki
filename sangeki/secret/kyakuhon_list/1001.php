@@ -14,18 +14,16 @@ $oSangeki = (object)array(
     'day' => 6,
     'character' => array(
         '神格' => array(
-            'note' => '3ループ目',
+            'note' => '2ループ目',
         ),
-        '異世界人' => array(
+        '軍人' => array(
         ),
         '情報屋' => array(
         ),
-        'アイドル' => array(
+        'サラリーマン' => array(
             'role' => 'ウィッチ',
         ),
-        'サラリーマン' => array(
-        ),
-        '委員長' => array(
+        '女子学生' => array(
             'role' => 'ミスリーダー',
         ),
         'お嬢様' => array(
@@ -39,9 +37,9 @@ $oSangeki = (object)array(
             'name' => '殺人事件',
             'criminal' => 'お嬢様',
         ),
-        4 => array(
+        5 => array(
             'name' => '病院の事件',
-            'criminal' => '委員長',
+            'criminal' => '女子学生',
         ),
         6 => array(
             'name' => '自殺',
