@@ -17,6 +17,9 @@ $oSangeki = (object)array(
     'character' => array(
         '幻想' => array(
         ),
+        '神格' => array(
+            'note' => '4ループ目',
+        ),
         '軍人' => array(
         ),
         'A.I.' => array(
