@@ -55,7 +55,8 @@ $oSangeki = (object)array(
             'criminal' => 'アイドル',
         ),
         5 => array(
-            'name' => '打開',
+            'name' => '偽装事件',
+            'note' => '打開',
             'criminal' => 'サラリーマン',
         ),
     ),

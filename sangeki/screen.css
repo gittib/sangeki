@@ -218,6 +218,9 @@ body.detail .private .people_count {
 body.detail .private table.character {
     font-size: 0.75rem;
 }
+body.detail .private table.insident td span.note {
+    font-size: 0.75rem;
+}
 body.detail table.character td.role span {
     display: inline-block;
     width: 12px;
