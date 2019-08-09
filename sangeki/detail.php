@@ -130,7 +130,7 @@ switch ($oSangeki->set) {
         $oSangeki->rule_str = 'Mistery Circle Χ';
         break;
     case 'HSA':
-        $oSangeki->rule_str = 'Hounted State A';
+        $oSangeki->rule_str = 'Hounted State Again';
         break;
     case 'WM':
         $oSangeki->rule_str = 'Weird Mythology';
@@ -146,7 +146,7 @@ switch ($oSangeki->set) {
     <title><?= e($oSangeki->rule_str) ?> 脚本</title>
 </head>
 <body class="detail">
-    <a href="." style="margin: 12px;">一覧へ</a>
+    <a href="." style="display: block; margin: 12px;">一覧へ</a>
     <div class="public">
         <h2>公開シート</h2>
         <span>
@@ -197,7 +197,11 @@ switch ($oSangeki->set) {
                     <th><?= $i ?></th>
                     <td><?
                         if (isset($oSangeki->incident[$i])) {
-                            echo $oSangeki->incident[$i]['name'];
+                            if ($oSangeki->incident[$i]['name'] == '偽装事件') {
+                                echo $oSangeki->incident[$i]['note'];
+                            } else {
+                                echo $oSangeki->incident[$i]['name'];
+                            }
                         }
                     ?></td>
                 </tr>
@@ -325,7 +329,12 @@ switch ($oSangeki->set) {
                     <? foreach ($oSangeki->incident as $day => $incident): ?>
                     <tr>
                         <th><?= $day ?></th>
-                        <td><?= $incident['name'] ?></td>
+                        <td><?
+                            echo e($incident['name']);
+                            if (!empty($incident['note'])) {
+                                echo '<br><span class="note">(' . e($incident['note']) . ')</span>';
+                            }
+                        ?></td>
                         <td><?= $incident['criminal'] ?></td>
                     </tr>
                     <? endforeach; ?>
