@@ -12,7 +12,7 @@ $oSangeki = (object)array(
         '無貌の神',
     ),
     'special_rule' => "",
-    'loop' => 4,
+    'loop' => 5,
     'day' => 5,
     'character' => array(
         '異世界人' => array(
