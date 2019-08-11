@@ -2,7 +2,7 @@
 
 $oSangeki = (object)array(
     'title' => '狂い移ろう神と君',
-    'secret' => true,
+    'secret' => false,
     'writer' => 'ペンスキー',
     'difficulity' => 5,
     'set' => 'WM',
@@ -105,7 +105,6 @@ $oSangeki = (object)array(
             '開始時EXゲージ 2' => array(
                 0 => '手先は都市に配置する',
                 1 => array(
-                    '大物' => '友好禁止',
                     '手先' => '不安+1',
                     'アイドル' => '移動横',
                 ),
