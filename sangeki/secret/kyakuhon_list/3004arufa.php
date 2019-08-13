@@ -7,9 +7,9 @@ $oSangeki = (object)array(
     'difficulity' => 5,
     'set' => 'MCX',
     'rule' => array(
-        '組み重なり事件キルト',
+        '殺人計画',
         '私は名探偵',
-        '隔離病棟サイコ',
+        '愚者のダンス',
     ),
     'special_rule' => "",
     'loop' => 4,
@@ -18,38 +18,43 @@ $oSangeki = (object)array(
         '神格' => array(
             'note' => '1ループ目',
         ),
-        '巫女' => array(
-            'role' => 'フレンド',
+        '異世界人' => array(
         ),
-        'アイドル' => array(
-            'role' => 'パラノイア',
+        '入院患者' => array(
+            'role' => 'フール',
         ),
         '大物' => array(
             'role' => 'メイタンテイ',
-            'note' => '学校',
+            'note' => '病院',
         ),
         '男子学生' => array(
-            'role' => 'フール',
         ),
-        'お嬢様' => array(
-            'role' => 'ミスリーダー',
+        '転校生' => array(
+            'note' => '6日目',
         ),
         '教師' => array(
-            'role' => 'セラピスト',
+            'role' => 'フレンド',
+        ),
+        '手先' => array(
+            'role' => 'キーパーソン',
         ),
     ),
     'incident' => array(
         1 => array(
-            'name' => '銀の銃弾',
-            'criminal' => '教師',
+            'name' => '自殺',
+            'criminal' => '手先',
         ),
         2 => array(
-            'name' => '猟奇殺人',
-            'criminal' => 'お嬢様',
+            'name' => '不安拡大',
+            'criminal' => '入院患者',
+        ),
+        3 => array(
+            'name' => '前兆',
+            'criminal' => '転校生',
         ),
         5 => array(
-            'name' => '前兆',
-            'criminal' => '男子学生',
+            'name' => '病院の事件',
+            'criminal' => '異世界人',
         ),
     ),
     'advice' => (object)array(
