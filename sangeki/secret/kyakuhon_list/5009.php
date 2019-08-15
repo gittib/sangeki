@@ -11,7 +11,7 @@ $oSangeki = (object)array(
         '不穏な噂',
         '見てしまった人々',
     ),
-    'special_rule' => "",
+    'special_rule' => "神格は登場しない。",
     'loop' => 6,
     'day' => 4,
     'character' => array(
@@ -31,13 +31,13 @@ $oSangeki = (object)array(
         ),
     ),
     'incident' => array(
+        1 => array(
+            'name' => '不安拡大',
+            'criminal' => '女子学生',
+        ),
         2 => array(
             'name' => '狂気殺人',
             'criminal' => 'お嬢様',
-        ),
-        3 => array(
-            'name' => '不安拡大',
-            'criminal' => '女子学生',
         ),
     ),
     'advice' => (object)array(
