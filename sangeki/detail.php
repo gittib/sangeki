@@ -197,7 +197,7 @@ switch ($oSangeki->set) {
                     <th><?= $i ?></th>
                     <td><?
                         if (isset($oSangeki->incident[$i])) {
-                            if ($oSangeki->incident[$i]['name'] == '偽装事件') {
+                            if ($oSangeki->incident[$i]['name'] == '偽装事件' && !empty($oSangeki->incident[$i]['note'])) {
                                 echo $oSangeki->incident[$i]['note'];
                             } else {
                                 echo $oSangeki->incident[$i]['name'];
