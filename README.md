@@ -4,5 +4,6 @@
 ```
 cd ${YOUR_GIT_WORK_DIRECTORY}
 git clone https://github.com/gittib/sangeki.git
+touch .env.prod
 ln -s ${YOUR_GIT_WORK_DIRECTORY}/sangeki/ ${YOUR_DOCUMENT_ROOT}/sangeki
 ```
