@@ -8,7 +8,7 @@ if (realpath($_SERVER["SCRIPT_FILENAME"]) == realpath(__FILE__)) {
 
 
 function isProd() {
-    return file_exists('../../.env.prod');
+    return file_exists(dirname(__FILE__) . '/../../.env.prod');
 }
 
 function e($s) {
