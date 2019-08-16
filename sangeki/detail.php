@@ -1,4 +1,5 @@
 <?php
+require_once('./secret/common.php');
 require_once('./secret/sangeki_check.php');
 
 function roleSpec ($r) {
@@ -80,29 +81,6 @@ function initPos($name) {
             return 'other';
     }
 }
-function difficulityName($difficulity) {
-    if (empty($difficulity)) {
-        return '';
-    }
-    switch ($difficulity) {
-        case 1:
-            return '練習用';
-        case 2:
-            return '簡単';
-        case 3:
-            return '易しい';
-        case 4:
-            return '普通';
-        case 5:
-            return '難しい';
-        case 6:
-            return '困難';
-        case 7:
-            return '惨劇';
-        case 8:
-            return '悪夢';
-    }
-}
 
 if (!isset($_GET['id'])) {
     header('Location: .');
@@ -116,6 +94,10 @@ if (!file_exists($kyakuhonPath)) {
 }
 require($kyakuhonPath);
 if (empty($oSangeki)) {
+    header('Location: .');
+    exit;
+} else if (isProd() && $oSangeki->secret) {
+    // 本番環境では非公開脚本の直飛びも禁止
     header('Location: .');
     exit;
 }

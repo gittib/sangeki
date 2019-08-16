@@ -4,17 +4,7 @@ if (realpath($_SERVER["SCRIPT_FILENAME"]) == realpath(__FILE__)) {
     header('Location: ' . $url);
     exit;
 }
-
-function e($s) {
-    return htmlspecialchars($s, ENT_QUOTES);
-}
-function session($key, $defaultValue = '') {
-    if (isset($_SESSION[$key])) {
-        return $_SESSION[$key];
-    } else {
-        return $defaultValue;
-    }
-}
+require_once('common.php');
 
 $aQuestions = array(
     (object)array(

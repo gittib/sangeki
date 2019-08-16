@@ -4,6 +4,7 @@ if (realpath($_SERVER["SCRIPT_FILENAME"]) == realpath(__FILE__)) {
     header('Location: ' . $url);
     exit;
 }
+require_once('common.php');
 ?>
 <footer>
     <div class="credit">
