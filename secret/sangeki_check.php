@@ -60,7 +60,7 @@ if (empty($checked) && !empty($_POST['answer'])) {
 if (empty($checked)): ?>
 <html>
 <head>
-<? require(dirname(__FILE__) . '/secret/sangeki_head.php') ?>
+<? require(dirname(__FILE__) . '/sangeki_head.php') ?>
     <title>惨劇RoopeR ペンスキーの脚本置き場</title>
 </head>
 <body class="sangeki_check">
