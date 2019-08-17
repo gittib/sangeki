@@ -1,11 +1,11 @@
 <?
-require_once('./secret/common.php');
-require_once('./secret/sangeki_check.php');
-exec('ls ./secret/kyakuhon_list/', $files);
+require_once('../secret/common.php');
+require_once('../secret/sangeki_check.php');
+exec('ls ../secret/kyakuhon_list/', $files);
 ?>
 <html>
 <head>
-<?php require('./secret/sangeki_head.php') ?>
+<?php require('../secret/sangeki_head.php') ?>
     <title>脚本リスト</title>
 </head>
 <body class="kyakuhon_list">
@@ -25,7 +25,7 @@ exec('ls ./secret/kyakuhon_list/', $files);
             if (strpos($id, '0') === 0) {
                 continue;
             }
-            require('./secret/kyakuhon_list/' . $val);
+            require('../secret/kyakuhon_list/' . $val);
             if (empty($oSangeki) || empty($oSangeki->title) || !empty($oSangeki->secret)) {
                 continue;
             }
@@ -60,7 +60,7 @@ exec('ls ./secret/kyakuhon_list/', $files);
         </dl>
     </div>
     <button class="show_title">脚本タイトルを表示</button>
-<?php require('./secret/sangeki_footer.php') ?>
+<?php require('../secret/sangeki_footer.php') ?>
     <script>
     $('.show_title').on('click', function() {
         if ($('.hide_title').is(':visible')) {

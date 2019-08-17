@@ -1,6 +1,6 @@
 <?php
-require_once('./secret/common.php');
-require_once('./secret/sangeki_check.php');
+require_once('../secret/common.php');
+require_once('../secret/sangeki_check.php');
 
 function roleSpec ($r) {
     $role = isset($r['role']) ? $r['role'] : 'パーソン';
@@ -87,7 +87,7 @@ if (!isset($_GET['id'])) {
     exit;
 }
 $id = $_GET['id'];
-$kyakuhonPath = './secret/kyakuhon_list/'.$id.'.php';
+$kyakuhonPath = '../secret/kyakuhon_list/'.$id.'.php';
 if (!file_exists($kyakuhonPath)) {
     header('Location: .');
     exit;
@@ -124,7 +124,7 @@ switch ($oSangeki->set) {
 ?>
 <html>
 <head>
-<?php require('./secret/sangeki_head.php') ?>
+<?php require('../secret/sangeki_head.php') ?>
     <title><?= e($oSangeki->rule_str) ?> 脚本</title>
 </head>
 <body class="detail">
@@ -369,7 +369,7 @@ switch ($oSangeki->set) {
         </div>
         <? endif; ?>
     </div>
-<?php require('./secret/sangeki_footer.php') ?>
+<?php require('../secret/sangeki_footer.php') ?>
     <script>
     $('.toggle_private').on('click', function() {
         var $self = $(this);
