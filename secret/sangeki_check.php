@@ -1,5 +1,5 @@
 <?php
-require_once('common.php');
+require_once(dirname(__FILE__) . '/common.php');
 
 $aQuestions = array(
     (object)array(
@@ -60,7 +60,7 @@ if (empty($checked) && !empty($_POST['answer'])) {
 if (empty($checked)): ?>
 <html>
 <head>
-<? require('./secret/sangeki_head.php') ?>
+<? require(dirname(__FILE__) . '/secret/sangeki_head.php') ?>
     <title>惨劇RoopeR ペンスキーの脚本置き場</title>
 </head>
 <body class="sangeki_check">
