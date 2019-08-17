@@ -38,7 +38,6 @@ $aQuestions = array(
     ),
 );
 
-session_start();
 $checked = session('sangeki_kyakuhonka');
 if (empty($checked) && !empty($_POST['answer'])) {
     $checked = true;
