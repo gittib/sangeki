@@ -96,7 +96,7 @@ require($kyakuhonPath);
 if (empty($oSangeki)) {
     header('Location: .');
     exit;
-} else if (isProd() && $oSangeki->secret) {
+} else if (isProd() && !empty($oSangeki->secret)) {
     // 本番環境では非公開脚本の直飛びも禁止
     header('Location: .');
     exit;
