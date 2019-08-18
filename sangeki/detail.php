@@ -128,7 +128,9 @@ switch ($oSangeki->set) {
     <title><?= e($oSangeki->rule_str) ?> 脚本</title>
 </head>
 <body class="detail">
-    <a href="." style="display: block; margin: 12px;">一覧へ</a>
+    <div style="margin: 12px;">
+        <a href=".">一覧へ</a>
+    </div>
     <div class="public">
         <h2>公開シート</h2>
         <span>
