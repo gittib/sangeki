@@ -22,7 +22,7 @@ exec('ls ../secret/kyakuhon_list/', $files);
         <dl class="kyakuhon_list">
         <? foreach ($files as $val):
             $id = str_replace('.php', '', $val);
-            if (strpos($id, '0') === 0) {
+            if (strpos($id, '9') === 0) {
                 continue;
             }
             require('../secret/kyakuhon_list/' . $val);
