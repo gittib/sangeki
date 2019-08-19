@@ -121,6 +121,28 @@ switch ($oSangeki->set) {
         $oSangeki->rule_str = '謎の惨劇セット';
         break;
 }
+$aInitPlace = array(
+    'hospital' => array(),
+    'shrine' => array(),
+    'city' => array(),
+    'school' => array(),
+    'other' => array(),
+);
+foreach ($oSangeki->character as $name => $val) {
+    list($role, $z, $y, $f) = roleSpec($val);
+    if ($role == 'パーソン') {
+        $sRoleClass = '';
+    } else {
+        $sRoleClass = 'special';
+    }
+    $oSangeki->character[$name]['role'] = $role;
+    $oSangeki->character[$name]['roleClass'] = $sRoleClass;
+    $oSangeki->character[$name]['zettai'] = $z;
+    $oSangeki->character[$name]['yuukoumushi'] = $y;
+    $oSangeki->character[$name]['fushi'] = $f;
+
+    $aInitPlace[initPos($name)][] = $name;
+}
 ?>
 <html>
 <head>
@@ -128,7 +150,7 @@ switch ($oSangeki->set) {
     <title><?= e($oSangeki->rule_str) ?> 脚本</title>
 </head>
 <body class="detail">
-    <div style="margin: 12px;">
+    <div class="pankuzu_wrapper">
         <a href=".">一覧へ</a>
     </div>
     <div class="public">
@@ -158,7 +180,7 @@ switch ($oSangeki->set) {
                 <td><?= e($oSangeki->day) ?>日</td>
             </tr>
         </table>
-        <h3 class="special_rule_title">特殊ルール</h3>
+        <h3>特殊ルール</h3>
         <div class="special_rule"><?
         if (!empty($oSangeki->special_rule)) {
             echo nl2br(e($oSangeki->special_rule));
@@ -167,7 +189,7 @@ switch ($oSangeki->set) {
         }
         ?></div>
 
-        <h3 style="margin-top:16px">事件予定</h3>
+        <h3>事件予定</h3>
         <table class="insident">
             <thead>
                 <tr>
@@ -224,33 +246,16 @@ switch ($oSangeki->set) {
                     </tr>
                 </thead>
                 <tbody>
-                    <? $aInitPlace = array(
-                        'hospital' => array(),
-                        'shrine' => array(),
-                        'city' => array(),
-                        'school' => array(),
-                        'other' => array(),
-                    );
-                    foreach ($oSangeki->character as $name => $val):
-                        list($role, $z, $y, $f) = roleSpec($val);
-                        if ($role == 'パーソン') {
-                            $sRoleClass = '';
-                        } else {
-                            $sRoleClass = 'special';
-                        }
-                        $aInitPlace[initPos($name)][] = $name;
-                    ?>
+                    <? foreach ($oSangeki->character as $name => $val): ?>
                     <tr>
                         <td><?= $name ?></td>
-                        <td class="role <?= $sRoleClass ?>">
-                            <span class="zettai"><?= $z ?></span>
-                            <span class="yuukoumushi"><?= $y ?></span>
-                            <span class="fushi"><?= $f ?></span>
-                            　<?= $role ?>
+                        <td class="role <?= $val['roleClass'] ?>">
+                            <span class="zettai"><?= $val['zettai'] ?></span>
+                            <span class="yuukoumushi"><?= $val['yuukoumushi'] ?></span>
+                            <span class="fushi"><?= $val['fushi'] ?></span>
+                            　<?= $val['role'] ?>
                         </td>
-                        <td><? if (!empty($val['note'])) {
-                            echo e($val['note']);
-                        } ?></td>
+                        <td><?= echo e(empty($val['note']) ? '' : $val['note']); ?></td>
                     </tr>
                     <? endforeach; ?>
                 </tbody>
@@ -289,7 +294,7 @@ switch ($oSangeki->set) {
                     </tr>
                     <? if (!empty($aInitPlace['other'])): ?>
                     <tr>
-                        <td colspan="2" style="border:none;">
+                        <td colspan="2" class="special_place">
                             <strong class="place_name">特殊</strong>:
                             <? foreach ($aInitPlace['other'] as $val) {
                                 echo '<span class="chara">' . e($val) . '</span>';
@@ -329,7 +334,7 @@ switch ($oSangeki->set) {
     <div class="private advice">
         <h3>シナリオの特徴</h3>
         <? if (!empty($oSangeki->advice->notice)): ?>
-        <div style="color: red;">
+        <div class="notice">
             <?= nl2br(e($oSangeki->advice->notice)) ?>
         </div>
         <? endif; ?>

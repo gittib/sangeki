@@ -138,6 +138,9 @@ body.kyakuhon_list button {
     display: block;
 }
 
+body.detail .pankuzu_wrapper {
+    margin: 12px;
+}
 body.detail h2 {
     font-size: 1.5rem;
 }
@@ -185,7 +188,7 @@ body.detail .public {
 body.detail .public table.summary tr td.tragedy_set {
     font-style: italic;
 }
-body.detail .public h3.special_rule_title {
+body.detail .public > h3 {
     margin-top:16px;
 }
 body.detail .public div.special_rule {
@@ -227,6 +230,9 @@ body.detail .private .people_count {
 body.detail .private table.character {
     font-size: 0.75rem;
 }
+body.detail .private table.init_place td.special_place {
+    border: none;
+}
 body.detail .private h3.insident {
     margin-top:16px;
 }
@@ -261,6 +267,9 @@ body.detail .private.advice {
 }
 body.detail .private.advice h3 {
     margin-top: 20px;
+}
+body.detail .private.advice .notice {
+    color: red;
 }
 body.detail .private.advice .template {
     max-width: 512px;
