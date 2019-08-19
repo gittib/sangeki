@@ -2,7 +2,7 @@
 require_once('../secret/common.php');
 require_once('../secret/sangeki_check.php');
 exec('ls ../secret/kyakuhon_list/', $files);
-$aPublicScenario = [];
+$aPublicScenario = array();
 foreach ($files as $val) {
     $id = str_replace('.php', '', $val);
     if (strpos($id, '9') === 0) {
