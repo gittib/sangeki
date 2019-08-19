@@ -2,6 +2,19 @@
 require_once('../secret/common.php');
 require_once('../secret/sangeki_check.php');
 exec('ls ../secret/kyakuhon_list/', $files);
+$aPublicScenario = [];
+foreach ($files as $val) {
+    $id = str_replace('.php', '', $val);
+    if (strpos($id, '9') === 0) {
+        continue;
+    }
+    require('../secret/kyakuhon_list/' . $val);
+    if (empty($oSangeki) || empty($oSangeki->title) || !empty($oSangeki->secret)) {
+        continue;
+    }
+    $aPublicScenario[] = $oSangeki;
+    $oSangeki = null;
+}
 ?>
 <html>
 <head>
@@ -9,27 +22,18 @@ exec('ls ../secret/kyakuhon_list/', $files);
     <title>脚本リスト</title>
 </head>
 <body class="kyakuhon_list">
-    <div style="margin-bottom: 32px;">
+    <div class="top_text">
         <h2><span>ペンスキーの</span><span>脚本置き場へ</span><span>ようこそ。</span></h2>
         ここにはペンスキーの考えた、惨劇RoopeRオリジナル脚本が置かれてあります。<br>
-        <span style="color:red">なお、惨劇RoopeRの脚本を見てしまうと、主人公としてゲームに参加できなくなる場合があります。</span>
+        <span class="important_s">なお、惨劇RoopeRの脚本を見てしまうと、主人公としてゲームに参加できなくなる場合があります。</span>
         もちろん、脚本家としては遊べます。公開シート・非公開シート・解説に分けて記載していますので、そのまま利用して遊べるようになっています。
     </div>
     <h2>惨劇脚本リスト</h2>
-    <div style="margin: 8px;">ネタバレ防止のためにタイトルを伏せてありますので、必要に応じて下のボタンで表示させて下さい。</div>
+    <div class="title_is_hidden">ネタバレ防止のためにタイトルを伏せてありますので、必要に応じて下のボタンで表示させて下さい。</div>
     <button class="show_title">脚本タイトルを表示</button>
     <div class="kyakuhon_list">
         <dl class="kyakuhon_list">
-        <? foreach ($files as $val):
-            $id = str_replace('.php', '', $val);
-            if (strpos($id, '9') === 0) {
-                continue;
-            }
-            require('../secret/kyakuhon_list/' . $val);
-            if (empty($oSangeki) || empty($oSangeki->title) || !empty($oSangeki->secret)) {
-                continue;
-            }
-        ?>
+        <? foreach ($aPublicScenario as $oSangeki): ?>
             <dt>
                 <span class="rule_prefix <?= $oSangeki->set ?>"><?= $oSangeki->set ?></span>
                 <a href="./detail.php?id=<?= $id ?>">
@@ -53,10 +57,7 @@ exec('ls ../secret/kyakuhon_list/', $files);
                     <span class="tag"><?= difficulityName($oSangeki->difficulity) ?></span>
                 </span>
             </dd>
-        <?
-            unset($oSangeki);
-            endforeach;
-        ?>
+        <? endforeach; ?>
         </dl>
     </div>
     <button class="show_title">脚本タイトルを表示</button>

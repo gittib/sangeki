@@ -84,11 +84,20 @@ body.sangeki_check form {
     padding-bottom: 32px;
 }
 
+body.kyakuhon_list .top_text {
+    margin-bottom: 32px;
+}
+body.kyakuhon_list .top_text .important_s {
+    color:red;
+}
 body.kyakuhon_list h2 {
     text-align: center;
 }
 body.kyakuhon_list h2 span {
     display: inline-block;
+}
+body.kyakuhon_list .title_is_hidden {
+    margin: 8px;
 }
 body.kyakuhon_list .kyakuhon_list {
     max-width: 512px;
