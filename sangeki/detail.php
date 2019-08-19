@@ -147,7 +147,7 @@ switch ($oSangeki->set) {
         <table class="summary">
             <tr>
                 <th>惨劇セット</th>
-                <td style="font-style: italic;"><?= e($oSangeki->rule_str) ?></td>
+                <td class="tragedy_set"><?= e($oSangeki->rule_str) ?></td>
             </tr>
             <tr>
                 <th>ループ回数</th>
@@ -158,7 +158,7 @@ switch ($oSangeki->set) {
                 <td><?= e($oSangeki->day) ?>日</td>
             </tr>
         </table>
-        <h3 style="margin-top:16px">特殊ルール</h3>
+        <h3 class="special_rule_title">特殊ルール</h3>
         <div class="special_rule"><?
         if (!empty($oSangeki->special_rule)) {
             echo nl2br(e($oSangeki->special_rule));
@@ -195,8 +195,8 @@ switch ($oSangeki->set) {
     </div>
     <button class="toggle_private">非公開シート、脚本家の指針を表示</button>
     <div class="private_sheet_wrapper">
-        <div class="private private_sheet">
-            <h2 style="font-size: 1em">非公開シート</h2>
+        <div class="private">
+            <h2 class="private_sheet">非公開シート</h2>
             <h3 class="title"><?= e($oSangeki->title) ?></h3>
             <table class="summary">
                 <tr>
@@ -263,13 +263,13 @@ switch ($oSangeki->set) {
                         <td>
                             <strong class="place_name">病院</strong><br>
                             <? foreach ($aInitPlace['hospital'] as $val) {
-                                echo '<span class="chara">' . $val . '</span>';
+                                echo '<span class="chara">' . e($val) . '</span>';
                             } ?>
                         </td>
                         <td>
                             <strong class="place_name">神社</strong><br>
                             <? foreach ($aInitPlace['shrine'] as $val) {
-                                echo '<span class="chara">' . $val . '</span>';
+                                echo '<span class="chara">' . e($val) . '</span>';
                             } ?>
                         </td>
                     </tr>
@@ -277,13 +277,13 @@ switch ($oSangeki->set) {
                         <td>
                             <strong class="place_name">都市</strong><br>
                             <? foreach ($aInitPlace['city'] as $val) {
-                                echo '<span class="chara">' . $val . '</span>';
+                                echo '<span class="chara">' . e($val) . '</span>';
                             } ?>
                         </td>
                         <td>
                             <strong class="place_name">学校</strong><br>
                             <? foreach ($aInitPlace['school'] as $val) {
-                                echo '<span class="chara">' . $val . '</span>';
+                                echo '<span class="chara">' . e($val) . '</span>';
                             } ?>
                         </td>
                     </tr>
@@ -292,7 +292,7 @@ switch ($oSangeki->set) {
                         <td colspan="2" style="border:none;">
                             <strong class="place_name">特殊</strong>:
                             <? foreach ($aInitPlace['other'] as $val) {
-                                echo '<span class="chara">' . $val . '</span>';
+                                echo '<span class="chara">' . e($val) . '</span>';
                             } ?>
                         </td>
                     </tr>
@@ -300,7 +300,7 @@ switch ($oSangeki->set) {
                 </tbody>
             </table>
 
-            <h3 style="margin-top:16px">事件リスト</h3>
+            <h3 class="insident">事件リスト</h3>
             <table class="insident">
                 <thead>
                     <tr>

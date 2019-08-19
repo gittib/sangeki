@@ -161,13 +161,6 @@ body.detail table.summary td {
     padding-right: 4px;
     border-bottom: solid 1px;
 }
-body.detail .special_rule {
-    border: double;
-    width: 90%;
-    min-height: 30px;
-    padding: 2px;
-    box-sizing: border-box;
-}
 body.detail table {
     margin: 8px 5%;
     width: 90%;
@@ -189,6 +182,19 @@ body.detail .public {
     margin-right: auto;
     padding: 8px;
 }
+body.detail .public table.summary tr td.tragedy_set {
+    font-style: italic;
+}
+body.detail .public h3.special_rule_title {
+    margin-top:16px;
+}
+body.detail .public div.special_rule {
+    border: double;
+    width: 90%;
+    min-height: 30px;
+    padding: 2px;
+    box-sizing: border-box;
+}
 body.detail .private {
     border: solid 1px;
     margin-top: 32px;
@@ -200,6 +206,9 @@ body.detail .private_sheet_wrapper {
     margin-left: auto;
     margin-right: auto;
     padding: 8px;
+}
+body.detail .private h2.private_sheet {
+    font-size: 1em;
 }
 body.detail .private .title {
     width: 80%;
@@ -217,6 +226,9 @@ body.detail .private .people_count {
 }
 body.detail .private table.character {
     font-size: 0.75rem;
+}
+body.detail .private h3.insident {
+    margin-top:16px;
 }
 body.detail .private table.insident td span.note {
     font-size: 0.75rem;

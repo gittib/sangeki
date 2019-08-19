@@ -4,7 +4,7 @@ session_start();
 
 
 function isProd() {
-    return file_exists(dirname(__FILE__) . '/../../.env.prod');
+    return file_exists(dirname(__FILE__) . '/../.env.prod');
 }
 
 function e($s) {
