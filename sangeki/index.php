@@ -12,7 +12,7 @@ foreach ($files as $val) {
     if (empty($oSangeki) || empty($oSangeki->title) || !empty($oSangeki->secret)) {
         continue;
     }
-    $aPublicScenario[] = $oSangeki;
+    $aPublicScenario[$id] = $oSangeki;
     $oSangeki = null;
 }
 ?>
@@ -33,7 +33,7 @@ foreach ($files as $val) {
     <button class="show_title">脚本タイトルを表示</button>
     <div class="kyakuhon_list">
         <dl class="kyakuhon_list">
-        <? foreach ($aPublicScenario as $oSangeki): ?>
+        <? foreach ($aPublicScenario as $id => $oSangeki): ?>
             <dt>
                 <span class="rule_prefix <?= $oSangeki->set ?>"><?= $oSangeki->set ?></span>
                 <a href="./detail.php?id=<?= $id ?>">
