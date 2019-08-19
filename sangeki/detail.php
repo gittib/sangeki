@@ -255,7 +255,7 @@ foreach ($oSangeki->character as $name => $val) {
                             <span class="fushi"><?= $val['fushi'] ?></span>
                             　<?= $val['role'] ?>
                         </td>
-                        <td><?= echo e(empty($val['note']) ? '' : $val['note']); ?></td>
+                        <td><?= e(empty($val['note']) ? '' : $val['note']) ?></td>
                     </tr>
                     <? endforeach; ?>
                 </tbody>
