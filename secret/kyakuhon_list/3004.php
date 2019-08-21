@@ -4,23 +4,30 @@ $oSangeki = (object)array(
     'title' => '不穏な噂 ver.MC',
     'secret' => true,
     'writer' => 'ペンスキー',
-    'difficulity' => 5,
+    'difficulity' => 6,
     'set' => 'MCX',
     'rule' => array(
         '黒の学園',
+        '隔離病棟サイコ',
         '絶対の意思',
-        '双子のトリック',
     ),
-    'special_rule' => "脚本家は移動斜めを使えない。",
-    'loop' => 5,
-    'day' => 5,
+    'special_rule' => "",
+    'loop' => 4,
+    'day' => 6,
     'character' => array(
+        '神格' => array(
+            'note' => '3ループ目',
+        ),
+        '異世界人' => array(
+            'role' => 'セラピスト',
+        ),
         '入院患者' => array(
-            'role' => 'ツイン',
+            'role' => 'ゼッタイシャ',
         ),
         '軍人' => array(
         ),
-        'マスコミ' => array(
+        '医者' => array(
+            'role' => 'ミスリーダー',
         ),
         'A.I.' => array(
             'role' => 'パラノイア',
@@ -28,24 +35,21 @@ $oSangeki = (object)array(
         'サラリーマン' => array(
             'role' => 'クロマク',
         ),
-        '刑事' => array(
-        ),
-        '教師' => array(
-            'role' => 'ゼッタイシャ',
+        '委員長' => array(
         ),
     ),
     'incident' => array(
-        3 => array(
-            'name' => '不安拡大',
-            'criminal' => '教師',
-        ),
         4 => array(
-            'name' => 'テロリズム',
-            'criminal' => '入院患者',
+            'name' => '不安拡大',
+            'criminal' => 'A.I.',
         ),
         5 => array(
             'name' => '病院の事件',
-            'criminal' => 'A.I.',
+            'criminal' => '異世界人',
+        ),
+        6 => array(
+            'name' => 'テロリズム',
+            'criminal' => '入院患者',
         ),
     ),
     'advice' => (object)array(
