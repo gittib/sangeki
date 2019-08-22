@@ -1,11 +1,4 @@
-<?php
-if (realpath($_SERVER["SCRIPT_FILENAME"]) == realpath(__FILE__)) {
-    $url = str_replace('/secret/'.basename(__FILE__), '/', $_SERVER["REQUEST_URI"]);
-    header('Location: ' . $url);
-    exit;
-}
-require_once('common.php');
-?>
+<?php require_once(dirname(__FILE__) . '/common.php'); ?>
 <footer>
     <div class="credit">
         本ページはBakaFire Partyのゲーム「<a href="http://bakafire.main.jp/rooper/sr_top.htm" target="_blank">惨劇RoopeR</a>」のファンページです。また、惨劇コモンズの画像素材を利用しています。<br><br>

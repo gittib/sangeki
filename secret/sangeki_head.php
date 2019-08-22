@@ -1,13 +1,6 @@
-<?php
-if (realpath($_SERVER["SCRIPT_FILENAME"]) == realpath(__FILE__)) {
-    $url = str_replace('/secret/'.basename(__FILE__), '/', $_SERVER["REQUEST_URI"]);
-    header('Location: ' . $url);
-    exit;
-}
-require_once('common.php');
-?>
+<?php require_once(dirname(__FILE__) . '/common.php'); ?>
 <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1">
-<link rel="stylesheet" href="screen.css?v=<?= filemtime('../sangeki/screen.css') ?>">
+<link rel="stylesheet" href="screen.css?v=<?= filemtime(dirname(__FILE__) . '/../sangeki/screen.css') ?>">
 <link rel="shortcut icon" href="favicon.ico" type="image/vnd.microsoft.icon" /> 
 <link rel="icon" href="favicon.ico" type="image/vnd.microsoft.icon" />
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>

@@ -84,11 +84,20 @@ body.sangeki_check form {
     padding-bottom: 32px;
 }
 
+body.kyakuhon_list .top_text {
+    margin-bottom: 32px;
+}
+body.kyakuhon_list .top_text .important_s {
+    color:red;
+}
 body.kyakuhon_list h2 {
     text-align: center;
 }
 body.kyakuhon_list h2 span {
     display: inline-block;
+}
+body.kyakuhon_list .title_is_hidden {
+    margin: 8px;
 }
 body.kyakuhon_list .kyakuhon_list {
     max-width: 512px;
@@ -138,6 +147,9 @@ body.kyakuhon_list button {
     display: block;
 }
 
+body.detail .pankuzu_wrapper {
+    margin: 12px;
+}
 body.detail h2 {
     font-size: 1.5rem;
 }
@@ -161,13 +173,6 @@ body.detail table.summary td {
     padding-right: 4px;
     border-bottom: solid 1px;
 }
-body.detail .special_rule {
-    border: double;
-    width: 90%;
-    min-height: 30px;
-    padding: 2px;
-    box-sizing: border-box;
-}
 body.detail table {
     margin: 8px 5%;
     width: 90%;
@@ -189,6 +194,19 @@ body.detail .public {
     margin-right: auto;
     padding: 8px;
 }
+body.detail .public table.summary tr td.tragedy_set {
+    font-style: italic;
+}
+body.detail .public > h3 {
+    margin-top:16px;
+}
+body.detail .public div.special_rule {
+    border: double;
+    width: 90%;
+    min-height: 30px;
+    padding: 2px;
+    box-sizing: border-box;
+}
 body.detail .private {
     border: solid 1px;
     margin-top: 32px;
@@ -200,6 +218,9 @@ body.detail .private_sheet_wrapper {
     margin-left: auto;
     margin-right: auto;
     padding: 8px;
+}
+body.detail .private h2.private_sheet {
+    font-size: 1em;
 }
 body.detail .private .title {
     width: 80%;
@@ -217,6 +238,12 @@ body.detail .private .people_count {
 }
 body.detail .private table.character {
     font-size: 0.75rem;
+}
+body.detail .private table.init_place td.special_place {
+    border: none;
+}
+body.detail .private h3.insident {
+    margin-top:16px;
 }
 body.detail .private table.insident td span.note {
     font-size: 0.75rem;
@@ -249,6 +276,9 @@ body.detail .private.advice {
 }
 body.detail .private.advice h3 {
     margin-top: 20px;
+}
+body.detail .private.advice .notice {
+    color: red;
 }
 body.detail .private.advice .template {
     max-width: 512px;

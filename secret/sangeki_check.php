@@ -1,10 +1,5 @@
 <?php
-if (realpath($_SERVER["SCRIPT_FILENAME"]) == realpath(__FILE__)) {
-    $url = str_replace('/secret/'.basename(__FILE__), '/', $_SERVER["REQUEST_URI"]);
-    header('Location: ' . $url);
-    exit;
-}
-require_once('common.php');
+require_once(dirname(__FILE__) . '/common.php');
 
 $aQuestions = array(
     (object)array(
@@ -43,7 +38,6 @@ $aQuestions = array(
     ),
 );
 
-session_start();
 $checked = session('sangeki_kyakuhonka');
 if (empty($checked) && !empty($_POST['answer'])) {
     $checked = true;
@@ -65,7 +59,7 @@ if (empty($checked) && !empty($_POST['answer'])) {
 if (empty($checked)): ?>
 <html>
 <head>
-<? require('./secret/sangeki_head.php') ?>
+<? require(dirname(__FILE__) . '/sangeki_head.php') ?>
     <title>惨劇RoopeR ペンスキーの脚本置き場</title>
 </head>
 <body class="sangeki_check">
