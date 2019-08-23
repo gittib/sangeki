@@ -4,7 +4,7 @@ $oSangeki = (object)array(
     'title' => '不穏な噂 ver.MC',
     'secret' => true,
     'writer' => 'ペンスキー',
-    'difficulity' => 6,
+    'difficulity' => 5,
     'set' => 'MCX',
     'rule' => array(
         '黒の学園',
