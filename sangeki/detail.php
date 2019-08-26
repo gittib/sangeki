@@ -228,7 +228,7 @@ foreach ($oSangeki->character as $name => $val) {
         <div class="private">
             <h2 class="private_sheet">非公開シート</h2>
             <h3 class="title"><?= e($oSangeki->title) ?></h3>
-            <table class="summary">
+            <table class="summary rule">
                 <tr>
                     <th>ルールY</th>
                     <td><?= e($oSangeki->rule[0]) ?></td>

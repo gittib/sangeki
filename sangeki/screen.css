@@ -220,13 +220,16 @@ body.detail .private_sheet_wrapper {
     padding: 8px;
 }
 body.detail .private h2.private_sheet {
-    font-size: 1em;
+    font-size: 1rem;
 }
 body.detail .private .title {
     width: 80%;
     text-align: center;
     border-bottom-style: double;
     margin-bottom: 16px;
+}
+body.detail .private table.summary.rule tr td span.note {
+    font-size: 0.8rem;
 }
 body.detail .private h3.people_title {
     display: inline-block;
