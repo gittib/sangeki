@@ -84,9 +84,9 @@ function initPos($name) {
 function getRuleWithNote($sRule) {
     if (strpos($sRule, '/') > 0) {
         list($sRule, $sNote) = explode('/', $sRule);
-        echo e($sRule) . '<br><span class="note">(' . $sNote . ')</span>';
+        echo e(trim($sRule)) . '<br><span class="note">(' . trim($sNote) . ')</span>';
     } else {
-        echo e($sRule);
+        echo e(trim($sRule));
     }
 }
 

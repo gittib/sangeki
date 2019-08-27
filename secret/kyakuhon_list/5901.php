@@ -8,11 +8,11 @@ $oSangeki = (object)array(
     'set' => 'WM',
     'rule' => array(
         'だごん様の御言葉',
-        '狂った真実/黄衣の王',
+        '狂った真実 / 黄衣の王',
         '偉大なる種族',
     ),
     'special_rule' => "",
-    'loop' => 6,
+    'loop' => 5,
     'day' => 5,
     'character' => array(
         '巫女' => array(
@@ -25,8 +25,6 @@ $oSangeki = (object)array(
         ),
         '情報屋' => array(
             'role' => 'カルティスト',
-        ),
-        'アイドル' => array(
         ),
         '女子学生' => array(
             'role' => 'キーパーソン',
