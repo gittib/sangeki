@@ -9,48 +9,50 @@ $oSangeki = (object)array(
     'rule' => array(
         '封印されしもの',
         '潜む殺人鬼',
-        '不定因子χ',
+        '妄想拡大ウイルス',
     ),
-    'loop' => 4,
+    'loop' => 5,
     'day' => 6,
     'character' => array(
-        '巫女' => array(
+        '異世界人' => array(
         ),
-        '入院患者' => array(
-            'role' => 'シリアルキラー',
-        ),
-        '医者' => array(
+        'ナース' => array(
+            'role' => 'カルティスト',
         ),
         '軍人' => array(
         ),
         '刑事' => array(
+            'role' => 'シリアルキラー',
         ),
         'サラリーマン' => array(
+        ),
+        '鑑識官' => array(
+            'role' => 'ミスリーダー',
+        ),
+        'お嬢様' => array(
             'role' => 'クロマク',
         ),
-        'イレギュラー' => array(
-            'role' => 'ミスリーダー',
+        '委員長' => array(
+            'role' => 'フレンド',
+        ),
+        '教師' => array(
         ),
     ),
     'incident' => array(
-        4 => array(
-            'name' => '不安拡大',
-            'criminal' => '',
-        ),
         5 => array(
             'name' => '邪気の汚染',
-            'criminal' => '',
+            'criminal' => '委員長',
         ),
         6 => array(
-            'name' => '行方不明',
-            'criminal' => 'シリアルキラー',
+            'name' => '不安拡大',
+            'criminal' => '異世界人',
         ),
     ),
     'advice' => (object)array(
         'summary' => '',
         'detail' => "",
         'template' => array(
-            'A.I.に友好が乗っていないなら↓' => array(
+            '' => array(
                 1 => array(
                     '教師' => '不安+1',
                     '異世界人' => '友好禁止',
