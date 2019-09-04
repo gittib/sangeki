@@ -314,7 +314,14 @@ body.kifu_input .kifu_wrapper {
     overflow-x: scroll;
 }
 body.kifu_input .kifu_wrapper dl > dd table {
+    border-top: 1px solid;
+    border-left: 1px solid;
     font-size:1rem;
+}
+body.kifu_input .kifu_wrapper dl > dd table th,
+body.kifu_input .kifu_wrapper dl > dd table td {
+    border-bottom: 1px solid;
+    border-right: 1px solid;
 }
 body.kifu_input .kifu_wrapper dl > dd table th.day {
     min-width: 2rem;
