@@ -320,7 +320,7 @@ body.kifu_input .kifu_wrapper dl > dd table {
     font-size:1rem;
 }
 body.kifu_input .kifu_wrapper dl > dd table th {
-    border-bottom: 1px double;
+    border-bottom: 3px double;
     border-right: 1px solid;
 }
 body.kifu_input .kifu_wrapper dl > dd table td {
