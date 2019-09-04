@@ -316,10 +316,21 @@ body.kifu_input .kifu_wrapper {
 body.kifu_input .kifu_wrapper dl > dd table {
     font-size:1rem;
 }
+body.kifu_input .kifu_wrapper dl > dd table th.day {
+    min-width: 2rem;
+}
+body.kifu_input .kifu_wrapper dl > dd table th.memo {
+    min-width: 1000px;
+}
 body.kifu_input .kifu_wrapper dl > dd table th > p {
     width:1rem;
     line-height:1rem;
     margin: 0.55rem;
+}
+body.kifu_input .kifu_wrapper dl > dd table td input.memo {
+    width: 98%;
+    display: block;
+    margin: 0 auto;
 }
 
 
