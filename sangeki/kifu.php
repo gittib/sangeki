@@ -66,15 +66,51 @@ if (!empty($oKifu->charas)) {
         <input type="number" name="day" value="<?= $oKifu->day ?>">日
         <div class="available_character_list">
             <?php foreach ($aCharacter as $id => $val): ?>
-                <label><p>
-                    <input type="checkbox" name="chara[]" value="<?= $id ?>" <?= isset($aSelectedCharacter[$id]) ? 'checked="checked"' : '' ?>>
-                    <?= e($val) ?>
-                </p></label>
+            <label><p>
+                <input type="checkbox" name="chara[]" value="<?= $id ?>" <?= isset($aSelectedCharacter[$id]) ? 'checked="checked"' : '' ?>>
+                <?= e($val) ?>
+            </p></label>
             <?php endforeach; ?>
         </div>
         <div>
             <input type="submit" value="棋譜テンプレートを生成">
         </div>
+        <? if ($oKifu->loop > 0 && $oKifu->day > 0): ?>
+            <div class="kifu_wrapper">
+                <dl>
+                <? for ($l = 1 ; $l <= $oKifu->loop ; $l++): ?>
+                    <dt><?= $l ?>ループ目</dt>
+                    <dd><table>
+                        <thead>
+                            <tr>
+                                <th rowspan=2>日数</th>
+                                <? foreach ($aSelectedCharacter as $ch): ?>
+                                <th colspan=2><?= $ch ?></th>
+                                <? endforeach; ?>
+                                <th rowspan=2>メモ欄</th>
+                            </tr>
+                            <tr>
+                                <? for ($i = 0 ; $i < count($aSelectedCharacter) ; $i++): ?>
+                                <th>脚</th>
+                                <th>主</th>
+                                <? endfor; ?>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <? for ($d = 1 ; $d <= $oKifu->day ; $d++): ?>
+                            <td><?= $d ?></td>
+                            <? foreach ($aSelectedCharacter as $ch): ?>
+                            <td> </td>
+                            <td> </td>
+                            <? endforeach; ?>
+                            <td><input name="memo[<?= $l ?>][<?= $d ?>]"></td>
+                            <? endfor; ?>
+                        </tbody>
+                    </table></dd>
+                <? endfor; ?>
+                </dl>
+            </div>
+        <? endif; ?>
     </form>
 <?php require('../secret/sangeki_footer.php') ?>
     <script></script>
