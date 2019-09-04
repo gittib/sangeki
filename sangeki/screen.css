@@ -310,11 +310,12 @@ body.kifu_input .kifu_wrapper {
     overflow-x: scroll;
 }
 body.kifu_input .kifu_wrapper dl > dd table {
-    font-size:12px;
+    font-size:1rem;
 }
 body.kifu_input .kifu_wrapper dl > dd table th > p {
-    width:12px;
-    line-height:12px;
+    width:1rem;
+    line-height:1rem;
+    margin: 0.55rem;
 }
 
 
