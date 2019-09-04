@@ -296,7 +296,7 @@ body.detail .toggle_private {
     font-size: 0.8rem;
 }
 
-body.kifu_input .available_character_list > p {
+body.kifu_input .available_character_list p {
     display: block;
     float: left;
     margin: 4px;

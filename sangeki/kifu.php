@@ -66,10 +66,10 @@ if (!empty($oKifu->charas)) {
         <input type="number" name="day" value="<?= $oKifu->day ?>">日
         <div class="available_character_list">
             <?php foreach ($aCharacter as $id => $val): ?>
-                <p><label>
+                <label><p>
                     <input type="checkbox" name="chara[]" value="<?= $id ?>" <?= isset($aSelectedCharacter[$id]) ? 'checked="checked"' : '' ?>>
                     <?= e($val) ?>
-                </label></p>
+                </p></label>
             <?php endforeach; ?>
         </div>
         <div>
