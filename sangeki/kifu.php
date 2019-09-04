@@ -69,12 +69,12 @@ if (!empty($oKifu->charas)) {
     <form method="post">
         <select name="loop">
         <? for ($i = 0 ; $i <= 8 ; $i++): ?>
-            <option value="<?= $i ?>" <?= ($i == $oKifu->loop) ? 'selected="selected"' : '' ?>>
+            <option <?= ($i == $oKifu->loop) ? 'selected="selected"' : '' ?>><?= $i ?></option>
         <? endfor; ?>
         </select>ループ
         <select name="day">
         <? for ($i = 0 ; $i <= 8 ; $i++): ?>
-            <option value="<?= $i ?>" <?= ($i == $oKifu->day) ? 'selected="selected"' : '' ?>>
+            <option <?= ($i == $oKifu->day) ? 'selected="selected"' : '' ?>><?= $i ?></option>
         <? endfor; ?>
         </select>日
         <div class="available_character_list">
