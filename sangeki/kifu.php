@@ -91,7 +91,7 @@ if (!empty($oKifu->charas)) {
                                 <th>日数</th>
                                 <th> </th>
                                 <? foreach ($aSelectedCharacter as $ch): ?>
-                                <th><?= $ch ?></th>
+                                <th><p><?= str_replace('ー', '｜', $ch) ?></p></th>
                                 <? endforeach; ?>
                                 <th>メモ欄</th>
                             </tr>

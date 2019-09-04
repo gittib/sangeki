@@ -312,10 +312,9 @@ body.kifu_input .kifu_wrapper {
 body.kifu_input .kifu_wrapper dl > dd table {
     font-size:12px;
 }
-body.kifu_input .kifu_wrapper dl > dd table th {
+body.kifu_input .kifu_wrapper dl > dd table th > p {
     width:12px;
     line-height:12px;
-    writing-mode: vertical-rl;
 }
 
 
