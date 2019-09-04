@@ -326,6 +326,7 @@ body.kifu_input .kifu_wrapper dl > dd table th {
 body.kifu_input .kifu_wrapper dl > dd table td {
     border-bottom: 1px solid;
     border-right: 1px solid;
+    text-align: center;
 }
 body.kifu_input .kifu_wrapper dl > dd table th.day {
     min-width: 2rem;
@@ -337,6 +338,7 @@ body.kifu_input .kifu_wrapper dl > dd table th > p {
     width:1rem;
     line-height:1rem;
     margin: 0.55rem;
+    word-break: break-all;
 }
 body.kifu_input .kifu_wrapper dl > dd table td {
     line-height: 1em;
