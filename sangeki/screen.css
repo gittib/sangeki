@@ -315,6 +315,7 @@ body.kifu_input .kifu_wrapper dl > dd table {
 body.kifu_input .kifu_wrapper dl > dd table th {
     width:12px;
     line-height:12px;
+    writing-mode: vertical-rl;
 }
 
 
