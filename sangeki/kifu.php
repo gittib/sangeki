@@ -88,11 +88,12 @@ if (!empty($oKifu->charas)) {
                     <dd><table>
                         <thead>
                             <tr>
-                                <th rowspan=2>日数</th>
+                                <th>日数</th>
+                                <th> </th>
                                 <? foreach ($aSelectedCharacter as $ch): ?>
-                                <th colspan=2 style="min-width:80px; word-break: keep-all;"><?= $ch ?></th>
+                                <th><?= $ch ?></th>
                                 <? endforeach; ?>
-                                <th rowspan=2>メモ欄</th>
+                                <th>メモ欄</th>
                             </tr>
                             <tr>
                                 <? for ($i = 0 ; $i < count($aSelectedCharacter) ; $i++): ?>
@@ -104,12 +105,16 @@ if (!empty($oKifu->charas)) {
                         <tbody>
                             <? for ($d = 1 ; $d <= $oKifu->day ; $d++): ?>
                             <tr>
-                                <td><?= $d ?></td>
+                                <td rowspan=2><?= $d ?></td>
                                 <? foreach ($aSelectedCharacter as $ch): ?>
                                 <td> </td>
+                                <? endforeach; ?>
+                                <td rowspan=2><input name="memo[<?= $l ?>][<?= $d ?>]"></td>
+                            </tr>
+                            <tr>
+                                <? foreach ($aSelectedCharacter as $ch): ?>
                                 <td> </td>
                                 <? endforeach; ?>
-                                <td><input name="memo[<?= $l ?>][<?= $d ?>]"></td>
                             </tr>
                             <? endfor; ?>
                         </tbody>

@@ -309,6 +309,13 @@ body.kifu_input .kifu_wrapper {
     margin: 6px;
     overflow-x: scroll;
 }
+body.kifu_input .kifu_wrapper dl > dd table {
+    font-size:12px;
+}
+body.kifu_input .kifu_wrapper dl > dd table th {
+    width:12px;
+    line-height:12px;
+}
 
 
 footer {
