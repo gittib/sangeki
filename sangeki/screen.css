@@ -305,6 +305,10 @@ body.kifu_input .available_character_list p {
     border: solid 1px;
     padding-left: 2px;
 }
+body.kifu_input .submit_wrapper {
+    clear: both;
+    padding: 12px;
+}
 body.kifu_input .kifu_wrapper {
     margin: 6px;
     overflow-x: scroll;

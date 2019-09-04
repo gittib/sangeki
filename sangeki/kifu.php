@@ -77,7 +77,7 @@ if (!empty($oKifu->charas)) {
             </p></label>
             <?php endforeach; ?>
         </div>
-        <div>
+        <div class="submit_wrapper">
             <input type="submit" value="棋譜テンプレートを生成">
         </div>
         <? if ($oKifu->loop > 0 && $oKifu->day > 0): ?>
