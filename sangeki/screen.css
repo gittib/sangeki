@@ -311,6 +311,7 @@ body.kifu_input .submit_wrapper {
 }
 body.kifu_input .kifu_wrapper {
     margin: 6px;
+    padding: 4px 0;
     overflow-x: scroll;
 }
 body.kifu_input .kifu_wrapper dl > dd table {
@@ -318,7 +319,10 @@ body.kifu_input .kifu_wrapper dl > dd table {
     border-left: 1px solid;
     font-size:1rem;
 }
-body.kifu_input .kifu_wrapper dl > dd table th,
+body.kifu_input .kifu_wrapper dl > dd table th {
+    border-bottom: 1px double;
+    border-right: 1px solid;
+}
 body.kifu_input .kifu_wrapper dl > dd table td {
     border-bottom: 1px solid;
     border-right: 1px solid;
@@ -342,6 +346,7 @@ body.kifu_input .kifu_wrapper dl > dd table td input.memo {
     width: 98%;
     display: block;
     margin: 0 auto;
+    text-align: center;
 }
 
 

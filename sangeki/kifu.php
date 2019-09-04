@@ -96,7 +96,7 @@ if (!empty($oKifu->charas)) {
                     <dd><table>
                         <thead>
                             <tr>
-                                <th class="day">日数</th>
+                                <th class="day">日</th>
                                 <th> </th>
                                 <? foreach ($aSelectedCharacter as $ch): ?>
                                 <th><p><?= str_replace('ー', '｜', $ch) ?></p></th>
@@ -110,14 +110,14 @@ if (!empty($oKifu->charas)) {
                                 <td rowspan=2><?= $d ?></td>
                                 <td>脚</td>
                                 <? foreach ($aSelectedCharacter as $ch): ?>
-                                <td> </td>
+                                <td class="scriptwriter"> </td>
                                 <? endforeach; ?>
                                 <td rowspan=2><input class="memo" name="memo[<?= $l ?>][<?= $d ?>]"></td>
                             </tr>
                             <tr>
                                 <td>主</td>
                                 <? foreach ($aSelectedCharacter as $ch): ?>
-                                <td> </td>
+                                <td class="hero"> </td>
                                 <? endforeach; ?>
                             </tr>
                             <? endfor; ?>
