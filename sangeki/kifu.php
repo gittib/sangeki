@@ -45,7 +45,12 @@ $aCharacter = array(
 
 $oKifu = json_decode(session('sangeki_kifu', '{"charas":[],"loop":0,"day":0,"incidents":[]}'));
 
-$aSelectedCharacter = array();
+$aSelectedCharacter = array(
+    '1001' => '神社',
+    '1002' => '病院',
+    '1003' => '都市',
+    '1004' => '学校',
+);
 if (!empty($oKifu->charas)) {
     foreach ($oKifu->charas as $id) {
         $aSelectedCharacter[$id] = $aCharacter[$id];
@@ -85,7 +90,7 @@ if (!empty($oKifu->charas)) {
                             <tr>
                                 <th rowspan=2>日数</th>
                                 <? foreach ($aSelectedCharacter as $ch): ?>
-                                <th colspan=2><?= $ch ?></th>
+                                <th colspan=2 style="min-width:80px; word-break: keep-all;"><?= $ch ?></th>
                                 <? endforeach; ?>
                                 <th rowspan=2>メモ欄</th>
                             </tr>
