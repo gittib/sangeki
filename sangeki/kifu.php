@@ -95,23 +95,19 @@ if (!empty($oKifu->charas)) {
                                 <? endforeach; ?>
                                 <th>メモ欄</th>
                             </tr>
-                            <tr>
-                                <? for ($i = 0 ; $i < count($aSelectedCharacter) ; $i++): ?>
-                                <th>脚</th>
-                                <th>主</th>
-                                <? endfor; ?>
-                            </tr>
                         </thead>
                         <tbody>
                             <? for ($d = 1 ; $d <= $oKifu->day ; $d++): ?>
                             <tr>
                                 <td rowspan=2><?= $d ?></td>
+                                <td>脚</td>
                                 <? foreach ($aSelectedCharacter as $ch): ?>
                                 <td> </td>
                                 <? endforeach; ?>
                                 <td rowspan=2><input name="memo[<?= $l ?>][<?= $d ?>]"></td>
                             </tr>
                             <tr>
+                                <td>主</td>
                                 <? foreach ($aSelectedCharacter as $ch): ?>
                                 <td> </td>
                                 <? endforeach; ?>
