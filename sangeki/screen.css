@@ -334,6 +334,10 @@ body.kifu_input .kifu_wrapper dl > dd table th > p {
     line-height:1rem;
     margin: 0.55rem;
 }
+body.kifu_input .kifu_wrapper dl > dd table td {
+    line-height: 1em;
+    padding: 2px 0;
+}
 body.kifu_input .kifu_wrapper dl > dd table td input.memo {
     width: 98%;
     display: block;
