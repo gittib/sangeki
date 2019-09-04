@@ -98,12 +98,14 @@ if (!empty($oKifu->charas)) {
                         </thead>
                         <tbody>
                             <? for ($d = 1 ; $d <= $oKifu->day ; $d++): ?>
-                            <td><?= $d ?></td>
-                            <? foreach ($aSelectedCharacter as $ch): ?>
-                            <td> </td>
-                            <td> </td>
-                            <? endforeach; ?>
-                            <td><input name="memo[<?= $l ?>][<?= $d ?>]"></td>
+                            <tr>
+                                <td><?= $d ?></td>
+                                <? foreach ($aSelectedCharacter as $ch): ?>
+                                <td> </td>
+                                <td> </td>
+                                <? endforeach; ?>
+                                <td><input name="memo[<?= $l ?>][<?= $d ?>]"></td>
+                            </tr>
                             <? endfor; ?>
                         </tbody>
                     </table></dd>
