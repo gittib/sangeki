@@ -67,10 +67,13 @@ if (!empty($oKifu->charas)) {
         <div class="available_character_list">
             <?php foreach ($aCharacter as $id => $val): ?>
                 <p><label>
-                <input type="check" name="chara[]" value="<?= $id ?>" <?= isset($aSelectedCharacter[$id]) ? 'checked="checked"' : '' ?>>
+                <input type="checkbox" name="chara[]" value="<?= $id ?>" <?= isset($aSelectedCharacter[$id]) ? 'checked="checked"' : '' ?>>
                     <?= e($val) ?>
                 </label></p>
             <?php endforeach; ?>
+        </div>
+        <div>
+            <input type="submit" value="棋譜テンプレートを生成">
         </div>
     </form>
 <?php require('../secret/sangeki_footer.php') ?>

@@ -296,6 +296,12 @@ body.detail .toggle_private {
     font-size: 0.8rem;
 }
 
+body.kifu_input div.available_character_list > p {
+    display: inline-block;
+    margin: 4px;
+    border: solid 1px;
+}
+
 
 footer {
     margin-bottom: 32px;
