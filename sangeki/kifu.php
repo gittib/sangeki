@@ -167,25 +167,34 @@ if (!empty($oKifu->charas)) {
     </ul>
 </div>
 <script>
-$('table.kifu').on('click', 'td.scriptwriter', function() {
-    openModal($(this), $('#scriptwriter_action_list'));
-});
-$('table.kifu').on('click', 'td.hero', function() {
-    openModal($(this), $('#hero_action_list'));
-});
-$('.modal').on('click.dismiss', function() { $(this).hide(); });
+(function() {
+    var aAction = {};
 
-function openModal($self, $modal) {
-    $modal.find('.explain .loop').text($self.data('loop'));
-    $modal.find('.explain .day').text($self.data('day'));
-    $modal.find('.explain .character').text($self.data('character'));
-    $modal.off('click.set_action').on('click.set_action', 'li', function() {
-        let act = $(this).text();
-        $self.text(act);
-        $modal.hide();
+    $('table.kifu').on('click', 'td.scriptwriter', function() {
+        openModal($(this), $('#scriptwriter_action_list'));
     });
-    $modal.show();
-}
+    $('table.kifu').on('click', 'td.hero', function() {
+        openModal($(this), $('#hero_action_list'));
+    });
+    $('.modal').on('click.dismiss', function() { $(this).hide(); });
+
+    function openModal($self, $modal) {
+        var loop = $self.data('loop');
+        var day = $self.data('day');
+        var idx = $self.data('index');
+        $modal.find('.explain .loop').text(loop);
+        $modal.find('.explain .day').text(day);
+        $modal.find('.explain .character').text($self.data('character'));
+        $modal.off('click.set_action').on('click.set_action', 'li', function() {
+            let act = $(this).text();
+            aAction[loop][day][idx] = act;
+            alert(JSON.stringify(aAction));
+            $self.text(act);
+            $modal.hide();
+        });
+        $modal.show();
+    }
+})();
 </script>
 </body>
 </html>
