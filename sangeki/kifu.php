@@ -109,18 +109,18 @@ if (!empty($oKifu->charas)) {
                             <tr>
                                 <td rowspan=2><?= $d ?></td>
                                 <td>脚</td>
-                                <? for ($i = 0 ; $i < count($aSelectedCharacter) ; $i++): ?>
-                                <td class="scriptwriter" data-loop="<?= $l ?>" data-day="<?= $d ?>" data-index="<?= $i?>" data-character="<?= $aSelectedCharacter[$i] ?>">
+                                <? foreach ($aSelectedCharacter as $id => $val): ?>
+                                <td class="scriptwriter" data-loop="<?= $l ?>" data-day="<?= $d ?>" data-index="<?= $id ?>" data-character="<?= $val ?>">
                                 </td>
-                                <? endfor; ?>
+                                <? endforeach; ?>
                                 <td rowspan=2><input class="memo" name="memo[<?= $l ?>][<?= $d ?>]"></td>
                             </tr>
                             <tr>
                                 <td>主</td>
-                                <? for ($i = 0 ; $i < count($aSelectedCharacter) ; $i++): ?>
-                                <td class="hero" data-loop="<?= $l ?>" data-day="<?= $d ?>" data-index="<?= $i?>" data-character="<?= $aSelectedCharacter[$i] ?>">
+                                <? foreach ($aSelectedCharacter as $id => $val): ?>
+                                <td class="hero" data-loop="<?= $l ?>" data-day="<?= $d ?>" data-index="<?= $id ?>" data-character="<?= $val ?>">
                                 </td>
-                                <? endfor; ?>
+                                <? endforeach; ?>
                             </tr>
                             <? endfor; ?>
                         </tbody>
