@@ -215,7 +215,7 @@ if (!empty($oKifu->charas)) {
             $.each(val, function(day, val2) {
                 let $input = $('input.memo[data-loop='+loop+'][data-day='+day+']');
                 if ($input.size() > 0) {
-                    $input.text(val2);
+                    $input.val(val2);
                 } else {
                     delete aMemo[loop][day];
                 }
