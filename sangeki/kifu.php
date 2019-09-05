@@ -132,7 +132,7 @@ if (!empty($oKifu->charas)) {
 <div id="scriptwriter_action_list" class="modal">
     <h4>脚本家</h4>
     <ul>
-        <li> </li>
+        <li>&nbsp;</li>
         <li>不安+1</li>
         <li>不安-1</li>
         <li>不安禁止</li>
@@ -147,7 +147,7 @@ if (!empty($oKifu->charas)) {
 <div id="hero_action_list" class="modal">
     <h4>主人公</h4>
     <ul>
-        <li> </li>
+        <li>&nbsp;</li>
         <li>友好+1</li>
         <li>友好+2</li>
         <li>移動縦</li>
@@ -163,6 +163,7 @@ $('table.kifu').on('click', 'td.scriptwriter', function() {
     var $self = $(this);
     $('#scriptwriter_action_list').off().on('click', 'li', function() {
         $self.text($(this).text());
+        $('#scriptwriter_action_list').hide();
     });
     $('#scriptwriter_action_list').show();
 });
@@ -170,6 +171,7 @@ $('table.kifu').on('click', 'td.hero', function() {
     var $self = $(this);
     $('#hero_action_list').off().on('click', 'li', function() {
         $self.text($(this).text());
+        $('#hero_action_list').hide();
     });
     $('#hero_action_list').show();
 });
