@@ -356,7 +356,7 @@ body.kifu_input .kifu_wrapper dl > dd table td input.memo {
 }
 body.kifu_input .modal {
     display: none;
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
     right: 0;
