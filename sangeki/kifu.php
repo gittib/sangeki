@@ -221,7 +221,7 @@ if (!empty($oKifu->charas)) {
                 delete aMemo[loop];
             }
         });
-        let s = JSON.stringify(aMemo);
+        s = JSON.stringify(aMemo);
         localStorage.setItem('aMemo', s);
         console.log(s);
     }
