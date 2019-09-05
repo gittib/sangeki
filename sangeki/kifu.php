@@ -165,6 +165,7 @@ $('table.kifu').on('click', 'td.scriptwriter', function() {
         $self.text($(this).text());
         $('#scriptwriter_action_list').hide();
     });
+    $('.modal').on('click', function() { $(this).hide(); });
     $('#scriptwriter_action_list').show();
 });
 $('table.kifu').on('click', 'td.hero', function() {
@@ -173,9 +174,9 @@ $('table.kifu').on('click', 'td.hero', function() {
         $self.text($(this).text());
         $('#hero_action_list').hide();
     });
+    $('.modal').on('click', function() { $(this).hide(); });
     $('#hero_action_list').show();
 });
-$('table.kifu').on('click', '.modal', function() { $(this).hide(); });
 </script>
 </body>
 </html>
