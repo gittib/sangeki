@@ -169,6 +169,9 @@ if (!empty($oKifu->charas)) {
 <script>
 (function() {
     var aAction = {};
+    // TODO: ローカルストレージからaActionをリストア
+
+    // TODO: 行動リセットボタン
 
     $('table.kifu').on('click', 'td.scriptwriter', function() {
         openModal($(this), $('#scriptwriter_action_list'));
@@ -182,15 +185,26 @@ if (!empty($oKifu->charas)) {
         var loop = $self.data('loop');
         var day = $self.data('day');
         var idx = $self.data('index');
+        var type = ($modal.attr('id') == 'hero_action_list') ? 'hero' : 'scriptwriter';
         $modal.find('.explain .loop').text(loop);
         $modal.find('.explain .day').text(day);
         $modal.find('.explain .character').text($self.data('character'));
         $modal.off('click.set_action').on('click.set_action', 'li', function() {
             let act = $(this).text();
-            aAction[loop][day][idx] = act;
-            alert(JSON.stringify(aAction));
+            if (aAction[loop] == undefined) {
+                aAction[loop] = {};
+            }
+            if (aAction[loop][day] == undefined) {
+                aAction[loop][day] = {};
+            }
+            if (aAction[loop][day][idx] == undefined) {
+                aAction[loop][day][idx] = {};
+            }
+            aAction[loop][day][idx][type] = act;
             $self.text(act);
             $modal.hide();
+
+            // TODO: aActionをローカルストレージへ保存
         });
         $modal.show();
     }
