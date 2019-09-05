@@ -67,16 +67,18 @@ if (!empty($oKifu->charas)) {
         <h2></h2>
     </div>
     <form method="post">
-        <select name="loop">
-        <? for ($i = 0 ; $i <= 8 ; $i++): ?>
-            <option <?= ($i == $oKifu->loop) ? 'selected="selected"' : '' ?>><?= $i ?></option>
-        <? endfor; ?>
-        </select>ループ
-        <select name="day">
-        <? for ($i = 0 ; $i <= 8 ; $i++): ?>
-            <option <?= ($i == $oKifu->day) ? 'selected="selected"' : '' ?>><?= $i ?></option>
-        <? endfor; ?>
-        </select>日
+        <div class="period_wrapper">
+            <select name="loop">
+            <? for ($i = 0 ; $i <= 8 ; $i++): ?>
+                <option <?= ($i == $oKifu->loop) ? 'selected="selected"' : '' ?>><?= $i ?></option>
+            <? endfor; ?>
+            </select>ループ
+            <select name="day">
+            <? for ($i = 0 ; $i <= 8 ; $i++): ?>
+                <option <?= ($i == $oKifu->day) ? 'selected="selected"' : '' ?>><?= $i ?></option>
+            <? endfor; ?>
+            </select>日
+        </div>
         <div class="available_character_list">
             <?php foreach ($aCharacter as $id => $val): ?>
             <label><p>
@@ -175,7 +177,7 @@ if (!empty($oKifu->charas)) {
             $.each(val, function(day, val2) {
                 $.each(val2, function(idx, val3) {
                     $.each(val3, function(type, val4) {
-                        if (!aAction[loop][day][idx][type]) {
+                        if (!aAction[loop][day][idx][type] || aAction[loop][day][idx][type].trim().length <= 0) {
                             delete aAction[loop][day][idx][type];
                         } else {
                             let $td = $('td.'+type+'[data-loop='+loop+'][data-day='+day+'][data-index='+idx+']');
