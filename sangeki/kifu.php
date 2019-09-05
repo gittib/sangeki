@@ -207,6 +207,9 @@ if (!empty($oKifu->charas)) {
         let s = JSON.stringify(aAction);
         localStorage.setItem('aAction', s);
 
+        console.log(s);
+    }
+    if (localStorage.getItem('aAction')) {
         aMemo = JSON.parse(localStorage.getItem('aMemo'));
         $.each(aMemo, function(loop, val) {
             $.each(val, function(day, val2) {
@@ -221,8 +224,9 @@ if (!empty($oKifu->charas)) {
                 delete aMemo[loop];
             }
         });
-        s = JSON.stringify(aMemo);
+        let s = JSON.stringify(aMemo);
         localStorage.setItem('aMemo', s);
+
         console.log(s);
     }
 
