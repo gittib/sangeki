@@ -15,7 +15,6 @@ if (isset($_POST['chara']) && is_array($_POST['chara'])) {
 
 $aCharacter = array(
     '神格',
-    '転校生',
     '巫女',
     '異世界人',
     '黒猫',
@@ -39,6 +38,7 @@ $aCharacter = array(
     '委員長',
     '教師',
     'イレギュラー',
+    '転校生',
     '女の子',
     '手先',
 );
@@ -93,7 +93,7 @@ if (!empty($oKifu->charas)) {
                 <dl>
                 <? for ($l = 1 ; $l <= $oKifu->loop ; $l++): ?>
                     <dt><?= $l ?>ループ目</dt>
-                    <dd><table>
+                    <dd><table class="kifu">
                         <thead>
                             <tr>
                                 <th class="day">日</th>
@@ -129,6 +129,20 @@ if (!empty($oKifu->charas)) {
         <? endif; ?>
     </form>
 <?php require('../secret/sangeki_footer.php') ?>
-    <script></script>
+<div id="scriptwriter_action_list" class="modal">
+    <div style="background-color:white; margin:20px; color:black;">脚本家</div>
+</div>
+<div id="hero_action_list" class="modal">
+    <div style="background-color:white; margin:20px; color:black;">主人公</div>
+</div>
+<script>
+$('table.kifu').on('click', 'td.scriptwriter', function() {
+    $('#scriptwriter_action_list').show();
+});
+$('table.kifu').on('click', 'td.hero', function() {
+    $('#hero_action_list').show();
+});
+$('.modal').on('click', function() { $(this).hide(); });
+</script>
 </body>
 </html>
