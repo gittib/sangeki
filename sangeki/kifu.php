@@ -209,7 +209,7 @@ if (!empty($oKifu->charas)) {
 
         console.log(s);
     }
-    if (localStorage.getItem('aAction')) {
+    if (localStorage.getItem('aMemo')) {
         aMemo = JSON.parse(localStorage.getItem('aMemo'));
         $.each(aMemo, function(loop, val) {
             $.each(val, function(day, val2) {
