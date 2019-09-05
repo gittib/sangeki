@@ -168,34 +168,24 @@ if (!empty($oKifu->charas)) {
 </div>
 <script>
 $('table.kifu').on('click', 'td.scriptwriter', function() {
-    var $self = $(this);
-    let exp = $('#scriptwriter_action_list .explain');
-    exp.find('.loop').text($self.data('loop'));
-    exp.find('.day').text($self.data('day'));
-    exp.find('.character').text($self.data('character'));
-    $('#scriptwriter_action_list').off('click.set_action').on('click.set_action', 'li', function() {
-        let act = $(this).text();
-        $self.text(act);
-        $self.find('[type=hidden]').val(act);
-        $('#scriptwriter_action_list').hide();
-    });
-    $('#scriptwriter_action_list').show();
+    openModal($(this), $('#scriptwriter_action_list'));
 });
 $('table.kifu').on('click', 'td.hero', function() {
-    var $self = $(this);
-    let exp = $('#hero_action_list .explain');
-    exp.find('.loop').text($self.data('loop'));
-    exp.find('.day').text($self.data('day'));
-    exp.find('.character').text($self.data('character'));
-    $('#hero_action_list').off('click.set_action').on('click.set_action', 'li', function() {
-        let act = $(this).text();
-        $self.text(act);
-        $self.find('[type=hidden]').val(act);
-        $('#hero_action_list').hide();
-    });
-    $('#hero_action_list').show();
+    openModal($(this), $('#hero_action_list'));
 });
 $('.modal').on('click.dismiss', function() { $(this).hide(); });
+
+function openModal($self, $modal) {
+    $modal.find('.explain .loop').text($self.data('loop'));
+    $modal.find('.explain .day').text($self.data('day'));
+    $modal.find('.explain .character').text($self.data('character'));
+    $modal.off('click.set_action').on('click.set_action', 'li', function() {
+        let act = $(this).text();
+        $self.text(act);
+        $modal.hide();
+    });
+    $modal.show();
+}
 </script>
 </body>
 </html>
