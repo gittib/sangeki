@@ -175,7 +175,7 @@ $('table.kifu').on('click', 'td.hero', function() {
     });
     $('#hero_action_list').show();
 });
-$('.modal').on('click', function() { $(this).hide(); });
+$('table.kifu').on('click', '.modal', function() { $(this).hide(); });
 </script>
 </body>
 </html>

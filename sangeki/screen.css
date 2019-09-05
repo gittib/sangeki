@@ -374,6 +374,7 @@ body.kifu_input .modal ul > li {
     margin: 16px;
     border: solid 1px;
     background-color:white;
+    float: left;
 }
 
 
