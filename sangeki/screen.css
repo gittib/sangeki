@@ -318,6 +318,9 @@ body.kifu_input .kifu_wrapper {
     padding: 4px 0;
     overflow-x: scroll;
 }
+body.kifu_input .kifu_wrapper .button_wrapper {
+    margin: 20px;
+}
 body.kifu_input .kifu_wrapper dl > dt {
     padding-top: 12px;
 }

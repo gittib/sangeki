@@ -92,6 +92,9 @@ if (!empty($oKifu->charas)) {
         </div>
         <? if ($oKifu->loop > 0 && $oKifu->day > 0): ?>
             <div class="kifu_wrapper">
+                <div class="button_wrapper">
+                    <button class="reset_all_action">行動ログを全て削除</button>
+                </div>
                 <dl>
                 <? for ($l = 1 ; $l <= $oKifu->loop ; $l++): ?>
                     <dt><?= $l ?>ループ目</dt>
@@ -205,7 +208,14 @@ if (!empty($oKifu->charas)) {
         console.log(s);
     }
 
-    // TODO: 行動リセットボタン
+    $('.reset_all_action').on('click', function() {
+        if (confirm('行動ログをすべて削除します。よろしいですか？')) {
+            aAction = {};
+            localStorage.removeItem('aAction');
+            $('td.scriptwriter').text('');
+            $('td.hero').text('');
+        }
+    });
 
     $('table.kifu').on('click', 'td.scriptwriter', function() {
         openModal($(this), $('#scriptwriter_action_list'));
