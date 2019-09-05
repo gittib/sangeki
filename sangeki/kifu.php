@@ -134,7 +134,7 @@ if (!empty($oKifu->charas)) {
 <div id="scriptwriter_action_list" class="modal">
     <h4>脚本家</h4>
     <div class="explain">
-        <span class="loop"></span>ループ<span class="day"></span>日目に<span class="character"></span>にセットされた行動カードを選択してください。
+        <span class="loop"></span>ループ<span class="day"></span>日目に<span class="character"></span>にセットされた脚本家行動カードを選択してください。
     </div>
     <ul>
         <li>&nbsp;</li>
@@ -152,7 +152,7 @@ if (!empty($oKifu->charas)) {
 <div id="hero_action_list" class="modal">
     <h4>主人公</h4>
     <div class="explain">
-        <span class="loop"></span>ループ<span class="day"></span>日目に<span class="character"></span>にセットされた行動カードを選択してください。
+        <span class="loop"></span>ループ<span class="day"></span>日目に<span class="character"></span>にセットされた主人公行動カードを選択してください。
     </div>
     <ul>
         <li>&nbsp;</li>
@@ -169,7 +169,18 @@ if (!empty($oKifu->charas)) {
 <script>
 (function() {
     var aAction = {};
-    // TODO: ローカルストレージからaActionをリストア
+    if (localStorage.getItem('aAction')) {
+        aAction = JSON.parse(localStorage.getItem('aAction'));
+        $.each(aAction, function(loop, val) {
+            $.each(val, function(day, val2) {
+                $.each(val2, function(idx, val3) {
+                    $.each(val3, function(type, val4) {
+                        $('td.'+type+'[data-loop='+loop+'][data-day='+day+'][data-index='+idx+']').text(val4);
+                    });
+                });
+            });
+        });
+    }
 
     // TODO: 行動リセットボタン
 
@@ -204,7 +215,7 @@ if (!empty($oKifu->charas)) {
             $self.text(act);
             $modal.hide();
 
-            // TODO: aActionをローカルストレージへ保存
+            localStorage.setItem('aAction', JSON.stringify(aAction));
         });
         $modal.show();
     }
