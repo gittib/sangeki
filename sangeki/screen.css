@@ -314,6 +314,9 @@ body.kifu_input .kifu_wrapper {
     padding: 4px 0;
     overflow-x: scroll;
 }
+body.kifu_input .kifu_wrapper dl > dt {
+    padding-top: 12px;
+}
 body.kifu_input .kifu_wrapper dl > dd table {
     border-top: 1px solid;
     border-left: 1px solid;
@@ -333,6 +336,7 @@ body.kifu_input .kifu_wrapper dl > dd table th.day {
 }
 body.kifu_input .kifu_wrapper dl > dd table th.memo {
     min-width: 1000px;
+    text-align: left;
 }
 body.kifu_input .kifu_wrapper dl > dd table th > p {
     width:1rem;
