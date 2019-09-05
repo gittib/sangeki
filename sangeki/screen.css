@@ -352,7 +352,6 @@ body.kifu_input .kifu_wrapper dl > dd table td input.memo {
     width: 98%;
     display: block;
     margin: 0 auto;
-    text-align: center;
 }
 body.kifu_input .modal {
     display: none;
