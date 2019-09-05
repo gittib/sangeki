@@ -130,16 +130,47 @@ if (!empty($oKifu->charas)) {
     </form>
 <?php require('../secret/sangeki_footer.php') ?>
 <div id="scriptwriter_action_list" class="modal">
-    <div style="background-color:white; margin:20px; color:black;">脚本家</div>
+    <h4>脚本家</h4>
+    <ul>
+        <li> </li>
+        <li>不安+1</li>
+        <li>不安-1</li>
+        <li>不安禁止</li>
+        <li>友好禁止</li>
+        <li>移動縦</li>
+        <li>移動横</li>
+        <li>移動斜め</li>
+        <li>暗躍+1</li>
+        <li>暗躍+2</li>
+    </ul>
 </div>
 <div id="hero_action_list" class="modal">
-    <div style="background-color:white; margin:20px; color:black;">主人公</div>
+    <h4>主人公</h4>
+    <ul>
+        <li> </li>
+        <li>友好+1</li>
+        <li>友好+2</li>
+        <li>移動縦</li>
+        <li>移動横</li>
+        <li>移動禁止</li>
+        <li>暗躍禁止</li>
+        <li>不安-1</li>
+        <li>不安+1</li>
+    </ul>
 </div>
 <script>
 $('table.kifu').on('click', 'td.scriptwriter', function() {
+    var $self = $(this);
+    $('#scriptwriter_action_list').off().on('click', 'li', function() {
+        $self.text($(this).text());
+    });
     $('#scriptwriter_action_list').show();
 });
 $('table.kifu').on('click', 'td.hero', function() {
+    var $self = $(this);
+    $('#hero_action_list').off().on('click', 'li', function() {
+        $self.text($(this).text());
+    });
     $('#hero_action_list').show();
 });
 $('.modal').on('click', function() { $(this).hide(); });

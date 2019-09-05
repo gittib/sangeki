@@ -363,6 +363,17 @@ body.kifu_input .modal {
     bottom: 0;
     background-color: rgba(255, 255, 255, 0.5);
 }
+body.kifu_input .modal h4 {
+    background-color:white;
+    margin:20px;
+    color:black;
+}
+body.kifu_input .modal ul > li {
+    display: block;
+    width: 45%;
+    margin: 16px;
+    border: solid 1px;
+}
 
 
 footer {
