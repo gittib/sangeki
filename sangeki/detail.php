@@ -81,6 +81,14 @@ function initPos($name) {
             return 'other';
     }
 }
+function getRuleWithNote($sRule) {
+    if (strpos($sRule, '/') > 0) {
+        list($sRule, $sNote) = explode('/', $sRule);
+        echo e(trim($sRule)) . '<br><span class="note">(' . trim($sNote) . ')</span>';
+    } else {
+        echo e(trim($sRule));
+    }
+}
 
 if (!isset($_GET['id'])) {
     header('Location: .');
@@ -220,18 +228,18 @@ foreach ($oSangeki->character as $name => $val) {
         <div class="private">
             <h2 class="private_sheet">非公開シート</h2>
             <h3 class="title"><?= e($oSangeki->title) ?></h3>
-            <table class="summary">
+            <table class="summary rule">
                 <tr>
                     <th>ルールY</th>
                     <td><?= e($oSangeki->rule[0]) ?></td>
                 </tr>
                 <tr>
                     <th>ルールX1</th>
-                    <td><?= e($oSangeki->rule[1]) ?></td>
+                    <td><?= getRuleWithNote($oSangeki->rule[1]) ?></td>
                 </tr>
                 <tr>
                     <th>ルールX2</th>
-                    <td><?= e($oSangeki->rule[2]) ?></td>
+                    <td><?= getRuleWithNote($oSangeki->rule[2]) ?></td>
                 </tr>
             </table>
 

@@ -220,13 +220,16 @@ body.detail .private_sheet_wrapper {
     padding: 8px;
 }
 body.detail .private h2.private_sheet {
-    font-size: 1em;
+    font-size: 1rem;
 }
 body.detail .private .title {
     width: 80%;
     text-align: center;
     border-bottom-style: double;
     margin-bottom: 16px;
+}
+body.detail .private table.summary.rule tr td span.note {
+    font-size: 0.8rem;
 }
 body.detail .private h3.people_title {
     display: inline-block;
@@ -291,6 +294,86 @@ body.detail .toggle_private {
     margin: 32px auto;
     display: block;
     font-size: 0.8rem;
+}
+
+body.kifu_input .available_character_list p {
+    display: block;
+    float: left;
+    margin: 4px;
+    width: 30%;
+    max-width: 200px;
+    border: solid 1px;
+    padding-left: 2px;
+}
+body.kifu_input .submit_wrapper {
+    clear: both;
+    padding: 12px;
+}
+body.kifu_input .kifu_wrapper {
+    margin: 6px;
+    padding: 4px 0;
+    overflow-x: scroll;
+}
+body.kifu_input .kifu_wrapper dl > dt {
+    padding-top: 12px;
+}
+body.kifu_input .kifu_wrapper dl > dd table {
+    border-top: 1px solid;
+    border-left: 1px solid;
+    font-size:1rem;
+}
+body.kifu_input .kifu_wrapper dl > dd table th {
+    border-bottom: 3px double;
+    border-right: 1px solid;
+}
+body.kifu_input .kifu_wrapper dl > dd table td {
+    border-bottom: 1px solid;
+    border-right: 1px solid;
+    text-align: center;
+}
+body.kifu_input .kifu_wrapper dl > dd table th.day {
+    min-width: 2rem;
+}
+body.kifu_input .kifu_wrapper dl > dd table th.memo {
+    min-width: 1000px;
+    text-align: left;
+}
+body.kifu_input .kifu_wrapper dl > dd table th > p {
+    width:1rem;
+    line-height:1rem;
+    margin: 0.55rem;
+    word-break: break-all;
+}
+body.kifu_input .kifu_wrapper dl > dd table td {
+    line-height: 1em;
+    padding: 2px 0;
+}
+body.kifu_input .kifu_wrapper dl > dd table td input.memo {
+    width: 98%;
+    display: block;
+    margin: 0 auto;
+}
+body.kifu_input .modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(255, 255, 255, 0.8);
+}
+body.kifu_input .modal h4 {
+    background-color:white;
+    margin:20px;
+    color:black;
+}
+body.kifu_input .modal ul > li {
+    display: block;
+    width: 45%;
+    margin: 3px;
+    border: solid 1px;
+    background-color:white;
+    float: left;
 }
 
 
