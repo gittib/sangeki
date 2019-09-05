@@ -175,11 +175,32 @@ if (!empty($oKifu->charas)) {
             $.each(val, function(day, val2) {
                 $.each(val2, function(idx, val3) {
                     $.each(val3, function(type, val4) {
-                        $('td.'+type+'[data-loop='+loop+'][data-day='+day+'][data-index='+idx+']').text(val4);
+                        if (!aAction[loop][day][idx][type]) {
+                            delete aAction[loop][day][idx][type];
+                        } else {
+                            let $td = $('td.'+type+'[data-loop='+loop+'][data-day='+day+'][data-index='+idx+']');
+                            if ($td) {
+                                $td.text(val4);
+                            } else {
+                                delete aAction[loop][day][idx][type];
+                            }
+                        }
                     });
+                    if (!Object.keys(aAction[loop][day][idx]).length) {
+                        delete aAction[loop][day][idx];
+                    }
                 });
+                if (!Object.keys(aAction[loop][day]).length) {
+                    delete aAction[loop][day];
+                }
             });
+            if (!Object.keys(aAction[loop]).length) {
+                delete aAction[loop];
+            }
         });
+        let s = JSON.stringify(aAction);
+        localStorage.setItem('aAction', s);
+        console.log(s);
     }
 
     // TODO: 行動リセットボタン
