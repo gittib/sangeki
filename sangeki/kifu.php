@@ -161,22 +161,21 @@ if (!empty($oKifu->charas)) {
 <script>
 $('table.kifu').on('click', 'td.scriptwriter', function() {
     var $self = $(this);
-    $('#scriptwriter_action_list').off().on('click', 'li', function() {
+    $('#scriptwriter_action_list').off('click.set_action').on('click.set_action', 'li', function() {
         $self.text($(this).text());
         $('#scriptwriter_action_list').hide();
     });
-    $('.modal').on('click', function() { $(this).hide(); });
     $('#scriptwriter_action_list').show();
 });
 $('table.kifu').on('click', 'td.hero', function() {
     var $self = $(this);
-    $('#hero_action_list').off().on('click', 'li', function() {
+    $('#hero_action_list').off('click.set_action').on('click.set_action', 'li', function() {
         $self.text($(this).text());
         $('#hero_action_list').hide();
     });
-    $('.modal').on('click', function() { $(this).hide(); });
     $('#hero_action_list').show();
 });
+$('.modal').on('click.dismiss', function() { $(this).hide(); });
 </script>
 </body>
 </html>
