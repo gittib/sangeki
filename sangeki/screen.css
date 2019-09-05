@@ -305,6 +305,10 @@ body.kifu_input .available_character_list p {
     border: solid 1px;
     padding-left: 2px;
 }
+body.kifu_input .period_wrapper {
+    clear: both;
+    padding: 18px;
+}
 body.kifu_input .submit_wrapper {
     clear: both;
     padding: 12px;
@@ -313,6 +317,9 @@ body.kifu_input .kifu_wrapper {
     margin: 6px;
     padding: 4px 0;
     overflow-x: scroll;
+}
+body.kifu_input .kifu_wrapper .button_wrapper {
+    margin: 20px;
 }
 body.kifu_input .kifu_wrapper dl > dt {
     padding-top: 12px;
@@ -360,12 +367,17 @@ body.kifu_input .modal {
     left: 0;
     right: 0;
     bottom: 0;
+    margin: 0;
+    padding: 4px;
     background-color: rgba(255, 255, 255, 0.8);
 }
 body.kifu_input .modal h4 {
     background-color:white;
     margin:20px;
     color:black;
+}
+body.kifu_input .modal .explain {
+    background-color:white;
 }
 body.kifu_input .modal ul > li {
     display: block;
