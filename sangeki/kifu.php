@@ -109,16 +109,18 @@ if (!empty($oKifu->charas)) {
                             <tr>
                                 <td rowspan=2><?= $d ?></td>
                                 <td>脚</td>
-                                <? foreach ($aSelectedCharacter as $ch): ?>
-                                <td class="scriptwriter"> </td>
-                                <? endforeach; ?>
+                                <? for ($i = 0 ; $i < count($aSelectedCharacter) ; $i++): ?>
+                                <td class="scriptwriter" data-loop="<?= $l ?>" data-day="<?= $d ?>" data-index="<?= $i?>" data-character="<?= $aSelectedCharacter[$i] ?>">
+                                </td>
+                                <? endfor; ?>
                                 <td rowspan=2><input class="memo" name="memo[<?= $l ?>][<?= $d ?>]"></td>
                             </tr>
                             <tr>
                                 <td>主</td>
-                                <? foreach ($aSelectedCharacter as $ch): ?>
-                                <td class="hero"> </td>
-                                <? endforeach; ?>
+                                <? for ($i = 0 ; $i < count($aSelectedCharacter) ; $i++): ?>
+                                <td class="hero" data-loop="<?= $l ?>" data-day="<?= $d ?>" data-index="<?= $i?>" data-character="<?= $aSelectedCharacter[$i] ?>">
+                                </td>
+                                <? endfor; ?>
                             </tr>
                             <? endfor; ?>
                         </tbody>
@@ -131,6 +133,9 @@ if (!empty($oKifu->charas)) {
 <?php require('../secret/sangeki_footer.php') ?>
 <div id="scriptwriter_action_list" class="modal">
     <h4>脚本家</h4>
+    <div class="explain">
+        <span class="loop"></span>ループ<span class="day"></span>日目に<span class="character"></span>にセットされた行動カードを選択してください。
+    </div>
     <ul>
         <li>&nbsp;</li>
         <li>不安+1</li>
@@ -146,6 +151,9 @@ if (!empty($oKifu->charas)) {
 </div>
 <div id="hero_action_list" class="modal">
     <h4>主人公</h4>
+    <div class="explain">
+        <span class="loop"></span>ループ<span class="day"></span>日目に<span class="character"></span>にセットされた行動カードを選択してください。
+    </div>
     <ul>
         <li>&nbsp;</li>
         <li>友好+1</li>
@@ -161,16 +169,28 @@ if (!empty($oKifu->charas)) {
 <script>
 $('table.kifu').on('click', 'td.scriptwriter', function() {
     var $self = $(this);
+    let exp = $('#scriptwriter_action_list .explain');
+    exp.find('.loop').text($self.data('loop'));
+    exp.find('.day').text($self.data('day'));
+    exp.find('.character').text($self.data('character'));
     $('#scriptwriter_action_list').off('click.set_action').on('click.set_action', 'li', function() {
-        $self.text($(this).text());
+        let act = $(this).text();
+        $self.text(act);
+        $self.find('[type=hidden]').val(act);
         $('#scriptwriter_action_list').hide();
     });
     $('#scriptwriter_action_list').show();
 });
 $('table.kifu').on('click', 'td.hero', function() {
     var $self = $(this);
+    let exp = $('#scriptwriter_action_list .explain');
+    exp.find('.loop').text($self.data('loop'));
+    exp.find('.day').text($self.data('day'));
+    exp.find('.character').text($self.data('character'));
     $('#hero_action_list').off('click.set_action').on('click.set_action', 'li', function() {
-        $self.text($(this).text());
+        let act = $(this).text();
+        $self.text(act);
+        $self.find('[type=hidden]').val(act);
         $('#hero_action_list').hide();
     });
     $('#hero_action_list').show();
