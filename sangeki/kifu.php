@@ -183,7 +183,7 @@ $('table.kifu').on('click', 'td.scriptwriter', function() {
 });
 $('table.kifu').on('click', 'td.hero', function() {
     var $self = $(this);
-    let exp = $('#scriptwriter_action_list .explain');
+    let exp = $('#hero_action_list .explain');
     exp.find('.loop').text($self.data('loop'));
     exp.find('.day').text($self.data('day'));
     exp.find('.character').text($self.data('character'));

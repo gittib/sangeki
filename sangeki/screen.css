@@ -367,6 +367,9 @@ body.kifu_input .modal h4 {
     margin:20px;
     color:black;
 }
+body.kifu_input .modal .explain {
+    background-color:white;
+}
 body.kifu_input .modal ul > li {
     display: block;
     width: 45%;
