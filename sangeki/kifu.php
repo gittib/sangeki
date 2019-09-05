@@ -181,7 +181,7 @@ if (!empty($oKifu->charas)) {
                             delete aAction[loop][day][idx][type];
                         } else {
                             let $td = $('td.'+type+'[data-loop='+loop+'][data-day='+day+'][data-index='+idx+']');
-                            if ($td) {
+                            if ($td.size() > 0) {
                                 $td.text(val4);
                             } else {
                                 delete aAction[loop][day][idx][type];
