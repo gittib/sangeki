@@ -144,7 +144,7 @@ if (!empty($oKifu->charas)) {
     <ul>
         <li>&nbsp;</li>
         <li>不安+1</li>
-        <li>不安-1</li>
+        <li>不安 -1</li>
         <li>不安禁止</li>
         <li>友好禁止</li>
         <li>移動縦</li>
@@ -167,7 +167,7 @@ if (!empty($oKifu->charas)) {
         <li>移動横</li>
         <li>移動禁止</li>
         <li>暗躍禁止</li>
-        <li>不安-1</li>
+        <li>不安 -1</li>
         <li>不安+1</li>
     </ul>
 </div>
@@ -185,11 +185,7 @@ if (!empty($oKifu->charas)) {
                             delete aAction[loop][day][idx][type];
                         } else {
                             let $td = $('td.'+type+'[data-loop='+loop+'][data-day='+day+'][data-index='+idx+']');
-                            if ($td.size() > 0) {
-                                $td.text(val4);
-                            } else {
-                                delete aAction[loop][day][idx][type];
-                            }
+                            $td.text(val4);
                         }
                     });
                     if (!Object.keys(aAction[loop][day][idx]).length) {
