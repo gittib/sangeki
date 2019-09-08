@@ -92,14 +92,14 @@ if (!empty($oKifu->charas)) {
         </div>
     </form>
     <? if ($oKifu->loop > 0 && $oKifu->day > 0): ?>
+        <div class="button_wrapper">
+            <button class="reset_all_action">行動ログを全て削除</button>
+        </div>
         <form method="post">
             <input type="hidden" name="csv" value="1">
             <input type="hidden" name="loop" value="<?= $oKifu->loop ?>">
             <input type="hidden" name="day" value="<?= $oKifu->day ?>">
             <div class="kifu_wrapper">
-                <div class="button_wrapper">
-                    <button class="reset_all_action">行動ログを全て削除</button>
-                </div>
                 <dl>
                 <? for ($l = 1 ; $l <= $oKifu->loop ; $l++): ?>
                     <dt><?= $l ?>ループ目</dt>
