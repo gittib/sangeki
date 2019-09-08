@@ -90,7 +90,12 @@ if (!empty($oKifu->charas)) {
         <div class="submit_wrapper">
             <input type="submit" value="棋譜テンプレートを生成">
         </div>
-        <? if ($oKifu->loop > 0 && $oKifu->day > 0): ?>
+    </form>
+    <? if ($oKifu->loop > 0 && $oKifu->day > 0): ?>
+        <form method="post">
+            <input type="hidden" name="csv" value="1">
+            <input type="hidden" name="loop" value="<?= $oKifu->loop ?>">
+            <input type="hidden" name="day" value="<?= $oKifu->day ?>">
             <div class="kifu_wrapper">
                 <div class="button_wrapper">
                     <button class="reset_all_action">行動ログを全て削除</button>
@@ -133,8 +138,8 @@ if (!empty($oKifu->charas)) {
                 <? endfor; ?>
                 </dl>
             </div>
-        <? endif; ?>
-    </form>
+        </form>
+    <? endif; ?>
 <?php require('../secret/sangeki_footer.php') ?>
 <div id="scriptwriter_action_list" class="modal">
     <h4>脚本家</h4>
@@ -212,7 +217,8 @@ if (!empty($oKifu->charas)) {
                 let $input = $('input.memo[data-loop='+loop+'][data-day='+day+']');
                 if ($input.size() > 0) {
                     $input.val(val2);
-                } else {
+                }
+                if (!aMemo[loop][day] || aMemo[loop][day].trim().length <= 0) {
                     delete aMemo[loop][day];
                 }
             });
