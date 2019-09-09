@@ -11,7 +11,7 @@ for ($l = 1 ; $l <= $_POST['loop'] ; $l++) {
     }
     echo "\n";
     for ($d = 1 ; $d <= $_POST['day'] ; $d++) {
-        echo $d . ',' . '脚';
+        echo $d . '日目,' . '脚本家';
         if (!isset($aAction[$l][$d]) || !is_array($aAction[$l][$d])) {
             echo "\n,主\n";
             continue;
@@ -23,7 +23,7 @@ for ($l = 1 ; $l <= $_POST['loop'] ; $l++) {
                 echo $act['scriptwriter'];
             }
         }
-        echo "\n" . ',' . '主';
+        echo "\n" . ',' . '主人公';
         foreach ($aChara as $id => $ch) {
             echo ',';
             if (!empty($aAction[$l]) && !empty($aAction[$l][$d]) && !empty($aAction[$l][$d][$id])) {
