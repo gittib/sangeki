@@ -95,10 +95,13 @@ if (!empty($oKifu->charas)) {
         <div class="button_wrapper">
             <button class="reset_all_action">行動ログを全て削除</button>
         </div>
-        <form method="post">
+        <form method="post" action="kifu_csv.php">
             <input type="hidden" name="csv" value="1">
             <input type="hidden" name="loop" value="<?= $oKifu->loop ?>">
             <input type="hidden" name="day" value="<?= $oKifu->day ?>">
+            <input type="hidden" name="chara" value="<?= json_encode($aSelectedCharacter) ?>">
+            <input type="hidden" name="action">
+            <input type="hidden" name="memo">
             <div class="kifu_wrapper">
                 <dl>
                 <? for ($l = 1 ; $l <= $oKifu->loop ; $l++): ?>
@@ -138,6 +141,9 @@ if (!empty($oKifu->charas)) {
                 <? endfor; ?>
                 </dl>
             </div>
+            <div class="button_wrapper">
+                <input type="button" class="save_action" value="行動ログをCSVダウンロード">
+            </div>
         </form>
     <? endif; ?>
 <?php require('../secret/sangeki_footer.php') ?>
@@ -149,7 +155,7 @@ if (!empty($oKifu->charas)) {
     <ul>
         <li>&nbsp;</li>
         <li>不安+1</li>
-        <li>不安<wbr>-1</li>
+        <li>不安 -1</li>
         <li>不安禁止</li>
         <li>友好禁止</li>
         <li>移動縦</li>
@@ -172,7 +178,7 @@ if (!empty($oKifu->charas)) {
         <li>移動横</li>
         <li>移動禁止</li>
         <li>暗躍禁止</li>
-        <li>不安<wbr>-1</li>
+        <li>不安 -1</li>
         <li>不安+1</li>
     </ul>
 </div>
@@ -269,6 +275,12 @@ if (!empty($oKifu->charas)) {
         localStorage.setItem('aMemo', JSON.stringify(aMemo));
     });
     $('.modal').on('click.dismiss', function() { $(this).hide(); });
+
+    $('form .save_action').on('click', function() {
+        $('input[type=hidden][name=action]').val(JSON.stringify(aAction));
+        $('input[type=hidden][name=memo]').val(JSON.stringify(aMemo));
+        $(this).closest('form').submit();
+    });
 
     function openModal($self, $modal) {
         var loop = $self.data('loop');
