@@ -6,7 +6,8 @@ $aMemo = $_POST['memo'];
 for ($l = 1 ; $l <= $_POST['loop'] ; $l++) {
     echo $l . "ループ目\n";
     echo ',,';
-    foreach ($_POST['chara'] as $id => $ch) {
+    $aChara = json_decode($_POST['chara']);
+    foreach ($aChara as $id => $ch) {
         echo $ch . ',';
     }
     echo "\n";
