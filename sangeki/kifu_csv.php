@@ -12,6 +12,9 @@ for ($l = 1 ; $l <= $_POST['loop'] ; $l++) {
     echo "\n";
     for ($d = 1 ; $d <= $_POST['day'] ; $d++) {
         echo $d . ',' . '脚,';
+        if (!isset($aAction[$l][$d]) || !is_array($aAction[$l][$d])) {
+            continue;
+        }
         foreach ($aAction[$l][$d] as $id => $act) {
             echo $act['scriptwriter'] . ',';
         }
