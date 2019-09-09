@@ -2,7 +2,7 @@
 require_once('../secret/common.php');
 
 $outType = $_POST['outtype'];
-$aChara = json_decode($_POST['chara']);
+$aChara = json_decode($_POST['chara'], true);
 $aAction = json_decode($_POST['action'], true);
 $aMemo = $_POST['memo'];
 
