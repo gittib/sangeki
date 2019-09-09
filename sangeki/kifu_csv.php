@@ -1,6 +1,28 @@
 <?
 require_once('../secret/common.php');
-header('content-type: application/json; charset=utf-8');
+header('content-type: text/csv; charset=utf-8');
+$aAction = json_decode($_POST['action'], true);
+$aMemo = $_POST['memo'];
+for ($l = 1 ; $l <= $_POST['loop'] ; $l++) {
+    echo $l . "ループ目\n";
+    echo ',,';
+    foreach ($_POST['chara'] as $id => $ch) {
+        echo $ch . ',';
+    }
+    echo "\n";
+    for ($d = 1 ; $d <= $_POST['day'] ; $d++) {
+        echo $d . ',' . '脚,';
+        foreach ($aAction[$l][$d] as $id => $act) {
+            echo $act['scriptwriter'] . ',';
+        }
+        echo "\n" . ',,' . '主,';
+        foreach ($aAction[$l][$d] as $id => $act) {
+            echo $act['hero'] . ',';
+        }
+    }
+    echo "\n";
+}
+
 echo json_encode(array(
     'loop' => $_POST['loop'],
     'day' => $_POST['day'],
