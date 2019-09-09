@@ -95,8 +95,8 @@ if (!empty($oKifu->charas)) {
         <div class="button_wrapper">
             <button class="reset_all_action">行動ログを全て削除</button>
         </div>
-        <form method="post" action="kifu_csv.php">
-            <input type="hidden" name="csv" value="1">
+        <form method="post" action="kifu_output.php">
+            <input type="hidden" name="outtype">
             <input type="hidden" name="loop" value="<?= $oKifu->loop ?>">
             <input type="hidden" name="day" value="<?= $oKifu->day ?>">
             <input type="hidden" name="chara" value="<?= e(json_encode($aSelectedCharacter)) ?>">
@@ -142,7 +142,7 @@ if (!empty($oKifu->charas)) {
                 </dl>
             </div>
             <div class="button_wrapper">
-                <input type="button" class="save_action" value="行動ログをCSVダウンロード">
+                <input type="button" class="save_action_csv" value="行動ログをCSVダウンロード">
             </div>
         </form>
     <? endif; ?>
@@ -276,10 +276,12 @@ if (!empty($oKifu->charas)) {
     });
     $('.modal').on('click.dismiss', function() { $(this).hide(); });
 
-    $('form .save_action').on('click', function() {
-        $('input[type=hidden][name=action]').val(JSON.stringify(aAction));
-        $('input[type=hidden][name=memo]').val(JSON.stringify(aMemo));
-        $(this).closest('form').submit();
+    $('form .save_action_csv').on('click', function() {
+        var $form = $(this).closest('form');
+        $form.find('input[name=outtype]').val('csv');
+        $form.find('input[name=action]').val(JSON.stringify(aAction));
+        $form.find('input[name=memo]').val(JSON.stringify(aMemo));
+        $form.submit();
     });
 
     function openModal($self, $modal) {
