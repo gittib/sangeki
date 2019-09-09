@@ -5,32 +5,32 @@ $aAction = json_decode($_POST['action'], true);
 $aMemo = $_POST['memo'];
 $aChara = json_decode($_POST['chara']);
 for ($l = 1 ; $l <= $_POST['loop'] ; $l++) {
-    echo $l . "ループ目\n";
+    echo "\n" . $l . "ループ目\n";
     echo ',,';
     foreach ($aChara as $id => $ch) {
         echo $ch . ',';
     }
     echo "\n";
     for ($d = 1 ; $d <= $_POST['day'] ; $d++) {
-        echo $d . ',' . '脚,';
+        echo $d . ',' . '脚';
         if (!isset($aAction[$l][$d]) || !is_array($aAction[$l][$d])) {
             echo "\n";
             continue;
         }
         foreach ($aChara as $id => $ch) {
+            echo ',';
             if (!empty($aAction[$l]) && !empty($aAction[$l][$d]) && !empty($aAction[$l][$d][$id])) {
                 $act = $aAction[$l][$d][$id];
                 echo $act['scriptwriter'];
             }
-            echo ',';
         }
-        echo "\n" . ',' . '主,';
+        echo "\n" . ',' . '主';
         foreach ($aChara as $id => $ch) {
+            echo ',';
             if (!empty($aAction[$l]) && !empty($aAction[$l][$d]) && !empty($aAction[$l][$d][$id])) {
                 $act = $aAction[$l][$d][$id];
                 echo $act['hero'];
             }
-            echo ',';
         }
         echo "\n";
     }
