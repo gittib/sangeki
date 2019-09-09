@@ -13,7 +13,7 @@ for ($l = 1 ; $l <= $_POST['loop'] ; $l++) {
     for ($d = 1 ; $d <= $_POST['day'] ; $d++) {
         echo $d . '日目,' . '脚本家';
         if (!isset($aAction[$l][$d]) || !is_array($aAction[$l][$d])) {
-            echo "\n,主\n";
+            echo "\n,主人公\n";
             continue;
         }
         foreach ($aChara as $id => $ch) {
