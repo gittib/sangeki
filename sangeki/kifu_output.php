@@ -25,7 +25,7 @@ function outCsv($aChara, $aAction, $aMemo) {
     }
     echo "\n";
     for ($l = 1 ; $l <= $_POST['loop'] ; $l++) {
-        echo $l . 'Loop,';
+        echo $l . 'Loop';
         for ($d = 1 ; $d <= $_POST['day'] ; $d++) {
             $aScriptWriter = array('脚本家');
             $aHero = array('主人公');
