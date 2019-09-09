@@ -27,10 +27,10 @@ for ($l = 1 ; $l <= $_POST['loop'] ; $l++) {
     echo "\n";
 }
 
-echo json_encode(array(
-    'loop' => $_POST['loop'],
-    'day' => $_POST['day'],
-    'chara' => $_POST['chara'],
-    'action' => json_decode($_POST['action']),
-    'memo' => $_POST['memo'],
-));
+//echo json_encode(array(
+//    'loop' => $_POST['loop'],
+//    'day' => $_POST['day'],
+//    'chara' => $_POST['chara'],
+//    'action' => json_decode($_POST['action']),
+//    'memo' => $_POST['memo'],
+//));
