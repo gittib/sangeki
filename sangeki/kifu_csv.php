@@ -31,6 +31,7 @@ for ($l = 1 ; $l <= $_POST['loop'] ; $l++) {
             }
             echo ',';
         }
+        echo "\n";
     }
     echo "\n";
 }
