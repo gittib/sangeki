@@ -18,7 +18,7 @@ for ($l = 1 ; $l <= $_POST['loop'] ; $l++) {
         }
         foreach ($aChara as $id => $ch) {
             echo ',';
-            if (!empty($aAction[$l]) && !empty($aAction[$l][$d]) && !empty($aAction[$l][$d][$id])) {
+            if (!empty($aAction[$l]) && !empty($aAction[$l][$d]) && !empty($aAction[$l][$d][$id]) && !empty($aAction[$l][$d][$id]['scriptwriter'])) {
                 $act = $aAction[$l][$d][$id];
                 echo $act['scriptwriter'];
             }
@@ -26,7 +26,7 @@ for ($l = 1 ; $l <= $_POST['loop'] ; $l++) {
         echo "\n" . ',' . '主人公';
         foreach ($aChara as $id => $ch) {
             echo ',';
-            if (!empty($aAction[$l]) && !empty($aAction[$l][$d]) && !empty($aAction[$l][$d][$id])) {
+            if (!empty($aAction[$l]) && !empty($aAction[$l][$d]) && !empty($aAction[$l][$d][$id]) && !empty($aAction[$l][$d][$id]['hero'])) {
                 $act = $aAction[$l][$d][$id];
                 echo $act['hero'];
             }
