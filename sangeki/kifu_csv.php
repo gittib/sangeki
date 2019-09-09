@@ -1,14 +1,9 @@
 <?
 require_once('../secret/common.php');
-
-?>
-<html>
-<head>
-<?php require('../secret/sangeki_head.php') ?>
-    <title>惨劇RoopeR 棋譜記録用</title>
-</head>
-<body class="kifu_csv">
-<pre><?php var_dump($_POST); ?></pre>
-<?php require('../secret/sangeki_footer.php') ?>
-</body>
-</html>
+echo json_encode(array(
+    'loop' => $_POST['loop'],
+    'day' => $_POST['day'],
+    'chara' => $_POST['chara'],
+    'action' => json_decode($_POST['action']),
+    'memo' => json_decode($_POST['memo']),
+));
