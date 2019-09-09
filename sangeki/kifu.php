@@ -99,7 +99,7 @@ if (!empty($oKifu->charas)) {
             <input type="hidden" name="csv" value="1">
             <input type="hidden" name="loop" value="<?= $oKifu->loop ?>">
             <input type="hidden" name="day" value="<?= $oKifu->day ?>">
-            <input type="hidden" name="chara" value="<?= json_encode($aSelectedCharacter) ?>">
+            <input type="hidden" name="chara" value="<?= e(json_encode($aSelectedCharacter)) ?>">
             <input type="hidden" name="action">
             <input type="hidden" name="memo">
             <div class="kifu_wrapper">
