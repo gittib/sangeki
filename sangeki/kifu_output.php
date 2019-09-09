@@ -44,6 +44,9 @@ function outCsv($aChara, $aAction, $aMemo) {
                     echo $act['hero'];
                 }
             }
+            if (!empty($aMemo[$l]) && !empty($aMemo[$l][$d])) {
+                echo ',"' . str_replace('"', "'", $aMemo[$l][$d]) . '"';
+            }
             echo "\n";
         }
         echo "\n\n";

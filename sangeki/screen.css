@@ -316,6 +316,9 @@ body.kifu_input .submit_wrapper {
 body.kifu_input .button_wrapper {
     margin: 20px;
 }
+body.kifu_input .button_wrapper input[type=button] {
+    margin: 20px;
+}
 body.kifu_input .kifu_wrapper {
     margin: 6px;
     padding: 4px 0;

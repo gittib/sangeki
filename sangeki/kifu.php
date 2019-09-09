@@ -143,6 +143,7 @@ if (!empty($oKifu->charas)) {
             </div>
             <div class="button_wrapper">
                 <input type="button" class="save_action_csv" value="行動ログをCSVダウンロード">
+                <input type="button" class="save_action_json" value="行動ログをjsonダウンロード">
             </div>
         </form>
     <? endif; ?>
@@ -279,6 +280,13 @@ if (!empty($oKifu->charas)) {
     $('form .save_action_csv').on('click', function() {
         var $form = $(this).closest('form');
         $form.find('input[name=outtype]').val('csv');
+        $form.find('input[name=action]').val(JSON.stringify(aAction));
+        $form.find('input[name=memo]').val(JSON.stringify(aMemo));
+        $form.submit();
+    });
+    $('form .save_action_json').on('click', function() {
+        var $form = $(this).closest('form');
+        $form.find('input[name=outtype]').val('json');
         $form.find('input[name=action]').val(JSON.stringify(aAction));
         $form.find('input[name=memo]').val(JSON.stringify(aMemo));
         $form.submit();
