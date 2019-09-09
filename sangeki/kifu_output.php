@@ -36,6 +36,9 @@ function outCsv($aChara, $aAction, $aMemo) {
                     echo $act['scriptwriter'];
                 }
             }
+            if (!empty($aMemo[$l]) && !empty($aMemo[$l][$d])) {
+                echo ',"' . str_replace('"', "'", $aMemo[$l][$d]) . '"';
+            }
             echo "\n" . ',' . '主人公';
             foreach ($aChara as $id => $ch) {
                 echo ',';
@@ -43,9 +46,6 @@ function outCsv($aChara, $aAction, $aMemo) {
                     $act = $aAction[$l][$d][$id];
                     echo $act['hero'];
                 }
-            }
-            if (!empty($aMemo[$l]) && !empty($aMemo[$l][$d])) {
-                echo ',"' . str_replace('"', "'", $aMemo[$l][$d]) . '"';
             }
             echo "\n";
         }
