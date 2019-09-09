@@ -16,11 +16,18 @@ for ($l = 1 ; $l <= $_POST['loop'] ; $l++) {
         if (!isset($aAction[$l][$d]) || !is_array($aAction[$l][$d])) {
             continue;
         }
-        foreach ($aAction[$l][$d] as $id => $act) {
+        foreach ($aChara as $id => $ch) {
+            if (empty($aAction[$l]) || empty($aAction[$l][$d]) || empty($aAction[$l][$d][$id])) {
+                continue;
+            }
+            $act = $aAction[$l][$d][$id];
             echo $act['scriptwriter'] . ',';
         }
         echo "\n" . ',,' . '主,';
-        foreach ($aAction[$l][$d] as $id => $act) {
+        foreach ($aChara as $id => $ch) {
+            if (empty($aAction[$l]) || empty($aAction[$l][$d]) || empty($aAction[$l][$d][$id])) {
+                continue;
+            }
             echo $act['hero'] . ',';
         }
     }
