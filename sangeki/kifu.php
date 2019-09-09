@@ -149,7 +149,7 @@ if (!empty($oKifu->charas)) {
     <ul>
         <li>&nbsp;</li>
         <li>不安+1</li>
-        <li>不安 -1</li>
+        <li>不安<wbr>-1</li>
         <li>不安禁止</li>
         <li>友好禁止</li>
         <li>移動縦</li>
@@ -172,7 +172,7 @@ if (!empty($oKifu->charas)) {
         <li>移動横</li>
         <li>移動禁止</li>
         <li>暗躍禁止</li>
-        <li>不安 -1</li>
+        <li>不安<wbr>-1</li>
         <li>不安+1</li>
     </ul>
 </div>
