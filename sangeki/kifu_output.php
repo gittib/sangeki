@@ -25,10 +25,6 @@ function outCsv($aChara, $aAction, $aMemo) {
         echo "\n";
         for ($d = 1 ; $d <= $_POST['day'] ; $d++) {
             echo $d . '日目,' . '脚本家';
-            if (!isset($aAction[$l][$d]) || !is_array($aAction[$l][$d])) {
-                echo "\n,主人公\n";
-                continue;
-            }
             foreach ($aChara as $id => $ch) {
                 echo ',';
                 if (!empty($aAction[$l]) && !empty($aAction[$l][$d]) && !empty($aAction[$l][$d][$id]) && !empty($aAction[$l][$d][$id]['scriptwriter'])) {
