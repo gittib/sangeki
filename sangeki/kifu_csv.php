@@ -5,10 +5,9 @@ $aAction = json_decode($_POST['action'], true);
 $aMemo = $_POST['memo'];
 $aChara = json_decode($_POST['chara']);
 for ($l = 1 ; $l <= $_POST['loop'] ; $l++) {
-    echo "\n" . $l . "ループ目\n";
-    echo ',,';
+    echo "\n" . $l . 'ループ目,';
     foreach ($aChara as $id => $ch) {
-        echo $ch . ',';
+        echo ',' . $ch;
     }
     echo "\n";
     for ($d = 1 ; $d <= $_POST['day'] ; $d++) {
