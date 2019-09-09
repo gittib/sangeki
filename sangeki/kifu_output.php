@@ -17,32 +17,32 @@ case 'json':
 
 function outCsv($aChara, $aAction, $aMemo) {
     header('content-type: text/csv; charset=utf-8');
+    echo "登場人物\n";
+    echo implode(',', $aChara) . "\n\n";
+
+    for ($d = 1 ; $d <= $_POST['day'] ; $d++) {
+        echo ',' . $d . '日目,,';
+    }
     for ($l = 1 ; $l <= $_POST['loop'] ; $l++) {
-        echo $l . 'ループ目,';
-        foreach ($aChara as $id => $ch) {
-            echo ',' . $ch;
-        }
-        echo "\n";
+        echo $l . 'Loop,';
         for ($d = 1 ; $d <= $_POST['day'] ; $d++) {
-            echo $d . '日目,' . '脚本家';
-            foreach ($aChara as $id => $ch) {
-                echo ',';
-                if (!empty($aAction[$l]) && !empty($aAction[$l][$d]) && !empty($aAction[$l][$d][$id]) && !empty($aAction[$l][$d][$id]['scriptwriter'])) {
-                    $act = $aAction[$l][$d][$id];
-                    echo $act['scriptwriter'];
+            $aScriptWriter = array('脚本家');
+            $aHero = array('主人公');
+            foreach ($aAction[$l][$d] as $id => $val) {
+                if (!empty($val['scriptwriter'])) {
+                    $aScriptWriter[] = $aChara[$id] . ':' . $val['scriptwriter'];
+                }
+                if (!empty($val['hero'])) {
+                    $aHero[] = $aChara[$id] . ':' . $val['hero'];
                 }
             }
+            echo ',"' . implode("\n", $aScriptWriter);
+            echo ',"' . implode("\n", $aHero);
+            echo ',"';
             if (!empty($aMemo[$l]) && !empty($aMemo[$l][$d])) {
-                echo ',"' . str_replace('"', "'", $aMemo[$l][$d]) . '"';
+                echo str_replace('"', "'", $aMemo[$l][$d]);
             }
-            echo "\n" . ',' . '主人公';
-            foreach ($aChara as $id => $ch) {
-                echo ',';
-                if (!empty($aAction[$l]) && !empty($aAction[$l][$d]) && !empty($aAction[$l][$d][$id]) && !empty($aAction[$l][$d][$id]['hero'])) {
-                    $act = $aAction[$l][$d][$id];
-                    echo $act['hero'];
-                }
-            }
+            echo '"';
             echo "\n";
         }
         echo "\n\n";
