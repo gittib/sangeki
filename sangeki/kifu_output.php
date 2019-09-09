@@ -23,6 +23,7 @@ function outCsv($aChara, $aAction, $aMemo) {
     for ($d = 1 ; $d <= $_POST['day'] ; $d++) {
         echo ',' . $d . '日目,,';
     }
+    echo "\n";
     for ($l = 1 ; $l <= $_POST['loop'] ; $l++) {
         echo $l . 'Loop,';
         for ($d = 1 ; $d <= $_POST['day'] ; $d++) {
