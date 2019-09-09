@@ -39,8 +39,8 @@ function outCsv($aChara, $aAction, $aMemo) {
                 }
             }
             echo ',"' . implode("\n", $aScriptWriter);
-            echo ',"' . implode("\n", $aHero);
-            echo ',"';
+            echo '","' . implode("\n", $aHero);
+            echo '","';
             if (!empty($aMemo[$l]) && !empty($aMemo[$l][$d])) {
                 echo str_replace('"', "'", $aMemo[$l][$d]);
             }
