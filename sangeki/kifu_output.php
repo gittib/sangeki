@@ -6,7 +6,7 @@ $aChara = json_decode($_POST['chara']);
 $aAction = json_decode($_POST['action'], true);
 $aMemo = $_POST['memo'];
 
-switch ($outtype) {
+switch ($outType) {
 case 'csv':
     outCsv($aChara, $aAction, $aMemo);
     break;
