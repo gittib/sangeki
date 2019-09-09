@@ -28,12 +28,14 @@ function outCsv($aChara, $aAction, $aMemo) {
         for ($d = 1 ; $d <= $_POST['day'] ; $d++) {
             $aScriptWriter = array('脚本家');
             $aHero = array('主人公');
-            foreach ($aAction[$l][$d] as $id => $val) {
-                if (!empty($val['scriptwriter'])) {
-                    $aScriptWriter[] = $aChara[$id] . ':' . $val['scriptwriter'];
-                }
-                if (!empty($val['hero'])) {
-                    $aHero[] = $aChara[$id] . ':' . $val['hero'];
+            if (!empty($aAction[$l][$d])) {
+                foreach ($aAction[$l][$d] as $id => $val) {
+                    if (!empty($val['scriptwriter'])) {
+                        $aScriptWriter[] = $aChara[$id] . ':' . $val['scriptwriter'];
+                    }
+                    if (!empty($val['hero'])) {
+                        $aHero[] = $aChara[$id] . ':' . $val['hero'];
+                    }
                 }
             }
             echo ',"' . implode("\n", $aScriptWriter);
