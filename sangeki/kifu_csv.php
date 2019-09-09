@@ -23,7 +23,7 @@ for ($l = 1 ; $l <= $_POST['loop'] ; $l++) {
             $act = $aAction[$l][$d][$id];
             echo $act['scriptwriter'] . ',';
         }
-        echo "\n" . ',,' . '主,';
+        echo "\n" . ',' . '主,';
         foreach ($aChara as $id => $ch) {
             if (empty($aAction[$l]) || empty($aAction[$l][$d]) || empty($aAction[$l][$d][$id])) {
                 continue;
