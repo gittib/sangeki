@@ -17,18 +17,19 @@ for ($l = 1 ; $l <= $_POST['loop'] ; $l++) {
             continue;
         }
         foreach ($aChara as $id => $ch) {
-            if (empty($aAction[$l]) || empty($aAction[$l][$d]) || empty($aAction[$l][$d][$id])) {
-                continue;
+            if (!empty($aAction[$l]) && !empty($aAction[$l][$d]) && !empty($aAction[$l][$d][$id])) {
+                $act = $aAction[$l][$d][$id];
+                echo $act['scriptwriter'];
             }
-            $act = $aAction[$l][$d][$id];
-            echo $act['scriptwriter'] . ',';
+            echo ',';
         }
         echo "\n" . ',' . '主,';
         foreach ($aChara as $id => $ch) {
-            if (empty($aAction[$l]) || empty($aAction[$l][$d]) || empty($aAction[$l][$d][$id])) {
-                continue;
+            if (!empty($aAction[$l]) && !empty($aAction[$l][$d]) && !empty($aAction[$l][$d][$id])) {
+                $act = $aAction[$l][$d][$id];
+                echo $act['hero'];
             }
-            echo $act['hero'] . ',';
+            echo ',';
         }
     }
     echo "\n";
