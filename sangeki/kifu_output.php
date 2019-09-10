@@ -76,10 +76,10 @@ function outHtml($aChara, $aAction, $aMemo) {
             $aHero = array('主人公');
             if (!empty($aAction[$l][$d])) {
                 foreach ($aAction[$l][$d] as $id => $val) {
-                    if (!empty($val['scriptwriter'])) {
+                    if (!empty($val['scriptwriter']) && !empty($aChara[$id])) {
                         $aScriptWriter[] = $aChara[$id] . ':' . $val['scriptwriter'];
                     }
-                    if (!empty($val['hero'])) {
+                    if (!empty($val['hero']) && !empty($aChara[$id])) {
                         $aHero[] = $aChara[$id] . ':' . $val['hero'];
                     }
                 }
