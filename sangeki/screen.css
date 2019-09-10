@@ -396,6 +396,7 @@ body.kifu_output .kifu_out_wrapper {
 body.kifu_output .kifu_out_wrapper td {
     min-width: 100px;
     border: solid 1px;
+    font-size: 0.8rem;
 }
 
 
