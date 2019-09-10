@@ -394,7 +394,7 @@ body.kifu_output .kifu_out_wrapper {
     overflow-x: scroll;
 }
 body.kifu_output .kifu_out_wrapper td {
-    min-width: 100px;
+    width: 11rem;
     border: solid 1px;
     font-size: 0.8rem;
 }
