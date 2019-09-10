@@ -142,8 +142,9 @@ if (!empty($oKifu->charas)) {
                 </dl>
             </div>
             <div class="button_wrapper">
-                <input type="button" class="save_action_csv" value="行動ログをCSVダウンロード">
-                <input type="button" class="save_action_json" value="行動ログをjsonダウンロード">
+                <input type="button" class="save_action" data-type="csv" value="行動ログをCSVダウンロード">
+                <input type="button" class="save_action" data-type="json" value="行動ログをjsonダウンロード">
+                <input type="button" class="save_action" data-type="html" value="行動ログをブラウザで表示">
             </div>
         </form>
     <? endif; ?>
@@ -277,16 +278,9 @@ if (!empty($oKifu->charas)) {
     });
     $('.modal').on('click.dismiss', function() { $(this).hide(); });
 
-    $('form .save_action_csv').on('click', function() {
+    $('form .save_action[data-type]').on('click', function() {
         var $form = $(this).closest('form');
-        $form.find('input[name=outtype]').val('csv');
-        $form.find('input[name=action]').val(JSON.stringify(aAction));
-        $form.find('input[name=memo]').val(JSON.stringify(aMemo));
-        $form.submit();
-    });
-    $('form .save_action_json').on('click', function() {
-        var $form = $(this).closest('form');
-        $form.find('input[name=outtype]').val('json');
+        $form.find('input[name=outtype]').val($(this).data('type'));
         $form.find('input[name=action]').val(JSON.stringify(aAction));
         $form.find('input[name=memo]').val(JSON.stringify(aMemo));
         $form.submit();

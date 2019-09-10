@@ -13,6 +13,9 @@ case 'csv':
 case 'json':
     outJson($aChara, $aAction, $aMemo);
     break;
+case 'html':
+    outHtml($aChara, $aAction, $aMemo);
+    break;
 }
 
 function outCsv($aChara, $aAction, $aMemo) {
@@ -61,4 +64,60 @@ function outJson($aChara, $aAction, $aMemo) {
         'action' => json_decode($_POST['action']),
         'memo' => $_POST['memo'],
     ));
+}
+
+function outHtml($aChara, $aAction, $aMemo) {
+    $aDay = array();
+    for ($l = 1 ; $l <= $_POST['loop'] ; $l++) {
+        $aDay[$l] = array();
+        for ($d = 1 ; $d <= $_POST['day'] ; $d++) {
+            $aDay[$l][$d] = array();
+            $aScriptWriter = array('脚本家');
+            $aHero = array('主人公');
+            if (!empty($aAction[$l][$d])) {
+                foreach ($aAction[$l][$d] as $id => $val) {
+                    if (!empty($val['scriptwriter'])) {
+                        $aScriptWriter[] = $aChara[$id] . ':' . $val['scriptwriter'];
+                    }
+                    if (!empty($val['hero'])) {
+                        $aHero[] = $aChara[$id] . ':' . $val['hero'];
+                    }
+                }
+            }
+            $aDay[$l][$d]['scriptWriter'] = implode("\n", $aScriptWriter);
+            $aDay[$l][$d]['hero'] =  implode("\n", $aHero);
+            $aDay[$l][$d]['memo'] = $aMemo[$l][$d];
+        }
+    }
+?>
+<html>
+<head>
+<?php require('../secret/sangeki_head.php') ?>
+    <title>惨劇RoopeR 棋譜</title>
+</head>
+<body class="kifu_output">
+    <table>
+        <tr>
+            <td>Daily Memo</td>
+            <? for ($d = 1 ; $d <= $_POST['day'] ; $d++): ?>
+                <td colspan=3>
+                    <?= $d ?>日目
+                </td>
+            <? endfor; ?>
+        </tr>
+        <? for ($l = 1 ; $l <= $_POST['loop'] ; $l++): ?>
+            <tr>
+                <td><?= $l ?>Loop</td>
+                <? for ($d = 1 ; $d <= $_POST['day'] ; $d++): ?>
+                    <td><?= $aDay[$l][$d]['scriptWriter'] ?></td>
+                    <td><?= $aDay[$l][$d]['hero'] ?></td>
+                    <td><?= $aDay[$l][$d]['memo'] ?></td>
+                <? endfor; ?>
+            </tr>
+        <? endfor; ?>
+    </table>
+<?php require('../secret/sangeki_footer.php') ?>
+</body>
+</html>
+<?php
 }
