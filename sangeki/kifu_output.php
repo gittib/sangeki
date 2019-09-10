@@ -96,26 +96,28 @@ function outHtml($aChara, $aAction, $aMemo) {
     <title>惨劇RoopeR 棋譜</title>
 </head>
 <body class="kifu_output">
-    <table>
-        <tr>
-            <td>Daily Memo</td>
-            <? for ($d = 1 ; $d <= $_POST['day'] ; $d++): ?>
-                <td colspan=3>
-                    <?= $d ?>日目
-                </td>
-            <? endfor; ?>
-        </tr>
-        <? for ($l = 1 ; $l <= $_POST['loop'] ; $l++): ?>
+    <div class="kifu_out_wrapper">
+        <table>
             <tr>
-                <td><?= $l ?>Loop</td>
+                <td>Daily Memo</td>
                 <? for ($d = 1 ; $d <= $_POST['day'] ; $d++): ?>
-                    <td><?= $aDay[$l][$d]['scriptWriter'] ?></td>
-                    <td><?= $aDay[$l][$d]['hero'] ?></td>
-                    <td><?= $aDay[$l][$d]['memo'] ?></td>
+                    <td colspan=3>
+                        <?= $d ?>日目
+                    </td>
                 <? endfor; ?>
             </tr>
-        <? endfor; ?>
-    </table>
+            <? for ($l = 1 ; $l <= $_POST['loop'] ; $l++): ?>
+                <tr>
+                    <td><?= $l ?>Loop</td>
+                    <? for ($d = 1 ; $d <= $_POST['day'] ; $d++): ?>
+                        <td><?= $aDay[$l][$d]['scriptWriter'] ?></td>
+                        <td><?= $aDay[$l][$d]['hero'] ?></td>
+                        <td><?= $aDay[$l][$d]['memo'] ?></td>
+                    <? endfor; ?>
+                </tr>
+            <? endfor; ?>
+        </table>
+    </div>
 <?php require('../secret/sangeki_footer.php') ?>
 </body>
 </html>

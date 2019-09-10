@@ -390,6 +390,12 @@ body.kifu_input .modal ul > li {
     background-color:white;
     float: left;
 }
+body.kifu_output .kifu_out_wrapper {
+    overflow-x: scroll;
+}
+body.kifu_output .kifu_out_wrapper td {
+    border: solid 1px;
+}
 
 
 footer {
