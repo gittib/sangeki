@@ -84,8 +84,8 @@ function outHtml($aChara, $aAction, $aMemo) {
                     }
                 }
             }
-            $aDay[$l][$d]['scriptWriter'] = implode("\n", $aScriptWriter);
-            $aDay[$l][$d]['hero'] =  implode("\n", $aHero);
+            $aDay[$l][$d]['scriptWriter'] = implode("<br>", $aScriptWriter);
+            $aDay[$l][$d]['hero'] =  implode("<br>", $aHero);
             $aDay[$l][$d]['memo'] = $aMemo[$l][$d];
         }
     }
