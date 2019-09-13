@@ -90,11 +90,19 @@ if (!empty($oKifu->charas)) {
         <div class="submit_wrapper">
             <input type="submit" value="棋譜テンプレートを生成">
         </div>
-        <? if ($oKifu->loop > 0 && $oKifu->day > 0): ?>
+    </form>
+    <? if ($oKifu->loop > 0 && $oKifu->day > 0): ?>
+        <div class="button_wrapper">
+            <button class="reset_all_action">行動ログを全て削除</button>
+        </div>
+        <form method="post" action="kifu_output.php">
+            <input type="hidden" name="outtype">
+            <input type="hidden" name="loop" value="<?= $oKifu->loop ?>">
+            <input type="hidden" name="day" value="<?= $oKifu->day ?>">
+            <input type="hidden" name="chara" value="<?= e(json_encode($aSelectedCharacter)) ?>">
+            <input type="hidden" name="action">
+            <input type="hidden" name="memo">
             <div class="kifu_wrapper">
-                <div class="button_wrapper">
-                    <button class="reset_all_action">行動ログを全て削除</button>
-                </div>
                 <dl>
                 <? for ($l = 1 ; $l <= $oKifu->loop ; $l++): ?>
                     <dt><?= $l ?>ループ目</dt>
@@ -133,8 +141,13 @@ if (!empty($oKifu->charas)) {
                 <? endfor; ?>
                 </dl>
             </div>
-        <? endif; ?>
-    </form>
+            <div class="button_wrapper">
+                <input type="button" class="save_action" data-type="csv" value="行動ログをCSVダウンロード">
+                <input type="button" class="save_action" data-type="json" value="行動ログをjsonダウンロード">
+                <input type="button" class="save_action" data-type="html" value="行動ログをブラウザで表示">
+            </div>
+        </form>
+    <? endif; ?>
 <?php require('../secret/sangeki_footer.php') ?>
 <div id="scriptwriter_action_list" class="modal">
     <h4>脚本家</h4>
@@ -144,7 +157,7 @@ if (!empty($oKifu->charas)) {
     <ul>
         <li>&nbsp;</li>
         <li>不安+1</li>
-        <li>不安-1</li>
+        <li>不安 -1</li>
         <li>不安禁止</li>
         <li>友好禁止</li>
         <li>移動縦</li>
@@ -167,7 +180,7 @@ if (!empty($oKifu->charas)) {
         <li>移動横</li>
         <li>移動禁止</li>
         <li>暗躍禁止</li>
-        <li>不安-1</li>
+        <li>不安 -1</li>
         <li>不安+1</li>
     </ul>
 </div>
@@ -185,11 +198,7 @@ if (!empty($oKifu->charas)) {
                             delete aAction[loop][day][idx][type];
                         } else {
                             let $td = $('td.'+type+'[data-loop='+loop+'][data-day='+day+'][data-index='+idx+']');
-                            if ($td.size() > 0) {
-                                $td.text(val4);
-                            } else {
-                                delete aAction[loop][day][idx][type];
-                            }
+                            $td.text(val4);
                         }
                     });
                     if (!Object.keys(aAction[loop][day][idx]).length) {
@@ -216,7 +225,8 @@ if (!empty($oKifu->charas)) {
                 let $input = $('input.memo[data-loop='+loop+'][data-day='+day+']');
                 if ($input.size() > 0) {
                     $input.val(val2);
-                } else {
+                }
+                if (!aMemo[loop][day] || aMemo[loop][day].trim().length <= 0) {
                     delete aMemo[loop][day];
                 }
             });
@@ -267,6 +277,14 @@ if (!empty($oKifu->charas)) {
         localStorage.setItem('aMemo', JSON.stringify(aMemo));
     });
     $('.modal').on('click.dismiss', function() { $(this).hide(); });
+
+    $('form .save_action[data-type]').on('click', function() {
+        var $form = $(this).closest('form');
+        $form.find('input[name=outtype]').val($(this).data('type'));
+        $form.find('input[name=action]').val(JSON.stringify(aAction));
+        $form.find('input[name=memo]').val(JSON.stringify(aMemo));
+        $form.submit();
+    });
 
     function openModal($self, $modal) {
         var loop = $self.data('loop');
