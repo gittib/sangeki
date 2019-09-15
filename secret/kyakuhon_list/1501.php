@@ -29,15 +29,14 @@ $oSangeki = (object)array(
         '軍人' => array(
         ),
         '大物' => array(
-            'note' => '学校',
-            'role' => 'キラー',
+            'note' => '病院',
         ),
         '鑑識官' => array(
         ),
         'アイドル' => array(
-            'role' => 'フレンド',
         ),
         'お嬢様' => array(
+            'role' => 'フレンド',
         ),
         '転校生' => array(
             'role' => 'ミスリーダー',
