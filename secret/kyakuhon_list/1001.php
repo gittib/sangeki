@@ -20,13 +20,10 @@ $oSangeki = (object)array(
         '入院患者' => array(
             'role' => 'カルティスト',
         ),
-        'ナース' => array(
-        ),
         '情報屋' => array(
             'role' => 'タイムトラベラー',
         ),
-        '大物' => array(
-            'note' => '病院',
+        'アイドル' => array(
         ),
         'サラリーマン' => array(
         ),
