@@ -23,8 +23,6 @@ $oSangeki = (object)array(
         '情報屋' => array(
             'role' => 'タイムトラベラー',
         ),
-        'アイドル' => array(
-        ),
         'サラリーマン' => array(
         ),
         '女子学生' => array(
@@ -32,6 +30,9 @@ $oSangeki = (object)array(
         ),
         'お嬢様' => array(
             'role' => 'ミスリーダー',
+        ),
+        '転校生' => array(
+            'note' => '2日目',
         ),
     ),
     'incident' => array(
