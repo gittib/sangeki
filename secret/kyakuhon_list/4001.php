@@ -24,6 +24,7 @@ $oSangeki = (object)array(
         'マスコミ' => array(
         ),
         '入院患者' => array(
+            'role' => 'チキンハート',
         ),
         '医者' => array(
             'role' => 'ミカケダオシ',
@@ -35,7 +36,6 @@ $oSangeki = (object)array(
             'role' => 'ウィッチ',
         ),
         'サラリーマン' => array(
-            'role' => 'チキンハート',
         ),
         'イレギュラー' => array(
             'role' => 'ウェアウルフ',
