@@ -19,6 +19,7 @@ $oSangeki = (object)array(
         '黒猫' => array(
         ),
         '異世界人' => array(
+            'note' => '人物X',
         ),
         'マスコミ' => array(
         ),
@@ -38,8 +39,10 @@ $oSangeki = (object)array(
         ),
         'イレギュラー' => array(
             'role' => 'ウェアウルフ',
+            'note' => '人物Y',
         ),
         '転校生' => array(
+            'note' => '2日目',
         ),
     ),
     'incident' => array(
