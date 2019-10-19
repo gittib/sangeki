@@ -1,24 +1,26 @@
 <?
 
 $oSangeki = (object)array(
-    'title' => '死人に口無し',
+    'title' => 'サラリーマン学校に立つ!!',
     'writer' => 'ペンスキー',
-    'difficulity' => 6,
+    'difficulity' => 7,
     'set' => 'HSA',
     'rule' => array(
         '墓所より出でし者',
         '話を聞かない人々',
         '魔女の呪い',
     ),
-    'special_rule' => "",
-    'loop' => 5,
-    'day' => 5,
+    'special_rule' => "・事件が起こるたび、EXゲージが0⇔1で切り替わる。\n・EXゲージが1のとき、脚本にて予め指定された人物Xと人物Yは役職が入れ替わる。\n・友好+2はループ1回制限を失う。\n・マスコミの初期配置は神社となる。",
+    'loop' => 4,
+    'day' => 6,
     'character' => array(
         '巫女' => array(
         ),
         '黒猫' => array(
         ),
         '異世界人' => array(
+        ),
+        'マスコミ' => array(
         ),
         '入院患者' => array(
         ),
@@ -34,7 +36,10 @@ $oSangeki = (object)array(
         'サラリーマン' => array(
             'role' => 'チキンハート',
         ),
-        'お嬢様' => array(
+        'イレギュラー' => array(
+            'role' => 'ウェアウルフ',
+        ),
+        '転校生' => array(
         ),
     ),
     'incident' => array(
@@ -43,10 +48,14 @@ $oSangeki = (object)array(
             'criminal' => '神社の群像',
         ),
         4 => array(
-            'name' => '立てこもり',
-            'criminal' => '鑑識官',
+            'name' => '不安拡大',
+            'criminal' => '黒猫',
         ),
         5 => array(
+            'name' => '行方不明',
+            'criminal' => '鑑識官',
+        ),
+        6 => array(
             'name' => '死者の黙示録',
             'criminal' => '学校の群像',
         ),
