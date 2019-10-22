@@ -3,28 +3,26 @@
 $oSangeki = (object)array(
     'title' => 'サラリーマン学校に立つ!!',
     'writer' => 'ペンスキー',
-    'difficulity' => 7,
+    'difficulity' => 6,
     'set' => 'HSA',
     'rule' => array(
         '墓所より出でし者',
         '話を聞かない人々',
         '魔女の呪い',
     ),
-    'special_rule' => "・事件が起こるたび、EXゲージが0⇔1で切り替わる。各ループ終了時に0に戻る。\n・EXゲージが1のとき、脚本にて予め指定された人物Xと人物Yは役職が入れ替わる。\n・友好+2はループ1回制限を失う。\n・マスコミの初期配置は神社となる。",
+    'special_rule' => "・ボードへセットされた脚本家行動カードは公開される。\n・友好+2はループ1回制限を失う。\n・マスコミの初期配置は神社となる。",
     'loop' => 4,
-    'day' => 6,
+    'day' => 5,
     'character' => array(
-        '巫女' => array(
+        '幻想' => array(
         ),
         '黒猫' => array(
         ),
         '異世界人' => array(
-            'note' => '人物X',
         ),
         'マスコミ' => array(
         ),
         '入院患者' => array(
-            'role' => 'チキンハート',
         ),
         '医者' => array(
             'role' => 'ミカケダオシ',
@@ -36,10 +34,9 @@ $oSangeki = (object)array(
             'role' => 'ウィッチ',
         ),
         'サラリーマン' => array(
+            'role' => 'チキンハート',
         ),
-        'イレギュラー' => array(
-            'role' => 'ウェアウルフ',
-            'note' => '人物Y',
+        'お嬢様' => array(
         ),
         '転校生' => array(
             'note' => '2日目',
@@ -51,14 +48,10 @@ $oSangeki = (object)array(
             'criminal' => '神社の群像',
         ),
         4 => array(
-            'name' => '不安拡大',
-            'criminal' => '黒猫',
-        ),
-        5 => array(
-            'name' => '行方不明',
+            'name' => '邪気の汚染',
             'criminal' => '鑑識官',
         ),
-        6 => array(
+        5 => array(
             'name' => '死者の黙示録',
             'criminal' => '学校の群像',
         ),
