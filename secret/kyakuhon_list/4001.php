@@ -36,8 +36,6 @@ $oSangeki = (object)array(
         'サラリーマン' => array(
             'role' => 'チキンハート',
         ),
-        'お嬢様' => array(
-        ),
         '転校生' => array(
             'note' => '2日目',
         ),
