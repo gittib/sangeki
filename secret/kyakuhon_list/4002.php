@@ -8,35 +8,41 @@ $oSangeki = (object)array(
     'rule' => array(
         '高貴なる血族',
         '魔女の呪い',
-        '',
+        '恐慌と妄執と',
     ),
     'special_rule' => "",
     'loop' => 4,
     'day' => 4,
     'character' => array(
-        '医者' => array(
+        '巫女' => array(
+            'role' => 'シリアルキラー',
+        ),
+        '鑑識官' => array(
             'role' => 'ヴァンパイア',
         ),
-        'アイドル' => array(
-            'role' => 'キーパーソン',
-        ),
         'サラリーマン' => array(
+            'role' => 'ウィッチ',
+        ),
+        'アイドル' => array(
             'role' => 'ミスリーダー',
         ),
-        '学校初期' => array(
+        '男子学生' => array(
             'role' => 'ウィッチ',
+        ),
+        '委員長' => array(
+            'role' => 'キーパーソン',
+        ),
+        '教師' => array(
+            'role' => 'チキンハート',
         ),
         'イレギュラー' => array(
             'role' => 'ゾンビ',
-        ),
-        '転校生' => array(
-            'note' => '2日目',
         ),
     ),
     'incident' => array(
         1 => array(
             'name' => '立てこもり',
-            'criminal' => 'サラリーマン',
+            'criminal' => 'アイドル',
         ),
         3 => array(
             'name' => '穢れの噴出',
