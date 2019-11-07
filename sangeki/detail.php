@@ -45,17 +45,23 @@ function roleSpec ($r) {
 }
 function initPos($name) {
     switch ($name) {
+        case '神社':
+        case 'shrine':
         case '巫女':
         case '異世界人':
         case '黒猫':
         case '幻想':
             return 'shrine';
+        case '病院':
+        case 'hospital':
         case '入院患者':
         case '医者':
         case 'ナース':
         case '軍人':
         case '学者':
             return 'hospital';
+        case '都市':
+        case 'city':
         case 'アイドル':
         case 'サラリーマン':
         case '情報屋':
@@ -66,6 +72,8 @@ function initPos($name) {
         case 'マスコミ':
         case '鑑識官':
             return 'city';
+        case '学校':
+        case 'school':
         case '男子学生':
         case '女子学生':
         case 'お嬢様':
@@ -74,6 +82,7 @@ function initPos($name) {
         case '委員長':
         case '女の子':
             return 'school';
+        case 'other':
         case '神格':
         case '転校生':
         case '手先':
@@ -83,6 +92,7 @@ function initPos($name) {
 }
 function getRuleWithNote($sRule) {
     if (strpos($sRule, '/') > 0) {
+        // スラッシュで区切るとルールの備考を設定できる（狂った真実とか用）
         list($sRule, $sNote) = explode('/', $sRule);
         echo e(trim($sRule)) . '<br><span class="note">(' . trim($sNote) . ')</span>';
     } else {
@@ -149,7 +159,11 @@ foreach ($oSangeki->character as $name => $val) {
     $oSangeki->character[$name]['yuukoumushi'] = $y;
     $oSangeki->character[$name]['fushi'] = $f;
 
-    $aInitPlace[initPos($name)][] = $name;
+    if (isset($val['initPos'])) {
+        $aInitPlace[initPos($val['initPos'])][] = $name;
+    } else {
+        $aInitPlace[initPos($name)][] = $name;
+    }
 }
 ?>
 <html>

@@ -17,6 +17,7 @@ $oSangeki = (object)array(
     'character' => array(
         '神格' => array(
             'note' => '1ループ目',
+            'initPos' => '神社',
         ),
         '医者' => array(
             'role' => 'ウィッチ',

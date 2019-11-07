@@ -4,6 +4,7 @@ $oSangeki = (object)array(
     'title' => 'サラリーマン学校に立つ!!',
     'writer' => 'ペンスキー',
     'difficulity' => 6,
+    'secret' => true,
     'set' => 'HSA',
     'rule' => array(
         '墓所より出でし者',
@@ -21,6 +22,7 @@ $oSangeki = (object)array(
         '異世界人' => array(
         ),
         'マスコミ' => array(
+            'initPos' => '神社',
         ),
         '入院患者' => array(
         ),
