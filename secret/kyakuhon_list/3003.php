@@ -32,6 +32,7 @@ $oSangeki = (object)array(
         ),
         '手先' => array(
             'role' => 'ゼッタイシャ',
+            'initPos' => '都市',
         ),
     ),
     'incident' => array(
