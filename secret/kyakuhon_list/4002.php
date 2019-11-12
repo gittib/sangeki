@@ -59,11 +59,11 @@ $oSangeki = (object)array(
             'criminal' => '入院患者',
         ),
         5 => array(
-            'name' => '死者の黙示録',
+            'name' => '死者の黙示録(必要死体:2)',
             'criminal' => '病院の群像',
         ),
         6 => array(
-            'name' => '狂気の夜',
+            'name' => '狂気の夜(必要死体:0)',
             'criminal' => '学校の群像',
         ),
     ),
