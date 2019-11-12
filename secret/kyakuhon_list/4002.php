@@ -47,7 +47,7 @@ $oSangeki = (object)array(
             'criminal' => 'お嬢様',
         ),
         3 => array(
-            'name' => '穢れの噴出(必要死体:2)',
+            'name' => '穢れの噴出',
             'criminal' => '都市の群像',
         ),
         4 => array(
@@ -55,11 +55,11 @@ $oSangeki = (object)array(
             'criminal' => '入院患者',
         ),
         5 => array(
-            'name' => '死者の黙示録(必要死体:2)',
+            'name' => '死者の黙示録',
             'criminal' => '病院の群像',
         ),
         6 => array(
-            'name' => '狂気の夜(必要死体:0)',
+            'name' => '狂気の夜',
             'criminal' => '学校の群像',
         ),
     ),

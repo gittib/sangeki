@@ -43,7 +43,7 @@ $oSangeki = (object)array(
     ),
     'incident' => array(
         1 => array(
-            'name' => '呪いの目覚め(必要死体:1)',
+            'name' => '呪いの目覚め',
             'criminal' => '神社の群像',
         ),
         4 => array(
@@ -51,7 +51,7 @@ $oSangeki = (object)array(
             'criminal' => '鑑識官',
         ),
         5 => array(
-            'name' => '死者の黙示録(必要死体:2)',
+            'name' => '死者の黙示録',
             'criminal' => '学校の群像',
         ),
     ),

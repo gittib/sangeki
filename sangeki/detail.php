@@ -99,6 +99,26 @@ function getRuleWithNote($sRule) {
         echo e(trim($sRule));
     }
 }
+function insidentPublicNote($insident) {
+    $sBikou = '';
+    switch ($insident['name']) {
+    case '穢れの噴出':
+    case '死者の黙示録':
+        $sBikou = '(必要死体:2)';
+        break;
+    case '呪いの目覚め':
+        $sBikou = '(必要死体:1)';
+        break;
+    case '狂気の夜':
+        $sBikou = '(必要死体:0)';
+        break;
+    }
+    if (!empty($sBikou)) {
+        return '<span class="insident_notes">' . $sBikou . '</span>';
+    } else {
+        return '';
+    }
+}
 
 if (!isset($_GET['id'])) {
     header('Location: .');
@@ -230,6 +250,7 @@ foreach ($oSangeki->character as $name => $val) {
                             } else {
                                 echo $oSangeki->incident[$i]['name'];
                             }
+                            echo insidentPublicNote($oSangeki->incident[$i]);
                         }
                     ?></td>
                 </tr>

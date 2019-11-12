@@ -52,7 +52,7 @@ $oSangeki = (object)array(
             'criminal' => '情報屋',
         ),
         4 => array(
-            'name' => '穢れの噴出(必要死体:2)',
+            'name' => '穢れの噴出',
             'criminal' => '神社の群像',
         ),
     ),
