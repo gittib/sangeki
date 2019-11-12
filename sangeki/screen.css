@@ -208,6 +208,7 @@ body.detail .public div.special_rule {
     box-sizing: border-box;
 }
 body.detail .public table.insident td span.note {
+    padding-left: 2px;
     font-size: 0.75rem;
 }
 body.detail .private {
