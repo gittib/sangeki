@@ -114,7 +114,7 @@ function insidentPublicNote($insident) {
         break;
     }
     if (!empty($sBikou)) {
-        return '<span class="insident_notes">' . $sBikou . '</span>';
+        return '<span class="note">' . $sBikou . '</span>';
     } else {
         return '';
     }
