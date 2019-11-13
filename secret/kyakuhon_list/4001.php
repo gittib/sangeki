@@ -2,7 +2,6 @@
 
 $oSangeki = (object)array(
     'title' => 'サラリーマン学校に立つ!!',
-    'secret' => true,
     'writer' => 'ペンスキー',
     'difficulity' => 6,
     'set' => 'HSA',
