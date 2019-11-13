@@ -116,6 +116,9 @@ function insidentPublicNote($insident) {
     case '前兆':
         $sBikou = '(不安臨界-1)';
         break;
+    case '猟奇殺人':
+        $sBikou = '(不安臨界+1)';
+        break;
     case '陰謀工作':
     case '猟犬の嗅覚':
         $sBikou = '(暗躍で判定)';
