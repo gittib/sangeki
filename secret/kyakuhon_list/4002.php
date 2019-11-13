@@ -3,7 +3,6 @@
 $oSangeki = (object)array(
     'title' => '全てが終わったその後に',
     'writer' => 'ペンスキー',
-    'secret' => true,
     'difficulity' => 7,
     'set' => 'HSA',
     'rule' => array(
