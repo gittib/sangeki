@@ -208,6 +208,9 @@ foreach ($oSangeki->character as $name => $val) {
     </div>
     <div class="public">
         <h2>公開シート</h2>
+        <div class="qr_wrapper">
+            <img src="qr/<?= $oSangeki->set ?>.jpg">
+        </div>
         <span>
             難易度：
             <span class="difficulity_name"><?= difficulityName($oSangeki->difficulity) ?></span>
@@ -444,6 +447,9 @@ foreach ($oSangeki->character as $name => $val) {
                 $self.text('非公開シート、脚本家の指針を隠す');
             }
         }
+    });
+    $('.qr_wrapper img').on('click', function() {
+        $(this).toggleClass('zoom');
     });
     </script>
 </body>
