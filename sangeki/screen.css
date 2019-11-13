@@ -200,15 +200,19 @@ body.detail .public > .qr_wrapper {
     top: 0;
     right: 16px;
 }
-body.detail .public > .qr_wrapper img {
+body.detail .public > .qr_wrapper img.qr {
     width: 32px;
 }
-body.detail .public > .qr_wrapper img.zoom {
+body.detail .public > .qr_wrapper img.qr.zoom {
     width: 90%;
     position: fixed;
     top: 0;
     left: 0;
     right: 0;
+}
+body.detail .public > .qr_wrapper .summary {
+    font-size: 0.66rem;
+    margin-top: -4px;
 }
 body.detail .public table.summary tr td.tragedy_set {
     font-style: italic;

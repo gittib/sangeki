@@ -209,7 +209,8 @@ foreach ($oSangeki->character as $name => $val) {
     <div class="public">
         <h2>公開シート</h2>
         <div class="qr_wrapper">
-            <img src="qr/<?= $oSangeki->set ?>.jpg">
+            <img class="qr" src="qr/<?= $oSangeki->set ?>.jpg">
+            <div class="summary">Summary</div>
         </div>
         <span>
             難易度：
