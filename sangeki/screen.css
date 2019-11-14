@@ -265,7 +265,7 @@ body.detail .private .people_count {
     font-size: 0.68rem;
     display: inline-block;
 }
-body.detail .private table.character {
+body.detail .private table.character * {
     font-size: 0.75rem;
 }
 body.detail .private table.init_place td.special_place {
@@ -429,5 +429,8 @@ footer {
 body > footer > div.credit {
     margin-top: 20px;
     padding:12px;
+    font-size: 0.7rem;
+}
+body > footer > div.credit * {
     font-size: 0.7rem;
 }
