@@ -87,6 +87,10 @@ body.sangeki_check h2 span {
 body.sangeki_check form {
     padding-bottom: 32px;
 }
+body.sangeki_check form .submit_button {
+    padding-left: 32px;
+    padding-right: 32px;
+}
 
 body.kyakuhon_list .top_text {
     margin-bottom: 32px;
@@ -128,7 +132,7 @@ body.kyakuhon_list .kyakuhon_list > dl > dd * {
     font-size: 0.75rem;
 }
 body.kyakuhon_list .kyakuhon_list > dl > dd strong {
-    font-size: 2.5em;
+    font-size: 2.2em;
 }
 body.kyakuhon_list .kyakuhon_list > dl > dd .difficulity .tag {
     background-color: black;

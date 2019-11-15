@@ -91,7 +91,7 @@ if (empty($checked)): ?>
             </li>
             <? endforeach; ?>
         </ul>
-        <input type="submit" value="送信">
+        <input class="submit_button" type="submit" value="送信">
     </form>
 </body>
 </html>
