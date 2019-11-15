@@ -5,6 +5,9 @@
     max-width: 960px;
     font-size: 1rem;
 }
+h2, h2 * {
+    font-size: 1.5rem;
+}
 a, a:visited {
     color: #0000EE;
 }
@@ -120,11 +123,12 @@ body.kyakuhon_list .kyakuhon_list > dl > dd {
     padding-bottom: 2px;
     text-align: center;
 }
-body.kyakuhon_list .kyakuhon_list > dl > dd {
+body.kyakuhon_list .kyakuhon_list > dl > dd,
+body.kyakuhon_list .kyakuhon_list > dl > dd * {
     font-size: 0.75rem;
 }
 body.kyakuhon_list .kyakuhon_list > dl > dd strong {
-    font-size: 1.7rem;
+    font-size: 2.5em;
 }
 body.kyakuhon_list .kyakuhon_list > dl > dd .difficulity .tag {
     background-color: black;
