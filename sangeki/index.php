@@ -2,7 +2,7 @@
 require_once('../secret/common.php');
 require_once('../secret/sangeki_check.php');
 exec('ls ../secret/kyakuhon_list/', $files);
-$aPublicScenario = array();
+$aTmp = array();
 foreach ($files as $val) {
     $id = str_replace('.php', '', $val);
     if (strpos($id, '9') === 0) {
@@ -12,8 +12,23 @@ foreach ($files as $val) {
     if (empty($oSangeki) || empty($oSangeki->title) || !empty($oSangeki->secret)) {
         continue;
     }
-    $aPublicScenario[$id] = $oSangeki;
+    $oSangeki->id = $id;
+    $aTmp[$id] = $oSangeki;
     $oSangeki = null;
+}
+$fn = function($a, $b) {
+    $setDiff = $a->id[0] - $b->id[0];  // 惨劇セット昇順
+    $difficulityDiff = $a->difficulity - $b->difficulity;   // 難易度昇順
+    $idDiff = $a->id - $b->id; // ID昇順
+
+    if ($setDiff != 0) return $setDiff;
+    else if ($difficulityDiff != 0) return $difficulityDiff;
+    else return $idDiff;
+};
+usort($aTmp, $fn);
+$aPublicScenario = array();
+foreach ($aTmp as $val) {
+    $aPublicScenario[$val->id] = $val;
 }
 ?>
 <html>
