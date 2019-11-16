@@ -39,7 +39,7 @@ foreach ($aTmp as $val) {
 <body class="kyakuhon_list">
     <div class="top_text">
         <h2><span>ペンスキーの</span><span>脚本置き場へ</span><span>ようこそ。</span></h2>
-        ここにはペンスキーの考えた、惨劇RoopeRオリジナル脚本が置かれてあります。<br>
+        ここにはペンスキーの考えた、惨劇RoopeRオリジナル脚本が置かれてあります。(一部寄稿いただいたものもあります)<br>
         <span class="important_s">なお、惨劇RoopeRの脚本を見てしまうと、主人公としてゲームに参加できなくなる場合があります。</span>
         もちろん、脚本家としては遊べます。公開シート・非公開シート・解説に分けて記載していますので、そのまま利用して遊べるようになっています。
     </div>

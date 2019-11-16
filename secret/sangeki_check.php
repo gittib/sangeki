@@ -65,7 +65,7 @@ if (empty($checked)): ?>
 <body class="sangeki_check">
     <div style="margin-bottom: 16px;">
         <h2><span>ペンスキーの</span><span>脚本置き場へ</span><span>ようこそ。</span></h2>
-        ここにはペンスキーの考えた、惨劇RoopeRオリジナル脚本が置かれてあります。<br>
+        ここにはペンスキーの考えた、惨劇RoopeRオリジナル脚本が置かれてあります。(一部寄稿いただいたものもあります)<br>
         <span style="color:red">なお、惨劇RoopeRの脚本を見てしまうと、ゲームに参加できなくなる場合があります。</span>
         つきましては、下記の問いにお答えください。全問正解した方にのみ脚本をお見せします。
     </div>
