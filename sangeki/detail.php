@@ -131,6 +131,20 @@ function insidentPublicNote($insident) {
     }
 }
 
+function isExistSummaryQr($ruleSetName) {
+    switch ($ruleSetName) {
+    case 'FS':
+    case 'BTX':
+    case 'MZ':
+    case 'MCX':
+    case 'HSA':
+    case 'WM':
+        return true;
+    default:
+        return false;
+    }
+}
+
 if (!isset($_GET['id'])) {
     header('Location: .');
     exit;
@@ -208,10 +222,12 @@ foreach ($oSangeki->character as $name => $val) {
     </div>
     <div class="public">
         <h2>公開シート</h2>
+        <?php if (isExistSummaryQr($oSangeki->set)): ?>
         <div class="qr_wrapper">
             <img class="qr" src="qr/<?= $oSangeki->set ?>.jpg">
             <div class="summary">Summary</div>
         </div>
+        <?php endif; ?>
         <span>
             難易度：
             <span class="difficulity_name"><?= difficulityName($oSangeki->difficulity) ?></span>
