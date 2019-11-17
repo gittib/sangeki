@@ -94,7 +94,7 @@ function getRuleWithNote($sRule) {
     if (strpos($sRule, '/') > 0) {
         // スラッシュで区切るとルールの備考を設定できる（狂った真実とか用）
         list($sRule, $sNote) = explode('/', $sRule);
-        echo e(trim($sRule)) . '<br><span class="note">(' . trim($sNote) . ')</span>';
+        echo e(trim($sRule)) . '<br><span class="note">(' . e(trim($sNote)) . ')</span>';
     } else {
         echo e(trim($sRule));
     }
@@ -281,7 +281,7 @@ foreach ($oSangeki->character as $name => $val) {
             <table class="summary rule">
                 <tr>
                     <th>ルールY</th>
-                    <td><?= e($oSangeki->rule[0]) ?></td>
+                    <td><?= getRuleWithNote($oSangeki->rule[0]) ?></td>
                 </tr>
                 <tr>
                     <th>ルールX1</th>
