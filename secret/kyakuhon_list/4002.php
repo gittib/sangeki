@@ -10,7 +10,7 @@ $oSangeki = (object)array(
         '怪物の暗躍',
         '魔女の呪い',
     ),
-    'special_rule' => "巫女は「少女」でなく「少年」として扱う。",
+    'special_rule' => "",
     'loop' => 4,
     'day' => 6,
     'character' => array(
