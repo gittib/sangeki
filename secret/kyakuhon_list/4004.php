@@ -8,29 +8,30 @@ $oSangeki = (object)array(
     'set' => 'HSA',
     'rule' => array(
         '高貴なる血族',
+        '魔女の呪い',
         '鍵たる少女',
-        '話を聞かない人々',
     ),
-    'special_rule' => "",
+    'special_rule' => "・巫女は少女でなく少年として扱う。\n・最後の戦いは実施しない。",
     'loop' => 5,
     'day' => 5,
     'character' => array(
         '巫女' => array(
-            'role' => 'ミカケダオシ',
+            'role' => 'ウィッチ',
         ),
         '異世界人' => array(
+            'role' => 'ミスリーダー',
+        ),
+        '軍人' => array(
         ),
         '大物' => array(
             'role' => 'ヴァンパイア',
-            'note' => '学校'
+            'note' => '学校',
         ),
         '情報屋' => array(
-            'role' => 'チキンハート',
         ),
         'アイドル' => array(
         ),
         '女の子' => array(
-            'role' => 'ミスリーダー',
         ),
         '委員長' => array(
             'role' => 'キーパーソン',
@@ -41,8 +42,8 @@ $oSangeki = (object)array(
     ),
     'incident' => array(
         1 => array(
-            'name' => '不安拡大',
-            'criminal' => '女の子',
+            'name' => '呪いの目覚め',
+            'criminal' => '学校の群像',
         ),
     ),
     'advice' => (object)array(
@@ -52,7 +53,8 @@ $oSangeki = (object)array(
         'template' => array(
             '1ループ目' => array(
                 1 => array(
-                    '女子学生' => '移動横',
+                    '女子学生' => '暗躍+2',
+                    '学校' => '暗躍+1',
                 ),
             ),
         ),
