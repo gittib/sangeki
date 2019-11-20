@@ -145,7 +145,93 @@ function isExistSummaryQr($ruleSetName) {
     }
 }
 function rolesCountCheck($oSangeki) {
+    $aErrorMessage = array();
     $aRoleCount = array();
+
+    $checkSet = function ($rule) use (&$aErrorMessage) {
+        switch ($rule) {
+        case '殺人計画':
+            if (!in_array($oSangeki->set, array('BTX', 'MCX'))) $aErrorMessage[] = "「$rule」というルールは存在しません。";
+            break;
+        case '封印されしもの':
+            if (!in_array($oSangeki->set, array('BTX', 'MZ'))) $aErrorMessage[] = "「$rule」というルールは存在しません。";
+            break;
+        case '僕と契約しようよ':
+        case '未来改変プラン':
+        case '巨大時限爆弾Xの存在':
+        case '友情サークル':
+        case '妄想拡大ウイルス':
+        case '妄想拡大ウィルス':
+        case '因果の糸':
+        case '不定因子χ':
+            if (!in_array($oSangeki->set, array('BTX'))) $aErrorMessage[] = "「$rule」というルールは存在しません。";
+            break;
+        case 'シークレットレコード':
+        case '漢の戦い':
+        case '忍び寄る魔手':
+        case '因果の絆':
+        case '不定因子χ改':
+        case '憎愛スパイラル':
+        case '魔女のお茶会':
+        case '神のサイコロ':
+        case '死のショウタイム':
+        case '通わぬ心':
+        case '滅亡を謳うもの':
+            if (!in_array($oSangeki->set, array('MZ'))) $aErrorMessage[] = "「$rule」というルールは存在しません。";
+            break;
+        case '組み重なり事件キルト':
+        case 'タイトロープ上の計画':
+        case '黒の学園':
+        case 'ストリキニーネの雫':
+        case '隔離病棟サイコ':
+        case '火薬の香り':
+        case '愚者のダンス':
+        case '私は名探偵':
+        case '絶対の意思':
+        case '双子のトリック':
+            if (!in_array($oSangeki->set, array('MCX'))) $aErrorMessage[] = "「$rule」というルールは存在しません。";
+            break;
+        case '高貴なる血族':
+        case '月夜の獣':
+        case '夜霧の悪夢':
+        case '墓所より出でしもの':
+        case '呪われし地':
+        case '怪物の暗躍':
+        case '一癖あるヤツラ':
+        case '魔女の呪い':
+        case '鍵たる少女':
+        case '恐慌と妄執と':
+        case '話を聞かない人々':
+            if (!in_array($oSangeki->set, array('HSA'))) $aErrorMessage[] = "「$rule」というルールは存在しません。";
+            break;
+        case '外なる神への大合唱':
+        case 'だごん様の御言葉':
+        case '黄衣の王':
+        case '巨大時限爆弾Yの存在':
+        case '血塗られた儀式':
+        case '抗うものたち':
+        case '見てしまった人々':
+        case '偉大なる種族':
+        case '深き都の囁き':
+        case '無貌の神':
+        case '狂った真実':
+            if (!in_array($oSangeki->set, array('WM'))) $aErrorMessage[] = "「$rule」というルールは存在しません。";
+            break;
+        case '不穏な噂':
+            if (!in_array($oSangeki->set, array('BTX', 'WM'))) $aErrorMessage[] = "「$rule」というルールは存在しません。";
+            break;
+        case '恋愛風景':
+            if (!in_array($oSangeki->set, array('BTX', 'HSA'))) $aErrorMessage[] = "「$rule」というルールは存在しません。";
+            break;
+        case '潜む殺人鬼':
+            if (!in_array($oSangeki->set, array('BTX', 'MCX'))) $aErrorMessage[] = "「$rule」というルールは存在しません。";
+            break;
+        default:
+            $aErrorMessage[] = "「$sRule」というルールは存在しません。";
+            break;
+        }
+    };
+
     $addRole = function ($role) use (&$aRoleCount) {
         if (!isset($aRoleCount[$role])) {
             $aRoleCount[$role] = 1;
@@ -168,9 +254,10 @@ function rolesCountCheck($oSangeki) {
         }
     };
 
-    foreach ($oSangeki->rule as $sRule) {
-        $aTmp = explode('/', $sRule);
-        switch (trim($aTmp[0])) {
+    foreach ($oSangeki->rule as $s) {
+        $aTmp = explode('/', $s);
+        $sRule = trim($aTmp[0]);
+        switch ($sRule) {
         case '殺人計画':
             $addRole('キーパーソン');
             $addRole('クロマク');
@@ -377,10 +464,12 @@ function rolesCountCheck($oSangeki) {
         case '狂った真実':
             $addRole('パラノイア');
             break;
+        default:
+            $aErrorMessage[] = "「$sRule」というルールは存在しません。";
+            break;
         }
     }
 
-    $aErrorMessage = array();
     foreach ($oSangeki->character as $name => $chara) {
         if (empty($chara['role']) || $chara['role'] == 'パーソン') continue;
         $role = $chara['role'];
