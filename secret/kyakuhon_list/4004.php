@@ -11,7 +11,7 @@ $oSangeki = (object)array(
         '魔女の呪い',
         '鍵たる少女',
     ),
-    'special_rule' => "・巫女は少女でなく少年として扱う。\n・最後の戦いは実施しない。",
+    'special_rule' => "巫女は少女でなく少年として扱う。",
     'loop' => 5,
     'day' => 5,
     'character' => array(
