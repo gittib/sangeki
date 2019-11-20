@@ -156,7 +156,7 @@ function rolesCountCheck($oSangeki) {
         case '封印されしもの':
             if (!in_array($oSangeki->set, array('BTX', 'MZ'))) $aErrorMessage[] = "「{$rule}」というルールは存在しません。";
             break;
-        case '僕と契約しようよ':
+        case '僕と契約しようよ！':
         case '未来改変プラン':
         case '巨大時限爆弾Xの存在':
         case '友情サークル':
@@ -268,7 +268,6 @@ function rolesCountCheck($oSangeki) {
             $addRole('クロマク');
             $addRole('カルティスト');
             break;
-        case '僕と契約しようよ':
         case '僕と契約しようよ！':
         case '鍵たる少女':
             $addRole('キーパーソン');
