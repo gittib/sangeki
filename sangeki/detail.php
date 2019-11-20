@@ -163,7 +163,7 @@ function rolesCountCheck($oSangeki) {
             if ($aRoleCount[$role] > 1) $aRoleCount[$role] = 1;
             break;
         }
-    }
+    };
 
     foreach ($oSangeki->rule as $sRule) {
         switch (explode('/', $sRule)[0]) {
