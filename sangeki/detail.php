@@ -688,10 +688,12 @@ $aErrorMessage = rolesCountCheck($oSangeki);
                     <th>ルールX1</th>
                     <td><?= getRuleWithNote($oSangeki->rule[1]) ?></td>
                 </tr>
+                <?php if ($oSangeki->set != 'FS'): ?>
                 <tr>
                     <th>ルールX2</th>
                     <td><?= getRuleWithNote($oSangeki->rule[2]) ?></td>
                 </tr>
+                <?php endif; ?>
             </table>
 
             <h3 class="people_title">キャラクター一覧</h3>
