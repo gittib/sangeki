@@ -151,10 +151,16 @@ function rolesCountCheck($oSangeki) {
     $checkSet = function ($rule) use (&$aErrorMessage, $oSangeki) {
         switch ($rule) {
         case '殺人計画':
-            if (!in_array($oSangeki->set, array('BTX', 'MCX'))) $aErrorMessage[] = "「{$rule}」というルールは存在しません。";
+            if (!in_array($oSangeki->set, array('FS', 'BTX', 'MCX'))) $aErrorMessage[] = "「{$rule}」というルールは存在しません。";
             break;
         case '封印されしもの':
             if (!in_array($oSangeki->set, array('BTX', 'MZ'))) $aErrorMessage[] = "「{$rule}」というルールは存在しません。";
+            break;
+        case '復讐者の灯火':
+        case '守るべき場所':
+        case '切り裂き魔の影':
+        case '最低の却本':
+            if (!in_array($oSangeki->set, array('FS'))) $aErrorMessage[] = "「{$rule}」というルールは存在しません。";
             break;
         case '僕と契約しようよ！':
         case '未来改変プラン':
@@ -263,6 +269,23 @@ function rolesCountCheck($oSangeki) {
             $addRole('キーパーソン');
             $addRole('クロマク');
             $addRole('キラー');
+            break;
+        case '復讐者の灯火':
+            $addRole('クロマク');
+            break;
+        case '守るべき場所':
+            $addRole('キーパーソン');
+            $addRole('カルティスト');
+            break;
+        case '切り裂き魔の影':
+            $addRole('ミスリーダー');
+            $addRole('シリアルキラー');
+            break;
+        case '最低の却本':
+            $addRole('ミスリーダー');
+            $addRole('マイナス');
+            $addRole('マイナス');
+            $addRole('フレンド');
             break;
         case '封印されしもの':
             $addRole('クロマク');
@@ -487,7 +510,9 @@ function rolesCountCheck($oSangeki) {
         if ($n < 0) {
             $aErrorMessage[] = $roleName . 'が多すぎます。';
         } else if ($n > 0) {
-            $aErrorMessage[] = $roleName . 'が足りません。';
+            if ($roleName != 'マイナス') {
+                $aErrorMessage[] = $roleName . 'が足りません。';
+            }
         }
     }
 
