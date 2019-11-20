@@ -146,7 +146,7 @@ function isExistSummaryQr($ruleSetName) {
 }
 function rolesCountCheck($oSangeki) {
     $aRoleCount = array();
-    $addRole = function ($role) use ($aRoleCount) {
+    $addRole = function ($role) use (&$aRoleCount) {
         if (!isset($aRoleCount[$role])) {
             $aRoleCount[$role] = 1;
         } else {
@@ -166,7 +166,8 @@ function rolesCountCheck($oSangeki) {
     };
 
     foreach ($oSangeki->rule as $sRule) {
-        switch (explode('/', $sRule)[0]) {
+        $aTmp = explode('/', $sRule);
+        switch (trim($aTmp[0])) {
         case '殺人計画':
             $addRole('キーパーソン');
             $addRole('クロマク');
