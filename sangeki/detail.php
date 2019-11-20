@@ -144,6 +144,265 @@ function isExistSummaryQr($ruleSetName) {
         return false;
     }
 }
+function rolesCountCheck($oSangeki) {
+    $aRoleCount = array();
+    $addRole = function ($role) use ($aRoleCount) {
+        if (!isset$(aRoleCount[$role])) {
+            $aRoleCount[$role] = 1;
+        } else {
+            $aRoleCount[$role]++;
+        }
+
+        // 上限チェック
+        switch ($role) {
+        case 'フレンド':
+            if ($aRoleCount[$role] > 2) $aRoleCount[$role] = 2;
+            break;
+        case 'ミスリーダー':
+        case 'ゴースト':
+            if ($aRoleCount[$role] > 1) $aRoleCount[$role] = 1;
+            break;
+        }
+    }
+
+    foreach ($oSangeki->rule as $sRule) {
+        switch (explode('/', $sRule)[0]) {
+        case '殺人計画':
+            $addRole('キーパーソン');
+            $addRole('クロマク');
+            $addRole('キラー');
+            break;
+        case '封印されしもの':
+            $addRole('クロマク');
+            $addRole('カルティスト');
+            break;
+        case '僕と契約しようよ':
+        case '僕と契約しようよ！':
+        case '鍵たる少女':
+            $addRole('キーパーソン');
+            break;
+        case '未来改変プラン':
+            $addRole('カルティスト');
+            $addRole('タイムトラベラー');
+            break;
+        case '巨大時限爆弾Xの存在':
+            $addRole('ウィッチ');
+            break;
+        case 'シークレットレコード':
+            $addRole('キーパーソン');
+            $addRole('クロマク');
+            $addRole('ミスリーダー');
+            break;
+        case '漢の戦い':
+            $addRole('ニンジャ');
+            break;
+        case '忍び寄る魔手':
+            $addRole('キーパーソン');
+            $addRole('カルティスト');
+            $addRole('ニンジャ');
+            break;
+        case '因果の絆':
+            $addRole('シリアルキラー');
+            $addRole('フレンド');
+            $addRole('ミスリーダー');
+            break;
+        case '組み重なり事件キルト':
+            $addRole('ミスリーダー');
+            $addRole('フール');
+            break;
+        case 'タイトロープ上の計画':
+            $addRole('キラー');
+            $addRole('クロマク');
+            break;
+        case '黒の学園':
+            $addRole('クロマク');
+            break;
+        case 'ストリキニーネの雫':
+            $addRole('キーパーソン');
+            $addRole('フール');
+            $addRole('ドリッパー');
+            break;
+        case '高貴なる血族':
+            $addRole('キーパーソン');
+            $addRole('ヴァンパイア');
+            break;
+        case '月夜の獣':
+            $addRole('ウェアウルフ');
+            break;
+        case '夜霧の悪夢':
+            $addRole('ナイトメア');
+            break;
+        case '呪われし地':
+            $addRole('ミカケダオシ');
+            $addRole('ゴースト');
+            break;
+        case '外なる神への大合唱':
+            $addRole('キーパーソン');
+            $addRole('ヒトハシラ');
+            $addRole('イモータル');
+            break;
+        case 'だごん様の御言葉':
+            $addRole('キーパーソン');
+            $addRole('カルティスト');
+            $addRole('ディープワン');
+            break;
+        case '黄衣の王':
+            $addRole('カルティスト');
+            $addRole('ヒトハシラ');
+            break;
+        case '巨大時限爆弾Yの存在':
+            $addRole('ウィッチ');
+            $addRole('ディープワン');
+            break;
+        case '血塗られた儀式':
+            $addRole('ウィッチ');
+            $addRole('イモータル');
+            break;
+        case '不穏な噂':
+        case '妄想拡大ウイルス':
+        case '妄想拡大ウィルス':
+        case '怪物の暗躍':
+            $addRole('ミスリーダー');
+            break;
+        case '友情サークル':
+            $addRole('ミスリーダー');
+            $addRole('フレンド');
+            $addRole('フレンド');
+            break;
+        case '恋愛風景':
+            $addRole('メインラバーズ');
+            $addRole('ラバーズ');
+            break;
+        case '潜む殺人鬼':
+            $addRole('シリアルキラー');
+            $addRole('フレンド');
+            break;
+        case '不定因子χ':
+        case '不定因子χ改':
+            $addRole('ファクター');
+            break;
+        case '憎愛スパイラル':
+            $addRole('フレンド');
+            $addRole('ゼッタイシャ');
+            break;
+        case '魔女のお茶会':
+            $addRole('フレンド');
+            $addRole('ミスリーダー');
+            $addRole('ウィッチ');
+            $addRole('ウィッチ');
+            break;
+        case '神のサイコロ':
+            $addRole('シリアルキラー');
+            $addRole('ゼッタイシャ');
+            break;
+        case '死のショウタイム':
+            $addRole('マジシャン');
+            $addRole('イモータル');
+            break;
+        case '通わぬ心':
+            $addRole('マジシャン');
+            $addRole('ミスリーダー');
+            break;
+        case '滅亡を謳うもの':
+            $addRole('プロフェシー');
+            break;
+        case '隔離病棟サイコ':
+            $addRole('ミスリーダー');
+            $addRole('パラノイア');
+            $addRole('セラピスト');
+            break;
+        case '火薬の香り':
+            $addRole('シリアルキラー');
+            break;
+        case '愚者のダンス':
+            $addRole('フレンド');
+            $addRole('フール');
+            break;
+        case '私は名探偵':
+            $addRole('ミスリーダー');
+            $addRole('フレンド');
+            $addRole('メイタンテイ');
+            break;
+        case '絶対の意思':
+            $addRole('ゼッタイシャ');
+            break;
+        case '双子のトリック':
+            $addRole('ツイン');
+            $addRole('パラノイア');
+            break;
+        case '一癖あるヤツラ':
+            $addRole('ゴースト');
+            $addRole('メインラバーズ');
+            $addRole('シリアルキラー');
+            break;
+        case '魔女の呪い':
+            $addRole('ウィッチ');
+            $addRole('ミスリーダー');
+            break;
+        case '恐慌と妄執と':
+            $addRole('ウィッチ');
+            $addRole('シリアルキラー');
+            $addRole('チキンハート');
+            break;
+        case '話を聞かない人々':
+            $addRole('ミスリーダー');
+            $addRole('ミカケダオシ');
+            $addRole('チキンハート');
+            break;
+        case '抗うものたち':
+            $addRole('ミスリーダー');
+            $addRole('ウィザード');
+            $addRole('シリアルキラー');
+            break;
+        case '見てしまった人々':
+            $addRole('ミスリーダー');
+            $addRole('モクゲキシャ');
+            break;
+        case '偉大なる種族':
+            $addRole('タイムトラベラー');
+            $addRole('シリアルキラー');
+            break;
+        case '深き都の囁き':
+            $addRole('ディープワン');
+            $addRole('パラノイア');
+            break;
+        case '無貌の神':
+            $addRole('フェイスレス');
+            $addRole('ウィザード');
+            break;
+        case '狂った真実':
+            $addRole('パラノイア');
+            break;
+        }
+    }
+
+    $aErrorMessage = array();
+    foreach ($oSangeki->character as $name => $chara) {
+        if (empty($chara['role'])) continue;
+        $role = $chara['role'];
+        if ($name == 'イレギュラー') {
+            if (!empty($aRoleCount[$role])) {
+                $aRoleCount[$role]--;
+                $aErrorMessage[] = 'イレギュラーの役職が不正です。';
+            }
+        } else {
+            if (empty($aRoleCount[$role])) {
+                $aRoleCount[$role] = -1;
+            } else {
+                $aRoleCount[$role]--;
+            }
+        }
+    }
+    foreach ($aRoleCount as $roleName => $n) {
+        if ($n < 0) {
+            $aErrorMessage[] = $roleName . 'が多すぎます。';
+        } else if ($n > 0) {
+            $aErrorMessage[] = $roleName . 'が足りません。';
+        }
+    }
+
+    return $aErrorMessage;
+}
 
 if (!isset($_GET['id'])) {
     header('Location: .');
@@ -210,6 +469,7 @@ foreach ($oSangeki->character as $name => $val) {
         $aInitPlace[initPos($name)][] = $name;
     }
 }
+$aErrorMessage = rolesCountCheck($oSangeki);
 ?>
 <html>
 <head>
@@ -291,6 +551,14 @@ foreach ($oSangeki->character as $name => $val) {
     </div>
     <button class="toggle_private">非公開シート、脚本家の指針を表示</button>
     <div class="private_sheet_wrapper">
+        <?php if (!empty($aErrorMessage)): ?>
+            <span>役職の構成がおかしいようです。<br>特殊ルールによる変更が無いかを確認した上でご利用下さい。</span>
+            <ul class="error_message">
+            <?php foreach ($aErrorMessage as $sError): ?>
+                <li><?= $sError ?></li>
+            <?php endforeach; ?>
+            </ul>
+        <?php endif; ?>
         <div class="private">
             <h2 class="private_sheet">非公開シート</h2>
             <h3 class="title"><?= e($oSangeki->title) ?></h3>
