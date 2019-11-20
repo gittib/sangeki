@@ -16,8 +16,27 @@ foreach ($files as $val) {
     $aTmp[$id] = $oSangeki;
     $oSangeki = null;
 }
+function sangekiSetIndex($o) {
+    switch ($o->set) {
+    case 'FS':
+        return 0;
+    case 'BTX':
+        return 1;
+    case 'MZ':
+        return 2;
+    case 'MC':
+    case 'MCX':
+        return 3;
+    case 'HSA':
+        return 4;
+    case 'WM':
+        return 5;
+    default:
+        return 99;
+    }
+}
 $fn = function($a, $b) {
-    $setDiff = $a->id[0] - $b->id[0];  // 惨劇セット昇順
+    $setDiff = sangekiSetIndex($a) - sangekiSetIndex($b);  // 惨劇セット昇順
     $difficulityDiff = $a->difficulity - $b->difficulity;   // 難易度昇順
     $idDiff = $a->id - $b->id; // ID昇順
 
