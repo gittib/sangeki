@@ -6,7 +6,7 @@ $oSangeki = (object)array(
     'difficulity' => 4,
     'set' => 'BTX',
     'rule' => array(
-        '僕と契約しようよ',
+        '僕と契約しようよ！',
         '友情サークル',
         '恋愛風景',
     ),
