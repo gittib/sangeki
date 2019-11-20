@@ -7,7 +7,7 @@ $oSangeki = (object)array(
     'set' => 'FS',
     'rule' => array(
         '復讐者の灯火',
-        '最低な却本',
+        '最低の却本',
     ),
     'loop' => 4,
     'day' => 4,
