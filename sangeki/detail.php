@@ -539,6 +539,9 @@ if (empty($oSangeki)) {
     exit;
 }
 switch ($oSangeki->set) {
+    case 'FS':
+        $oSangeki->rule_str = 'First Steps';
+        break;
     case 'BTX':
         $oSangeki->rule_str = 'Basic Tragedy Χ';
         break;

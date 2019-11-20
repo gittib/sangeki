@@ -22,7 +22,7 @@ $oSangeki = (object)array(
         '医者' => array(
         ),
         '情報屋' => array(
-            'role' => 'マイナス',
+            'role' => 'フレンド',
         ),
         '刑事' => array(
         ),
