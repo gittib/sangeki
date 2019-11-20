@@ -256,6 +256,13 @@ body.detail .private_sheet_wrapper {
     margin-right: auto;
     padding: 8px;
 }
+body.detail .private_sheet_wrapper .private.error ul.error_message {
+    margin-top: 8px;
+}
+body.detail .private_sheet_wrapper .private.error ul.error_message > li {
+    margin-left: 32px;
+    list-style: disc;
+}
 body.detail .private h2.private_sheet {
     font-size: 1rem;
 }

@@ -379,7 +379,7 @@ function rolesCountCheck($oSangeki) {
 
     $aErrorMessage = array();
     foreach ($oSangeki->character as $name => $chara) {
-        if (empty($chara['role'])) continue;
+        if (empty($chara['role']) || $chara['role'] == 'パーソン') continue;
         $role = $chara['role'];
         if ($name == 'イレギュラー') {
             if (isset($aRoleCount[$role])) {
