@@ -151,10 +151,10 @@ function rolesCountCheck($oSangeki) {
     $checkSet = function ($rule) use (&$aErrorMessage, $oSangeki) {
         switch ($rule) {
         case '殺人計画':
-            if (!in_array($oSangeki->set, array('BTX', 'MCX'))) $aErrorMessage[] = "「$rule」というルールは存在しません。";
+            if (!in_array($oSangeki->set, array('BTX', 'MCX'))) $aErrorMessage[] = "「{$rule}」というルールは存在しません。";
             break;
         case '封印されしもの':
-            if (!in_array($oSangeki->set, array('BTX', 'MZ'))) $aErrorMessage[] = "「$rule」というルールは存在しません。";
+            if (!in_array($oSangeki->set, array('BTX', 'MZ'))) $aErrorMessage[] = "「{$rule}」というルールは存在しません。";
             break;
         case '僕と契約しようよ':
         case '未来改変プラン':
@@ -164,7 +164,7 @@ function rolesCountCheck($oSangeki) {
         case '妄想拡大ウィルス':
         case '因果の糸':
         case '不定因子χ':
-            if (!in_array($oSangeki->set, array('BTX'))) $aErrorMessage[] = "「$rule」というルールは存在しません。";
+            if (!in_array($oSangeki->set, array('BTX'))) $aErrorMessage[] = "「{$rule}」というルールは存在しません。";
             break;
         case 'シークレットレコード':
         case '漢の戦い':
@@ -177,7 +177,7 @@ function rolesCountCheck($oSangeki) {
         case '死のショウタイム':
         case '通わぬ心':
         case '滅亡を謳うもの':
-            if (!in_array($oSangeki->set, array('MZ'))) $aErrorMessage[] = "「$rule」というルールは存在しません。";
+            if (!in_array($oSangeki->set, array('MZ'))) $aErrorMessage[] = "「{$rule}」というルールは存在しません。";
             break;
         case '組み重なり事件キルト':
         case 'タイトロープ上の計画':
@@ -189,7 +189,7 @@ function rolesCountCheck($oSangeki) {
         case '私は名探偵':
         case '絶対の意思':
         case '双子のトリック':
-            if (!in_array($oSangeki->set, array('MCX'))) $aErrorMessage[] = "「$rule」というルールは存在しません。";
+            if (!in_array($oSangeki->set, array('MCX'))) $aErrorMessage[] = "「{$rule}」というルールは存在しません。";
             break;
         case '高貴なる血族':
         case '月夜の獣':
@@ -202,7 +202,7 @@ function rolesCountCheck($oSangeki) {
         case '鍵たる少女':
         case '恐慌と妄執と':
         case '話を聞かない人々':
-            if (!in_array($oSangeki->set, array('HSA'))) $aErrorMessage[] = "「$rule」というルールは存在しません。";
+            if (!in_array($oSangeki->set, array('HSA'))) $aErrorMessage[] = "「{$rule}」というルールは存在しません。";
             break;
         case '外なる神への大合唱':
         case 'だごん様の御言葉':
@@ -215,19 +215,19 @@ function rolesCountCheck($oSangeki) {
         case '深き都の囁き':
         case '無貌の神':
         case '狂った真実':
-            if (!in_array($oSangeki->set, array('WM'))) $aErrorMessage[] = "「$rule」というルールは存在しません。";
+            if (!in_array($oSangeki->set, array('WM'))) $aErrorMessage[] = "「{$rule}」というルールは存在しません。";
             break;
         case '不穏な噂':
-            if (!in_array($oSangeki->set, array('BTX', 'WM'))) $aErrorMessage[] = "「$rule」というルールは存在しません。";
+            if (!in_array($oSangeki->set, array('BTX', 'WM'))) $aErrorMessage[] = "「{$rule}」というルールは存在しません。";
             break;
         case '恋愛風景':
-            if (!in_array($oSangeki->set, array('BTX', 'HSA'))) $aErrorMessage[] = "「$rule」というルールは存在しません。";
+            if (!in_array($oSangeki->set, array('BTX', 'HSA'))) $aErrorMessage[] = "「{$rule}」というルールは存在しません。";
             break;
         case '潜む殺人鬼':
-            if (!in_array($oSangeki->set, array('BTX', 'MCX'))) $aErrorMessage[] = "「$rule」というルールは存在しません。";
+            if (!in_array($oSangeki->set, array('BTX', 'MCX'))) $aErrorMessage[] = "「{$rule}」というルールは存在しません。";
             break;
         default:
-            $aErrorMessage[] = "「$sRule」というルールは存在しません。";
+            $aErrorMessage[] = "「{$rule}」というルールは存在しません。";
             break;
         }
     };
