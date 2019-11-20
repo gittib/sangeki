@@ -257,6 +257,7 @@ function rolesCountCheck($oSangeki) {
     foreach ($oSangeki->rule as $s) {
         $aTmp = explode('/', $s);
         $sRule = trim($aTmp[0]);
+        $checkSet($sRule);
         switch ($sRule) {
         case '殺人計画':
             $addRole('キーパーソン');
@@ -463,9 +464,6 @@ function rolesCountCheck($oSangeki) {
             break;
         case '狂った真実':
             $addRole('パラノイア');
-            break;
-        default:
-            $aErrorMessage[] = "「$sRule」というルールは存在しません。";
             break;
         }
     }
