@@ -147,7 +147,7 @@ function isExistSummaryQr($ruleSetName) {
 function rolesCountCheck($oSangeki) {
     $aRoleCount = array();
     $addRole = function ($role) use ($aRoleCount) {
-        if (!isset$(aRoleCount[$role])) {
+        if (!isset($aRoleCount[$role])) {
             $aRoleCount[$role] = 1;
         } else {
             $aRoleCount[$role]++;
