@@ -194,7 +194,7 @@ function rolesCountCheck($oSangeki) {
         case '高貴なる血族':
         case '月夜の獣':
         case '夜霧の悪夢':
-        case '墓所より出でしもの':
+        case '墓所より出でし者':
         case '呪われし地':
         case '怪物の暗躍':
         case '一癖あるヤツラ':
