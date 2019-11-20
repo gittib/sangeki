@@ -148,7 +148,7 @@ function rolesCountCheck($oSangeki) {
     $aErrorMessage = array();
     $aRoleCount = array();
 
-    $checkSet = function ($rule) use (&$aErrorMessage) {
+    $checkSet = function ($rule) use (&$aErrorMessage, $oSangeki) {
         switch ($rule) {
         case '殺人計画':
             if (!in_array($oSangeki->set, array('BTX', 'MCX'))) $aErrorMessage[] = "「$rule」というルールは存在しません。";
