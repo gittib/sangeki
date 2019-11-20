@@ -159,7 +159,10 @@ function rolesCountCheck($oSangeki) {
             if ($aRoleCount[$role] > 2) $aRoleCount[$role] = 2;
             break;
         case 'ミスリーダー':
+        case 'フール':
         case 'ゴースト':
+        case 'ディープワン':
+        case 'ウィザード':
             if ($aRoleCount[$role] > 1) $aRoleCount[$role] = 1;
             break;
         }
