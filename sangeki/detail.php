@@ -671,7 +671,7 @@ $aErrorMessage = rolesCountCheck($oSangeki);
     <div class="private_sheet_wrapper">
         <?php if (!empty($aErrorMessage)): ?>
         <div class="private error">
-            <span>役職の構成がおかしいようです。<br>特殊ルールによる変更が無いかを確認した上でご利用下さい。</span>
+            <span>役職の構成がおかしいようです。<br>特殊ルールによっては問題ない場合もあるため、確認した上でご利用下さい。</span>
             <ul class="error_message">
             <?php foreach ($aErrorMessage as $sError): ?>
                 <li><?= $sError ?></li>
