@@ -382,7 +382,7 @@ function rolesCountCheck($oSangeki) {
         if (empty($chara['role'])) continue;
         $role = $chara['role'];
         if ($name == 'イレギュラー') {
-            if (!empty($aRoleCount[$role])) {
+            if (isset($aRoleCount[$role])) {
                 $aRoleCount[$role]--;
                 $aErrorMessage[] = 'イレギュラーの役職が不正です。';
             }
@@ -553,12 +553,14 @@ $aErrorMessage = rolesCountCheck($oSangeki);
     <button class="toggle_private">非公開シート、脚本家の指針を表示</button>
     <div class="private_sheet_wrapper">
         <?php if (!empty($aErrorMessage)): ?>
+        <div class="private error">
             <span>役職の構成がおかしいようです。<br>特殊ルールによる変更が無いかを確認した上でご利用下さい。</span>
             <ul class="error_message">
             <?php foreach ($aErrorMessage as $sError): ?>
                 <li><?= $sError ?></li>
             <?php endforeach; ?>
             </ul>
+        </div>
         <?php endif; ?>
         <div class="private">
             <h2 class="private_sheet">非公開シート</h2>
