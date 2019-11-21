@@ -178,7 +178,7 @@ function rolesCountCheck($oSangeki) {
     foreach ($oSangeki->rule as $s) {
         $aTmp = explode('/', $s);
         $sRule = trim($aTmp[0]);
-        if (empty($aRuleRoleMaster[$oSangeki->set][$sRule])) {
+        if (!isset($aRuleRoleMaster[$oSangeki->set][$sRule])) {
             $aErrorMessage[] = "「{$sRule}」というルールはありません";
         } else {
             foreach ($aRuleRoleMaster[$oSangeki->set][$sRule] as $sRole) {
