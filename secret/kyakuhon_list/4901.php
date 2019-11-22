@@ -23,11 +23,13 @@ $oSangeki = (object)array(
         ),
         '軍人' => array(
         ),
+        '学者' => array(
+            'role' => 'ウィッチ',
+        ),
         'A.I.' => array(
             'role' => 'メインラバーズ',
         ),
         '情報屋' => array(
-            'role' => 'ウィッチ',
         ),
         'アイドル' => array(
             'role' => 'ラバーズ',
@@ -49,17 +51,22 @@ $oSangeki = (object)array(
             'name' => '噂の御呪い',
             'criminal' => 'アイドル',
         ),
+        4 => array(
+            'name' => '不安拡大',
+            'criminal' => 'A.I.',
+        ),
         5 => array(
             'name' => '行方不明',
-            'criminal' => '女子学生',
+            'criminal' => '巫女',
         ),
     ),
     'advice' => (object)array(
-        'notice' => 'プロモーションカード「女の子」を使用します。',
+        'notice' => "プロモーションカード「女の子」と「学者」を使用します。\n無い場合は「お嬢様」と「医者」で代用可能です。",
         'summary' => "",
         'detail' => "",
         'template' => array(
             '1ループ目' => array(
+                0 => '呪いカードは置かない',
                 1 => array(
                     '女子学生' => '暗躍+2',
                     '学校' => '暗躍+1',
