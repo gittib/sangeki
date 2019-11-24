@@ -28,12 +28,8 @@ $oSangeki = (object)array(
             'note' => '天王寺裕吾',
         ),
         '学者' => array(
-            'role' => 'ミスリーダー',
-            'note' => 'Dr.中鉢',
-        ),
-        'A.I.' => array(
             'role' => 'ミカケダオシ',
-            'note' => '橋田至',
+            'note' => 'Dr.中鉢',
         ),
         '情報屋' => array(
             'role' => 'チキンハート',

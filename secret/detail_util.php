@@ -22,6 +22,8 @@ function roleSpec ($r) {
         case 'ナイトメア':
         case 'ディープワン':
         case 'フェイスレス':
+        case 'イレイザー':
+        case 'アベンジャー':
             $sYuukouMushi = '<span class="black_heart">&#x1f5a4;</span>';
             break;
     }
@@ -35,6 +37,8 @@ function roleSpec ($r) {
         case 'ミカケダオシ':
         case 'ヒトハシラ':
         case 'フェイスレス':
+        case 'イレイザー':
+        case 'パイドパイパー':
             $sFushi = '★';
             break;
     }
@@ -86,6 +90,50 @@ function initPos($name) {
         case '手先':
         default:
             return 'other';
+    }
+}
+function characterSpec($name) {
+    switch ($name) {
+        case '異世界人':
+            return array('少女');
+        case '男子学生':
+        case 'イレギュラー':
+            return array('学生', '少年');
+        case '巫女':
+        case 'アイドル':
+        case '女子学生':
+        case 'お嬢様':
+        case '委員長':
+        case '女の子':
+        case '転校生':
+            return array('学生', '少女');
+        case '黒猫':
+            return array('動物');
+        case '幻想':
+            return array('虚構', '女性');
+        case '入院患者':
+            return array('少年');
+        case '医者':
+        case '軍人':
+        case '学者':
+        case 'サラリーマン':
+        case '刑事':
+        case '大物':
+        case 'マスコミ':
+        case '鑑識官':
+        case '手先':
+            return array('大人', '男性');
+        case 'ナース':
+        case '情報屋':
+        case '教師':
+            return array('大人', '女性');
+        case 'A.I.':
+        case 'AI':
+            return array('造物');
+        case '神格':
+            return array('男性', '女性');
+        default:
+            return array();
     }
 }
 function getRuleWithNote($sRule) {
@@ -146,6 +194,8 @@ function isExistSummaryQr($ruleSetName) {
 function rolesCountCheck($oSangeki) {
     require(dirname(__FILE__) . '/rule_role_master.php');
 
+    $aRuleList = array();
+    $aRoleCharacter = array();
     $aErrorMessage = array();
     $aRoleCount = array();
 
@@ -166,6 +216,8 @@ function rolesCountCheck($oSangeki) {
         case 'ゴースト':
         case 'ディープワン':
         case 'ウィザード':
+        case 'センドウシャ':
+        case 'トラブルメイカー':
             if ($aRoleCount[$role] > 1) $aRoleCount[$role] = 1;
             break;
         }
@@ -181,6 +233,7 @@ function rolesCountCheck($oSangeki) {
         if (!isset($aRuleRoleMaster[$oSangeki->set][$sRule])) {
             $aErrorMessage[] = "「{$sRule}」というルールはありません";
         } else {
+            $aRuleList[] = $sRule;
             foreach ($aRuleRoleMaster[$oSangeki->set][$sRule] as $sRole) {
                 $addRole($sRole);
             }
@@ -202,13 +255,63 @@ function rolesCountCheck($oSangeki) {
                 $aRoleCount[$role]--;
             }
         }
+
+        if (!isset($aRoleCharacter[$role])) {
+            $aRoleCharacter[$role] = array();
+        }
+        $aRoleCharacter[$role][] = $name;
     }
     foreach ($aRoleCount as $roleName => $n) {
         if ($n < 0) {
             $aErrorMessage[] = $roleName . 'が多すぎます。';
         } else if ($n > 0) {
-            if ($roleName != 'マイナス') {
+            if ($roleName == 'マイナス' && in_array('最低の却本', $aRuleList)) {
+                // 最低の却本なら、マイナスの人数は足りなくてもOK
+            } else {
                 $aErrorMessage[] = $roleName . 'が足りません。';
+            }
+        }
+    }
+
+    $getCharacters = function ($role) use ($aRoleCharacter) {
+        return isset($aRoleCharacter[$role]) ? $aRoleCharacter[$role] : array();
+    };
+    if (in_array('僕と契約しようよ！', $aRuleList) || in_array('鍵たる少女', $aRuleList)) {
+        $aTmp = $getCharacters('キーパーソン');
+        foreach ($aTmp as $name) {
+            if (!in_array('少女', characterSpec($name))) {
+                $aErrorMessage[] = $name . 'は少女でないため、キーパーソンを割り当てられません。';
+            }
+        }
+    }
+    if (in_array('高貴なる血族', $aRuleList)) {
+        $aVampSex = array();
+        $aTmp = $getCharacters('ヴァンパイア');
+        foreach ($aTmp as $name) {
+            $spec = characterSpec($name);
+            if ($name == '神格') {
+                $aVampSex[] = '神格';
+            } else if (in_array('少年', $spec) || in_array('男性', $spec)) {
+                $aVampSex[] = '男性';
+            } else if (in_array('少女', $spec) || in_array('女性', $spec)) {
+                $aVampSex[] = '女性';
+            } else {
+                $aErrorMessage[] = 'ヴァンパイアの性別が不正です';
+            }
+        }
+        $aTmp = $getCharacters('キーパーソン');
+        foreach ($aTmp as $name) {
+            $spec = characterSpec($name);
+            if (in_array('少年', $spec) || in_array('男性', $spec)) {
+                if (in_array('男性', $aVampSex)) {
+                    $aErrorMessage[] = 'ヴァンパイアとキーパーソンが同性です';
+                }
+            } else if (in_array('少女', $spec) || in_array('女性', $spec)) {
+                if (in_array('女性', $aVampSex)) {
+                    $aErrorMessage[] = 'ヴァンパイアとキーパーソンが同性です';
+                }
+            } else {
+                $aErrorMessage[] = 'キーパーソンの性別が不正です';
             }
         }
     }
