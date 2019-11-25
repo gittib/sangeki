@@ -27,10 +27,10 @@ $oSangeki = (object)array(
             'note' => '天王寺裕吾',
         ),
         '学者' => array(
+            'role' => 'チキンハート',
             'note' => 'Dr.中鉢',
         ),
         '情報屋' => array(
-            'role' => 'チキンハート',
             'note' => '桐生萌郁',
         ),
         'アイドル' => array(
@@ -68,7 +68,7 @@ $oSangeki = (object)array(
         ),
         5 => array(
             'name' => '立てこもり',
-            'criminal' => '情報屋',
+            'criminal' => '学者',
         ),
         6 => array(
             'name' => '行方不明',
@@ -89,7 +89,7 @@ $oSangeki = (object)array(
                 ),
             ),
             '2ループ目以降' => array(
-                0 => '学者→暗躍+1'
+                0 => '学者→不安+1'
                 1 => array(
                     '女子学生' => '暗躍+2',
                     '学校' => '暗躍+1',
