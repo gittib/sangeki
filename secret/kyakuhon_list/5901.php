@@ -1,7 +1,7 @@
 <?
 
 $oSangeki = (object)array(
-    'title' => '世界線変動率 0.523307%',
+    'title' => '世界線変動率 0.523307% ver.WM',
     'secret' => true,
     'writer' => 'ペンスキー',
     'difficulity' => 4,

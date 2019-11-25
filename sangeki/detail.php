@@ -43,6 +43,9 @@ switch ($oSangeki->set) {
     case 'WM':
         $oSangeki->rule_str = 'Weird Mythology';
         break;
+    case 'UM':
+        $oSangeki->rule_str = 'Unvoiced Malice';
+        break;
     default:
         $oSangeki->rule_str = '謎の惨劇セット';
         break;
