@@ -302,7 +302,9 @@ function rolesCountCheck($oSangeki) {
         $aTmp = $getCharacters('キーパーソン');
         foreach ($aTmp as $name) {
             $spec = characterSpec($name);
-            if (in_array('少年', $spec) || in_array('男性', $spec)) {
+            if ($name == '神格') {
+                // 神格は固有の性別なのでセーフ
+            } else if (in_array('少年', $spec) || in_array('男性', $spec)) {
                 if (in_array('男性', $aVampSex)) {
                     $aErrorMessage[] = 'ヴァンパイアとキーパーソンが同性です';
                 }
