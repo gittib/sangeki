@@ -24,32 +24,9 @@ if (empty($oSangeki)) {
     header('Location: .');
     exit;
 }
-switch ($oSangeki->set) {
-    case 'FS':
-        $oSangeki->rule_str = 'First Steps';
-        break;
-    case 'BTX':
-        $oSangeki->rule_str = 'Basic Tragedy Χ';
-        break;
-    case 'MZ':
-        $oSangeki->rule_str = 'Midnight Zone';
-        break;
-    case 'MCX':
-        $oSangeki->rule_str = 'Mistery Circle Χ';
-        break;
-    case 'HSA':
-        $oSangeki->rule_str = 'Hounted State Again';
-        break;
-    case 'WM':
-        $oSangeki->rule_str = 'Weird Mythology';
-        break;
-    case 'UM':
-        $oSangeki->rule_str = 'Unvoiced Malice';
-        break;
-    default:
-        $oSangeki->rule_str = '謎の惨劇セット';
-        break;
-}
+
+$oSangeki->rule_str = getTragedySetName($oSangeki->set);
+
 $aInitPlace = array(
     'hospital' => array(),
     'shrine' => array(),
@@ -70,11 +47,7 @@ foreach ($oSangeki->character as $name => $val) {
     $oSangeki->character[$name]['yuukoumushi'] = $y;
     $oSangeki->character[$name]['fushi'] = $f;
 
-    if (isset($val['initPos'])) {
-        $aInitPlace[initPos($val['initPos'])][] = $name;
-    } else {
-        $aInitPlace[initPos($name)][] = $name;
-    }
+    $aInitPlace[initPos($name, $val)][] = $name;
 }
 $aErrorMessage = rolesCountCheck($oSangeki);
 ?>

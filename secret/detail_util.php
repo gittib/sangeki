@@ -45,7 +45,11 @@ function roleSpec ($r) {
 
     return array($role, $sZettai, $sYuukouMushi, $sFushi);
 }
-function initPos($name) {
+function initPos($name, $aCharacter) {
+    if (isset($aCharacter['initPos'])) {
+        $name = $aCharacter['initPos'];
+    }
+
     switch ($name) {
         case '神社':
         case 'shrine':
@@ -191,6 +195,27 @@ function isExistSummaryQr($ruleSetName) {
     }
 }
 
+function getTragedySetName($setPrefix) {
+    switch ($setPrefix) {
+    case 'FS':
+        return 'First Steps';
+    case 'BTX':
+        return 'Basic Tragedy Χ';
+    case 'MZ':
+        return 'Midnight Zone';
+    case 'MCX':
+        return 'Mistery Circle Χ';
+    case 'HSA':
+        return 'Hounted State Again';
+    case 'WM':
+        return 'Weird Mythology';
+    case 'UM':
+        return 'Unvoiced Malice';
+    default:
+        return '謎の惨劇セット';
+    }
+}
+
 function rolesCountCheck($oSangeki) {
     require(dirname(__FILE__) . '/rule_role_master.php');
 
@@ -241,7 +266,13 @@ function rolesCountCheck($oSangeki) {
     }
 
     foreach ($oSangeki->character as $name => $chara) {
-        if (empty($chara['role']) || $chara['role'] == 'パーソン') continue;
+        if (empty($chara['role']) || $chara['role'] == 'パーソン') {
+            if (in_array($name, array('イレギュラー', 'AI', 'A.I.'))) {
+                $aErrorMessage[] = "{$name}はパーソンにできません。";
+            }
+            continue;
+        }
+
         $role = $chara['role'];
         if ($name == 'イレギュラー') {
             if (isset($aRoleCount[$role])) {
