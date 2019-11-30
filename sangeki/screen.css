@@ -331,24 +331,43 @@ body.detail .private.advice h3 {
 body.detail .private.advice .notice {
     color: red;
 }
+body.detail .private.advice .victory_conditions {
+    width: 95%;
+}
+body.detail .private.advice .victory_conditions > h3 {
+    background: black;
+    color: white;
+    text-align: center;
+    border-radius: 8px 8px 0 0;
+}
+body.detail .private.advice .victory_conditions > ul {
+    padding: 0 10px 6px;
+    border: solid 2px;
+    border-radius: 0 0 8px 8px;
+    font-weight: bold;
+}
 body.detail .private.advice .victory_conditions > ul > li {
-    margin-top: 2px;
+    margin-top: 6px;
 }
 body.detail .private.advice .victory_conditions > ul > li > div.num {
     background: black;
     color: white;
+    border-radius: 8px 0 0 8px;
     font-size: 1.9rem;
     width: 30px;
     text-align: center;
     display: inline-block;
     float: left;
+    border-radius: 10px 0 0 10px;
 }
 body.detail .private.advice .victory_conditions > ul > li > div.condition {
     background: black;
     color: white;
+    border-radius: 10px 10px 0 0;
 }
 body.detail .private.advice .victory_conditions > ul > li > div.way {
     font-size: 0.9rem;
+    padding-left: 32px;
 }
 body.detail .private.advice .template {
     max-width: 512px;
