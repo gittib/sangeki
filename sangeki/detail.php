@@ -279,28 +279,13 @@ $aErrorMessage = rolesCountCheck($oSangeki);
             <? foreach ($oSangeki->advice->victoryConditions as $val): ?>
                 <li>
                     <div class="num"><?= $i++ ?></div>
-                    <div class="condition"><?= $val['condition'] ?></div>
-                    <div class="way"><?= $val['way'] ?></div>
+                    <div class="condition"><?= e($val['condition']) ?></div>
+                    <div class="way"><?= e(implode('、', $val['way'])) ?></div>
                 </li>
             <? endforeach; ?>
             </ul>
         </div>
         <? endif; ?>
-        <div class="victory_conditions">
-            <h3>脚本家の勝利条件</h3>
-            <ul>
-                <li>
-                    <div class="num">1</div>
-                    <div class="condition">キーパーソンの殺害</div>
-                    <div class="way">シリアルキラーの能力、キラーの能力、キーパーソンの自殺</div>
-                </li>
-                <li>
-                    <div class="num">2</div>
-                    <div class="condition">主人公の殺害</div>
-                    <div class="way">キラーの能力</div>
-                </li>
-            </ul>
-        </div>
         <? if (!empty($oSangeki->advice->template)): ?>
         <div class="template">
             <h3>置き方テンプレ</h3>
