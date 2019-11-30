@@ -348,17 +348,18 @@ body.detail .private.advice .victory_conditions > ul {
 }
 body.detail .private.advice .victory_conditions > ul > li {
     margin-top: 6px;
+    min-height: 3.6rem;
 }
 body.detail .private.advice .victory_conditions > ul > li > div.num {
     background: black;
     color: white;
-    border-radius: 8px 0 0 8px;
+    border-radius: 10px 0 0 10px;
     font-size: 1.9rem;
     width: 30px;
+    height: 3.5rem;
     text-align: center;
     display: inline-block;
     float: left;
-    border-radius: 10px 0 0 10px;
 }
 body.detail .private.advice .victory_conditions > ul > li > div.condition {
     background: black;

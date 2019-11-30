@@ -51,7 +51,6 @@ $oSangeki = (object)array(
                 'condition' => '僕と契約しようよ！',
                 'way' => array(
                     'アイドルへ暗躍カウンターを2つ置く',
-                    '不安拡大',
                 ),
             ),
             array(
