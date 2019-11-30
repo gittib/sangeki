@@ -31,6 +31,8 @@ function sangekiSetIndex($o) {
         return 4;
     case 'WM':
         return 5;
+    case 'UM':
+        return 6;
     default:
         return 99;
     }
