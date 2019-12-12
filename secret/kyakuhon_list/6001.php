@@ -8,8 +8,8 @@ $oSangeki = (object)array(
     'set' => 'UM',
     'rule' => array(
         '復讐者の誓い',
-        'マスヒュプノスの合図',
         '開けてはならない扉',
+        'マスヒュプノスの合図',
     ),
     'loop' => 4,
     'day' => 5,
@@ -26,10 +26,17 @@ $oSangeki = (object)array(
             'role' => 'センドウシャ',
         ),
         '手先' => array(
+            'role' => 'フレンド',
             'initPos' => '都市',
         ),
         '委員長' => array(
-            'role' => 'トラブルメーカー',
+            'role' => 'トラブルメイカー',
+        ),
+        'イレギュラー' => array(
+            'role' => 'イレイザー',
+        ),
+        '転校生' => array(
+            'note' => '3日目',
         ),
     ),
     'incident' => array(
@@ -45,6 +52,10 @@ $oSangeki = (object)array(
             'name' => '悪魔との契約',
             'criminal' => '神格',
         ),
+        4 => array(
+            'name' => '自殺',
+            'criminal' => '転校生',
+        ),
         5 => array(
             'name' => '丑の刻参り',
             'criminal' => 'サラリーマン',
@@ -54,12 +65,6 @@ $oSangeki = (object)array(
         'summary' => "",
         'detail' => "",
         'victoryConditions' => array(
-            array(
-                'condition' => 'フレンドの殺害',
-                'way' => array(
-                    'アベンジャーの能力',
-                ),
-            ),
             array(
                 'condition' => '主人公の殺害',
                 'way' => array(
@@ -71,6 +76,12 @@ $oSangeki = (object)array(
                 'condition' => '復讐者の誓い',
                 'way' => array(
                     '悪魔との契約を起こす',
+                ),
+            ),
+            array(
+                'condition' => 'フレンドの殺害',
+                'way' => array(
+                    'アベンジャーの能力',
                 ),
             ),
         ),
@@ -89,6 +100,21 @@ $oSangeki = (object)array(
                 3 => array(
                     '神社' => '暗躍+1',
                     '神格' => '不安+1',
+                    '転校生' => '不安+1',
+                ),
+                4 => array(
+                    '神社' => '暗躍+1',
+                    '転校生' => '不安+1',
+                    'サラリーマン' => '不安+1',
+                ),
+                5 => array(
+                    '神社' => '暗躍+1',
+                    'サラリーマン' => '不安+1',
+                ),
+            ),
+            '2ループ目' => array(
+                1 => array(
+                    '委員長' => '移動',
                 ),
             ),
         ),
