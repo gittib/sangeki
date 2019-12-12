@@ -3,7 +3,6 @@
 $oSangeki = (object)array(
     'title' => 'サラリーマンがぴょんぴょんするんじゃぁ^～',
     'writer' => 'ペンスキー',
-    'secret' => true,
     'difficulity' => 4,
     'set' => 'UM',
     'rule' => array(
@@ -17,6 +16,7 @@ $oSangeki = (object)array(
         '神格' => array(
             'role' => 'アベンジャー',
             'note' => '1ループ目',
+            'initPos' => '神社',
         ),
         '黒猫' => array(
         ),
