@@ -7,7 +7,7 @@ $oSangeki = (object)array(
     'set' => 'UM',
     'rule' => array(
         '復讐者の誓い',
-        '開けてはならない扉',
+        '問題児の苦悩',
         'マスヒュプノスの合図',
     ),
     'loop' => 4,
@@ -19,14 +19,17 @@ $oSangeki = (object)array(
             'initPos' => '神社',
         ),
         '黒猫' => array(
+            'role' => 'フレンド',
         ),
         '入院患者' => array(
+        ),
+        'マスコミ' => array(
+            'role' => 'フレンド',
         ),
         'サラリーマン' => array(
             'role' => 'センドウシャ',
         ),
         '手先' => array(
-            'role' => 'フレンド',
             'initPos' => '都市',
         ),
         '委員長' => array(
@@ -36,6 +39,7 @@ $oSangeki = (object)array(
             'role' => 'イレイザー',
         ),
         '転校生' => array(
+            'role' => 'ミスリーダー',
             'note' => '3日目',
         ),
     ),
@@ -53,7 +57,7 @@ $oSangeki = (object)array(
             'criminal' => '神格',
         ),
         4 => array(
-            'name' => '自殺',
+            'name' => '遂行者',
             'criminal' => '転校生',
         ),
         5 => array(
