@@ -37,7 +37,7 @@ $oSangeki = (object)array(
             'role' => 'トラブルメイカー',
         ),
         'イレギュラー' => array(
-            'role' => 'スナイパー',
+            'role' => 'イレイザー',
         ),
     ),
     'incident' => array(
@@ -70,6 +70,7 @@ $oSangeki = (object)array(
                 'condition' => '主人公の殺害',
                 'way' => array(
                     'アベンジャーの能力',
+                    'イレイザーの能力',
                     '丑の刻参り',
                 ),
             ),
@@ -83,7 +84,6 @@ $oSangeki = (object)array(
                 'condition' => 'フレンドの殺害',
                 'way' => array(
                     'アベンジャーの能力',
-                    'スナイパーの能力',
                 ),
             ),
         ),
