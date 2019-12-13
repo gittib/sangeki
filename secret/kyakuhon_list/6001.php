@@ -3,7 +3,7 @@
 $oSangeki = (object)array(
     'title' => 'サラリーマンがぴょんぴょんするんじゃぁ^～',
     'writer' => 'ペンスキー',
-    'difficulity' => 4,
+    'difficulity' => 5,
     'set' => 'UM',
     'rule' => array(
         '復讐者の誓い',
@@ -57,7 +57,7 @@ $oSangeki = (object)array(
             'criminal' => '神格',
         ),
         4 => array(
-            'name' => '遂行者',
+            'name' => '自殺',
             'criminal' => '転校生',
         ),
         5 => array(
@@ -66,20 +66,21 @@ $oSangeki = (object)array(
         ),
     ),
     'advice' => (object)array(
-        'summary' => "",
+        'summary' => "最後の戦いはほぼ不可能なので、最初にループ抜け推奨と伝えてしまっても良いでしょう。",
         'detail' => "",
         'victoryConditions' => array(
             array(
                 'condition' => '主人公の殺害',
                 'way' => array(
                     'アベンジャーの能力',
+                    'イレイザーの能力',
                     '丑の刻参り',
                 ),
             ),
             array(
                 'condition' => '復讐者の誓い',
                 'way' => array(
-                    '悪魔との契約を起こす',
+                    'アベンジャーが犯人の事件を起こす',
                 ),
             ),
             array(
