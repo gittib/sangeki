@@ -2,9 +2,13 @@
 require_once('../secret/common.php');
 require_once('../secret/sangeki_check.php');
 
-if (!isset($_GET['id'])) {
+function redirectToList() {
     header('Location: .');
     exit;
+}
+
+if (!isset($_GET['id'])) {
+    redirectToList();
 }
 
 require_once('../secret/detail_util.php');
@@ -12,17 +16,14 @@ require_once('../secret/detail_util.php');
 $id = $_GET['id'];
 $kyakuhonPath = '../secret/kyakuhon_list/'.$id.'.php';
 if (!file_exists($kyakuhonPath)) {
-    header('Location: .');
-    exit;
+    redirectToList();
 }
 require($kyakuhonPath);
 if (empty($oSangeki)) {
-    header('Location: .');
-    exit;
+    redirectToList();
 } else if (isProd() && !empty($oSangeki->secret)) {
     // 本番環境では非公開脚本の直飛びも禁止
-    header('Location: .');
-    exit;
+    redirectToList();
 }
 
 $oSangeki->rule_str = getTragedySetName($oSangeki->set);
@@ -34,6 +35,7 @@ $aInitPlace = array(
     'school' => array(),
     'other' => array(),
 );
+$sOmonoTerritory = '';
 foreach ($oSangeki->character as $name => $val) {
     list($role, $z, $y, $f) = roleSpec($val);
     if ($role == 'パーソン') {
@@ -48,6 +50,9 @@ foreach ($oSangeki->character as $name => $val) {
     $oSangeki->character[$name]['fushi'] = $f;
 
     $aInitPlace[initPos($name, $val)][] = $name;
+    if ($name == '大物') {
+        $sOmonoTerritory = initPos($val['note']);
+    }
 }
 $aErrorMessage = rolesCountCheck($oSangeki);
 ?>
@@ -192,13 +197,13 @@ $aErrorMessage = rolesCountCheck($oSangeki);
                 <tbody>
                     <tr>
                         <td>
-                            <strong class="place_name">病院</strong><br>
+                        <strong class="place_name">病院</strong><?= $sOmonoTerritory == 'hospital' ? '<span class="territory">大</span>' : '' ?><br>
                             <? foreach ($aInitPlace['hospital'] as $val) {
                                 echo '<span class="chara">' . e($val) . '</span>';
                             } ?>
                         </td>
                         <td>
-                            <strong class="place_name">神社</strong><br>
+                            <strong class="place_name">神社</strong><?= $sOmonoTerritory == 'shrine' ? '<span class="territory">大</span>' : '' ?><br>
                             <? foreach ($aInitPlace['shrine'] as $val) {
                                 echo '<span class="chara">' . e($val) . '</span>';
                             } ?>
@@ -206,13 +211,13 @@ $aErrorMessage = rolesCountCheck($oSangeki);
                     </tr>
                     <tr>
                         <td>
-                            <strong class="place_name">都市</strong><br>
+                            <strong class="place_name">都市</strong><?= $sOmonoTerritory == 'city' ? '<span class="territory">大</span>' : '' ?><br>
                             <? foreach ($aInitPlace['city'] as $val) {
                                 echo '<span class="chara">' . e($val) . '</span>';
                             } ?>
                         </td>
                         <td>
-                            <strong class="place_name">学校</strong><br>
+                            <strong class="place_name">学校</strong><?= $sOmonoTerritory == 'school' ? '<span class="territory">大</span>' : '' ?><br>
                             <? foreach ($aInitPlace['school'] as $val) {
                                 echo '<span class="chara">' . e($val) . '</span>';
                             } ?>
@@ -264,13 +269,9 @@ $aErrorMessage = rolesCountCheck($oSangeki);
             <?= nl2br(e($oSangeki->advice->notice)) ?>
         </div>
         <? endif; ?>
-        <div>
-            <?= nl2br(e(empty($oSangeki->advice->summary) ? 'まだ記載がありません...' : $oSangeki->advice->summary)) ?>
-        </div>
+        <div><?= empty($oSangeki->advice->summary) ? 'まだ記載がありません…' : nl2br(e($oSangeki->advice->summary)) ?></div>
         <h3>脚本家への指針</h3>
-        <div>
-            <?= nl2br(e(empty($oSangeki->advice->detail) ? 'まだ記載がありません...' : $oSangeki->advice->detail)) ?>
-        </div>
+        <div><?= empty($oSangeki->advice->detail) ? 'まだ記載がありません…' : nl2br(e($oSangeki->advice->detail)) ?></div>
         <? if (!empty($oSangeki->advice->victoryConditions)): ?>
         <div class="victory_conditions">
             <h3>脚本家の勝利条件</h3>

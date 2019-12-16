@@ -45,7 +45,7 @@ function roleSpec ($r) {
 
     return array($role, $sZettai, $sYuukouMushi, $sFushi);
 }
-function initPos($name, $aCharacter) {
+function initPos($name, $aCharacter = array()) {
     if (isset($aCharacter['initPos'])) {
         $name = $aCharacter['initPos'];
     }
