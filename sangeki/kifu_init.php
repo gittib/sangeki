@@ -9,9 +9,9 @@ $aBoard = getBoardMaster();
 <html>
 <head>
 <?php require('../secret/sangeki_head.php') ?>
-    <title>惨劇RoopeR 棋譜記録用</title>
+    <title>惨劇RoopeR 棋譜初期化</title>
 </head>
-<body class="kifu_input">
+<body class="kifu_init">
     <div class="top_text">
         <h2></h2>
     </div>
@@ -19,16 +19,16 @@ $aBoard = getBoardMaster();
         <div class="period_wrapper">
             <select name="loop">
                 <option value="">ループ数</option>
-            <? for ($i = 1 ; $i <= 8 ; $i++): ?>
+                <? for ($i = 1 ; $i <= 8 ; $i++): ?>
                 <option value="<?= $i ?>"><?= $i ?>ループ</option>
-            <? endfor; ?>
+                <? endfor; ?>
             </select>
             <select name="day">
                 <option value="">日数</option>
-            <? for ($i = 1 ; $i <= 8 ; $i++): ?>
+                <? for ($i = 1 ; $i <= 8 ; $i++): ?>
                 <option value="<?= $i ?>"><?= $i ?>日</option>
-            <? endfor; ?>
-            </select>日
+                <? endfor; ?>
+            </select>
         </div>
         <div class="available_character_list">
             <? foreach ($aCharacter as $id => $val): ?>

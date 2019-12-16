@@ -50,7 +50,7 @@ function getCharacterMaster($withBoard = true) {
 }
 
 function getCharacterList($aCharaIds) {
-    $aSelected = getBoardMaster();
+    $aSelected = array();
 
     $aChara = getCharacterMaster(false);
     foreach ($aChara as $id => $name) {
@@ -62,4 +62,15 @@ function getCharacterList($aCharaIds) {
     }
 
     return $aSelected;
+}
+
+function isValid($_GET) {
+    $errors = array();
+    if (empty($_GET['loop'])) {
+        $errors[] = 'ループ数が設定されていません。';
+    }
+    if (empty($_GET['day'])) {
+        $errors[] = '日数が設定されていません。';
+    }
+    return $errors;
 }

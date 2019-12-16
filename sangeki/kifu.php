@@ -2,35 +2,14 @@
 require_once('../secret/common.php');
 require_once('../secret/kifu_util.php');
 
-echo '<pre>'; var_dump($_GET);exit;
+$errors = isValid();
+$aSelectedCharacter = getCharacterList($_GET['ch']);
 
-if (isset($_POST['chara']) && is_array($_POST['chara'])) {
-    $aData = array(
-        'charas' => $_POST['chara'],
-        'loop' => $_POST['loop'],
-        'day' => $_POST['day'],
-        'incidents' => array(),
-    );
-    $_SESSION['sangeki_kifu'] = json_encode($aData);
-    header('Location: ' . $_SERVER['REQUEST_URI']);
-    exit;
-}
-
-$aCharacter = getCharacterMaster(false);
-
-$oKifu = json_decode(session('sangeki_kifu', '{"charas":[],"loop":0,"day":0,"incidents":[]}'));
-
-$aSelectedCharacter = array(
-    '101' => '神社',
-    '102' => '病院',
-    '103' => '都市',
-    '104' => '学校',
+$oKifu = (object)array(
+    'loop' => isset($_GET['loop']) ? $_GET['loop'] : 0,
+    'day' => isset($_GET['day']) ? $_GET['day'] : 0,
+    'chara' => getBoardMaster() + $aSelectedCharacter,
 );
-if (!empty($oKifu->charas)) {
-    foreach ($oKifu->charas as $id) {
-        $aSelectedCharacter[$id] = $aCharacter[$id];
-    }
-}
 ?>
 <html>
 <head>
@@ -41,32 +20,14 @@ if (!empty($oKifu->charas)) {
     <div class="top_text">
         <h2></h2>
     </div>
-    <form action="kifu.php" method="get">
-        <div class="period_wrapper">
-            <select name="loop">
-            <? for ($i = 0 ; $i <= 8 ; $i++): ?>
-                <option <?= ($i == $oKifu->loop) ? 'selected="selected"' : '' ?>><?= $i ?></option>
-            <? endfor; ?>
-            </select>ループ
-            <select name="day">
-            <? for ($i = 0 ; $i <= 8 ; $i++): ?>
-                <option <?= ($i == $oKifu->day) ? 'selected="selected"' : '' ?>><?= $i ?></option>
-            <? endfor; ?>
-            </select>日
+    <? if (!empty($errors)): ?>
+        <div class="error">
+            <span class="summary">以下のエラーのため、棋譜入力画面を生成できません。<br>前画面に戻って入力し直してください。</span>
+            <ul><? foreach ($errors as $val): ?>
+                <li><?= $val ?></li>
+            <? endforeach; ?></ul>
         </div>
-        <div class="available_character_list">
-            <?php foreach ($aCharacter as $id => $val): ?>
-            <label><p>
-                <input type="checkbox" name="chara[]" value="<?= $id ?>" <?= isset($aSelectedCharacter[$id]) ? 'checked="checked"' : '' ?>>
-                <?= e($val) ?>
-            </p></label>
-            <?php endforeach; ?>
-        </div>
-        <div class="submit_wrapper">
-            <input type="submit" value="棋譜テンプレートを生成">
-        </div>
-    </form>
-    <? if ($oKifu->loop > 0 && $oKifu->day > 0): ?>
+    <? else; ?>
         <div class="button_wrapper">
             <button class="reset_all_action">行動ログを全て削除</button>
         </div>
@@ -74,45 +35,47 @@ if (!empty($oKifu->charas)) {
             <input type="hidden" name="outtype">
             <input type="hidden" name="loop" value="<?= $oKifu->loop ?>">
             <input type="hidden" name="day" value="<?= $oKifu->day ?>">
-            <input type="hidden" name="chara" value="<?= e(json_encode($aSelectedCharacter)) ?>">
+            <input type="hidden" name="chara" value="<?= e(json_encode($oKifu->aSelectedCharacter)) ?>">
             <input type="hidden" name="action">
             <input type="hidden" name="memo">
             <div class="kifu_wrapper">
                 <dl>
                 <? for ($l = 1 ; $l <= $oKifu->loop ; $l++): ?>
                     <dt><?= $l ?>ループ目</dt>
-                    <dd><table class="kifu">
-                        <thead>
-                            <tr>
-                                <th class="day">日</th>
-                                <th> </th>
-                                <? foreach ($aSelectedCharacter as $ch): ?>
-                                <th><p><?= str_replace('ー', '｜', $ch) ?></p></th>
-                                <? endforeach; ?>
-                                <th class="memo">メモ欄</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <? for ($d = 1 ; $d <= $oKifu->day ; $d++): ?>
-                            <tr>
-                                <td rowspan=2><?= $d ?></td>
-                                <td>脚</td>
-                                <? foreach ($aSelectedCharacter as $id => $val): ?>
-                                <td class="scriptwriter" data-loop="<?= $l ?>" data-day="<?= $d ?>" data-index="<?= $id ?>" data-character="<?= $val ?>">
-                                </td>
-                                <? endforeach; ?>
-                                <td rowspan=2><input class="memo" data-loop="<?= $l ?>" data-day="<?= $d ?>" name="memo[<?= $l ?>][<?= $d ?>]"></td>
-                            </tr>
-                            <tr>
-                                <td>主</td>
-                                <? foreach ($aSelectedCharacter as $id => $val): ?>
-                                <td class="hero" data-loop="<?= $l ?>" data-day="<?= $d ?>" data-index="<?= $id ?>" data-character="<?= $val ?>">
-                                </td>
-                                <? endforeach; ?>
-                            </tr>
-                            <? endfor; ?>
-                        </tbody>
-                    </table></dd>
+                    <dd>
+                        <table class="kifu">
+                            <thead>
+                                <tr>
+                                    <th class="day">日</th>
+                                    <th> </th>
+                                    <? foreach ($aSelectedCharacter as $ch): ?>
+                                    <th><p><?= str_replace('ー', '｜', $ch) ?></p></th>
+                                    <? endforeach; ?>
+                                    <th class="memo">メモ欄</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <? for ($d = 1 ; $d <= $oKifu->day ; $d++): ?>
+                                <tr>
+                                    <td rowspan=2><?= $d ?></td>
+                                    <td>脚</td>
+                                    <? foreach ($aSelectedCharacter as $id => $val): ?>
+                                    <td class="scriptwriter" data-loop="<?= $l ?>" data-day="<?= $d ?>" data-index="<?= $id ?>" data-character="<?= $val ?>">
+                                    </td>
+                                    <? endforeach; ?>
+                                    <td rowspan=2><input class="memo" data-loop="<?= $l ?>" data-day="<?= $d ?>" name="memo[<?= $l ?>][<?= $d ?>]"></td>
+                                </tr>
+                                <tr>
+                                    <td>主</td>
+                                    <? foreach ($aSelectedCharacter as $id => $val): ?>
+                                    <td class="hero" data-loop="<?= $l ?>" data-day="<?= $d ?>" data-index="<?= $id ?>" data-character="<?= $val ?>">
+                                    </td>
+                                    <? endforeach; ?>
+                                </tr>
+                                <? endfor; ?>
+                            </tbody>
+                        </table>
+                    </dd>
                 <? endfor; ?>
                 </dl>
             </div>
