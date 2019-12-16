@@ -1,5 +1,8 @@
 <?
 require_once('../secret/common.php');
+require_once('../secret/kifu_util.php');
+
+echo '<pre>'; var_dump($_GET);exit;
 
 if (isset($_POST['chara']) && is_array($_POST['chara'])) {
     $aData = array(
@@ -13,43 +16,15 @@ if (isset($_POST['chara']) && is_array($_POST['chara'])) {
     exit;
 }
 
-$aCharacter = array(
-    '神格',
-    '巫女',
-    '異世界人',
-    '黒猫',
-    '幻想',
-    '医者',
-    'ナース',
-    '軍人',
-    '入院患者',
-    '学者',
-    'サラリーマン',
-    '情報屋',
-    '刑事',
-    'アイドル',
-    '大物',
-    'マスコミ',
-    '鑑識官',
-    'A.I.',
-    '男子学生',
-    '女子学生',
-    'お嬢様',
-    '委員長',
-    '教師',
-    'イレギュラー',
-    '転校生',
-    '女の子',
-    '手先',
-);
+$aCharacter = getCharacterMaster(false);
 
 $oKifu = json_decode(session('sangeki_kifu', '{"charas":[],"loop":0,"day":0,"incidents":[]}'));
 
 $aSelectedCharacter = array(
-    '1001' => '神社',
-    '1002' => '病院',
-    '1003' => '都市',
-    '1004' => '学校',
+    '101' => '神社',
+    '102' => '病院',
+    '103' => '都市',
+    '104' => '学校',
 );
 if (!empty($oKifu->charas)) {
     foreach ($oKifu->charas as $id) {
@@ -66,7 +41,7 @@ if (!empty($oKifu->charas)) {
     <div class="top_text">
         <h2></h2>
     </div>
-    <form method="post">
+    <form action="kifu.php" method="get">
         <div class="period_wrapper">
             <select name="loop">
             <? for ($i = 0 ; $i <= 8 ; $i++): ?>
