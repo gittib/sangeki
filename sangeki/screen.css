@@ -293,6 +293,32 @@ body.detail .private table.character * {
 body.detail .private table.init_place td.special_place {
     border: none;
 }
+body.detail .private table.init_place td {
+    width: 50%;
+    vertical-align: top;
+}
+body.detail .private table.init_place span.chara {
+    display: inline-block;
+    font-size: 0.75rem;
+    margin-right: 6px;
+    border-style: outset;
+    border-width: 1px;
+    margin-bottom: 2px;
+    height: 1.5em;
+}
+body.detail .private table.init_place span.territory {
+    display: inline-block;
+    font-size: 0.75rem;
+    font-weight: bold;
+    margin-left: 6px;
+    text-align: center;
+    color: white;
+    background-color: black;
+    border-radius: 2rem;
+    width: 1rem;
+    height: 1rem;
+    line-height: 1rem;
+}
 body.detail .private h3.insident {
     margin-top:16px;
 }
@@ -308,19 +334,6 @@ body.detail table.character td.role span.black_heart {
 }
 body.detail table.character td.special {
     font-weight: bold;
-}
-body.detail table.init_place td {
-    width: 50%;
-    vertical-align: top;
-}
-body.detail .init_place span.chara {
-    display: inline-block;
-    font-size: 0.75rem;
-    margin-right: 6px;
-    border-style: outset;
-    border-width: 1px;
-    margin-bottom: 2px;
-    height: 1.5em;
 }
 body.detail .private.advice {
     border: none;
