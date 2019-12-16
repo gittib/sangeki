@@ -10,7 +10,7 @@ function getBoardMaster() {
 }
 
 function getCharacterMaster($withBoard = true) {
-    $aCharacter = (
+    $aCharacter = array(
         '1001' => '神格',
         '1002' => '巫女',
         '1003' => '異世界人',
