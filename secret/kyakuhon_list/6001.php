@@ -49,13 +49,9 @@ $oSangeki = (object)array(
             'name' => '怨嗟の雄叫び',
             'criminal' => '女の子',
         ),
-        3 => array(
+        4 => array(
             'name' => '悪魔との契約',
             'criminal' => '情報屋',
-        ),
-        4 => array(
-            'name' => '告発',
-            'criminal' => '入院患者',
         ),
         5 => array(
             'name' => '丑の刻参り',
