@@ -55,6 +55,10 @@ $oSangeki = (object)array(
             'name' => '遂行者',
             'criminal' => '神格',
         ),
+        4 => array(
+            'name' => '告発',
+            'criminal' => 'マスコミ',
+        ),
         5 => array(
             'name' => '丑の刻参り',
             'criminal' => 'サラリーマン',
@@ -82,6 +86,7 @@ $oSangeki = (object)array(
                 'condition' => 'フレンドの殺害',
                 'way' => array(
                     'アベンジャーの能力',
+                    '遂行者',
                 ),
             ),
         ),
