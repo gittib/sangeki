@@ -123,7 +123,6 @@ body.kyakuhon_list .kyakuhon_list > dl {
     border-bottom: solid 1px;
 }
 body.kyakuhon_list .kyakuhon_list > dl > dt {
-    margin: 4px;
     border-top: solid 1px;
     padding-top: 4px;
 }

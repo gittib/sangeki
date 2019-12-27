@@ -13,7 +13,7 @@ foreach ($files as $val) {
         continue;
     }
     if (isProd() && !empty($oSangeki->secret)) {
-        // secretは本番環境でのみ利かす
+        // secretは本番環境でのみ隠す
         continue;
     }
     $oSangeki->id = $id;
