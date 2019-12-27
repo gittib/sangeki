@@ -9,7 +9,11 @@ foreach ($files as $val) {
         continue;
     }
     require('../secret/kyakuhon_list/' . $val);
-    if (empty($oSangeki) || empty($oSangeki->title) || !empty($oSangeki->secret)) {
+    if (empty($oSangeki) || empty($oSangeki->title)) {
+        continue;
+    }
+    if (isProd() && !empty($oSangeki->secret)) {
+        // secretは本番環境でのみ利かす
         continue;
     }
     $oSangeki->id = $id;
@@ -70,7 +74,7 @@ foreach ($aTmp as $val) {
     <div class="kyakuhon_list">
         <dl class="kyakuhon_list">
         <? foreach ($aPublicScenario as $id => $oSangeki): ?>
-            <dt>
+            <dt class="<? if(!empty($oSangeki->secret)) echo 'secret' ?>">
                 <span class="rule_prefix <?= $oSangeki->set ?>"><?= $oSangeki->set ?></span>
                 <a href="./detail.php?id=<?= $id ?>">
                     <span class="real_title"><?= e($oSangeki->title) ?></span>
@@ -78,7 +82,7 @@ foreach ($aTmp as $val) {
                 </a>
                 <span class="writer">作者: <?= e($oSangeki->writer) ?></span>
             </dt>
-            <dd>
+            <dd class="<? if(!empty($oSangeki->secret)) echo 'secret' ?>">
                 <span class="loop"><strong><?= $oSangeki->loop ?></strong>ループ</span>
                 <span class="day"><strong><?= $oSangeki->day ?></strong>日間</span>
                 <span class="difficulity">

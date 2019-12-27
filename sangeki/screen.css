@@ -134,6 +134,10 @@ body.kyakuhon_list .kyakuhon_list > dl > dd {
     padding-bottom: 2px;
     text-align: center;
 }
+body.kyakuhon_list .kyakuhon_list > dl > dt.secret,
+body.kyakuhon_list .kyakuhon_list > dl > dd.secret {
+    background-color: lightgray;
+}
 body.kyakuhon_list .kyakuhon_list > dl > dd,
 body.kyakuhon_list .kyakuhon_list > dl > dd * {
     font-size: 0.75rem;
