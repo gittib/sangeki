@@ -119,7 +119,7 @@ body.kyakuhon_list .kyakuhon_list {
     margin: 0 auto;
 }
 body.kyakuhon_list .kyakuhon_list > dl {
-    margin: 12px 4px;
+    margin: 12px 8px;
     border-bottom: solid 1px;
 }
 body.kyakuhon_list .kyakuhon_list > dl > dt {
