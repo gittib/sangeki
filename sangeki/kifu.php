@@ -3,13 +3,15 @@ require_once('../secret/common.php');
 require_once('../secret/kifu_util.php');
 
 $errors = isValid($_GET);
-$aSelectedCharacter = getCharacterList($_GET['ch']);
+if (empty($errors)) {
+    $aSelectedCharacter = getCharacterList($_GET['ch']);
 
-$oKifu = (object)array(
-    'loop' => isset($_GET['loop']) ? $_GET['loop'] : 0,
-    'day' => isset($_GET['day']) ? $_GET['day'] : 0,
-    'chara' => getBoardMaster() + $aSelectedCharacter,
-);
+    $oKifu = (object)array(
+        'loop' => isset($_GET['loop']) ? $_GET['loop'] : 0,
+        'day' => isset($_GET['day']) ? $_GET['day'] : 0,
+        'chara' => getBoardMaster() + $aSelectedCharacter,
+    );
+}
 ?>
 <html>
 <head>
