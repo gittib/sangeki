@@ -64,12 +64,12 @@ function getCharacterList($aCharaIds) {
     return $aSelected;
 }
 
-function isValid($_GET) {
+function isValid($aParams) {
     $errors = array();
-    if (empty($_GET['loop'])) {
+    if (empty($aParams['loop'])) {
         $errors[] = 'ループ数が設定されていません。';
     }
-    if (empty($_GET['day'])) {
+    if (empty($aParams['day'])) {
         $errors[] = '日数が設定されていません。';
     }
     return $errors;

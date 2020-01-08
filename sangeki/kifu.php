@@ -2,7 +2,7 @@
 require_once('../secret/common.php');
 require_once('../secret/kifu_util.php');
 
-$errors = isValid();
+$errors = isValid($_GET);
 $aSelectedCharacter = getCharacterList($_GET['ch']);
 
 $oKifu = (object)array(
