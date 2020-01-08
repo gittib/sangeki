@@ -408,7 +408,7 @@ body.kifu_init .available_character_list {
 }
 body.kifu_init .available_character_list label {
     width: 30%;
-    max-width: 200px;
+    max-width: 150px;
     display: inline-block;
     vertical-align: top;
 }

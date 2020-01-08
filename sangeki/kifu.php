@@ -22,12 +22,12 @@ $oKifu = (object)array(
     </div>
     <? if (!empty($errors)): ?>
         <div class="error">
-            <span class="summary">以下のエラーのため、棋譜入力画面を生成できません。<br>前画面に戻って入力し直してください。</span>
+            <span class="summary">以下のエラーのため、棋譜入力画面を生成できません。<br><a href="kifu_init.php">棋譜設定画面</a>に戻って入力し直してください。</span>
             <ul><? foreach ($errors as $val): ?>
                 <li><?= $val ?></li>
             <? endforeach; ?></ul>
         </div>
-    <? else; ?>
+    <? else: ?>
         <div class="button_wrapper">
             <button class="reset_all_action">行動ログを全て削除</button>
         </div>
