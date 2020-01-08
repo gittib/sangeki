@@ -93,6 +93,7 @@ if (empty($checked)): ?>
         </ul>
         <input class="submit_button" type="submit" value="送信">
     </form>
+<? require(dirname(__FILE__) . '/sangeki_footer.php') ?>
 </body>
 </html>
 <?
