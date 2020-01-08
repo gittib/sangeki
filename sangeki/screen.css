@@ -17,6 +17,7 @@ a, a:visited {
 table {
     border-collapse: collapse;
 }
+.clearfix:after,
 dl:after {
     content: '';
     display: block;
@@ -399,23 +400,39 @@ body.detail .toggle_private {
     font-size: 0.8rem;
 }
 
-body.kifu_input .available_character_list p {
-    display: block;
-    float: left;
-    margin: 4px;
+body.kifu_init {
+    margin: 8px;
+}
+body.kifu_init .available_character_list {
+    max-width: 800px;
+}
+body.kifu_init .available_character_list label {
     width: 30%;
     max-width: 200px;
-    border: solid 1px;
-    padding-left: 2px;
+    display: inline-block;
+    vertical-align: top;
 }
-body.kifu_input .period_wrapper {
+body.kifu_init .available_character_list label input[type=checkbox] {
+    display: block;
+    float: left;
+    width: 16px;
+}
+body.kifu_init .available_character_list label p {
+    float: right;
+    width: 100%;
+    margin-left: -16px;
+    padding-left: 20px;
+    box-sizing: border-box;
+}
+body.kifu_init .period_wrapper {
     clear: both;
     padding: 18px;
 }
-body.kifu_input .submit_wrapper {
+body.kifu_init .submit_wrapper {
     clear: both;
     padding: 12px;
 }
+
 body.kifu_input .button_wrapper {
     margin: 20px;
 }

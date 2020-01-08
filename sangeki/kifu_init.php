@@ -32,10 +32,10 @@ $aBoard = getBoardMaster();
         </div>
         <div class="available_character_list">
             <? foreach ($aCharacter as $id => $val): ?>
-            <label><p>
+            <label>
                 <input type="checkbox" name="ch[]" value="<?= $id ?>">
-                <?= e($val) ?>
-            </p></label>
+                <p><?= e($val) ?></p>
+            </label>
             <? endforeach; ?>
         </div>
         <div class="submit_wrapper">
