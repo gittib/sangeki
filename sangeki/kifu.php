@@ -58,7 +58,7 @@ if (empty($errors)) {
                         <th>&nbsp;</th>
                         <th>備考</th>
                         <? foreach ($aRole as $role): ?>
-                        <th class="vertical_text"><?= $role ?></th>
+                        <th><span class="vertical_text"><?= $role ?></span></th>
                         <? endforeach; ?>
                     </tr>
                     <? foreach ($aSelectedCharacter as $id => $chara): ?>
