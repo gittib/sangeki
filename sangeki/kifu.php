@@ -1,6 +1,7 @@
 <?
 require_once('../secret/common.php');
 require_once('../secret/kifu_util.php');
+require_once('../secret/detail_util.php');
 require_once('../secret/rule_role_master.php');
 
 $errors = isValid($_GET);
