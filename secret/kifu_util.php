@@ -66,6 +66,9 @@ function getCharacterList($aCharaIds) {
 
 function isValid($aParams) {
     $errors = array();
+    if (empty($aParams['set'])) {
+        $errors[] = '惨劇セットが設定されていません。';
+    }
     if (empty($aParams['loop'])) {
         $errors[] = 'ループ数が設定されていません。';
     }

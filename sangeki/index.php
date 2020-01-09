@@ -3,6 +3,7 @@ require_once('../secret/common.php');
 require_once('../secret/sangeki_check.php');
 exec('ls ../secret/kyakuhon_list/', $files);
 $aTmp = array();
+$bDisplaySecret = (!isProd() && isset($_GET['s']));
 foreach ($files as $val) {
     $id = str_replace('.php', '', $val);
     if (strpos($id, '9') === 0) {
@@ -12,9 +13,11 @@ foreach ($files as $val) {
     if (empty($oSangeki) || empty($oSangeki->title)) {
         continue;
     }
-    if (isProd() && !empty($oSangeki->secret)) {
-        // secretは本番環境でのみ隠す
-        continue;
+    if (!empty($oSangeki->secret)) {
+        // secretな脚本
+        if (!$bDisplaySecret) {
+            continue;
+        }
     }
     $oSangeki->id = $id;
     $aTmp[$id] = $oSangeki;

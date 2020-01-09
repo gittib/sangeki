@@ -1,16 +1,26 @@
 <?
 require_once('../secret/common.php');
 require_once('../secret/kifu_util.php');
+require_once('../secret/rule_role_master.php');
 
 $errors = isValid($_GET);
 if (empty($errors)) {
     $aSelectedCharacter = getCharacterList($_GET['ch']);
 
     $oKifu = (object)array(
-        'loop' => isset($_GET['loop']) ? $_GET['loop'] : 0,
-        'day' => isset($_GET['day']) ? $_GET['day'] : 0,
-        'chara' => getBoardMaster() + $aSelectedCharacter,
+        'set' => $_GET['set'],
+        'loop' => $_GET['loop'],
+        'day' => $_GET['day'],
+        'chara' => $aSelectedCharacter,
+        'target' => array_merge(getBoardMaster(), $aSelectedCharacter),
     );
+    $aRole = array();
+    foreach ($aRuleRoleMaster[$_GET['set']] as $aVal) {
+        foreach ($aVal as $val) {
+            $aRole[] = $val;
+        }
+    }
+    $aRole = array_unique($aRole);
 }
 ?>
 <html>
@@ -37,10 +47,29 @@ if (empty($errors)) {
             <input type="hidden" name="outtype">
             <input type="hidden" name="loop" value="<?= $oKifu->loop ?>">
             <input type="hidden" name="day" value="<?= $oKifu->day ?>">
-            <input type="hidden" name="chara" value="<?= e(json_encode($oKifu->aSelectedCharacter)) ?>">
+            <input type="hidden" name="chara" value="<?= e(json_encode($oKifu->chara)) ?>">
             <input type="hidden" name="action">
             <input type="hidden" name="memo">
             <div class="kifu_wrapper">
+                <div class="tr_name">惨劇セット：<?= getTragedySetName($oKifu->set) ?></div>
+                <table class="character_list">
+                    <tr>
+                        <th>&nbsp;</th>
+                        <th>備考</th>
+                        <? foreach ($aRole as $role): ?>
+                        <th style="writing-mode: vertical-rl;"><?= $role ?></th>
+                        <? endforeach; ?>
+                    </tr>
+                    <? foreach ($aSelectedCharacter as $id => $chara): ?>
+                    <tr>
+                        <td><?= $chara ?></td>
+                        <td><input type="text" name="chara[<?= $id ?>]"></td>
+                        <? foreach ($aRole as $role): ?>
+                        <td>？</td>
+                        <? endforeach; ?>
+                    </tr>
+                    <? endforeach; ?>
+                </table>
                 <dl>
                 <? for ($l = 1 ; $l <= $oKifu->loop ; $l++): ?>
                     <dt><?= $l ?>ループ目</dt>
@@ -126,133 +155,6 @@ if (empty($errors)) {
 </div>
 <script>
 (function() {
-    var aAction = {};
-    var aMemo = {};
-    if (localStorage.getItem('aAction')) {
-        aAction = JSON.parse(localStorage.getItem('aAction'));
-        $.each(aAction, function(loop, val) {
-            $.each(val, function(day, val2) {
-                $.each(val2, function(idx, val3) {
-                    $.each(val3, function(type, val4) {
-                        if (!aAction[loop][day][idx][type] || aAction[loop][day][idx][type].trim().length <= 0) {
-                            delete aAction[loop][day][idx][type];
-                        } else {
-                            let $td = $('td.'+type+'[data-loop='+loop+'][data-day='+day+'][data-index='+idx+']');
-                            $td.text(val4);
-                        }
-                    });
-                    if (!Object.keys(aAction[loop][day][idx]).length) {
-                        delete aAction[loop][day][idx];
-                    }
-                });
-                if (!Object.keys(aAction[loop][day]).length) {
-                    delete aAction[loop][day];
-                }
-            });
-            if (!Object.keys(aAction[loop]).length) {
-                delete aAction[loop];
-            }
-        });
-        let s = JSON.stringify(aAction);
-        localStorage.setItem('aAction', s);
-
-        console.log(s);
-    }
-    if (localStorage.getItem('aMemo')) {
-        aMemo = JSON.parse(localStorage.getItem('aMemo'));
-        $.each(aMemo, function(loop, val) {
-            $.each(val, function(day, val2) {
-                let $input = $('input.memo[data-loop='+loop+'][data-day='+day+']');
-                if ($input.size() > 0) {
-                    $input.val(val2);
-                }
-                if (!aMemo[loop][day] || aMemo[loop][day].trim().length <= 0) {
-                    delete aMemo[loop][day];
-                }
-            });
-            if (!Object.keys(aMemo[loop]).length) {
-                delete aMemo[loop];
-            }
-        });
-        let s = JSON.stringify(aMemo);
-        localStorage.setItem('aMemo', s);
-
-        console.log(s);
-    }
-
-    $('.reset_all_action').on('click', function() {
-        if (confirm('行動ログをすべて削除します。よろしいですか？')) {
-            aAction = {};
-            localStorage.removeItem('aAction');
-            aMemo = {};
-            localStorage.removeItem('aMemo');
-            $('td.scriptwriter').text('');
-            $('td.hero').text('');
-            $('td input.memo').val('');
-        }
-    });
-
-    $('table.kifu').on('click', 'td.scriptwriter', function() {
-        openModal($(this), $('#scriptwriter_action_list'));
-    });
-    $('table.kifu').on('click', 'td.hero', function() {
-        openModal($(this), $('#hero_action_list'));
-    });
-    $('table.kifu').on('change', 'input.memo', function() {
-        let $self = $(this);
-        let loop = $self.data('loop');
-        let day = $self.data('day');
-        let memo = $self.val();
-        if (memo.length > 0) {
-            if (aMemo[loop] == undefined) {
-                aMemo[loop] = {};
-            }
-            aMemo[loop][day] = $self.val();
-        } else {
-            delete aMemo[loop][day];
-            if (!Object.keys(aMemo[loop]).length) {
-                delete aMemo[loop];
-            }
-        }
-        localStorage.setItem('aMemo', JSON.stringify(aMemo));
-    });
-    $('.modal').on('click.dismiss', function() { $(this).hide(); });
-
-    $('form .save_action[data-type]').on('click', function() {
-        var $form = $(this).closest('form');
-        $form.find('input[name=outtype]').val($(this).data('type'));
-        $form.find('input[name=action]').val(JSON.stringify(aAction));
-        $form.find('input[name=memo]').val(JSON.stringify(aMemo));
-        $form.submit();
-    });
-
-    function openModal($self, $modal) {
-        var loop = $self.data('loop');
-        var day = $self.data('day');
-        var idx = $self.data('index');
-        var type = ($modal.attr('id') == 'hero_action_list') ? 'hero' : 'scriptwriter';
-        $modal.find('.explain .loop').text(loop);
-        $modal.find('.explain .day').text(day);
-        $modal.find('.explain .character').text($self.data('character'));
-        $modal.off('click.set_action').on('click.set_action', 'li', function() {
-            let act = $(this).text();
-            if (aAction[loop] == undefined) {
-                aAction[loop] = {};
-            }
-            if (aAction[loop][day] == undefined) {
-                aAction[loop][day] = {};
-            }
-            if (aAction[loop][day][idx] == undefined) {
-                aAction[loop][day][idx] = {};
-            }
-            aAction[loop][day][idx][type] = act;
-            $self.text(act);
-            $modal.hide();
-
-            localStorage.setItem('aAction', JSON.stringify(aAction));
-        });
-        $modal.show();
-    }
 })();
 </script>
 </body>

@@ -1,9 +1,11 @@
 <?
 require_once('../secret/common.php');
 require_once('../secret/kifu_util.php');
+require_once('../secret/rule_role_master.php');
+require_once('../secret/detail_util.php');
 
 $aCharacter = getCharacterMaster(false);
-
+$aSet = array_keys($aRuleRoleMaster);
 $aBoard = getBoardMaster();
 ?>
 <html>
@@ -17,6 +19,13 @@ $aBoard = getBoardMaster();
     </div>
     <form action="kifu.php" method="get">
         <div class="period_wrapper">
+            <select name="set">
+                <option value="">惨劇セット</option>
+                <? foreach ($aSet as $val): ?>
+                <option value="<?= $val ?>"><?= getTragedySetName($val) ?></option>
+                <? endforeach; ?>
+            </select>
+            <br>
             <select name="loop">
                 <option value="">ループ数</option>
                 <? for ($i = 1 ; $i <= 8 ; $i++): ?>
