@@ -33,6 +33,18 @@ form input[type=submit] {
 body > div {
     margin: 0 8px;
 }
+.vertical_text {
+    -webkit-writing-mode: vertical-rl;
+    -moz-writing-mode: vertical-rl;
+    -ms-writing-mode: tb-rl;
+    -ms-writing-mode: vertical-rl;
+    writing-mode: vertical-rl;
+    box-sizing: border-box;
+    margin: 0 auto 0 auto;
+    line-height: 1.0;
+    text-align: center;
+    letter-spacing: 0.125em;
+}
 
 .error {
     color: red;
