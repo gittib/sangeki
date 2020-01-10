@@ -89,8 +89,9 @@ if (empty($errors)) {
                                 <th><?= $d ?></th>
                                 <td><input type="text" name="incident[<?= $d ?>]"></td>
                                 <td><select name="criminal[<?= $d ?>]">
+                                    <option>？？？？？</option>
                                     <? foreach ($aSelectedCharacter as $id => $chara): ?>
-                                        <option value="<?= $id ?>"><?= e($chara) ?></option>
+                                    <option value="<?= $id ?>"><?= e($chara) ?></option>
                                     <? endforeach; ?>
                                 </select></td>
                             </tbody>
