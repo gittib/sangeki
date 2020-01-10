@@ -458,7 +458,7 @@ body.kifu_input .kifu_wrapper {
     overflow-x: scroll;
 }
 body.kifu_input .kifu_wrapper .character_list thead th {
-    padding: 4px;
+    padding: 6px;
 }
 body.kifu_input .kifu_wrapper .character_list thead th .vertical_text {
     word-break: keep-all;

@@ -15,8 +15,16 @@ if (empty($errors)) {
         'chara' => $aSelectedCharacter,
         'target' => array_merge(getBoardMaster(), $aSelectedCharacter),
     );
+    $iRuleY = $oKifu->set == 'FS' ? 3 : 5;
+    $aRuleY = array('？？？？？');
+    $aRuleX = array('？？？？？');
     $aRole = array();
-    foreach ($aRuleRoleMaster[$_GET['set']] as $aVal) {
+    foreach ($aRuleRoleMaster[$_GET['set']] as $sRuleName => $aVal) {
+        if (count($aRuleY) < $iRuleY) {
+            $aRuleY[] = $sRuleName;
+        } else {
+            $aRuleX[] = $sRuleName;
+        }
         foreach ($aVal as $val) {
             $aRole[] = $val;
         }
@@ -52,7 +60,27 @@ if (empty($errors)) {
             <input type="hidden" name="action">
             <input type="hidden" name="memo">
             <div class="kifu_wrapper">
-                <div class="tr_name">惨劇セット：<?= getTragedySetName($oKifu->set) ?></div>
+                <div class="summary">
+                    <p class="tr_name">惨劇セット：<?= getTragedySetName($oKifu->set) ?></p>
+                    <p><?= $oKifu->loop ?>ループ <?= $oKifu->day ?>日間</p>
+                </div>
+                <div class="rule_wrapper">
+                    <h3>ルール一覧</h3>
+                    ルールY ：<select name="ruleY"><? foreach ($aRuleY as $i => $val): ?>
+                        <option value="<?= $i ?>"><?= $val ?></option>
+                    <? endforeach; ?></select><br>
+                    ルールX1：<select name="ruleX1"><? foreach ($aRuleX as $i => $val): ?>
+                        <option value="<?= $i ?>"><?= $val ?></option>
+                    <? endforeach; ?></select><br>
+                    ルールX2：<select name="ruleX2"><? foreach ($aRuleX as $i => $val): ?>
+                        <option value="<?= $i ?>"><?= $val ?></option>
+                    <? endforeach; ?></select>
+                </div>
+                <div class="insident_wrapper">
+                    <h3>事件リスト</h3>
+                    <table class="insident_list">
+                    </table>
+                </div>
                 <table class="character_list">
                     <thead>
                         <tr>
