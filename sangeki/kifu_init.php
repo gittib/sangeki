@@ -24,7 +24,7 @@ session('kifu_error', '');
     <div class="top_text">
         <h2></h2>
     </div>
-    <? if (!empty($aError)) ?>
+    <? if (!empty($aError)): ?>
         <div class="error">
             <span class="summary">棋譜入力画面の生成に失敗しました。</span>
             <ul><? foreach ($aError as $val): ?>
