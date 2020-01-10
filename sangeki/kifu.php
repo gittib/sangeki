@@ -113,7 +113,7 @@ if (empty($errors)) {
                         <tr>
                             <th><span><?= $chara ?></span></th>
                             <? foreach ($aRole as $role): ?>
-                            <td class="role_check">&nbsp;</td>
+                            <td class="role_check">　</td>
                             <? endforeach; ?>
                             <td><input type="text" name="chara[<?= $id ?>]"></td>
                         </tr>
@@ -215,7 +215,7 @@ if (empty($errors)) {
             $self.text('？');
             break;
         case '？':
-            $self.text(' ');
+            $self.text('　');
             break;
         default:
             $self.text('○');
