@@ -7,6 +7,13 @@ require_once('../secret/detail_util.php');
 $aCharacter = getCharacterMaster(false);
 $aSet = array_keys($aRuleRoleMaster);
 $aBoard = getBoardMaster();
+
+$aError = array();
+$s = session('kifu_error');
+if (!empty($s)) {
+    $aError = json_decode($s);
+}
+session('kifu_error', '');
 ?>
 <html>
 <head>
@@ -17,6 +24,14 @@ $aBoard = getBoardMaster();
     <div class="top_text">
         <h2></h2>
     </div>
+    <? if (!empty($aError)) ?>
+        <div class="error">
+            <span class="summary">棋譜入力画面の生成に失敗しました。</span>
+            <ul><? foreach ($aError as $val): ?>
+                <li><?= $val ?></li>
+            <? endforeach; ?></ul>
+        </div>
+    <? endif; ?>
     <form action="kifu.php" method="get">
         <div class="period_wrapper">
             <select name="set">
