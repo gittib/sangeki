@@ -6,7 +6,7 @@ require_once('../secret/rule_role_master.php');
 
 $errors = isValid($_GET);
 if (!empty($errors)) {
-    session('kifu_error', json_encode($errors));
+    $_SESSION['kifu_error'] = json_encode($errors);
     header('Location: kifu_init.php');
     return;
 }

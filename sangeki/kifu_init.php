@@ -12,8 +12,8 @@ $aError = array();
 $s = session('kifu_error');
 if (!empty($s)) {
     $aError = json_decode($s);
+    $_SESSION['kifu_error'] = '';
 }
-session('kifu_error', '');
 ?>
 <html>
 <head>
