@@ -457,19 +457,23 @@ body.kifu_input .kifu_wrapper {
     padding: 4px 0;
     overflow-x: scroll;
 }
-body.kifu_input .kifu_wrapper .character_list th {
+body.kifu_input .kifu_wrapper .character_list thead th {
     padding: 4px;
 }
-body.kifu_input .kifu_wrapper .character_list th .vertical_text {
-    min-height: 120px;
-}
-body.kifu_input .kifu_wrapper .character_list td.chara_name {
-    text-align: center;
-}
-body.kifu_input .kifu_wrapper .character_list td.chara_name span {
+body.kifu_input .kifu_wrapper .character_list thead th .vertical_text {
     word-break: keep-all;
 }
-body.kifu_input .kifu_wrapper .character_list td.role_check {
+body.kifu_input .kifu_wrapper .character_list tbody th {
+    text-align: center;
+}
+body.kifu_input .kifu_wrapper .character_list tbody th span {
+    word-break: keep-all;
+}
+body.kifu_input .kifu_wrapper .character_list tbody td {
+    border-right: solid 1px;
+    border-bottom: solid 1px;
+}
+body.kifu_input .kifu_wrapper .character_list tbody td.role_check {
     text-align: center;
     padding: 6px;
 }

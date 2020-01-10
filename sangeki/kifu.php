@@ -54,22 +54,26 @@ if (empty($errors)) {
             <div class="kifu_wrapper">
                 <div class="tr_name">惨劇セット：<?= getTragedySetName($oKifu->set) ?></div>
                 <table class="character_list">
-                    <tr>
-                        <th>&nbsp;</th>
-                        <? foreach ($aRole as $role): ?>
-                        <th><span class="vertical_text"><?= $role ?></span></th>
+                    <thead>
+                        <tr>
+                            <th>&nbsp;</th>
+                            <? foreach ($aRole as $role): ?>
+                            <th><span class="vertical_text"><?= $role ?></span></th>
+                            <? endforeach; ?>
+                            <th>備考</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <? foreach ($aSelectedCharacter as $id => $chara): ?>
+                        <tr>
+                            <th><span><?= $chara ?></span></th>
+                            <? foreach ($aRole as $role): ?>
+                            <td class="role_check">？</td>
+                            <? endforeach; ?>
+                            <td><input type="text" name="chara[<?= $id ?>]"></td>
+                        </tr>
                         <? endforeach; ?>
-                        <th>備考</th>
-                    </tr>
-                    <? foreach ($aSelectedCharacter as $id => $chara): ?>
-                    <tr>
-                        <td class="chara_name"><span><?= $chara ?></span></td>
-                        <? foreach ($aRole as $role): ?>
-                        <td class="role_check">？</td>
-                        <? endforeach; ?>
-                        <td><input type="text" name="chara[<?= $id ?>]"></td>
-                    </tr>
-                    <? endforeach; ?>
+                    </tbody>
                 </table>
                 <dl>
                 <? for ($l = 1 ; $l <= $oKifu->loop ; $l++): ?>
