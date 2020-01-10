@@ -56,18 +56,18 @@ if (empty($errors)) {
                 <table class="character_list">
                     <tr>
                         <th>&nbsp;</th>
-                        <th>備考</th>
                         <? foreach ($aRole as $role): ?>
                         <th><span class="vertical_text"><?= $role ?></span></th>
                         <? endforeach; ?>
+                        <th>備考</th>
                     </tr>
                     <? foreach ($aSelectedCharacter as $id => $chara): ?>
                     <tr>
-                        <td><?= $chara ?></td>
-                        <td><input type="text" name="chara[<?= $id ?>]"></td>
+                        <td class="chara_name"><span><?= $chara ?></span></td>
                         <? foreach ($aRole as $role): ?>
-                        <td>？</td>
+                        <td class="role_check">？</td>
                         <? endforeach; ?>
+                        <td><input type="text" name="chara[<?= $id ?>]"></td>
                     </tr>
                     <? endforeach; ?>
                 </table>
