@@ -6,7 +6,6 @@ require_once('../secret/detail_util.php');
 
 $aCharacter = getCharacterMaster(false);
 $aSet = array_keys($aRuleRoleMaster);
-$aBoard = getBoardMaster();
 ?>
 <html>
 <head>
