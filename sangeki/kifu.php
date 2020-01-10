@@ -86,13 +86,13 @@ if (empty($errors)) {
                         </thead>
                         <? for ($d = 1 ; $d <= $oKifu->day ; $d++): ?>
                             <tbody>
-                                <td><?= $d ?></td>
-                                <th><input type="text" name="incident[<?= $d ?>]"></th>
-                                <th><select name="criminal[<?= $d ?>]">
+                                <th><?= $d ?></th>
+                                <td><input type="text" name="incident[<?= $d ?>]"></td>
+                                <td><select name="criminal[<?= $d ?>]">
                                     <? foreach ($aSelectedCharacter as $id => $chara): ?>
-                                        <option value="<?= $id ?>"><?= e($chara) ?></option></th>
+                                        <option value="<?= $id ?>"><?= e($chara) ?></option>
                                     <? endforeach; ?>
-                                </select></th>
+                                </select></td>
                             </tbody>
                         <? endfor; ?>
                     </table>
