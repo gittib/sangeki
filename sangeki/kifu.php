@@ -67,18 +67,34 @@ if (empty($errors)) {
                 <div class="rule_wrapper">
                     <h3>ルール一覧</h3>
                     ルールY ：<select name="ruleY"><? foreach ($aRuleY as $i => $val): ?>
-                        <option value="<?= $i ?>"><?= $val ?></option>
+                        <option value="<?= $i ?>"><?= e($val) ?></option>
                     <? endforeach; ?></select><br>
                     ルールX1：<select name="ruleX1"><? foreach ($aRuleX as $i => $val): ?>
-                        <option value="<?= $i ?>"><?= $val ?></option>
+                        <option value="<?= $i ?>"><?= e($val) ?></option>
                     <? endforeach; ?></select><br>
                     ルールX2：<select name="ruleX2"><? foreach ($aRuleX as $i => $val): ?>
-                        <option value="<?= $i ?>"><?= $val ?></option>
+                        <option value="<?= $i ?>"><?= e($val) ?></option>
                     <? endforeach; ?></select>
                 </div>
                 <div class="insident_wrapper">
                     <h3>事件リスト</h3>
                     <table class="insident_list">
+                        <thead>
+                            <th>日</th>
+                            <th>事件名</th>
+                            <th>犯人</th>
+                        </thead>
+                        <? for ($d = 1 ; $d <= $oKifu->day ; $d++): ?>
+                            <tbody>
+                                <td><?= $d ?></td>
+                                <th><input type="text" name="incident[<?= $d ?>]"></th>
+                                <th><select name="criminal[<?= $d ?>]">
+                                    <? foreach ($aSelectedCharacter as $id => $chara): ?>
+                                        <option value="<?= $id ?>"><?= e($chara) ?></option></th>
+                                    <? endforeach; ?>
+                                </select></th>
+                            </tbody>
+                        <? endfor; ?>
                     </table>
                 </div>
                 <table class="character_list">

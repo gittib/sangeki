@@ -457,6 +457,10 @@ body.kifu_input .kifu_wrapper {
     padding: 4px 0;
     overflow-x: scroll;
 }
+body.kifu_input .kifu_wrapper > * {
+    padding-top: 8px;
+    padding-bottom: 8px;
+}
 body.kifu_input .kifu_wrapper .character_list thead th {
     padding: 6px;
 }
