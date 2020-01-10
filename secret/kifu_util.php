@@ -1,5 +1,4 @@
 <?php
-require_once(dirname(__FILE__) . '/rule_role_master.php');
 
 function getBoardMaster() {
     return array(
@@ -68,8 +67,6 @@ function getCharacterList($aCharaIds) {
 function isValid($aParams) {
     $errors = array();
     if (empty($aParams['set'])) {
-        $errors[] = '惨劇セットが設定されていません。';
-    } else if (!isset($aRuleRoleMaster[$aParams['set']])) {
         $errors[] = '惨劇セットが設定されていません。';
     }
     if (empty($aParams['loop'])) {
