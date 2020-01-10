@@ -20,7 +20,7 @@ if (empty($errors)) {
     $aRuleX = array('？？？？？');
     $aRole = array();
     foreach ($aRuleRoleMaster[$_GET['set']] as $sRuleName => $aVal) {
-        if (count($aRuleY) < $iRuleY) {
+        if (count($aRuleY)-1 < $iRuleY) {
             $aRuleY[] = $sRuleName;
         } else {
             $aRuleX[] = $sRuleName;
