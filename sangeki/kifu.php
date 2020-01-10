@@ -113,7 +113,7 @@ if (empty($errors)) {
                         <tr>
                             <th><span><?= $chara ?></span></th>
                             <? foreach ($aRole as $role): ?>
-                            <td class="role_check">？</td>
+                            <td class="role_check">&nbsp;</td>
                             <? endforeach; ?>
                             <td><input type="text" name="chara[<?= $id ?>]"></td>
                         </tr>
@@ -205,6 +205,23 @@ if (empty($errors)) {
 </div>
 <script>
 (function() {
+    $('.character_list .role_check').on('click', function () {
+        var $self = $(this);
+        switch ($self.text()) {
+        case '○':
+            $self.text('×');
+            break;
+        case '×':
+            $self.text('？');
+            break;
+        case '？':
+            $self.text(' ');
+            break;
+        default:
+            $self.text('○');
+            break;
+        }
+    });
 })();
 </script>
 </body>
