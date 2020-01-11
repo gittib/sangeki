@@ -176,15 +176,15 @@ if (empty($errors)) {
                             <thead>
                                 <tr>
                                     <th class="day">日</th>
-                                    <th>脚本家</th>
-                                    <th>主人公</th>
+                                    <th>脚本家行動カード</th>
+                                    <th>主人公行動カード</th>
                                 </tr>
                             </thead>
                             <? for ($d = 1 ; $d <= $oKifu->day ; $d++): ?>
                             <tbody>
                                 <tr>
                                     <td rowspan="2"><?= $d ?></td>
-                                    <td>
+                                    <td class="set_card">
                                         <? for ($i = 0 ; $i < 3 ; $i++): ?>
                                             <select name="scriptwriter_chara[<?= $l ?>][<?= $d ?>][<?= $i ?>]">
                                             <? foreach ($oKifu->target as $id => $val): ?>
@@ -205,7 +205,7 @@ if (empty($errors)) {
                                             <br>
                                         <? endfor; ?>
                                     </td>
-                                    <td>
+                                    <td class="set_card">
                                         <? for ($i = 0 ; $i < 3 ; $i++): ?>
                                             <select name="hero_chara[<?= $l ?>][<?= $d ?>][<?= $i ?>]">
                                             <? foreach ($oKifu->target as $id => $val): ?>
