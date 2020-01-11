@@ -82,7 +82,7 @@ $(function() {
         var $insidentPlans = $('.insident_list > li');
         $insidentPlans.hide();
         for (var i = 1 ; i <= day ; i++) {
-            $insidentPlans.filter('[data-day='+day+']').show();
+            $insidentPlans.filter('[data-day='+i+']').show();
         }
     });
 });
