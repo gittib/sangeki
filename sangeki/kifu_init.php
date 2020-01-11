@@ -38,7 +38,7 @@ $aSet = array_keys($aRuleRoleMaster);
                 <? endfor; ?>
             </select>
             <br>
-            <span>事件リスト</span>
+            <h3>事件リスト</h3>
             <ul class="insident_list">
                 <? for ($i = 1 ; $i <= 8 ; $i++): ?>
                 <li data-day="<?= $i ?>" style="display:none">
@@ -55,7 +55,7 @@ $aSet = array_keys($aRuleRoleMaster);
             </ul>
         </div>
         <div class="available_character_list">
-            <span>登場キャラクター</span>
+            <h3>登場キャラクター</h3>
             <? foreach ($aCharacter as $id => $val): ?>
             <label>
                 <input type="checkbox" name="ch[]" value="<?= $id ?>">
