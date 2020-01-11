@@ -44,7 +44,7 @@ $aSet = array_keys($aRuleRoleMaster);
                 <? for ($i = 1 ; $i <= 8 ; $i++): ?>
                 <li data-day="<?= $i ?>" style="display:none">
                     <?= $i ?>日：<select class="insident" name="insident[<?= $i ?>]">
-                        <option class="no_insident"> </option>
+                        <option> </option>
                         <? foreach ($aInsidentMaster as $rule => $aInsidents): ?>
                             <? foreach ($aInsidents as $insident): ?>
                                 <option style="display:none;" class="<?= $rule ?>"><?= $insident ?></option>
@@ -72,12 +72,15 @@ $aSet = array_keys($aRuleRoleMaster);
 <?php require('../secret/sangeki_footer.php') ?>
 <script>
 $(function() {
+    var $aInsidents = <?= json_encode($aInsidentMaster) ?>;
     $('select[name=set]').on('change', function () {
         var s = $(this).val();
-        $('select.insident > option').hide();
-        $('select.insident > option.'+s).show();
-        $('.no_insident').show();
-        $('select.insident').val(' ');
+        var $select = $('select.insident');
+        $select.empty();
+        $select.append('<option> </option>');
+        $aInsidents[s].each(function (k,v) {
+            $select.append('<option>'+v+'</option>');
+        });
     });
     $('select[name=day]').on('change', function () {
         var day = $(this).val();
