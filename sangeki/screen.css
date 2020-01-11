@@ -515,7 +515,6 @@ body.kifu_input .kifu_wrapper dl > dd table {
     font-size:1rem;
 }
 body.kifu_input .kifu_wrapper dl > dd table th {
-    border-bottom: 3px double;
     border-right: 1px solid;
 }
 body.kifu_input .kifu_wrapper dl > dd table td {
@@ -535,9 +534,6 @@ body.kifu_input .kifu_wrapper dl > dd table th > p {
 body.kifu_input .kifu_wrapper dl > dd table td {
     line-height: 1em;
     padding: 2px 0;
-}
-body.kifu_input .kifu_wrapper dl > dd table td.set_card {
-    min-width: 250px;
 }
 body.kifu_input .kifu_wrapper dl > dd table td.memo textarea {
     width: 98%;

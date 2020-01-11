@@ -185,45 +185,48 @@ if (empty($errors)) {
                                 <tr>
                                     <td rowspan="2"><?= $d ?></td>
                                     <td class="set_card">
-                                        <? for ($i = 0 ; $i < 3 ; $i++): ?>
-                                            <select name="scriptwriter_chara[<?= $l ?>][<?= $d ?>][<?= $i ?>]">
-                                            <? foreach ($oKifu->target as $id => $val): ?>
-                                                <option value="<?= $id ?>"><?= $val ?></option>
-                                            <? endforeach; ?>
-                                            </select>に<select name="scriptwriter_card[<?= $l ?>][<?= $d ?>][<?= $i ?>]">
-                                                <option>&nbsp;</option>
-                                                <option>不安+1</option>
-                                                <option>不安-1</option>
-                                                <option>不安禁止</option>
-                                                <option>友好禁止</option>
-                                                <option>移動縦</option>
-                                                <option>移動横</option>
-                                                <option>移動斜め</option>
-                                                <option>暗躍+1</option>
-                                                <option>暗躍+2</option>
-                                            </select>
-                                            <br>
-                                        <? endfor; ?>
+                                        <ul>
+                                            <? for ($i = 0 ; $i < 3 ; $i++): ?><li>
+                                                <select name="scriptwriter_chara[<?= $l ?>][<?= $d ?>][<?= $i ?>]">
+                                                <? foreach ($oKifu->target as $id => $val): ?>
+                                                    <option value="<?= $id ?>"><?= $val ?></option>
+                                                <? endforeach; ?>
+                                                </select>に<select name="scriptwriter_card[<?= $l ?>][<?= $d ?>][<?= $i ?>]">
+                                                    <option>&nbsp;</option>
+                                                    <option>不安+1</option>
+                                                    <option>不安-1</option>
+                                                    <option>不安禁止</option>
+                                                    <option>友好禁止</option>
+                                                    <option>移動縦</option>
+                                                    <option>移動横</option>
+                                                    <option>移動斜め</option>
+                                                    <option>暗躍+1</option>
+                                                    <option>暗躍+2</option>
+                                                </select>
+                                                <br>
+                                            </li><? endfor; ?>
+                                        </ul>
                                     </td>
                                     <td class="set_card">
-                                        <? for ($i = 0 ; $i < 3 ; $i++): ?>
-                                            <select name="hero_chara[<?= $l ?>][<?= $d ?>][<?= $i ?>]">
-                                            <? foreach ($oKifu->target as $id => $val): ?>
-                                                <option value="<?= $id ?>"><?= $val ?></option>
-                                            <? endforeach; ?>
-                                            </select>に<select name="hero_card[<?= $l ?>][<?= $d ?>][<?= $i ?>]">
-                                                <option>&nbsp;</option>
-                                                <option>友好+1</option>
-                                                <option>友好+2</option>
-                                                <option>移動縦</option>
-                                                <option>移動横</option>
-                                                <option>移動禁止</option>
-                                                <option>暗躍禁止</option>
-                                                <option>不安-1</option>
-                                                <option>不安+1</option>
-                                            </select>
-                                            <br>
-                                        <? endfor; ?>
+                                        <ul>
+                                            <? for ($i = 0 ; $i < 3 ; $i++): ?><li>
+                                                    <select name="hero_chara[<?= $l ?>][<?= $d ?>][<?= $i ?>]">
+                                                    <? foreach ($oKifu->target as $id => $val): ?>
+                                                        <option value="<?= $id ?>"><?= $val ?></option>
+                                                    <? endforeach; ?>
+                                                    </select>に<select name="hero_card[<?= $l ?>][<?= $d ?>][<?= $i ?>]">
+                                                        <option>&nbsp;</option>
+                                                        <option>友好+1</option>
+                                                        <option>友好+2</option>
+                                                        <option>移動縦</option>
+                                                        <option>移動横</option>
+                                                        <option>移動禁止</option>
+                                                        <option>暗躍禁止</option>
+                                                        <option>不安-1</option>
+                                                        <option>不安+1</option>
+                                                    </select>
+                                            </li><? endfor; ?>
+                                        </ul>
                                     </td>
                                 </tr>
                                 <tr>
