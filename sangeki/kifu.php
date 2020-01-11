@@ -67,7 +67,6 @@ if (empty($errors)) {
                 <option value="18px">大</option>
                 <option value="20px">最大</option>
             </select>
-            <button class="reset_all_action">行動ログを全て削除</button>
         </div>
         <form method="post" action="kifu_output.php">
             <input type="hidden" name="outtype">
@@ -120,12 +119,7 @@ if (empty($errors)) {
                     <? for ($d = 1 ; $d <= $oKifu->day ; $d++): ?>
                     <tbody>
                         <th><?= $d ?></th>
-                        <td><select name="incident[<?= $d ?>]">
-                            <option> </option>
-                            <? foreach ($aInsidents as $key => $val): ?>
-                            <option value="<?= $key ?>"><?= e($val) ?></option>
-                            <? endforeach; ?>
-                        </select></td>
+                        <td><?= $_GET['insident'][$d] ?></td>
                         <td><select name="criminal[<?= $d ?>]">
                             <option value="">？？？？？</option>
                             <? foreach ($aSelectedCharacter as $id => $chara): ?>
