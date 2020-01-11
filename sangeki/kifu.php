@@ -59,6 +59,7 @@ if (empty($errors)) {
             <? endforeach; ?></ul>
         </div>
     <? else: ?>
+        <h1>惨劇RoopeR 棋譜 初期化画面</h1>
         <div class="button_wrapper">
             フォントサイズ：<select id="font_size_change">
                 <option value="12px">最小</option>

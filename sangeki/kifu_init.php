@@ -13,6 +13,7 @@ $aSet = array_keys($aRuleRoleMaster);
     <title>惨劇RoopeR 棋譜初期化</title>
 </head>
 <body class="kifu_init">
+    <h1>惨劇RoopeR 棋譜 初期化画面</h1>
     <div class="top_text">
         <h2></h2>
     </div>
