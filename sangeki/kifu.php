@@ -51,8 +51,14 @@ if (empty($errors)) {
     <title>惨劇RoopeR 棋譜記録用</title>
 </head>
 <body class="kifu_input">
-    <div class="top_text">
-        <h2></h2>
+    <div>
+        フォントサイズ：<select id="font_size_change">
+            <option value="12px" selected="selected">最小</option>
+            <option value="14px" selected="selected">小</option>
+            <option value="16px" selected="selected">中</option>
+            <option value="18px" selected="selected">大</option>
+            <option value="20px" selected="selected">最大</option>
+        </select>
     </div>
     <? if (!empty($errors)): ?>
         <div class="error">
