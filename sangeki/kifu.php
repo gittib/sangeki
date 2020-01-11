@@ -181,7 +181,7 @@ if (empty($errors)) {
                                         <? for ($i = 0 ; $i < 3 ; $i++): ?>
                                             <select name="scriptwriter_chara[<?= $l ?>][<?= $d ?>][<?= $i ?>]">
                                             <? foreach ($oKifu->target as $id => $val): ?>
-                                                <option><?= $val ?></option>
+                                                <option value="<?= $id ?>"><?= $val ?></option>
                                             <? endforeach; ?>
                                             </select>に<select name="scriptwriter_card[<?= $l ?>][<?= $d ?>][<?= $i ?>]">
                                                 <option>&nbsp;</option>
@@ -202,7 +202,7 @@ if (empty($errors)) {
                                         <? for ($i = 0 ; $i < 3 ; $i++): ?>
                                             <select name="hero_chara[<?= $l ?>][<?= $d ?>][<?= $i ?>]">
                                             <? foreach ($oKifu->target as $id => $val): ?>
-                                                <option><?= $val ?></option>
+                                                <option value="<?= $id ?>"><?= $val ?></option>
                                             <? endforeach; ?>
                                             </select>に<select name="hero_card[<?= $l ?>][<?= $d ?>][<?= $i ?>]">
                                                 <option>&nbsp;</option>
