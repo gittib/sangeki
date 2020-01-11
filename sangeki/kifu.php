@@ -20,11 +20,11 @@ if (empty($errors)) {
         'target' => array_merge(getBoardMaster(), $aSelectedCharacter),
     );
     $iRuleY = $oKifu->set == 'FS' ? 3 : 5;
-    $aRuleY = array('？？？？？');
-    $aRuleX = array('？？？？？');
+    $aRuleY = array();
+    $aRuleX = array();
     $aRole = array();
     foreach ($aRuleRoleMaster[$_GET['set']] as $sRuleName => $aVal) {
-        if (count($aRuleY)-1 < $iRuleY) {
+        if (count($aRuleY) < $iRuleY) {
             $aRuleY[] = $sRuleName;
         } else {
             $aRuleX[] = $sRuleName;
@@ -69,15 +69,24 @@ if (empty($errors)) {
             </div>
             <div class="rule_wrapper">
                 <h3>ルール一覧</h3>
-                ルールY ：<select name="ruleY"><? foreach ($aRuleY as $i => $val): ?>
-                    <option value="<?= $i ?>"><?= e($val) ?></option>
-                <? endforeach; ?></select><br>
-                ルールX1：<select name="ruleX1"><? foreach ($aRuleX as $i => $val): ?>
-                    <option value="<?= $i ?>"><?= e($val) ?></option>
-                <? endforeach; ?></select><br>
-                ルールX2：<select name="ruleX2"><? foreach ($aRuleX as $i => $val): ?>
-                    <option value="<?= $i ?>"><?= e($val) ?></option>
-                <? endforeach; ?></select>
+                ルールY ：<select name="ruleY">
+                    <option>？？？？？</option>
+                    <? foreach ($aRuleY as $i => $val): ?>
+                        <option value="<?= $i ?>"><?= e($val) ?></option>
+                    <? endforeach; ?>
+                </select><br>
+                ルールX1：<select name="ruleX1">
+                    <option>？？？？？</option>
+                    <? foreach ($aRuleX as $i => $val): ?>
+                        <option value="<?= $i ?>"><?= e($val) ?></option>
+                    <? endforeach; ?>
+                </select><br>
+                ルールX2：<select name="ruleX1">
+                    <option>？？？？？</option>
+                    <? foreach ($aRuleX as $i => $val): ?>
+                        <option value="<?= $i ?>"><?= e($val) ?></option>
+                    <? endforeach; ?>
+                </select>
             </div>
             <div class="insident_wrapper">
                 <h3>事件リスト</h3>
@@ -88,42 +97,50 @@ if (empty($errors)) {
                         <th>犯人</th>
                     </thead>
                     <? for ($d = 1 ; $d <= $oKifu->day ; $d++): ?>
-                        <tbody>
-                            <th><?= $d ?></th>
-                            <td><input type="text" name="incident[<?= $d ?>]"></td>
-                            <td><select name="criminal[<?= $d ?>]">
-                                <option>？？？？？</option>
-                                <? foreach ($aSelectedCharacter as $id => $chara): ?>
-                                <option value="<?= $id ?>"><?= e($chara) ?></option>
-                                <? endforeach; ?>
-                            </select></td>
-                        </tbody>
+                    <tbody>
+                        <th><?= $d ?></th>
+                        <td><select name="incident[<?= $d ?>]">
+                            <option> </option>
+                            <? foreach ($aInsidentMaster as $key => $val): ?>
+                            <option value="<?= $key ?>"><?= e($val) ?></option>
+                            <? endforeach; ?>
+                        </select></td>
+                        <td><select name="criminal[<?= $d ?>]">
+                            <option>？？？？？</option>
+                            <? foreach ($aSelectedCharacter as $id => $chara): ?>
+                            <option value="<?= $id ?>"><?= e($chara) ?></option>
+                            <? endforeach; ?>
+                        </select></td>
+                    </tbody>
                     <? endfor; ?>
                 </table>
             </div>
             <div class="kifu_wrapper">
-                <table class="character_list">
-                    <thead>
-                        <tr>
-                            <th>&nbsp;</th>
-                            <? foreach ($aRole as $role): ?>
-                            <th><span class="vertical_text"><?= $role ?></span></th>
-                            <? endforeach; ?>
-                            <th>備考</th>
-                        </tr>
-                    </thead>
-                    <tbody>
+                <div class="character_list_wrapper">
+                    <h3>キャラクターリスト</h3>
+                    <table class="character_list">
+                        <thead>
+                            <tr>
+                                <th>&nbsp;</th>
+                                <? foreach ($aRole as $role): ?>
+                                <th><span class="vertical_text"><?= $role ?></span></th>
+                                <? endforeach; ?>
+                                <th>備考</th>
+                            </tr>
+                        </thead>
                         <? foreach ($aSelectedCharacter as $id => $chara): ?>
-                        <tr>
-                            <th><span><?= $chara ?></span></th>
-                            <? foreach ($aRole as $role): ?>
-                            <td class="role_check">　</td>
-                            <? endforeach; ?>
-                            <td><input type="text" name="chara[<?= $id ?>]"></td>
-                        </tr>
+                        <tbody>
+                            <tr>
+                                <th><span><?= $chara ?></span></th>
+                                <? foreach ($aRole as $role): ?>
+                                <td class="role_check">　</td>
+                                <? endforeach; ?>
+                                <td><input type="text" name="chara[<?= $id ?>]"></td>
+                            </tr>
+                        </tbody>
                         <? endforeach; ?>
-                    </tbody>
-                </table>
+                    </table>
+                </div>
                 <dl>
                 <? for ($l = 1 ; $l <= $oKifu->loop ; $l++): ?>
                     <dt><?= $l ?>ループ目</dt>

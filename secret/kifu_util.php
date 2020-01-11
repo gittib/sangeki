@@ -1,4 +1,5 @@
 <?php
+require_once(dirname(__FILE__) . '/rule_role_master.php');
 
 function getBoardMaster() {
     return array(
@@ -66,7 +67,7 @@ function getCharacterList($aCharaIds) {
 
 function isValid($aParams) {
     $errors = array();
-    if (empty($aParams['set'])) {
+    if (empty($aParams['set']) || empty($aRuleRoleMaster[$aParams['set']])) {
         $errors[] = '惨劇セットが設定されていません。';
     }
     if (empty($aParams['loop'])) {
@@ -74,6 +75,9 @@ function isValid($aParams) {
     }
     if (empty($aParams['day'])) {
         $errors[] = '日数が設定されていません。';
+    }
+    if (empty($aParams['ch'])) {
+        $errors[] = 'キャラクターが設定されていません。';
     }
     return $errors;
 }

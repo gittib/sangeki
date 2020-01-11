@@ -441,6 +441,9 @@ body.kifu_init .period_wrapper {
     clear: both;
     padding: 18px;
 }
+body.kifu_init .period_wrapper select {
+    margin: 12px;
+}
 body.kifu_init .submit_wrapper {
     clear: both;
     padding: 12px;
@@ -451,6 +454,9 @@ body.kifu_input .button_wrapper {
 }
 body.kifu_input .button_wrapper input[type=button] {
     margin: 20px;
+}
+body.kifu_input .insident_list tbody td {
+    padding: 4px;
 }
 body.kifu_input .kifu_wrapper {
     margin: 6px;
