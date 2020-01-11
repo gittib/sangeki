@@ -53,11 +53,11 @@ if (empty($errors)) {
 <body class="kifu_input">
     <div>
         フォントサイズ：<select id="font_size_change">
-            <option value="12px" selected="selected">最小</option>
-            <option value="14px" selected="selected">小</option>
+            <option value="12px">最小</option>
+            <option value="14px">小</option>
             <option value="16px" selected="selected">中</option>
-            <option value="18px" selected="selected">大</option>
-            <option value="20px" selected="selected">最大</option>
+            <option value="18px">大</option>
+            <option value="20px">最大</option>
         </select>
     </div>
     <? if (!empty($errors)): ?>
@@ -292,6 +292,9 @@ if (empty($errors)) {
 </div>
 <script>
 (function() {
+    $('#font_size_change').on('change', function () {
+        $('html').css('font-size', $(this).val());
+    });
     $('.character_list .role_check').on('click', function () {
         var $self = $(this);
         switch ($self.text()) {
