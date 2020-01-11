@@ -162,7 +162,7 @@ if (empty($errors)) {
                                 <? foreach ($aRole as $role): ?>
                                 <td class="role_check">　</td>
                                 <? endforeach; ?>
-                                <td><input class="memo" type="text" name="chara_memo[<?= $id ?>]"></td>
+                                <td><input class="memo" type="text" name="chara_memo[<?= $id ?>]" placeholder="メモ"></td>
                             </tr>
                         </tbody>
                         <? endforeach; ?>
@@ -231,8 +231,7 @@ if (empty($errors)) {
                                 </tr>
                                 <tr>
                                     <td colspan="2" class="memo">
-                                        メモ<br>
-                                        <textarea name="memo[<?= $l ?>][<?= $d ?>]"></textarea>
+                                        <textarea name="memo[<?= $l ?>][<?= $d ?>]" placeholder="メモ"></textarea>
                                     </td>
                                 </tr>
                             </tbody>
