@@ -459,6 +459,12 @@ body.kifu_input .rule_wrapper {
     margin-top: 16px;
     margin-bottom: 16px;
 }
+body.kifu_input .rule_wrapper ul > li {
+    margin-top: 4px;
+}
+body.kifu_input .rule_wrapper ul > li:first-child {
+    margin-top: 0;
+}
 body.kifu_input .insident_list tbody td {
     padding: 4px;
 }
@@ -490,6 +496,11 @@ body.kifu_input .kifu_wrapper .character_list tbody td {
 body.kifu_input .kifu_wrapper .character_list tbody td.role_check {
     text-align: center;
     padding: 6px;
+}
+body.kifu_input .kifu_wrapper .character_list tbody td input.memo {
+    width: 80%;
+    display: block;
+    margin: 0 auto;
 }
 body.kifu_input .kifu_wrapper dl > dt {
     padding-top: 12px;

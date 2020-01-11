@@ -145,7 +145,7 @@ if (empty($errors)) {
                                 <? foreach ($aRole as $role): ?>
                                 <td class="role_check">　</td>
                                 <? endforeach; ?>
-                                <td><input type="text" name="chara[<?= $id ?>]"></td>
+                                <td><input class="memo" type="text" name="chara[<?= $id ?>]"></td>
                             </tr>
                         </tbody>
                         <? endforeach; ?>
