@@ -158,7 +158,7 @@ if (empty($errors)) {
                                         <? endforeach; ?>
                                     </select>
                                 </td>
-                                <td><span><?= $chara ?></span></td>
+                                <td class="chara_name"><span><?= $chara ?></span></td>
                                 <? foreach ($aRole as $role): ?>
                                 <td class="role_check">　</td>
                                 <? endforeach; ?>

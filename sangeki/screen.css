@@ -487,10 +487,10 @@ body.kifu_input .kifu_wrapper .character_list thead th.memo {
     min-width: 1000px;
     text-align: left;
 }
-body.kifu_input .kifu_wrapper .character_list tbody th {
+body.kifu_input .kifu_wrapper .character_list tbody td.charaj_name {
     text-align: center;
 }
-body.kifu_input .kifu_wrapper .character_list tbody th span {
+body.kifu_input .kifu_wrapper .character_list tbody td.charaj_name span {
     word-break: keep-all;
 }
 body.kifu_input .kifu_wrapper .character_list tbody td {
