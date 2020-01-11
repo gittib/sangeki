@@ -119,13 +119,17 @@ if (empty($errors)) {
                     <? for ($d = 1 ; $d <= $oKifu->day ; $d++): ?>
                     <tbody>
                         <th><?= $d ?></th>
-                        <td><?= $_GET['insident'][$d] ?></td>
-                        <td><select name="criminal[<?= $d ?>]">
-                            <option value="">？？？？？</option>
-                            <? foreach ($aSelectedCharacter as $id => $chara): ?>
-                            <option value="<?= $id ?>"><?= e($chara) ?></option>
-                            <? endforeach; ?>
-                        </select></td>
+                        <td><?= empty($_GET['insident'][$d]) ? '' : $_GET['insident'][$d] ?></td>
+                        <td>
+                            <? if (!empty($_GET['insident'][$d])): ?>
+                            <select name="criminal[<?= $d ?>]">
+                                <option value="">？？？？？</option>
+                                <? foreach ($aSelectedCharacter as $id => $chara): ?>
+                                <option value="<?= $id ?>"><?= e($chara) ?></option>
+                                <? endforeach; ?>
+                            </select>
+                            <? endif; ?>
+                        </td>
                     </tbody>
                     <? endfor; ?>
                 </table>

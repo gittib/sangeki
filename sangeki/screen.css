@@ -467,6 +467,7 @@ body.kifu_input .rule_wrapper ul > li:first-child {
 }
 body.kifu_input .insident_list tbody td {
     padding: 4px;
+    border: solid 1px;
 }
 body.kifu_input .kifu_wrapper {
     margin: 6px;
