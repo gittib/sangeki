@@ -78,7 +78,7 @@ $(function() {
         var $select = $('select.insident');
         $select.empty();
         $select.append('<option> </option>');
-        $aInsidents[s].each(function (k,v) {
+        $.each($aInsidents[s], function (k,v) {
             $select.append('<option>'+v+'</option>');
         });
     });
