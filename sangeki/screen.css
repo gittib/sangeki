@@ -455,6 +455,10 @@ body.kifu_input .button_wrapper {
 body.kifu_input .button_wrapper input[type=button] {
     margin: 20px;
 }
+body.kifu_input .rule_wrapper {
+    margin-top: 16px;
+    margin-bottom: 16px;
+}
 body.kifu_input .insident_list tbody td {
     padding: 4px;
 }

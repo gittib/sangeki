@@ -71,24 +71,32 @@ if (empty($errors)) {
             </div>
             <div class="rule_wrapper">
                 <h3>ルール一覧</h3>
-                ルールY ：<select name="ruleY">
-                    <option>？？？？？</option>
-                    <? foreach ($aRuleY as $i => $val): ?>
-                        <option value="<?= $i ?>"><?= e($val) ?></option>
-                    <? endforeach; ?>
-                </select><br>
-                ルールX1：<select name="ruleX1">
-                    <option>？？？？？</option>
-                    <? foreach ($aRuleX as $i => $val): ?>
-                        <option value="<?= $i ?>"><?= e($val) ?></option>
-                    <? endforeach; ?>
-                </select><br>
-                ルールX2：<select name="ruleX1">
-                    <option>？？？？？</option>
-                    <? foreach ($aRuleX as $i => $val): ?>
-                        <option value="<?= $i ?>"><?= e($val) ?></option>
-                    <? endforeach; ?>
-                </select>
+                <ul>
+                  <li>
+                    ルールY ：<select name="ruleY">
+                        <option>？？？？？</option>
+                        <? foreach ($aRuleY as $i => $val): ?>
+                            <option value="<?= $i ?>"><?= e($val) ?></option>
+                        <? endforeach; ?>
+                    </select><br>
+                  </li>
+                  <li>
+                    ルールX1：<select name="ruleX1">
+                        <option>？？？？？</option>
+                        <? foreach ($aRuleX as $i => $val): ?>
+                            <option value="<?= $i ?>"><?= e($val) ?></option>
+                        <? endforeach; ?>
+                    </select><br>
+                  </li>
+                  <li>
+                    ルールX2：<select name="ruleX1">
+                        <option>？？？？？</option>
+                        <? foreach ($aRuleX as $i => $val): ?>
+                            <option value="<?= $i ?>"><?= e($val) ?></option>
+                        <? endforeach; ?>
+                    </select>
+                  </li>
+                </ul>
             </div>
             <div class="insident_wrapper">
                 <h3>事件リスト</h3>
