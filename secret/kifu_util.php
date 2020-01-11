@@ -1,6 +1,4 @@
 <?php
-require_once(dirname(__FILE__) . '/rule_role_master.php');
-
 function getBoardMaster() {
     return array(
         '101' => '神社',
@@ -66,6 +64,7 @@ function getCharacterList($aCharaIds) {
 }
 
 function isValid($aParams) {
+    require(dirname(__FILE__) . '/rule_role_master.php');
     $errors = array();
     if (empty($aParams['set']) || empty($aRuleRoleMaster[$aParams['set']])) {
         $errors[] = '惨劇セットが設定されていません。';
