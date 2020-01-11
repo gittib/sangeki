@@ -38,23 +38,24 @@ $aSet = array_keys($aRuleRoleMaster);
                 <? endfor; ?>
             </select>
             <br>
-                <span>事件リスト</span>
-                <ul class="insident_list">
-                    <? for ($i = 1 ; $i <= 8 ; $i++): ?>
-                    <li data-day="<?= $i ?>" style="display:none">
-                        <?= $i ?>日：<select class="insident" name="insident[<?= $i ?>]">
-                            <option class="no_insident"> </option>
-                            <? foreach ($aInsidentMaster as $rule => $aInsidents): ?>
-                                <? foreach ($aInsidents as $insident): ?>
-                                    <option style="display:none;" class="<?= $rule ?>"><?= $insident ?></option>
-                                <? endforeach; ?>
+            <span>事件リスト</span>
+            <ul class="insident_list">
+                <? for ($i = 1 ; $i <= 8 ; $i++): ?>
+                <li data-day="<?= $i ?>" style="display:none">
+                    <?= $i ?>日：<select class="insident" name="insident[<?= $i ?>]">
+                        <option class="no_insident"> </option>
+                        <? foreach ($aInsidentMaster as $rule => $aInsidents): ?>
+                            <? foreach ($aInsidents as $insident): ?>
+                                <option style="display:none;" class="<?= $rule ?>"><?= $insident ?></option>
                             <? endforeach; ?>
-                        </select>
-                    </li>
-                    <? endfor; ?>
-                </ul>
+                        <? endforeach; ?>
+                    </select>
+                </li>
+                <? endfor; ?>
+            </ul>
         </div>
         <div class="available_character_list">
+            <span>登場キャラクター</span>
             <? foreach ($aCharacter as $id => $val): ?>
             <label>
                 <input type="checkbox" name="ch[]" value="<?= $id ?>">
