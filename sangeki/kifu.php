@@ -125,6 +125,11 @@ if (empty($errors)) {
                             <? if (!empty($_GET['insident'][$d])): ?>
                             <select name="criminal[<?= $d ?>]">
                                 <option value="">？？？？？</option>
+                                <? if ($oKifu->set == 'HSA'): ?>
+                                    <? foreach (getBoardMaster() as $id => $board): ?>
+                                    <option value="<?= $id ?>"><?= e($board) ?>の群像</option>
+                                    <? endforeach; ?>
+                                <? endif; ?>
                                 <? foreach ($aSelectedCharacter as $id => $chara): ?>
                                 <option value="<?= $id ?>"><?= e($chara) ?></option>
                                 <? endforeach; ?>
