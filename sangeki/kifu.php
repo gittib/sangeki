@@ -74,7 +74,7 @@ if (empty($errors)) {
                 <ul>
                   <li>
                     ルールY ：<select name="ruleY">
-                        <option>？？？？？</option>
+                        <option value="">？？？？？</option>
                         <? foreach ($aRuleY as $i => $val): ?>
                             <option value="<?= $i ?>"><?= e($val) ?></option>
                         <? endforeach; ?>
@@ -82,7 +82,7 @@ if (empty($errors)) {
                   </li>
                   <li>
                     ルールX1：<select name="ruleX1">
-                        <option>？？？？？</option>
+                        <option value="">？？？？？</option>
                         <? foreach ($aRuleX as $i => $val): ?>
                             <option value="<?= $i ?>"><?= e($val) ?></option>
                         <? endforeach; ?>
@@ -90,7 +90,7 @@ if (empty($errors)) {
                   </li>
                   <li>
                     ルールX2：<select name="ruleX1">
-                        <option>？？？？？</option>
+                        <option value="">？？？？？</option>
                         <? foreach ($aRuleX as $i => $val): ?>
                             <option value="<?= $i ?>"><?= e($val) ?></option>
                         <? endforeach; ?>
@@ -116,7 +116,7 @@ if (empty($errors)) {
                             <? endforeach; ?>
                         </select></td>
                         <td><select name="criminal[<?= $d ?>]">
-                            <option>？？？？？</option>
+                            <option value="">？？？？？</option>
                             <? foreach ($aSelectedCharacter as $id => $chara): ?>
                             <option value="<?= $id ?>"><?= e($chara) ?></option>
                             <? endforeach; ?>
@@ -132,20 +132,30 @@ if (empty($errors)) {
                         <thead>
                             <tr>
                                 <th>&nbsp;</th>
+                                <th>役職</th>
                                 <? foreach ($aRole as $role): ?>
                                 <th><span class="vertical_text"><?= $role ?></span></th>
                                 <? endforeach; ?>
-                                <th>備考</th>
+                                <th class="memo">備考</th>
                             </tr>
                         </thead>
                         <? foreach ($aSelectedCharacter as $id => $chara): ?>
                         <tbody>
                             <tr>
                                 <th><span><?= $chara ?></span></th>
+                                <td class="role_select">
+                                    <select name="chara_role[<?= $id ?>]">
+                                        <option>？？？？？</option>
+                                        <option>パーソン</option>
+                                        <? foreach ($aRole as $role): ?>
+                                        <option><?= $role ?></option>
+                                        <? endforeach; ?>
+                                    </select>
+                                </td>
                                 <? foreach ($aRole as $role): ?>
                                 <td class="role_check">　</td>
                                 <? endforeach; ?>
-                                <td><input class="memo" type="text" name="chara[<?= $id ?>]"></td>
+                                <td><input class="memo" type="text" name="chara_memo[<?= $id ?>]"></td>
                             </tr>
                         </tbody>
                         <? endforeach; ?>
@@ -159,30 +169,29 @@ if (empty($errors)) {
                             <thead>
                                 <tr>
                                     <th class="day">日</th>
-                                    <th> </th>
-                                    <? foreach ($aSelectedCharacter as $ch): ?>
-                                    <th><p><?= str_replace('ー', '｜', $ch) ?></p></th>
-                                    <? endforeach; ?>
-                                    <th class="memo">メモ欄</th>
+                                    <th>脚本家</th>
+                                    <th>主人公</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <? for ($d = 1 ; $d <= $oKifu->day ; $d++): ?>
                                 <tr>
-                                    <td rowspan=2><?= $d ?></td>
-                                    <td>脚</td>
-                                    <? foreach ($aSelectedCharacter as $id => $val): ?>
-                                    <td class="scriptwriter" data-loop="<?= $l ?>" data-day="<?= $d ?>" data-index="<?= $id ?>" data-character="<?= $val ?>">
+                                    <td rowspan="2"><?= $d ?></td>
+                                    <td>
+                                        <select>
+                                        <? foreach ($oKifu->target as $id => $val): ?>
+                                        <td class="scriptwriter" data-loop="<?= $l ?>" data-day="<?= $d ?>" data-index="<?= $id ?>" data-character="<?= $val ?>">
+                                        <? endforeach; ?>
+                                        </select>に<selet>
+                                        </select>
                                     </td>
-                                    <? endforeach; ?>
                                     <td rowspan=2><input class="memo" data-loop="<?= $l ?>" data-day="<?= $d ?>" name="memo[<?= $l ?>][<?= $d ?>]"></td>
                                 </tr>
                                 <tr>
-                                    <td>主</td>
-                                    <? foreach ($aSelectedCharacter as $id => $val): ?>
-                                    <td class="hero" data-loop="<?= $l ?>" data-day="<?= $d ?>" data-index="<?= $id ?>" data-character="<?= $val ?>">
+                                    <td colspan="2" class="memo">
+                                        メモ<br>
+                                        <textarea name="memo[<?= $l ?>][<?= $d ?>]"></textarea>
                                     </td>
-                                    <? endforeach; ?>
                                 </tr>
                                 <? endfor; ?>
                             </tbody>
