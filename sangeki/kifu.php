@@ -131,8 +131,8 @@ if (empty($errors)) {
                     <table class="character_list">
                         <thead>
                             <tr>
-                                <th>&nbsp;</th>
                                 <th>役職</th>
+                                <th>キャラ</th>
                                 <? foreach ($aRole as $role): ?>
                                 <th><span class="vertical_text"><?= $role ?></span></th>
                                 <? endforeach; ?>
@@ -142,7 +142,6 @@ if (empty($errors)) {
                         <? foreach ($aSelectedCharacter as $id => $chara): ?>
                         <tbody>
                             <tr>
-                                <th><span><?= $chara ?></span></th>
                                 <td class="role_select">
                                     <select name="chara_role[<?= $id ?>]">
                                         <option>？？？？？</option>
@@ -152,6 +151,7 @@ if (empty($errors)) {
                                         <? endforeach; ?>
                                     </select>
                                 </td>
+                                <td><span><?= $chara ?></span></td>
                                 <? foreach ($aRole as $role): ?>
                                 <td class="role_check">　</td>
                                 <? endforeach; ?>
@@ -173,19 +173,51 @@ if (empty($errors)) {
                                     <th>主人公</th>
                                 </tr>
                             </thead>
+                            <? for ($d = 1 ; $d <= $oKifu->day ; $d++): ?>
                             <tbody>
-                                <? for ($d = 1 ; $d <= $oKifu->day ; $d++): ?>
                                 <tr>
                                     <td rowspan="2"><?= $d ?></td>
                                     <td>
-                                        <select>
-                                        <? foreach ($oKifu->target as $id => $val): ?>
-                                        <td class="scriptwriter" data-loop="<?= $l ?>" data-day="<?= $d ?>" data-index="<?= $id ?>" data-character="<?= $val ?>">
-                                        <? endforeach; ?>
-                                        </select>に<selet>
-                                        </select>
+                                        <? for ($i = 0 ; $i < 3 ; $i++): ?>
+                                            <select name="scriptwriter_chara[<?= $l ?>][<?= $d ?>][<?= $i ?>]">
+                                            <? foreach ($oKifu->target as $id => $val): ?>
+                                                <option><?= $val ?></option>
+                                            <? endforeach; ?>
+                                            </select>に<select name="scriptwriter_card[<?= $l ?>][<?= $d ?>][<?= $i ?>]">
+                                                <option>&nbsp;</option>
+                                                <option>不安+1</option>
+                                                <option>不安-1</option>
+                                                <option>不安禁止</option>
+                                                <option>友好禁止</option>
+                                                <option>移動縦</option>
+                                                <option>移動横</option>
+                                                <option>移動斜め</option>
+                                                <option>暗躍+1</option>
+                                                <option>暗躍+2</option>
+                                            </select>
+                                            <br>
+                                        <? endfor; ?>
                                     </td>
-                                    <td rowspan=2><input class="memo" data-loop="<?= $l ?>" data-day="<?= $d ?>" name="memo[<?= $l ?>][<?= $d ?>]"></td>
+                                    <td>
+                                        <? for ($i = 0 ; $i < 3 ; $i++): ?>
+                                            <select name="hero_chara[<?= $l ?>][<?= $d ?>][<?= $i ?>]">
+                                            <? foreach ($oKifu->target as $id => $val): ?>
+                                                <option><?= $val ?></option>
+                                            <? endforeach; ?>
+                                            </select>に<select name="hero_card[<?= $l ?>][<?= $d ?>][<?= $i ?>]">
+                                                <option>&nbsp;</option>
+                                                <option>友好+1</option>
+                                                <option>友好+2</option>
+                                                <option>移動縦</option>
+                                                <option>移動横</option>
+                                                <option>移動禁止</option>
+                                                <option>暗躍禁止</option>
+                                                <option>不安-1</option>
+                                                <option>不安+1</option>
+                                            </select>
+                                            <br>
+                                        <? endfor; ?>
+                                    </td>
                                 </tr>
                                 <tr>
                                     <td colspan="2" class="memo">
@@ -193,8 +225,8 @@ if (empty($errors)) {
                                         <textarea name="memo[<?= $l ?>][<?= $d ?>]"></textarea>
                                     </td>
                                 </tr>
-                                <? endfor; ?>
                             </tbody>
+                            <? endfor; ?>
                         </table>
                     </dd>
                 <? endfor; ?>
