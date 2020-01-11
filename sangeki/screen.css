@@ -483,12 +483,12 @@ body.kifu_input .kifu_wrapper .character_list thead th {
 body.kifu_input .kifu_wrapper .character_list thead th .vertical_text {
     word-break: keep-all;
 }
-body.kifu_input .kifu_wrapper .character_list tbody th {
-    text-align: center;
-}
-body.kifu_input .kifu_wrapper .character_list tbody th.memo {
+body.kifu_input .kifu_wrapper .character_list thead th.memo {
     min-width: 1000px;
     text-align: left;
+}
+body.kifu_input .kifu_wrapper .character_list tbody th {
+    text-align: center;
 }
 body.kifu_input .kifu_wrapper .character_list tbody th span {
     word-break: keep-all;
