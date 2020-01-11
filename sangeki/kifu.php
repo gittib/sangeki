@@ -125,14 +125,15 @@ if (empty($errors)) {
                             <? if (!empty($_GET['insident'][$d])): ?>
                             <select name="criminal[<?= $d ?>]">
                                 <option value="">？？？？？</option>
-                                <? if ($oKifu->set == 'HSA'): ?>
+                                <? if (in_array($_GET['insident'][$d], array('狂気の夜', '呪いの目覚め', '穢れの噴出', '死者の黙示録'))): ?>
                                     <? foreach (getBoardMaster() as $id => $board): ?>
                                     <option value="<?= $id ?>"><?= e($board) ?>の群像</option>
                                     <? endforeach; ?>
+                                <? else: ?>
+                                    <? foreach ($aSelectedCharacter as $id => $chara): ?>
+                                    <option value="<?= $id ?>"><?= e($chara) ?></option>
+                                    <? endforeach; ?>
                                 <? endif; ?>
-                                <? foreach ($aSelectedCharacter as $id => $chara): ?>
-                                <option value="<?= $id ?>"><?= e($chara) ?></option>
-                                <? endforeach; ?>
                             </select>
                             <? endif; ?>
                         </td>
