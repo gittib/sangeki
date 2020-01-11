@@ -37,6 +37,20 @@ $aSet = array_keys($aRuleRoleMaster);
                 <option value="<?= $i ?>"><?= $i ?>日</option>
                 <? endfor; ?>
             </select>
+            <br>
+                <span>事件リスト</span>
+                <? for ($i = 1 ; $i <= 8 ; $i++): ?>
+                <li data-day="<?= $i ?>">
+                    <?= $i ?>日：<select class="insident" name="insident[<?= $i ?>]">
+                        <option class="no_insident"> </option>
+                        <? foreach ($aInsidentMaster as $rule => $aInsidents): ?>
+                            <? foreach ($aInsidents as $insident): ?>
+                                <option style="display:none;" class="<?= $rule ?>"><?= $insident ?></option>
+                            <? endforeach; ?>
+                        <? endforeach; ?>
+                    </select>
+                </li>
+                <? endfor; ?>
         </div>
         <div class="available_character_list">
             <? foreach ($aCharacter as $id => $val): ?>
@@ -52,5 +66,16 @@ $aSet = array_keys($aRuleRoleMaster);
         <input type="hidden" name="from" value="kifu_init">
     </form>
 <?php require('../secret/sangeki_footer.php') ?>
+<script>
+$(function() {
+    $('select[name=set]').on('change', function () {
+        var s = $(this).val();
+        $('select.insident > option').hide();
+        $('select.insident > option.'+s).show();
+        $('.no_insident').show();
+        $('select.insident').val(' ');
+    });
+});
+</script>
 </body>
 </html>

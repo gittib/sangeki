@@ -51,15 +51,6 @@ if (empty($errors)) {
     <title>惨劇RoopeR 棋譜記録用</title>
 </head>
 <body class="kifu_input">
-    <div>
-        フォントサイズ：<select id="font_size_change">
-            <option value="12px">最小</option>
-            <option value="14px">小</option>
-            <option value="16px" selected="selected">中</option>
-            <option value="18px">大</option>
-            <option value="20px">最大</option>
-        </select>
-    </div>
     <? if (!empty($errors)): ?>
         <div class="error">
             <div class="summary">棋譜入力画面の生成に失敗しました。<br><a href="kifu_init.php">棋譜設定画面</a>に戻って設定しなおして下さい。</div>
@@ -69,6 +60,13 @@ if (empty($errors)) {
         </div>
     <? else: ?>
         <div class="button_wrapper">
+            フォントサイズ：<select id="font_size_change">
+                <option value="12px">最小</option>
+                <option value="14px">小</option>
+                <option value="16px" selected="selected">中</option>
+                <option value="18px">大</option>
+                <option value="20px">最大</option>
+            </select>
             <button class="reset_all_action">行動ログを全て削除</button>
         </div>
         <form method="post" action="kifu_output.php">
