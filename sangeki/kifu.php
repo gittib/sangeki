@@ -34,6 +34,8 @@ if (empty($errors)) {
         }
     }
     $aRole = array_unique($aRole);
+
+    $aInsidents = $aInsidentMaster[$oKifu->set];
 }
 ?>
 <html>
@@ -101,7 +103,7 @@ if (empty($errors)) {
                         <th><?= $d ?></th>
                         <td><select name="incident[<?= $d ?>]">
                             <option> </option>
-                            <? foreach ($aInsidentMaster as $key => $val): ?>
+                            <? foreach ($aInsidents as $key => $val): ?>
                             <option value="<?= $key ?>"><?= e($val) ?></option>
                             <? endforeach; ?>
                         </select></td>
