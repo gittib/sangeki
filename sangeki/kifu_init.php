@@ -39,18 +39,20 @@ $aSet = array_keys($aRuleRoleMaster);
             </select>
             <br>
                 <span>事件リスト</span>
-                <? for ($i = 1 ; $i <= 8 ; $i++): ?>
-                <li data-day="<?= $i ?>">
-                    <?= $i ?>日：<select class="insident" name="insident[<?= $i ?>]">
-                        <option class="no_insident"> </option>
-                        <? foreach ($aInsidentMaster as $rule => $aInsidents): ?>
-                            <? foreach ($aInsidents as $insident): ?>
-                                <option style="display:none;" class="<?= $rule ?>"><?= $insident ?></option>
+                <ul class="insident_list">
+                    <? for ($i = 1 ; $i <= 8 ; $i++): ?>
+                    <li data-day="<?= $i ?>" style="display:none">
+                        <?= $i ?>日：<select class="insident" name="insident[<?= $i ?>]">
+                            <option class="no_insident"> </option>
+                            <? foreach ($aInsidentMaster as $rule => $aInsidents): ?>
+                                <? foreach ($aInsidents as $insident): ?>
+                                    <option style="display:none;" class="<?= $rule ?>"><?= $insident ?></option>
+                                <? endforeach; ?>
                             <? endforeach; ?>
-                        <? endforeach; ?>
-                    </select>
-                </li>
-                <? endfor; ?>
+                        </select>
+                    </li>
+                    <? endfor; ?>
+                </ul>
         </div>
         <div class="available_character_list">
             <? foreach ($aCharacter as $id => $val): ?>
@@ -74,6 +76,14 @@ $(function() {
         $('select.insident > option.'+s).show();
         $('.no_insident').show();
         $('select.insident').val(' ');
+    });
+    $('select[name=day]').on('change', function () {
+        var day = $(this).val();
+        var $insidentPlans = $('.insident_list > li');
+        $insidentPlans.hide();
+        for (var i = 1 ; i <= day ; i++) {
+            $insidentPlans.filter('[data-day='+day+']').show();
+        }
     });
 });
 </script>
