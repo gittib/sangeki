@@ -12,12 +12,19 @@ $errors = isValid($_GET);
 if (empty($errors)) {
     $aSelectedCharacter = getCharacterList($_GET['ch']);
 
+    $aTmp = array();
+    foreach (getBoardMaster() as $key => $val) {
+        $aTmp[$key] = $val;
+    }
+    foreach ($aSelectedCharacter as $key => $val) {
+        $aTmp[$key] = $val;
+    }
     $oKifu = (object)array(
         'set' => $_GET['set'],
         'loop' => $_GET['loop'],
         'day' => $_GET['day'],
         'chara' => $aSelectedCharacter,
-        'target' => array_merge(getBoardMaster(), $aSelectedCharacter),
+        'target' => $aTmp,
     );
     $iRuleY = $oKifu->set == 'FS' ? 3 : 5;
     $aRuleY = array();
