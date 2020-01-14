@@ -69,7 +69,7 @@ if (empty($errors)) {
                 <option value="20px">最大</option>
             </select>
         </div>
-        <form id="main_form" method="post" action="kifu_output.php">
+        <form id="main_form" method="post" action="kifu_output.php" target="kifu_output">
             <input type="hidden" name="outtype" id="outtype">
             <input type="hidden" name="loop" value="<?= $oKifu->loop ?>">
             <input type="hidden" name="day" value="<?= $oKifu->day ?>">
@@ -98,7 +98,7 @@ if (empty($errors)) {
                   </li>
                   <? if ($oKifu->set != 'FS'): ?>
                   <li>
-                    ルールX2：<select name="ruleX1">
+                    ルールX2：<select name="ruleX2">
                         <option value="">？？？？？</option>
                         <? foreach ($aRuleX as $i => $val): ?>
                             <option><?= e($val) ?></option>
@@ -318,6 +318,7 @@ if (empty($errors)) {
     });
     $('.save_action').on('click', function () {
         $('#outtype').val($(this).data('type'));
+        window.open('', 'kifu_output');
         $('#main_form').submit();
     });
 })();
