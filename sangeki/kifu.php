@@ -70,12 +70,9 @@ if (empty($errors)) {
             </select>
         </div>
         <form id="main_form" method="post" action="kifu_output.php">
-            <input type="hidden" name="outtype">
+            <input type="hidden" name="outtype" id="outtype">
             <input type="hidden" name="loop" value="<?= $oKifu->loop ?>">
             <input type="hidden" name="day" value="<?= $oKifu->day ?>">
-            <input type="hidden" name="chara" value="<?= e(json_encode($oKifu->chara)) ?>">
-            <input type="hidden" name="action">
-            <input type="hidden" name="memo">
             <div class="summary">
                 <p class="tr_name">惨劇セット：<?= getTragedySetName($oKifu->set) ?></p>
                 <p><?= $oKifu->loop ?>ループ <?= $oKifu->day ?>日間</p>
@@ -120,15 +117,16 @@ if (empty($errors)) {
                         <th>犯人</th>
                     </thead>
                     <? for ($d = 1 ; $d <= $oKifu->day ; $d++): ?>
+                    <? $sInsident = empty($_GET['insident'][$d]) ? '' : $_GET['insident'][$d]; ?>
                     <tbody>
                         <th><?= $d ?></th>
-                        <td><?= empty($_GET['insident'][$d]) ? '' : $_GET['insident'][$d] ?></td>
+                        <td><?= $sInsident ?></td>
                         <td>
-                            <? if (!empty($_GET['insident'][$d])): ?>
-                            <input type="hidden" name="insident[<?= $d ?>]" value="<?= $_GET['insident'] ?>">
-                            <select name="criminal[<?= $d ?>]">
+                            <? if (!empty($sInsident)): ?>
+                            <input type="hidden" name="insident[<?= $d ?>][name]" value="<?= $sInsident ?>">
+                            <select name="insident[<?= $d ?>][criminal]">
                                 <option value="">？？？？？</option>
-                                <? if (in_array($_GET['insident'][$d], array('狂気の夜', '呪いの目覚め', '穢れの噴出', '死者の黙示録'))): ?>
+                                <? if (in_array($sInsident, array('狂気の夜', '呪いの目覚め', '穢れの噴出', '死者の黙示録'))): ?>
                                     <? foreach (getBoardMaster() as $id => $board): ?>
                                     <option value="<?= $id ?>"><?= e($board) ?>の群像</option>
                                     <? endforeach; ?>
@@ -162,7 +160,7 @@ if (empty($errors)) {
                         <tbody>
                             <tr>
                                 <td class="role_select">
-                                    <select name="chara_role[<?= $id ?>]">
+                                    <select name="chara_info[<?= $id ?>][role]">
                                         <option>？？？？？</option>
                                         <option>パーソン</option>
                                         <? foreach ($aRole as $role): ?>
@@ -174,7 +172,7 @@ if (empty($errors)) {
                                 <? foreach ($aRole as $role): ?>
                                 <td class="role_check">　</td>
                                 <? endforeach; ?>
-                                <td><input class="memo" type="text" name="chara_memo[<?= $id ?>]" placeholder="メモ"></td>
+                                <td><input class="memo" type="text" name="chara_info[<?= $id ?>][memo]" placeholder="メモ"></td>
                             </tr>
                         </tbody>
                         <? endforeach; ?>
@@ -199,11 +197,11 @@ if (empty($errors)) {
                                     <td class="set_card">
                                         <ul>
                                             <? for ($i = 0 ; $i < 3 ; $i++): ?><li>
-                                                <select name="scriptwriter_chara[<?= $l ?>][<?= $d ?>][<?= $i ?>]">
+                                                <select name="action_info[<?= $l ?>][<?= $d ?>][scriptwriter][<?= $i ?>][chara]">
                                                 <? foreach ($oKifu->target as $id => $val): ?>
                                                     <option value="<?= $id ?>"><?= $val ?></option>
                                                 <? endforeach; ?>
-                                                </select>に<select name="scriptwriter_card[<?= $l ?>][<?= $d ?>][<?= $i ?>]">
+                                                </select>に<select name="action_info[<?= $l ?>][<?= $d ?>][scriptwriter][<?= $i ?>][card]">
                                                     <option>&nbsp;</option>
                                                     <option>不安+1</option>
                                                     <option>不安-1</option>
@@ -222,11 +220,11 @@ if (empty($errors)) {
                                     <td class="set_card">
                                         <ul>
                                             <? for ($i = 0 ; $i < 3 ; $i++): ?><li>
-                                                    <select name="hero_chara[<?= $l ?>][<?= $d ?>][<?= $i ?>]">
+                                                    <select name="action_info[<?= $l ?>][<?= $d ?>][hero][<?= $i ?>][chara]">
                                                     <? foreach ($oKifu->target as $id => $val): ?>
                                                         <option value="<?= $id ?>"><?= $val ?></option>
                                                     <? endforeach; ?>
-                                                    </select>に<select name="hero_card[<?= $l ?>][<?= $d ?>][<?= $i ?>]">
+                                                    </select>に<select name="action_info[<?= $l ?>][<?= $d ?>][hero][<?= $i ?>][card]">
                                                         <option>&nbsp;</option>
                                                         <option>友好+1</option>
                                                         <option>友好+2</option>
@@ -243,7 +241,7 @@ if (empty($errors)) {
                                 </tr>
                                 <tr>
                                     <td colspan="2" class="memo">
-                                        <textarea name="memo[<?= $l ?>][<?= $d ?>]" placeholder="メモ"></textarea>
+                                        <textarea name="action_info[<?= $l ?>][<?= $d ?>][memo]" placeholder="メモ"></textarea>
                                     </td>
                                 </tr>
                             </tbody>
@@ -257,8 +255,6 @@ if (empty($errors)) {
                 <input type="button" class="save_action" data-type="csv" value="行動ログをCSVダウンロード">
                 <input type="button" class="save_action" data-type="json" value="行動ログをjsonダウンロード">
                 <input type="button" class="save_action" data-type="html" value="行動ログをブラウザで表示">
-
-                <input type="hidden" name="data_type" id="data_type">
             </div>
         </form>
     <? endif; ?>
@@ -321,7 +317,7 @@ if (empty($errors)) {
         }
     });
     $('.save_action').on('click', function () {
-        $('#data_type').val($(this).data('type'));
+        $('#outtype').val($(this).data('type'));
         $('#main_form').submit();
     });
 })();
