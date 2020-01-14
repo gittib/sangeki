@@ -145,6 +145,24 @@ if (empty($errors)) {
             <div class="kifu_wrapper">
                 <div class="character_list_wrapper">
                     <h3>キャラクターリスト</h3>
+                    <div>
+                        神格登場ループ：
+                        <select name="shinkaku_loop" id="shinkaku_loop">
+                            <option></option>
+                            <? for ($l = 1 ; $l <= $oKifu->loop ; $l++): ?>
+                            <option value="<?= $l ?>"><?= $l ?>ループ目</option>
+                            <? endfor; ?>
+                        </select>
+                    </div>
+                    <div>
+                        転校生登場日：
+                        <select name="tenkousei_day" id="tenkousei_day">
+                            <option></option>
+                            <? for ($d = 1 ; $d <= $oKifu->day ; $d++): ?>
+                            <option value="<?= $d ?>"><?= $d ?>日目</option>
+                            <? endfor; ?>
+                        </select>
+                    </div>
                     <table class="character_list">
                         <thead>
                             <tr>
@@ -157,7 +175,7 @@ if (empty($errors)) {
                             </tr>
                         </thead>
                         <? foreach ($aSelectedCharacter as $id => $chara): ?>
-                        <tbody>
+                        <tbody data-chara_id="<?= $id ?>" <?= in_array($id, array('1001', '1307')) ? ' style="display:none;" ' : '' ?>>
                             <tr>
                                 <td class="role_select">
                                     <select name="chara_info[<?= $id ?>][role]">
@@ -198,9 +216,10 @@ if (empty($errors)) {
                                         <ul>
                                             <? for ($i = 0 ; $i < 3 ; $i++): ?><li>
                                                 <select name="action_info[<?= $l ?>][<?= $d ?>][scriptwriter][<?= $i ?>][chara]">
-                                                <? foreach ($oKifu->target as $id => $val): ?>
+                                                    <option>&nbsp;</option>
+                                                    <? foreach ($oKifu->target as $id => $val): ?>
                                                     <option value="<?= $id ?>"><?= $val ?></option>
-                                                <? endforeach; ?>
+                                                    <? endforeach; ?>
                                                 </select>に<select name="action_info[<?= $l ?>][<?= $d ?>][scriptwriter][<?= $i ?>][card]">
                                                     <option>&nbsp;</option>
                                                     <option>不安+1</option>
@@ -221,9 +240,10 @@ if (empty($errors)) {
                                         <ul>
                                             <? for ($i = 0 ; $i < 3 ; $i++): ?><li>
                                                     <select name="action_info[<?= $l ?>][<?= $d ?>][hero][<?= $i ?>][chara]">
-                                                    <? foreach ($oKifu->target as $id => $val): ?>
+                                                        <option>&nbsp;</option>
+                                                        <? foreach ($oKifu->target as $id => $val): ?>
                                                         <option value="<?= $id ?>"><?= $val ?></option>
-                                                    <? endforeach; ?>
+                                                        <? endforeach; ?>
                                                     </select>に<select name="action_info[<?= $l ?>][<?= $d ?>][hero][<?= $i ?>][card]">
                                                         <option>&nbsp;</option>
                                                         <option>友好+1</option>
@@ -296,6 +316,21 @@ if (empty($errors)) {
 </div>
 <script>
 (function() {
+    $('#shinkaku_loop').on('change', function() {
+        if ($(this).val()) {
+            $('tbody[data-chara_id=1001]').show();
+        } else {
+            $('tbody[data-chara_id=1001]').hide();
+        }
+    });
+    $('#tenkousei_day').on('change', function() {
+        if ($(this).val()) {
+            $('tbody[data-chara_id=1307]').show();
+        } else {
+            $('tbody[data-chara_id=1307]').hide();
+        }
+    });
+
     $('#font_size_change').on('change', function () {
         $('html').css('font-size', $(this).val());
     });
