@@ -200,6 +200,27 @@ if (empty($errors)) {
                 <? for ($l = 1 ; $l <= $oKifu->loop ; $l++): ?>
                     <dt><?= $l ?>ループ目</dt>
                     <dd>
+                        <div>
+                            <? if (in_array('1901', $aSelectedCharacter)): ?>
+                                手先初期配置：
+                                <select name="action_info[<?= $l ?>][initialize][tesaki_board]">
+                                    <? foreach (getBoardMaster() as $id => $board): ?>
+                                    <option value="<?= $id ?>"><?= $board ?></option>
+                                    <? endforeach; ?>
+                                </select>
+                                <br>
+                            <? endif; ?>
+                            <? if (in_array('1105', $aSelectedCharacter)): ?>
+                                学者カウンター：
+                                <select name="action_info[<?= $l ?>][initialize][gakusha_counter]">
+                                    <option value="">無し</option>
+                                    <option value="不安">不安カウンター</option>
+                                    <option value="暗躍">暗躍カウンター</option>
+                                    <option value="友好">友好カウンター</option>
+                                </select>
+                                <br>
+                            <? endif; ?>
+                        </div>
                         <table class="kifu">
                             <thead>
                                 <tr>
