@@ -1,6 +1,9 @@
 <?
 require_once('../secret/common.php');
 
+echo '<pre>'; var_dump($_POST); exit;
+
+
 $outType = $_POST['outtype'];
 $aChara = json_decode($_POST['chara'], true);
 $aAction = json_decode($_POST['action'], true);

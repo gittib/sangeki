@@ -69,7 +69,7 @@ if (empty($errors)) {
                 <option value="20px">最大</option>
             </select>
         </div>
-        <form method="post" action="kifu_output.php">
+        <form id="main_form" method="post" action="kifu_output.php">
             <input type="hidden" name="outtype">
             <input type="hidden" name="loop" value="<?= $oKifu->loop ?>">
             <input type="hidden" name="day" value="<?= $oKifu->day ?>">
@@ -87,7 +87,7 @@ if (empty($errors)) {
                     ルールY ：<select name="ruleY">
                         <option value="">？？？？？</option>
                         <? foreach ($aRuleY as $i => $val): ?>
-                            <option value="<?= $i ?>"><?= e($val) ?></option>
+                            <option><?= e($val) ?></option>
                         <? endforeach; ?>
                     </select><br>
                   </li>
@@ -95,18 +95,20 @@ if (empty($errors)) {
                     ルールX1：<select name="ruleX1">
                         <option value="">？？？？？</option>
                         <? foreach ($aRuleX as $i => $val): ?>
-                            <option value="<?= $i ?>"><?= e($val) ?></option>
+                            <option><?= e($val) ?></option>
                         <? endforeach; ?>
                     </select><br>
                   </li>
+                  <? if ($oKifu->set != 'FS'): ?>
                   <li>
                     ルールX2：<select name="ruleX1">
                         <option value="">？？？？？</option>
                         <? foreach ($aRuleX as $i => $val): ?>
-                            <option value="<?= $i ?>"><?= e($val) ?></option>
+                            <option><?= e($val) ?></option>
                         <? endforeach; ?>
                     </select>
                   </li>
+                  <? endif; ?>
                 </ul>
             </div>
             <div class="insident_wrapper">
@@ -123,6 +125,7 @@ if (empty($errors)) {
                         <td><?= empty($_GET['insident'][$d]) ? '' : $_GET['insident'][$d] ?></td>
                         <td>
                             <? if (!empty($_GET['insident'][$d])): ?>
+                            <input type="hidden" name="insident[<?= $d ?>]" value="<?= $_GET['insident'] ?>">
                             <select name="criminal[<?= $d ?>]">
                                 <option value="">？？？？？</option>
                                 <? if (in_array($_GET['insident'][$d], array('狂気の夜', '呪いの目覚め', '穢れの噴出', '死者の黙示録'))): ?>
@@ -254,6 +257,8 @@ if (empty($errors)) {
                 <input type="button" class="save_action" data-type="csv" value="行動ログをCSVダウンロード">
                 <input type="button" class="save_action" data-type="json" value="行動ログをjsonダウンロード">
                 <input type="button" class="save_action" data-type="html" value="行動ログをブラウザで表示">
+
+                <input type="hidden" name="data_type" id="data_type">
             </div>
         </form>
     <? endif; ?>
@@ -314,6 +319,10 @@ if (empty($errors)) {
             $self.text('○');
             break;
         }
+    });
+    $('.save_action').on('click', function () {
+        $('#data_type').val($(this).data('type'));
+        $('#main_form').submit();
     });
 })();
 </script>
