@@ -337,6 +337,10 @@ if (empty($errors)) {
 </div>
 <script>
 (function() {
+    $('#font_size_change').on('change', function () {
+        $('html').css('font-size', $(this).val());
+    });
+
     $('#shinkaku_loop').on('change', function() {
         if ($(this).val()) {
             $('tbody[data-chara_id=1001]').show();
@@ -350,10 +354,6 @@ if (empty($errors)) {
         } else {
             $('tbody[data-chara_id=1307]').hide();
         }
-    });
-
-    $('#font_size_change').on('change', function () {
-        $('html').css('font-size', $(this).val());
     });
     $('.character_list .role_check').on('click', function () {
         var $self = $(this);
