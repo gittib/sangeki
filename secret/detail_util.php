@@ -164,13 +164,16 @@ function insidentPublicNote($insident) {
         break;
     case '遂行者':
     case '前兆':
+    case '悪魔との契約':
         $sBikou = '(不安臨界-1)';
         break;
     case '猟奇殺人':
+    case '怨嗟の雄叫び':
         $sBikou = '(不安臨界+1)';
         break;
     case '陰謀工作':
     case '猟犬の嗅覚':
+    case '模倣犯':
         $sBikou = '(暗躍で判定)';
         break;
     }
