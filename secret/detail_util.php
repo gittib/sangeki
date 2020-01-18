@@ -57,6 +57,7 @@ function initPos($name, $aCharacter = array()) {
         case '異世界人':
         case '黒猫':
         case '幻想':
+        case '妹':
             return 'shrine';
         case '病院':
         case 'hospital':
@@ -77,6 +78,7 @@ function initPos($name, $aCharacter = array()) {
         case '大物':
         case 'マスコミ':
         case '鑑識官':
+        case 'コピーキャット':
             return 'city';
         case '学校':
         case 'school':
