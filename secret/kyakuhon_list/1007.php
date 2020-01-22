@@ -3,23 +3,22 @@
 $oSangeki = (object)array(
     'title' => '',
     'writer' => 'ペンスキー',
-    'difficulity' => 3,
+    'difficulity' => 4,
     'set' => 'BTX',
     'rule' => array(
         '僕と契約しようよ！',
         '友情サークル',
         '不定因子χ',
     ),
-    'special_rule' => '脚本家は友好禁止、移動斜め、暗躍+2を使えない',
-    'loop' => 4,
+    'loop' => 5,
     'day' => 5,
     'character' => array(
         '異世界人' => array(
         ),
         '黒猫' => array(
         ),
-        '軍人' => array(
-            'role' => 'フレンド',
+        '医者' => array(
+            'role' => 'ミスリーダー',
         ),
         '入院患者' => array(
             'role' => 'ファクター',
@@ -27,11 +26,10 @@ $oSangeki = (object)array(
         '情報屋' => array(
         ),
         'A.I.' => array(
-            'role' => 'ミスリーダー',
-        ),
-        '手先' => array(
             'role' => 'フレンド',
-            'initPos' => '都市',
+        ),
+        'マスコミ' => array(
+            'role' => 'フレンド',
         ),
         'お嬢様' => array(
             'role' => 'キーパーソン',
@@ -39,8 +37,8 @@ $oSangeki = (object)array(
     ),
     'incident' => array(
         1 => array(
-            'name' => '不安拡大',
-            'criminal' => '手先',
+            'name' => '自殺',
+            'criminal' => '情報屋',
         ),
         2 => array(
             'name' => '流布',
@@ -52,7 +50,7 @@ $oSangeki = (object)array(
         ),
         5 => array(
             'name' => '病院の事件',
-            'criminal' => '軍人',
+            'criminal' => 'マスコミ',
         ),
     ),
     'advice' => (object)array(
@@ -89,26 +87,26 @@ $oSangeki = (object)array(
         'template' => array(
             '基本' => array(
                 1 => array(
-                    '手先' => '不安+1',
                     'お嬢様' => '不安+1',
+                    'マスコミ' => '不安+1',
                     '異世界人' => '移動縦',
                 ),
                 2 => array(
                     'お嬢様' => '不安+1',
-                    '軍人' => '不安+1',
+                    'マスコミ' => '不安+1',
                     '異世界人' => '移動横',
                 ),
                 3 => array(
                     'お嬢様' => '不安+1',
-                    '軍人' => '不安+1',
+                    'マスコミ' => '不安+1',
                 ),
                 4 => array(
                     'お嬢様' => '不安+1',
-                    '軍人' => '不安+1',
+                    'マスコミ' => '不安+1',
                 ),
                 5 => array(
                     'お嬢様' => '暗躍+1',
-                    '軍人' => '不安+1',
+                    'マスコミ' => '不安+1',
                 ),
             ),
         ),
