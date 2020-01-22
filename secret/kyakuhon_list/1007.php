@@ -17,9 +17,6 @@ $oSangeki = (object)array(
         ),
         '黒猫' => array(
         ),
-        '医者' => array(
-            'role' => 'ミスリーダー',
-        ),
         '入院患者' => array(
             'role' => 'ファクター',
         ),
@@ -34,15 +31,22 @@ $oSangeki = (object)array(
         'お嬢様' => array(
             'role' => 'キーパーソン',
         ),
+        '女子学生' => array(
+            'role' => 'ミスリーダー',
+        ),
     ),
     'incident' => array(
         1 => array(
-            'name' => '自殺',
+            'name' => '殺人事件',
             'criminal' => '情報屋',
         ),
         2 => array(
             'name' => '流布',
             'criminal' => '黒猫',
+        ),
+        3 => array(
+            'name' => '自殺',
+            'criminal' => '入院患者',
         ),
         4 => array(
             'name' => '行方不明',
@@ -89,12 +93,10 @@ $oSangeki = (object)array(
                 1 => array(
                     'お嬢様' => '不安+1',
                     'マスコミ' => '不安+1',
-                    '異世界人' => '移動縦',
                 ),
                 2 => array(
                     'お嬢様' => '不安+1',
                     'マスコミ' => '不安+1',
-                    '異世界人' => '移動横',
                 ),
                 3 => array(
                     'お嬢様' => '不安+1',
