@@ -34,7 +34,7 @@ $oSangeki = (object)array(
         '教師' => array(
             'role' => 'メインラバーズ',
         ),
-        'お嬢様' => array(
+        '委員長' => array(
         ),
         '男子学生' => array(
         ),
@@ -50,7 +50,7 @@ $oSangeki = (object)array(
         ),
         3 => array(
             'name' => '行方不明',
-            'criminal' => 'お嬢様',
+            'criminal' => '委員長',
         ),
         4 => array(
             'name' => '噂の御呪い',
