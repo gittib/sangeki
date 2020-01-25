@@ -32,13 +32,13 @@ $oSangeki = (object)array(
         ),
     ),
     'incident' => array(
-        2 => array(
-            'name' => '不安拡大',
-            'criminal' => '巫女',
-        ),
         4 => array(
             'name' => '殺人事件',
             'criminal' => '女子学生',
+        ),
+        5 => array(
+            'name' => '不安拡大',
+            'criminal' => '巫女',
         ),
     ),
     'advice' => (object)array(
@@ -46,9 +46,9 @@ $oSangeki = (object)array(
         'detail' => "",
         'victoryConditions' => array(
             array(
-                'condition' => '巨大時限爆弾Xの存在',
+                'condition' => '封印されしもの',
                 'way' => array(
-                    'ウィッチの初期エリアに暗躍カウンターが2個以上',
+                    '神社に暗躍カウンターが2個以上',
                 ),
             ),
         ),
