@@ -356,7 +356,12 @@ function rolesCountCheck($oSangeki) {
 
 
     // 事件と犯人のチェック
-    $aTmpChara = array_keys($oSangeki->character);
+    $aTmpChara = array_merge(array_keys($oSangeki->character), [
+        '神社の群像',
+        '病院の群像',
+        '都市の群像',
+        '学校の群像',
+    ]);
     foreach ($oSangeki->incident as $date => $aIns) {
         if ($date > $oSangeki->day) {
             $aErrorMessage[] = '最終日より後に'.$aIns['name'].'が設定されています';
