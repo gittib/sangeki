@@ -23,7 +23,6 @@ $oSangeki = (object)array(
             'role' => 'ファクター',
         ),
         'アイドル' => array(
-            'role' => 'ミスリーダー',
         ),
         '女子学生' => array(
             'role' => 'マジシャン',
