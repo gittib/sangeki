@@ -356,12 +356,16 @@ function rolesCountCheck($oSangeki) {
 
 
     // 事件と犯人のチェック
+    $aTmpChara = array_keys($oSangeki->character);
     foreach ($oSangeki->incident as $date => $aIns) {
         if ($date > $oSangeki->day) {
-            $aErrorMessage[] = "最終日より後に{$aIns['name']}が設定されています";
+            $aErrorMessage[] = '最終日より後に{$aIns['name']}が設定されています';
         }
         if (!in_array($aIns['name'], $aInsidentMaster[$oSangeki->set])) {
-            $aErrorMessage[] = "「{$aIns['name']}」という名前の事件はありません";
+            $aErrorMessage[] = '「'.$aIns['name'].'」という名前の事件はありません';
+        }
+        if (!in_array($aIns['criminal'], $aTmpChara)) {
+            $aErrorMessage[] = $date.'日目の犯人「'.$aIns['criminal'].'」は脚本に登場しません';
         }
     }
 
