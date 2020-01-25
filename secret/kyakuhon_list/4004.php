@@ -47,7 +47,7 @@ $oSangeki = (object)array(
     'incident' => array(
         1 => array(
             'name' => '冒涜殺人',
-            'criminal' => '入院患者',
+            'criminal' => '転校生',
         ),
         2 => array(
             'name' => '穢れの噴出',
@@ -73,12 +73,12 @@ $oSangeki = (object)array(
         'template' => array(
             '基本' => array(
                 1 => array(
-                    '神社' => '暗躍+1',
-                    '都市' => '暗躍+2',
                     'A.I.' => '友好禁止',
                 ),
                 2 => array(
                     'A.I.' => '友好禁止',
+                    '神社' => '暗躍+1',
+                    '都市' => '暗躍+2',
                 ),
                 3 => array(
                     'A.I.' => '友好禁止',

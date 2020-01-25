@@ -273,7 +273,7 @@ function rolesCountCheck($oSangeki) {
     foreach ($oSangeki->character as $name => $chara) {
         if (empty($chara['role']) || $chara['role'] == 'パーソン') {
             if (in_array($name, array('イレギュラー', 'AI', 'A.I.'))) {
-                $aErrorMessage[] = "{$name}はパーソンにできません。";
+                $aErrorMessage[] = "{$name}はパーソンにできません";
             }
             continue;
         }
@@ -282,7 +282,7 @@ function rolesCountCheck($oSangeki) {
         if ($name == 'イレギュラー') {
             if (isset($aRoleCount[$role])) {
                 $aRoleCount[$role]--;
-                $aErrorMessage[] = 'イレギュラーの役職が不正です。';
+                $aErrorMessage[] = 'イレギュラーの役職が不正です';
             }
         } else {
             if (empty($aRoleCount[$role])) {
@@ -299,12 +299,12 @@ function rolesCountCheck($oSangeki) {
     }
     foreach ($aRoleCount as $roleName => $n) {
         if ($n < 0) {
-            $aErrorMessage[] = $roleName . 'が多すぎます。';
+            $aErrorMessage[] = $roleName . 'が多すぎます';
         } else if ($n > 0) {
             if ($roleName == 'マイナス' && in_array('最低の却本', $aRuleList)) {
                 // 最低の却本なら、マイナスの人数は足りなくてもOK
             } else {
-                $aErrorMessage[] = $roleName . 'が足りません。';
+                $aErrorMessage[] = $roleName . 'が足りません';
             }
         }
     }
@@ -316,7 +316,7 @@ function rolesCountCheck($oSangeki) {
         $aTmp = $getCharacters('キーパーソン');
         foreach ($aTmp as $name) {
             if (!in_array('少女', characterSpec($name))) {
-                $aErrorMessage[] = $name . 'は少女でないため、キーパーソンを割り当てられません。';
+                $aErrorMessage[] = $name . 'は少女でないため、キーパーソンを割り当てられません';
             }
         }
     }
@@ -353,6 +353,18 @@ function rolesCountCheck($oSangeki) {
             }
         }
     }
+
+
+    // 事件と犯人のチェック
+    foreach ($oSangeki->incident as $date => $aIns) {
+        if ($date > $oSangeki->day) {
+            $aErrorMessage[] = '最終日より後に事件が設定されています';
+        }
+        if (!in_array($aIns['name'], $aInsidentMaster[$oSangeki->set])) {
+            $aErrorMessage[] = "「{$aIns['name']}」という名前の事件はありません";
+        }
+    }
+
 
     return $aErrorMessage;
 }
