@@ -54,12 +54,12 @@ $oSangeki = (object)array(
             'criminal' => '神社の群像',
         ),
         3 => array(
-            'name' => '噂の御呪い',
-            'criminal' => '神格',
-        ),
-        4 => array(
             'name' => '行方不明',
             'criminal' => 'マスコミ',
+        ),
+        4 => array(
+            'name' => '噂の御呪い',
+            'criminal' => '神格',
         ),
         5 => array(
             'name' => '狂気の夜',
@@ -106,7 +106,6 @@ $oSangeki = (object)array(
                 ),
                 4 => array(
                     'A.I.' => '友好禁止',
-                    'マスコミ' => '不安+1',
                 ),
                 5 => array(
                     '転校生' => '移動横',
