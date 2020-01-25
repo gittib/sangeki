@@ -358,7 +358,7 @@ function rolesCountCheck($oSangeki) {
     // 事件と犯人のチェック
     foreach ($oSangeki->incident as $date => $aIns) {
         if ($date > $oSangeki->day) {
-            $aErrorMessage[] = '最終日より後に事件が設定されています';
+            $aErrorMessage[] = "最終日より後に{$aIns['name']}が設定されています";
         }
         if (!in_array($aIns['name'], $aInsidentMaster[$oSangeki->set])) {
             $aErrorMessage[] = "「{$aIns['name']}」という名前の事件はありません";
