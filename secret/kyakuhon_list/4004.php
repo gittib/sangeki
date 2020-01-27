@@ -3,7 +3,7 @@
 $oSangeki = (object)array(
     'title' => '神のみぞ知る真相',
     'writer' => 'ペンスキー',
-    'difficulity' => 5,
+    'difficulity' => 4,
     'set' => 'HSA',
     'rule' => array(
         '高貴なる血族',

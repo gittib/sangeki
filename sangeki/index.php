@@ -89,8 +89,7 @@ foreach ($aTmp as $val) {
                 <span class="loop"><strong><?= $oSangeki->loop ?></strong>ループ</span>
                 <span class="day"><strong><?= $oSangeki->day ?></strong>日間</span>
                 <span class="difficulity">
-                    難易度
-                    <span><? for ($i = 1 ; $i <= 8 ; $i++) {
+                    難易度<span><? for ($i = 1 ; $i <= 8 ; $i++) {
                         if ($i <= $oSangeki->difficulity) {
                             echo '★';
                         } else {
