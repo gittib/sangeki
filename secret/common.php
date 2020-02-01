@@ -8,6 +8,15 @@ function isProd() {
     return file_exists(dirname(__FILE__) . '/../.env.prod');
 }
 
+function cssPath() {
+    // TODO: この関数どうにかしたい
+    if (isProd()) {
+        return '/sangeki/';
+    } else {
+        return '/sdev/';
+    }
+}
+
 function e($s) {
     return htmlspecialchars($s, ENT_QUOTES);
 }
