@@ -1,7 +1,9 @@
 <?
-require_once('../secret/common.php');
-require_once('../secret/sangeki_check.php');
-exec('ls ../secret/kyakuhon_list/', $files);
+define('SECRET_DIR', '../secret/');
+require_once(SECRET_DIR.'common.php');
+require_once(SECRET_DIR.'sangeki_check.php');
+
+exec('ls '.SECRET_DIR.'kyakuhon_list/', $files);
 $aTmp = array();
 $bDisplaySecret = (!isProd() && isset($_GET['s']));
 foreach ($files as $val) {
@@ -9,7 +11,7 @@ foreach ($files as $val) {
     if (strpos($id, '9') === 0) {
         continue;
     }
-    require('../secret/kyakuhon_list/' . $val);
+    require(SECRET_DIR.'kyakuhon_list/' . $val);
     if (empty($oSangeki) || empty($oSangeki->title)) {
         continue;
     }
@@ -61,7 +63,8 @@ foreach ($aTmp as $val) {
 ?>
 <html>
 <head>
-<?php require('../secret/sangeki_head.php') ?>
+<?php require(SECRET_DIR.'google_analytics.php') ?>
+<?php require(SECRET_DIR.'sangeki_head.php') ?>
     <title>脚本リスト</title>
 </head>
 <body class="kyakuhon_list">
@@ -89,8 +92,7 @@ foreach ($aTmp as $val) {
                 <span class="loop"><strong><?= $oSangeki->loop ?></strong>ループ</span>
                 <span class="day"><strong><?= $oSangeki->day ?></strong>日間</span>
                 <span class="difficulity">
-                    難易度
-                    <span><? for ($i = 1 ; $i <= 8 ; $i++) {
+                    難易度<span><? for ($i = 1 ; $i <= 8 ; $i++) {
                         if ($i <= $oSangeki->difficulity) {
                             echo '★';
                         } else {
@@ -104,7 +106,7 @@ foreach ($aTmp as $val) {
         </dl>
     </div>
     <button class="show_title">脚本タイトルを表示</button>
-<?php require('../secret/sangeki_footer.php') ?>
+<?php require(SECRET_DIR.'sangeki_footer.php') ?>
     <script>
     $('.show_title').on('click', function() {
         if ($('.hide_title').is(':visible')) {

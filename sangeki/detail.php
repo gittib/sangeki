@@ -1,6 +1,7 @@
 <?php
-require_once('../secret/common.php');
-require_once('../secret/sangeki_check.php');
+define('SECRET_DIR', '../secret/');
+require_once(SECRET_DIR.'common.php');
+require_once(SECRET_DIR.'sangeki_check.php');
 
 function redirectToList() {
     header('Location: .');
@@ -11,10 +12,10 @@ if (!isset($_GET['id'])) {
     redirectToList();
 }
 
-require_once('../secret/detail_util.php');
+require_once(SECRET_DIR.'detail_util.php');
 
 $id = $_GET['id'];
-$kyakuhonPath = '../secret/kyakuhon_list/'.$id.'.php';
+$kyakuhonPath = SECRET_DIR.'kyakuhon_list/'.$id.'.php';
 if (!file_exists($kyakuhonPath)) {
     redirectToList();
 }
@@ -58,7 +59,8 @@ $aErrorMessage = rolesCountCheck($oSangeki);
 ?>
 <html>
 <head>
-<?php require('../secret/sangeki_head.php') ?>
+<?php require(SECRET_DIR.'google_analytics.php') ?>
+<?php require(SECRET_DIR.'sangeki_head.php') ?>
     <title><?= e($oSangeki->rule_str) ?> 脚本</title>
 </head>
 <body class="detail">
@@ -318,7 +320,7 @@ $aErrorMessage = rolesCountCheck($oSangeki);
         </div>
         <? endif; ?>
     </div>
-<?php require('../secret/sangeki_footer.php') ?>
+<?php require(SECRET_DIR.'sangeki_footer.php') ?>
     <script>
     $('.toggle_private').on('click', function() {
         var $self = $(this);

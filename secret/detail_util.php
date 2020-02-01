@@ -57,6 +57,7 @@ function initPos($name, $aCharacter = array()) {
         case '異世界人':
         case '黒猫':
         case '幻想':
+        case '妹':
             return 'shrine';
         case '病院':
         case 'hospital':
@@ -77,6 +78,7 @@ function initPos($name, $aCharacter = array()) {
         case '大物':
         case 'マスコミ':
         case '鑑識官':
+        case 'コピーキャット':
             return 'city';
         case '学校':
         case 'school':
@@ -164,13 +166,16 @@ function insidentPublicNote($insident) {
         break;
     case '遂行者':
     case '前兆':
+    case '悪魔との契約':
         $sBikou = '(不安臨界-1)';
         break;
     case '猟奇殺人':
+    case '怨嗟の雄叫び':
         $sBikou = '(不安臨界+1)';
         break;
     case '陰謀工作':
     case '猟犬の嗅覚':
+    case '模倣犯':
         $sBikou = '(暗躍で判定)';
         break;
     }
@@ -268,7 +273,7 @@ function rolesCountCheck($oSangeki) {
     foreach ($oSangeki->character as $name => $chara) {
         if (empty($chara['role']) || $chara['role'] == 'パーソン') {
             if (in_array($name, array('イレギュラー', 'AI', 'A.I.'))) {
-                $aErrorMessage[] = "{$name}はパーソンにできません。";
+                $aErrorMessage[] = "{$name}はパーソンにできません";
             }
             continue;
         }
@@ -277,7 +282,7 @@ function rolesCountCheck($oSangeki) {
         if ($name == 'イレギュラー') {
             if (isset($aRoleCount[$role])) {
                 $aRoleCount[$role]--;
-                $aErrorMessage[] = 'イレギュラーの役職が不正です。';
+                $aErrorMessage[] = 'イレギュラーの役職が不正です';
             }
         } else {
             if (empty($aRoleCount[$role])) {
@@ -294,12 +299,12 @@ function rolesCountCheck($oSangeki) {
     }
     foreach ($aRoleCount as $roleName => $n) {
         if ($n < 0) {
-            $aErrorMessage[] = $roleName . 'が多すぎます。';
+            $aErrorMessage[] = $roleName . 'が多すぎます';
         } else if ($n > 0) {
             if ($roleName == 'マイナス' && in_array('最低の却本', $aRuleList)) {
                 // 最低の却本なら、マイナスの人数は足りなくてもOK
             } else {
-                $aErrorMessage[] = $roleName . 'が足りません。';
+                $aErrorMessage[] = $roleName . 'が足りません';
             }
         }
     }
@@ -311,7 +316,7 @@ function rolesCountCheck($oSangeki) {
         $aTmp = $getCharacters('キーパーソン');
         foreach ($aTmp as $name) {
             if (!in_array('少女', characterSpec($name))) {
-                $aErrorMessage[] = $name . 'は少女でないため、キーパーソンを割り当てられません。';
+                $aErrorMessage[] = $name . 'は少女でないため、キーパーソンを割り当てられません';
             }
         }
     }
@@ -348,6 +353,45 @@ function rolesCountCheck($oSangeki) {
             }
         }
     }
+    if (in_array('滅亡を謳うもの', $aRuleList)) {
+        $bSusideExists = false;
+        foreach ($oSangeki->incident as $date => $aIns) {
+            $bSusideExists |= $aIns['name'] == '自殺';
+        }
+        if (!$bSusideExists) {
+            $aErrorMessage[] = '「滅亡を謳うもの」がありますが、事件に自殺がありません';
+        }
+    }
+    if (in_array('狂った真実', $aRuleList)) {
+        $bJohoyaExists = false;
+        foreach ($oSangeki->character as $name => $chara) {
+            $bJohoyaExists |= $name == '情報屋';
+        }
+        if (!$bJohoyaExists) {
+            $aErrorMessage[] = '「狂った真実」がありますが、情報屋が登場しません';
+        }
+    }
+
+
+    // 事件と犯人のチェック
+    $aTmpChara = array_merge(array_keys($oSangeki->character), array(
+        '神社の群像',
+        '病院の群像',
+        '都市の群像',
+        '学校の群像',
+    ));
+    foreach ($oSangeki->incident as $date => $aIns) {
+        if ($date > $oSangeki->day) {
+            $aErrorMessage[] = '最終日より後に'.$aIns['name'].'が設定されています';
+        }
+        if (!in_array($aIns['name'], $aInsidentMaster[$oSangeki->set])) {
+            $aErrorMessage[] = '「'.$aIns['name'].'」という名前の事件はありません';
+        }
+        if (!in_array($aIns['criminal'], $aTmpChara)) {
+            $aErrorMessage[] = $date.'日目の犯人「'.$aIns['criminal'].'」は脚本に登場しません';
+        }
+    }
+
 
     return $aErrorMessage;
 }

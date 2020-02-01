@@ -89,6 +89,12 @@ $oSangeki = (object)array(
                     '遂行者',
                 ),
             ),
+            array(
+                'condition' => '戻らぬ子どもたち',
+                'way' => array(
+                    'ループ終了時にEXゲージ1以下かつ少年少女3人に不安と暗躍が乗っている',
+                ),
+            ),
         ),
         'template' => array(
             '基本' => array(

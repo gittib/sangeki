@@ -14,9 +14,6 @@ $oSangeki = (object)array(
     'loop' => 4,
     'day' => 5,
     'character' => array(
-        '神格' => array(
-            'note' => '2ループ目',
-        ),
         '巫女' => array(
             'role' => 'フレンド',
         ),
@@ -25,12 +22,11 @@ $oSangeki = (object)array(
         ),
         '軍人' => array(
         ),
-        '入院患者' => array(
-            'role' => 'ミスリーダー',
-        ),
-        '大物' => array(
+        'A.I.' => array(
             'role' => 'センドウシャ',
-            'note' => '病院',
+        ),
+        'サラリーマン' => array(
+            'role' => 'ミスリーダー',
         ),
         '教師' => array(
         ),
@@ -46,7 +42,11 @@ $oSangeki = (object)array(
         ),
         2 => array(
             'name' => '怨嗟の雄叫び',
-            'criminal' => '入院患者',
+            'criminal' => 'サラリーマン',
+        ),
+        5 => array(
+            'name' => '',
+            'criminal' => 'A.I.',
         ),
     ),
     'advice' => (object)array(

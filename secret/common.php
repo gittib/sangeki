@@ -1,6 +1,7 @@
 <?php
 session_start();
 
+define('SITE_NAME', 'ペンスキーの惨劇RoopeR脚本部屋');
 
 
 function isProd() {
