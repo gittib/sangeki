@@ -71,7 +71,7 @@ $aErrorMessage = rolesCountCheck($oSangeki);
         <h2>公開シート</h2>
         <?php if (isExistSummaryQr($oSangeki->set)): ?>
         <div class="qr_wrapper">
-            <img class="qr" src="qr/<?= $oSangeki->set ?>.jpg">
+            <img class="qr" src="../qr/<?= $oSangeki->set ?>.jpg">
             <div class="summary">Summary</div>
         </div>
         <?php endif; ?>

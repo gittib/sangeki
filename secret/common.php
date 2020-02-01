@@ -8,7 +8,7 @@ function isProd() {
     return file_exists(dirname(__FILE__) . '/../.env.prod');
 }
 
-function cssPath() {
+function topPath() {
     // TODO: この関数どうにかしたい
     if (isProd()) {
         return '/sangeki/';
