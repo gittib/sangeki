@@ -59,6 +59,7 @@ $aErrorMessage = rolesCountCheck($oSangeki);
 ?>
 <html>
 <head>
+<?php require(SECRET_DIR.'google_analytics.php') ?>
 <?php require(SECRET_DIR.'sangeki_head.php') ?>
     <title><?= e($oSangeki->rule_str) ?> 脚本</title>
 </head>

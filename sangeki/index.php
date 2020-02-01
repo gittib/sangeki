@@ -63,6 +63,7 @@ foreach ($aTmp as $val) {
 ?>
 <html>
 <head>
+<?php require(SECRET_DIR.'google_analytics.php') ?>
 <?php require(SECRET_DIR.'sangeki_head.php') ?>
     <title>脚本リスト</title>
 </head>

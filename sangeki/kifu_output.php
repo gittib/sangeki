@@ -1,5 +1,6 @@
 <?
-require_once('../secret/common.php');
+define('SECRET_DIR', '../secret/');
+require_once(SECRET_DIR.'common.php');
 
 echo '<pre>'; var_dump($_POST); exit;
 
@@ -95,6 +96,7 @@ function outHtml($aChara, $aAction, $aMemo) {
 ?>
 <html>
 <head>
+<?php require(SECRET_DIR.'google_analytics.php') ?>
     <link rel="stylesheet" href="screen.css?v=<?= filemtime(dirname(__FILE__) . '/../sangeki/screen.css') ?>">
     <link rel="shortcut icon" href="favicon.ico" type="image/vnd.microsoft.icon" /> 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
@@ -124,7 +126,7 @@ function outHtml($aChara, $aAction, $aMemo) {
             <? endfor; ?>
         </table>
     </div>
-<?php require('../secret/sangeki_footer.php') ?>
+<?php require(SECRET_DIR.'sangeki_footer.php') ?>
 </body>
 </html>
 <?php

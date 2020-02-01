@@ -1,15 +1,17 @@
 <?
-require_once('../secret/common.php');
-require_once('../secret/kifu_util.php');
-require_once('../secret/rule_role_master.php');
-require_once('../secret/detail_util.php');
+define('SECRET_DIR', '../secret/');
+require_once(SECRET_DIR.'common.php');
+require_once(SECRET_DIR.'kifu_util.php');
+require_once(SECRET_DIR.'rule_role_master.php');
+require_once(SECRET_DIR.'detail_util.php');
 
 $aCharacter = getCharacterMaster(false);
 $aSet = array_keys($aRuleRoleMaster);
 ?>
 <html>
 <head>
-<?php require('../secret/sangeki_head.php') ?>
+<?php require(SECRET_DIR.'google_analytics.php') ?>
+<?php require(SECRET_DIR.'sangeki_head.php') ?>
     <title>惨劇RoopeR 棋譜初期化</title>
 </head>
 <body class="kifu_init">
@@ -69,7 +71,7 @@ $aSet = array_keys($aRuleRoleMaster);
         </div>
         <input type="hidden" name="from" value="kifu_init">
     </form>
-<?php require('../secret/sangeki_footer.php') ?>
+<?php require(SECRET_DIR.'sangeki_footer.php') ?>
 <script>
 $(function() {
     var $aInsidents = <?= json_encode($aInsidentMaster) ?>;

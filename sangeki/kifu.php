@@ -1,8 +1,9 @@
 <?
-require_once('../secret/common.php');
-require_once('../secret/kifu_util.php');
-require_once('../secret/detail_util.php');
-require_once('../secret/rule_role_master.php');
+define('SECRET_DIR', '../secret/');
+require_once(SECRET_DIR.'common.php');
+require_once(SECRET_DIR.'kifu_util.php');
+require_once(SECRET_DIR.'detail_util.php');
+require_once(SECRET_DIR.'rule_role_master.php');
 
 if (empty($_GET['from']) || $_GET['from'] != 'kifu_init') {
     header('Location: kifu_init.php');
@@ -47,7 +48,8 @@ if (empty($errors)) {
 ?>
 <html>
 <head>
-<?php require('../secret/sangeki_head.php') ?>
+<?php require(SECRET_DIR.'google_analytics.php') ?>
+<?php require(SECRET_DIR.'sangeki_head.php') ?>
     <title>惨劇RoopeR 棋譜記録用</title>
 </head>
 <body class="kifu_input">
@@ -299,7 +301,7 @@ if (empty($errors)) {
             </div>
         </form>
     <? endif; ?>
-<?php require('../secret/sangeki_footer.php') ?>
+<?php require(SECRET_DIR.'sangeki_footer.php') ?>
 <div id="scriptwriter_action_list" class="modal">
     <h4>脚本家</h4>
     <div class="explain">
