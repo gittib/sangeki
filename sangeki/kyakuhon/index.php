@@ -1,5 +1,5 @@
 <?
-define('SECRET_DIR', '../secret/');
+define('SECRET_DIR', '../../secret/');
 require_once(SECRET_DIR.'common.php');
 require_once(SECRET_DIR.'sangeki_check.php');
 
