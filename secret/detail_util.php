@@ -353,6 +353,24 @@ function rolesCountCheck($oSangeki) {
             }
         }
     }
+    if (in_array('滅亡を謳うもの', $aRuleList)) {
+        $bSusideExists = false;
+        foreach ($oSangeki->incident as $date => $aIns) {
+            $bSusideExists |= $aIns['name'] == '自殺';
+        }
+        if (!$bSusideExists) {
+            $aErrorMessage[] = '「滅亡を謳うもの」がありますが、事件に自殺がありません';
+        }
+    }
+    if (in_array('狂った真実', $aRuleList)) {
+        $bJohoyaExists = false;
+        foreach ($oSangeki->character as $name => $chara) {
+            $bJohoyaExists |= $name == '情報屋';
+        }
+        if (!$bJohoyaExists) {
+            $aErrorMessage[] = '「狂った真実」がありますが、情報屋が登場しません';
+        }
+    }
 
 
     // 事件と犯人のチェック
