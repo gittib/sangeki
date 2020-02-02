@@ -9,12 +9,8 @@ function isProd() {
 }
 
 function topPath() {
-    // TODO: この関数どうにかしたい
-    if (isProd()) {
-        return '/sangeki/';
-    } else {
-        return '/sdev/';
-    }
+    $aPath = explode('/', $_SERVER['REQUEST_URI']);
+    return '/'.$aPath[1].'/';
 }
 
 function e($s) {
