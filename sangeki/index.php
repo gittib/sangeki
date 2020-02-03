@@ -21,8 +21,10 @@ require_once(SECRET_DIR.'common.php');
         <dd>主にペンスキーの考えた自作脚本が転がってます。一部寄稿いただいた脚本もあります。紙の用意がいらないので、ペンスキーの脚本はほぼ全てここに集約されてる模様。</dd>
         <dt><a href="kifu/">棋譜記録機能</a></dt>
         <dd>各ループ各ターン、脚本家がどこにどのカードを置いたかは、時に推理を進めるための重要な情報となります。<br>紙とペンがあるならそっちの方が良いとは思いますが、お気に召したら嬉しい限りです。</dd>
+<?php if (false): ?>
         <dt><a href="column/">駄文</a></dt>
         <dd>ペンスキー流の脚本の書き方とか、関連アイディアの投棄場。惨劇RoopeRの脚本書くの楽しい。</dd>
+<?php endif; ?>
     </dl>
 <?php require(SECRET_DIR.'sangeki_footer.php') ?>
 </body>
