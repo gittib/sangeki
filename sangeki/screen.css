@@ -99,6 +99,9 @@ ul.question_list > li > div.a label {
     padding-left: 8px;
 }
 
+body.top .top_text h2 {
+    text-align: center;
+}
 body.top .top_text h2 > span {
     display: inline-block;
 }
@@ -109,10 +112,10 @@ body.top dl {
     padding: 8px;
 }
 body.top dl > dd {
-    border-top: solid 1px;
+    border-bottom: solid 1px darkblue;
 }
-body.top dl > dd:first-child {
-    border-top: none;
+body.top dl > dd:last-child {
+    border-bottom: none;
 }
 
 body.sangeki_check h2 {
