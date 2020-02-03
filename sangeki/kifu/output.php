@@ -105,6 +105,7 @@ function outHtml($aChara, $aAction, $aMemo) {
     <title>惨劇RoopeR 棋譜</title>
 </head>
 <body class="kifu_output">
+<? require(SECRET_DIR.'sangeki_header.php'); ?>
     <div class="kifu_out_wrapper">
         <table>
             <tr>

@@ -15,6 +15,7 @@ $aSet = array_keys($aRuleRoleMaster);
     <title>惨劇RoopeR 棋譜初期化 - <?= SITE_NAME ?></title>
 </head>
 <body class="kifu_init">
+<? require(SECRET_DIR.'sangeki_header.php'); ?>
     <h1>惨劇RoopeR 棋譜 初期化画面</h1>
     <div class="top_text">
         <h2></h2>

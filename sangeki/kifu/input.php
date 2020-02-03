@@ -53,6 +53,7 @@ if (empty($errors)) {
     <title>惨劇RoopeR 棋譜記録用 - <?= SITE_NAME ?></title>
 </head>
 <body class="kifu_input">
+<? require(SECRET_DIR.'sangeki_header.php'); ?>
     <? if (!empty($errors)): ?>
         <div class="error">
             <div class="summary">棋譜入力画面の生成に失敗しました。<br><a href="javascript:history.back();">棋譜設定画面</a>に戻って設定しなおして下さい。</div>

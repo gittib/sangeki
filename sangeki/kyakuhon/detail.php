@@ -64,6 +64,7 @@ $aErrorMessage = rolesCountCheck($oSangeki);
     <title><?= e($oSangeki->rule_str) ?> 脚本 - <?= SITE_NAME ?></title>
 </head>
 <body class="detail">
+<? require(SECRET_DIR.'sangeki_header.php'); ?>
     <div class="pankuzu_wrapper">
         <a href=".">一覧へ</a>
     </div>

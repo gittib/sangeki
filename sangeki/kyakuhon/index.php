@@ -68,6 +68,7 @@ foreach ($aTmp as $val) {
     <title>脚本リスト - <?= SITE_NAME ?></title>
 </head>
 <body class="kyakuhon_list">
+<? require(SECRET_DIR.'sangeki_header.php'); ?>
     <div class="top_text">
         <h2><span>ペンスキーの</span><span>脚本置き場へ</span><span>ようこそ。</span></h2>
         ここにはペンスキーの考えた、惨劇RoopeRオリジナル脚本が置かれてあります。(一部寄稿いただいたものもあります)<br>
