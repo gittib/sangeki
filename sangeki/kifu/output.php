@@ -1,7 +1,8 @@
 <?
-define('SECRET_DIR', '../secret/');
+define('SECRET_DIR', '../../secret/');
 require_once(SECRET_DIR.'common.php');
 
+// TODO: ちゃんと出力する
 echo '<pre>'; var_dump($_POST); exit;
 
 
