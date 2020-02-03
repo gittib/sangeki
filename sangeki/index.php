@@ -9,7 +9,7 @@ require_once(SECRET_DIR.'common.php');
 <? require(SECRET_DIR.'sangeki_head.php'); ?>
     <title><?= SITE_NAME ?></title>
 </head>
-<body>
+<body class="top">
     <div class="top_text">
         <h2><span>ペンスキーの</span><span>脚本置き場へ</span><span>ようこそ。</span></h2>
         ここにはペンスキーの考えた惨劇RoopeRオリジナル脚本や、惨劇RoopeRに関する駄文やら何やらが置いてあります。<br>
