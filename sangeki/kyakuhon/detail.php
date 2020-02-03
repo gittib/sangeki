@@ -61,7 +61,7 @@ $aErrorMessage = rolesCountCheck($oSangeki);
 <head>
 <?php require(SECRET_DIR.'google_analytics.php') ?>
 <?php require(SECRET_DIR.'sangeki_head.php') ?>
-    <title><?= e($oSangeki->rule_str) ?> 脚本</title>
+    <title><?= e($oSangeki->rule_str) ?> 脚本 - <?= SITE_NAME ?></title>
 </head>
 <body class="detail">
     <div class="pankuzu_wrapper">
@@ -71,7 +71,7 @@ $aErrorMessage = rolesCountCheck($oSangeki);
         <h2>公開シート</h2>
         <?php if (isExistSummaryQr($oSangeki->set)): ?>
         <div class="qr_wrapper">
-            <img class="qr" src="../qr/<?= $oSangeki->set ?>.jpg">
+            <img class="qr" src="<?= TOP_PATH ?>qr/<?= $oSangeki->set ?>.jpg">
             <div class="summary">Summary</div>
         </div>
         <?php endif; ?>

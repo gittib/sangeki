@@ -1,12 +1,12 @@
 <?
-define('SECRET_DIR', '../secret/');
+define('SECRET_DIR', '../../secret/');
 require_once(SECRET_DIR.'common.php');
 require_once(SECRET_DIR.'kifu_util.php');
 require_once(SECRET_DIR.'detail_util.php');
 require_once(SECRET_DIR.'rule_role_master.php');
 
 if (empty($_GET['from']) || $_GET['from'] != 'kifu_init') {
-    header('Location: kifu_init.php');
+    header('Location: .');
     return;
 }
 $errors = isValid($_GET);
@@ -50,12 +50,12 @@ if (empty($errors)) {
 <head>
 <?php require(SECRET_DIR.'google_analytics.php') ?>
 <?php require(SECRET_DIR.'sangeki_head.php') ?>
-    <title>惨劇RoopeR 棋譜記録用</title>
+    <title>惨劇RoopeR 棋譜記録用 - <?= SITE_NAME ?></title>
 </head>
 <body class="kifu_input">
     <? if (!empty($errors)): ?>
         <div class="error">
-            <div class="summary">棋譜入力画面の生成に失敗しました。<br><a href="kifu_init.php">棋譜設定画面</a>に戻って設定しなおして下さい。</div>
+            <div class="summary">棋譜入力画面の生成に失敗しました。<br><a href="javascript:history.back();">棋譜設定画面</a>に戻って設定しなおして下さい。</div>
             <ul><? foreach ($errors as $val): ?>
                 <li><?= $val ?></li>
             <? endforeach; ?></ul>
@@ -71,7 +71,7 @@ if (empty($errors)) {
                 <option value="20px">最大</option>
             </select>
         </div>
-        <form id="main_form" method="post" action="kifu_output.php" target="kifu_output">
+        <form id="main_form" method="post" action="output.php" target="kifu_output">
             <input type="hidden" name="outtype" id="outtype">
             <input type="hidden" name="loop" value="<?= $oKifu->loop ?>">
             <input type="hidden" name="day" value="<?= $oKifu->day ?>">

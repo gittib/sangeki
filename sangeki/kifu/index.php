@@ -1,5 +1,5 @@
 <?
-define('SECRET_DIR', '../secret/');
+define('SECRET_DIR', '../../secret/');
 require_once(SECRET_DIR.'common.php');
 require_once(SECRET_DIR.'kifu_util.php');
 require_once(SECRET_DIR.'rule_role_master.php');
@@ -12,14 +12,14 @@ $aSet = array_keys($aRuleRoleMaster);
 <head>
 <?php require(SECRET_DIR.'google_analytics.php') ?>
 <?php require(SECRET_DIR.'sangeki_head.php') ?>
-    <title>惨劇RoopeR 棋譜初期化</title>
+    <title>惨劇RoopeR 棋譜初期化 - <?= SITE_NAME ?></title>
 </head>
 <body class="kifu_init">
     <h1>惨劇RoopeR 棋譜 初期化画面</h1>
     <div class="top_text">
         <h2></h2>
     </div>
-    <form action="kifu.php" method="get">
+    <form action="input.php" method="get">
         <div class="period_wrapper">
             <select name="set">
                 <option value="">惨劇セット</option>
