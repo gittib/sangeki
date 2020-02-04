@@ -64,7 +64,7 @@ $aSet = array_keys($aRuleRoleMaster);
                 <? foreach ($aCharacterMaster as $area => $aCharacter): ?>
                 <dt><?= e(getAreaName($area)) ?></dt>
                 <dd>
-                    <? foreach ($aCharacter['shrine'] as $id => $val): ?>
+                    <? foreach ($aCharacter as $id => $val): ?>
                     <label>
                         <input type="checkbox" name="ch[]" value="<?= $id ?>">
                         <p><?= e($val) ?></p>
