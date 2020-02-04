@@ -50,6 +50,7 @@ function getCharacterMaster() {
             '1901' => '手先',
         ),
     );
+    return $aChara;
 }
 
 function getAreaName($area) {
