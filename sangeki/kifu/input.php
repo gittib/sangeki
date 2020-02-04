@@ -185,15 +185,15 @@ if (empty($errors)) {
                                         <option>？？？？？</option>
                                         <option>パーソン</option>
                                         <? foreach ($aRole as $role): ?>
-                                        <option><?= $role ?></option>
+                                        <option><?= e($role) ?></option>
                                         <? endforeach; ?>
                                     </select>
                                 </td>
-                                <td class="chara_name"><span><?= $chara ?></span></td>
+                                <td class="chara_name"><span><?= e($chara) ?></span></td>
                                 <? foreach ($aRole as $role): ?>
                                 <td class="role_check">　</td>
                                 <? endforeach; ?>
-                                <td><input class="memo" type="text" name="chara_info[<?= $id ?>][memo]" placeholder="メモ"></td>
+                                <td><input class="memo" type="text" name="chara_info[<?= $id ?>][memo]" placeholder="<?= e($chara) ?>に関するメモ"></td>
                             </tr>
                         </tbody>
                         <? endforeach; ?>
