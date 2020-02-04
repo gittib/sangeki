@@ -8,7 +8,10 @@
 <script>
 $(function() {
     var $div = $('<div>').css({
+        'position': 'fixed',
+        'bottom': '0',
         'background-color': 'red',
+        'padding-top': '16px',
     });
     $div.on('click', function() {
         $(this).remove();

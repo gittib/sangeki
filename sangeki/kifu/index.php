@@ -5,7 +5,7 @@ require_once(SECRET_DIR.'kifu_util.php');
 require_once(SECRET_DIR.'rule_role_master.php');
 require_once(SECRET_DIR.'detail_util.php');
 
-$aCharacter = getCharacterMaster(false);
+$aCharacterMaster = getCharacterMaster();
 $aSet = array_keys($aRuleRoleMaster);
 ?>
 <html>
@@ -59,12 +59,19 @@ $aSet = array_keys($aRuleRoleMaster);
         </div>
         <div class="available_character_list">
             <h3>登場キャラクター</h3>
-            <? foreach ($aCharacter as $id => $val): ?>
-            <label>
-                <input type="checkbox" name="ch[]" value="<?= $id ?>">
-                <p><?= e($val) ?></p>
-            </label>
-            <? endforeach; ?>
+            <dl>
+                <? foreach ($aCharacterMaster as $area => $aCharacter): ?>
+                <dt><?= e(getAreaName($area)) ?></dt>
+                <dd>
+                    <? foreach ($aCharacter['shrine'] as $id => $val): ?>
+                    <label>
+                        <input type="checkbox" name="ch[]" value="<?= $id ?>">
+                        <p><?= e($val) ?></p>
+                    </label>
+                    <? endforeach; ?>
+                </dd>
+                <? endforeach; ?>
+            </dl>
         </div>
         <div class="submit_wrapper">
             <input type="submit" value="棋譜テンプレートを生成">
