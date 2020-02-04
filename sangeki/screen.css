@@ -621,9 +621,8 @@ body.kifu_input .kifu_wrapper .character_list tbody td.role_check {
     padding: 6px;
 }
 body.kifu_input .kifu_wrapper .character_list tbody td input.memo {
-    width: 98%;
-    display: block;
-    margin: 0 auto;
+    width: 95%;
+    margin-left: 4px;
 }
 body.kifu_input .kifu_wrapper dl > dt {
     padding-top: 12px;
