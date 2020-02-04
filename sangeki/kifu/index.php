@@ -67,7 +67,7 @@ $aSet = array_keys($aRuleRoleMaster);
                     <? foreach ($aCharacter as $id => $val): ?>
                     <label>
                         <input type="checkbox" name="ch[]" value="<?= $id ?>">
-                        <p><?= e($val) ?></p>
+                        <?= e($val) ?>
                     </label>
                     <? endforeach; ?>
                 </dd>
