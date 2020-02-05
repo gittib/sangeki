@@ -72,7 +72,7 @@ if (empty($errors)) {
                 <option value="20px">最大</option>
             </select>
         </div>
-        <form id="main_form" method="post" action="output.php" target="kifu_output">
+        <form id="main_form" method="post" action="output.php" target="_blank">
             <input type="hidden" name="outtype" id="outtype">
             <input type="hidden" name="loop" value="<?= $oKifu->loop ?>">
             <input type="hidden" name="day" value="<?= $oKifu->day ?>">

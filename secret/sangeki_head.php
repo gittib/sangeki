@@ -9,6 +9,7 @@
 $(function() {
     var $div = $('<div>').css({
         'position': 'fixed',
+        'z-index': '10000',
         'top': '0',
         'background-color': 'red',
         'padding': '16px',
@@ -24,7 +25,7 @@ $(function() {
     $div.append($('<span>').css({
         'color': 'white',
     }).text('タップしてテストヘッダを隠す'));
-    $('body').prepend($div);
+    $('body').append($div);
 })
 </script>
 <?php endif; ?>
