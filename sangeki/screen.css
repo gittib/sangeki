@@ -106,7 +106,7 @@ ul.question_list > li > div.a label {
 /* header menu **********************************************************************************/
 header {
   padding:10px;
-  background: skyblue;
+  background: darkslateblue;
 }
 
 #nav-drawer {
@@ -133,7 +133,7 @@ header {
   height: 3px;/*線の太さ*/
   width: 25px;/*長さ*/
   border-radius: 3px;
-  background: #555;
+  background: khaki;
   display: block;
   content: '';
   cursor: pointer;
@@ -189,8 +189,12 @@ header {
   box-shadow: 6px 0 25px rgba(0,0,0,.15);
 }
 
-#nav-content > ul {
-    margin: 12px;
+#nav-content .menu_header {
+    background-color: darkslateblue;
+}
+#nav-content > ul.top_menu > li {
+    padding: 8px;
+    border-bottom: solid 1px darkslateblue;
 }
 /* /header menu **********************************************************************************/
 

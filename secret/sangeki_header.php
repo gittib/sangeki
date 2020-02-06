@@ -5,6 +5,8 @@
         <label id="nav-open" for="nav-input"><span></span></label>
         <label class="nav-unshown" id="nav-close" for="nav-input"></label>
         <div id="nav-content">
+            <div class="menu_header">
+            </div>
             <ul class="top_menu">
                 <li><a href="<?= TOP_PATH ?>">TOP</a></li>
                 <li><a href="<?= TOP_PATH ?>kyakuhon/">脚本リスト</a></li>
