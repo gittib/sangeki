@@ -210,9 +210,11 @@ body.top .top_text h2 > span {
 }
 body.top dl {
     margin: 8px;
-    border-top: double;
-    border-bottom: double;
+    border-top: solid;
+    border-bottom: solid;
     padding: 8px;
+    border-color: darkblue;
+    border-width: 1px;
 }
 body.top dl > dd {
     border-bottom: solid 1px darkblue;
