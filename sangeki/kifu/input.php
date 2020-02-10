@@ -175,6 +175,7 @@ if (empty($errors)) {
                                     <? foreach ($aRole as $role): ?>
                                     <th><span class="vertical_text"><?= $role ?></span></th>
                                     <? endforeach; ?>
+                                    <th>キャラ</th>
                                     <th class="memo">備考</th>
                                 </tr>
                             </thead>
@@ -194,6 +195,7 @@ if (empty($errors)) {
                                     <? foreach ($aRole as $role): ?>
                                     <td class="role_check">　</td>
                                     <? endforeach; ?>
+                                    <td class="chara_name"><span><?= e($chara) ?></span></td>
                                     <td><input class="memo" type="text" name="chara_info[<?= $id ?>][memo]" placeholder="<?= e($chara) ?>に関するメモ"></td>
                                 </tr>
                             </tbody>
