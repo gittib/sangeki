@@ -16,7 +16,7 @@ require_once(SECRET_DIR.'common.php');
         惨劇RoopeRへの興味を深めてもらえれば嬉しい限りです。
         <a href="http://bakafire.main.jp/rooper/sr_top.htm">惨劇RoopeRってなんぞ？という方は公式サイトをどうぞ</a>
     </div>
-    <dl class="top_menu">
+    <dl>
         <? foreach ($aTopMenu as $val): ?>
         <dt><a href="<?= e($val->href) ?>">
             <?= e($val->link) ?>
