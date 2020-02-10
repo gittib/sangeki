@@ -61,7 +61,7 @@ $aErrorMessage = rolesCountCheck($oSangeki);
 <head>
 <?php require(SECRET_DIR.'google_analytics.php') ?>
 <?php require(SECRET_DIR.'sangeki_head.php') ?>
-    <title><?= e($oSangeki->rule_str) ?> 脚本 - <?= SITE_NAME ?></title>
+    <title><?= e($oSangeki->rule_str) ?> 脚本 [<?= $id ?>] - <?= SITE_NAME ?></title>
 </head>
 <body class="detail">
 <? require(SECRET_DIR.'sangeki_header.php'); ?>
@@ -144,7 +144,7 @@ $aErrorMessage = rolesCountCheck($oSangeki);
             <span>役職の構成がおかしいようです。<br>特殊ルールによっては問題ない場合もあるため、確認した上でご利用下さい。</span>
             <ul class="error_message">
             <?php foreach ($aErrorMessage as $sError): ?>
-                <li><?= $sError ?></li>
+                <li><?= e($sError) ?></li>
             <?php endforeach; ?>
             </ul>
         </div>
@@ -258,7 +258,7 @@ $aErrorMessage = rolesCountCheck($oSangeki);
                                 echo '<br><span class="note">(' . e($incident['note']) . ')</span>';
                             }
                         ?></td>
-                        <td><?= $incident['criminal'] ?></td>
+                        <td><?= e($incident['criminal']) ?></td>
                     </tr>
                     <? endforeach; ?>
                 </tbody>

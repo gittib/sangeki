@@ -196,6 +196,9 @@ header {
     padding: 8px;
     border-bottom: solid 1px darkslateblue;
 }
+#nav-content > ul.top_menu > li > a {
+    display: block;
+}
 /* /header menu **********************************************************************************/
 
 
