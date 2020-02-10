@@ -225,6 +225,9 @@ body.top dl {
     border-color: darkblue;
     border-width: 1px;
 }
+body.top dl > dt {
+    margin-top: 16px;
+}
 body.top dl > dt a img {
     width: 100%;
 }
