@@ -1,6 +1,7 @@
 <?php require_once(dirname(__FILE__) . '/common.php'); ?>
 <header>
     <div id="nav-drawer">
+    <h1><?= SITE_NAME ?></h1>
         <input id="nav-input" type="checkbox" class="nav-unshown">
         <label id="nav-open" for="nav-input"><span></span></label>
         <label class="nav-unshown" id="nav-close" for="nav-input"></label>

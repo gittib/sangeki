@@ -114,6 +114,11 @@ header {
   text-align: right;
 }
 
+#nav-drawer h1 {
+    color: lightsteelblue;
+    position: absolute;
+}
+
 /*チェックボックス等は非表示に*/
 .nav-unshown {
   display:none;
