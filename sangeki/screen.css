@@ -221,7 +221,7 @@ body.top dl {
     margin: 8px;
     border-top: solid;
     border-bottom: solid;
-    padding: 8px;
+    padding: 0 8px;
     border-color: darkblue;
     border-width: 1px;
 }

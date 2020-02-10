@@ -28,10 +28,11 @@ require_once(SECRET_DIR.'common.php');
             <img src="<?= TOP_PATH ?>images/heros.png" alt="主人公たち">
         </a></dt>
         <dd>各ループ各ターン、脚本家がどこにどのカードを置いたかは、時に推理を進めるための重要な情報となります。<br>紙とペンがあるならそっちの方が良いとは思いますが、お気に召したら嬉しい限りです。</dd>
-<?php if (false): ?>
-        <dt><a href="column/">駄文</a></dt>
-        <dd>ペンスキー流の脚本の書き方とか、関連アイディアの投棄場。惨劇RoopeRの脚本書くの楽しい。</dd>
-<?php endif; ?>
+        <dt><a href="column/">
+            駄文
+            <img src="<?= TOP_PATH ?>images/uzai.png" alt="脚本を彩る名優たち">
+        </a></dt>
+        <dd>ペンスキー流の脚本の書き方とか、関連アイディアの投棄場。脚本リストに挙がっているものの一部で実際に使われているアイディアもあります。<br>惨劇RoopeRの脚本書くの楽しいよ！</dd>
     </dl>
 <?php require(SECRET_DIR.'sangeki_footer.php') ?>
 </body>
