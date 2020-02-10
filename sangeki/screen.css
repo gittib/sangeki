@@ -232,6 +232,9 @@ body.top dl {
 body.top dl > dt {
     margin-top: 16px;
 }
+body.top dl > dt a {
+    font-weight: bold;
+}
 body.top dl > dt a div {
     text-align: center;
 }
