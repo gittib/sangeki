@@ -117,6 +117,7 @@ header {
 #nav-drawer h1 {
     color: lightsteelblue;
     position: absolute;
+    font-size: 16px;
 }
 
 /*チェックボックス等は非表示に*/

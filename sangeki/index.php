@@ -18,7 +18,10 @@ require_once(SECRET_DIR.'common.php');
         <a href="http://bakafire.main.jp/rooper/sr_top.htm">惨劇RoopeRってなんぞ？という方は公式サイトをどうぞ</a>
     </div>
     <dl>
-        <dt><a href="kyakuhon/">脚本リスト</a></dt>
+        <dt><a href="kyakuhon/">
+            <img src="<?= TOP_PATH ?>images/kyakuhonka.png">
+            脚本リスト
+        </a></dt>
         <dd>主にペンスキーの考えた自作脚本が転がってます。一部寄稿いただいた脚本もあります。紙の用意がいらないので、ペンスキーの脚本はほぼ全てここに集約されてる模様。</dd>
         <dt><a href="kifu/">棋譜記録機能</a></dt>
         <dd>各ループ各ターン、脚本家がどこにどのカードを置いたかは、時に推理を進めるための重要な情報となります。<br>紙とペンがあるならそっちの方が良いとは思いますが、お気に召したら嬉しい限りです。</dd>
