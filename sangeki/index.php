@@ -19,8 +19,8 @@ require_once(SECRET_DIR.'common.php');
     </div>
     <dl>
         <dt><a href="kyakuhon/">
-            <img src="<?= TOP_PATH ?>images/kyakuhonka.png">
             脚本リスト
+            <img src="<?= TOP_PATH ?>images/kyakuhonka.png">
         </a></dt>
         <dd>主にペンスキーの考えた自作脚本が転がってます。一部寄稿いただいた脚本もあります。紙の用意がいらないので、ペンスキーの脚本はほぼ全てここに集約されてる模様。</dd>
         <dt><a href="kifu/">棋譜記録機能</a></dt>
