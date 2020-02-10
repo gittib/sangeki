@@ -12,6 +12,7 @@
                 <li><a href="<?= TOP_PATH ?>">TOP</a></li>
                 <li><a href="<?= TOP_PATH ?>kyakuhon/">脚本リスト</a></li>
                 <li><a href="<?= TOP_PATH ?>kifu/">棋譜記録機能</a></li>
+                <li><a href="<?= TOP_PATH ?>column/">脚本アイディア</a></li>
             </ul>
         </div>
     </div>

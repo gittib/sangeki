@@ -7,7 +7,7 @@ require_once(SECRET_DIR.'common.php');
 <head>
 <? require(SECRET_DIR.'google_analytics.php'); ?>
 <? require(SECRET_DIR.'sangeki_head.php'); ?>
-    <title>脚本作成のアレコレ - <?= SITE_NAME ?></title>
+    <title>脚本アイディア - <?= SITE_NAME ?></title>
 </head>
 <body class="column">
 <? require(SECRET_DIR.'sangeki_header.php'); ?>

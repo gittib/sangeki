@@ -166,38 +166,40 @@ if (empty($errors)) {
                             <? endfor; ?>
                         </select>
                     </div>
-                    <table class="character_list">
-                        <thead>
-                            <tr>
-                                <th>役職</th>
-                                <th>キャラ</th>
-                                <? foreach ($aRole as $role): ?>
-                                <th><span class="vertical_text"><?= $role ?></span></th>
-                                <? endforeach; ?>
-                                <th class="memo">備考</th>
-                            </tr>
-                        </thead>
-                        <? foreach ($aSelectedCharacter as $id => $chara): ?>
-                        <tbody data-chara_id="<?= $id ?>" <?= in_array($id, array('1001', '1307')) ? ' style="display:none;" ' : '' ?>>
-                            <tr>
-                                <td class="role_select">
-                                    <select name="chara_info[<?= $id ?>][role]">
-                                        <option>？？？？？</option>
-                                        <option>パーソン</option>
-                                        <? foreach ($aRole as $role): ?>
-                                        <option><?= e($role) ?></option>
-                                        <? endforeach; ?>
-                                    </select>
-                                </td>
-                                <td class="chara_name"><span><?= e($chara) ?></span></td>
-                                <? foreach ($aRole as $role): ?>
-                                <td class="role_check">　</td>
-                                <? endforeach; ?>
-                                <td><input class="memo" type="text" name="chara_info[<?= $id ?>][memo]" placeholder="<?= e($chara) ?>に関するメモ"></td>
-                            </tr>
-                        </tbody>
-                        <? endforeach; ?>
-                    </table>
+                    <div class="character_list_scroll_view">
+                        <table class="character_list">
+                            <thead>
+                                <tr>
+                                    <th>役職</th>
+                                    <th>キャラ</th>
+                                    <? foreach ($aRole as $role): ?>
+                                    <th><span class="vertical_text"><?= $role ?></span></th>
+                                    <? endforeach; ?>
+                                    <th class="memo">備考</th>
+                                </tr>
+                            </thead>
+                            <? foreach ($aSelectedCharacter as $id => $chara): ?>
+                            <tbody data-chara_id="<?= $id ?>" <?= in_array($id, array('1001', '1307')) ? ' style="display:none;" ' : '' ?>>
+                                <tr>
+                                    <td class="role_select">
+                                        <select name="chara_info[<?= $id ?>][role]">
+                                            <option>？？？？？</option>
+                                            <option>パーソン</option>
+                                            <? foreach ($aRole as $role): ?>
+                                            <option><?= e($role) ?></option>
+                                            <? endforeach; ?>
+                                        </select>
+                                    </td>
+                                    <td class="chara_name"><span><?= e($chara) ?></span></td>
+                                    <? foreach ($aRole as $role): ?>
+                                    <td class="role_check">　</td>
+                                    <? endforeach; ?>
+                                    <td><input class="memo" type="text" name="chara_info[<?= $id ?>][memo]" placeholder="<?= e($chara) ?>に関するメモ"></td>
+                                </tr>
+                            </tbody>
+                            <? endforeach; ?>
+                        </table>
+                    </div>
                 </div>
                 <dl>
                 <? for ($l = 1 ; $l <= $oKifu->loop ; $l++): ?>

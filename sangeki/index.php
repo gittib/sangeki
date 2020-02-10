@@ -44,9 +44,11 @@ $aMenu = array(
         <? foreach ($aMenu as $val): ?>
         <dt><a href="<?= e($val->href) ?>">
             <?= e($val->link) ?>
+            <? if (isset($val->img_src)): ?>
             <div>
-                <img src="<?= TOP_PATH . e($val->img_src) ?>" alt="<?= e($val->img_alt) ?>">
+                <img src="<?= TOP_PATH . e($val->img_src) ?>" alt="<?= isset($val->img_alt) ? e($val->img_alt) : '' ?>">
             </div>
+            <? endif; ?>
         </a></dt>
         <dd><?= nl2br(e($val->text)) ?></dd>
         <? endforeach; ?>
