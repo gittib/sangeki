@@ -134,7 +134,7 @@ if (empty($errors)) {
                                     <option value="<?= $id ?>"><?= e($board) ?>の群像</option>
                                     <? endforeach; ?>
                                 <? else: ?>
-                                    <? foreach ($aSelectedCharacter as $id => $chara): ?>
+                                    <? foreach ($oKifu->chara as $id => $chara): ?>
                                     <option value="<?= $id ?>"><?= e($chara) ?></option>
                                     <? endforeach; ?>
                                 <? endif; ?>
@@ -179,7 +179,7 @@ if (empty($errors)) {
                                     <th class="memo">備考</th>
                                 </tr>
                             </thead>
-                            <? foreach ($aSelectedCharacter as $id => $chara): ?>
+                            <? foreach ($oKifu->chara as $id => $chara): ?>
                             <tbody data-chara_id="<?= $id ?>" <?= in_array($id, array('1001', '1307')) ? ' style="display:none;" ' : '' ?>>
                                 <tr>
                                     <td class="role_select">
@@ -208,7 +208,7 @@ if (empty($errors)) {
                     <dt><?= $l ?>ループ目</dt>
                     <dd>
                         <div>
-                            <? if (in_array('1901', $aSelectedCharacter)): ?>
+                            <? if (array_key_exists('1901', $oKifu->chara)): ?>
                                 手先初期配置：
                                 <select name="action_info[<?= $l ?>][initialize][tesaki_board]">
                                     <? foreach (getBoardMaster() as $id => $board): ?>
@@ -217,7 +217,7 @@ if (empty($errors)) {
                                 </select>
                                 <br>
                             <? endif; ?>
-                            <? if (in_array('1105', $aSelectedCharacter)): ?>
+                            <? if (array_key_exists('1105', $oKifu->chara)): ?>
                                 学者カウンター：
                                 <select name="action_info[<?= $l ?>][initialize][gakusha_counter]">
                                     <option value="">無し</option>
