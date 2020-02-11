@@ -569,18 +569,21 @@ body.kifu_init > form {
 body.kifu_init .available_character_list {
     max-width: 800px;
 }
-body.kifu_init .available_character_list label {
+body.kifu_init .available_character_list dl > dd {
+    border-bottom: solid 1px lightgray;
+}
+body.kifu_init .available_character_list dl > dd label {
     width: 30%;
     max-width: 150px;
     display: inline-block;
     vertical-align: top;
 }
-body.kifu_init .available_character_list label input[type=checkbox] {
+body.kifu_init .available_character_list dl > dd label input[type=checkbox] {
     display: block;
     float: left;
     width: 16px;
 }
-body.kifu_init .available_character_list label p {
+body.kifu_init .available_character_list dl > dd label p {
     float: right;
     width: 100%;
     margin-left: -16px;
