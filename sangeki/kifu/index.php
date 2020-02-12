@@ -16,10 +16,7 @@ $aSet = array_keys($aRuleRoleMaster);
 </head>
 <body class="kifu_init">
 <? require(SECRET_DIR.'sangeki_header.php'); ?>
-    <h1>惨劇RoopeR 棋譜 初期化画面</h1>
-    <div class="top_text">
-        <h2></h2>
-    </div>
+    <h2>惨劇RoopeR 棋譜 初期化画面</h2>
     <form action="input.php" method="get">
         <div class="period_wrapper">
             <select name="set">
