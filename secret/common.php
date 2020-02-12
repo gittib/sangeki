@@ -13,9 +13,6 @@ function isProd() {
 }
 
 function e($s) {
-    if (!isset($s)) {
-        $s = '';
-    }
     return htmlspecialchars($s, ENT_QUOTES);
 }
 
@@ -28,9 +25,6 @@ function session($key, $defaultValue = '') {
 }
 
 function difficulityName($difficulity) {
-    if (empty($difficulity)) {
-        return '';
-    }
     switch ($difficulity) {
         case 1:
             return '練習用';
