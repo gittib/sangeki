@@ -45,6 +45,10 @@ $oSangeki = (object)array(
         ),
     ),
     'incident' => array(
+        1 => array(
+            'name' => '冒涜殺人',
+            'criminal' => '委員長',
+        ),
         2 => array(
             'name' => '穢れの噴出',
             'criminal' => '神社の群像',
