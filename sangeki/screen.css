@@ -735,6 +735,15 @@ body.kifu_output .kifu_out_wrapper td {
     font-size: 0.8rem;
 }
 
+body.column dl.tips {
+    margin: 32px 8px;
+}
+body.column dl.tips > dt {
+    border-bottom: solid 4px;
+    border-color: cornflowerblue;
+    font-weight: bold;
+}
+
 
 footer {
     margin-bottom: 32px;
