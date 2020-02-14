@@ -13,8 +13,8 @@ require_once(SECRET_DIR.'common.php');
 <? require(SECRET_DIR.'sangeki_header.php'); ?>
     <h2><span>ペンスキーの</span><span>惨劇RoopeR脚本の</span><span>組み方</span></h2>
     <div>
-        ここでは、ペンスキー(<a href="https://twitter.com/gittib_gittib">@gittib_gittib</a>)がよく使う脚本作成のテクニックとかそんなのを紹介します。<br>
-        ちなみに、wikiにある「<a href="https://w.atwiki.jp/rooper/sp/pages/27.html">脚本作成のアドバイス</a>」はマジでためになるのでオススメです。私も初めて脚本を書いたときは、大いに参考にしました。<br>
+        ここでは、ペンスキー(<a href="https://twitter.com/gittib_gittib" target="_blank">@gittib_gittib</a>)がよく使う脚本作成のテクニックとかそんなのを紹介します。<br>
+        ちなみに、wikiにある「<a href="https://w.atwiki.jp/rooper/sp/pages/27.html" target="_blank">脚本作成のアドバイス</a>」はマジでためになるのでオススメです。私も初めて脚本を書いたときは、大いに参考にしました。<br>
         それを踏まえて、私がよく書く脚本の書き方は「<strong>ギミックベースの脚本</strong>」です。他の書き方は滅多にしません。<br>
         ただこの書き方は、BTXやMZといった惨劇セットへの深い理解が必要です。<br>
         <br>

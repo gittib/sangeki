@@ -14,7 +14,7 @@ require_once(SECRET_DIR.'common.php');
         <h2><span>ペンスキーの</span><span>脚本置き場へ</span><span>ようこそ。</span></h2>
         ここにはペンスキーの考えた惨劇RoopeRオリジナル脚本や、惨劇RoopeRに関する駄文やら何やらが置いてあります。<br>
         惨劇RoopeRへの興味を深めてもらえれば嬉しい限りです。
-        <a href="http://bakafire.main.jp/rooper/sr_top.htm">惨劇RoopeRってなんぞ？という方は公式サイトをどうぞ</a>
+        <a href="http://bakafire.main.jp/rooper/sr_top.htm" target="_blank">惨劇RoopeRってなんぞ？という方は公式サイトをどうぞ</a>
     </div>
     <dl>
         <? foreach ($aTopMenu as $val): ?>
