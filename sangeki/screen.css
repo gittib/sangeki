@@ -745,6 +745,7 @@ body.column dl.tips > dt {
     border-bottom: solid 4px;
     border-color: cornflowerblue;
     font-weight: bold;
+    font-size: 1.25rem;
 }
 
 
