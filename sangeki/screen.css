@@ -735,6 +735,9 @@ body.kifu_output .kifu_out_wrapper td {
     font-size: 0.8rem;
 }
 
+body.column h2 > span {
+    display: inline-block;
+}
 body.column dl.tips {
     margin: 32px 8px;
 }
