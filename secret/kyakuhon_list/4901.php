@@ -3,7 +3,7 @@
 $oSangeki = (object)array(
     'title' => '世界線変動率 0.523307%',
     'writer' => 'ペンスキー',
-    'difficulity' => 6,
+    'difficulity' => 5,
     'set' => 'HSA',
     'rule' => array(
         '高貴なる血族',
