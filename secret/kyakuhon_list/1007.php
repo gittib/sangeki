@@ -69,16 +69,16 @@ $oSangeki = (object)array(
                 ),
             ),
             array(
+                'condition' => '僕と契約しようよ！',
+                'way' => array(
+                    'ループ終了時にキーパーソンの上に暗躍カウンターが2個以上',
+                ),
+            ),
+            array(
                 'condition' => 'フレンドの殺害',
                 'way' => array(
                     '病院の事件',
                     '異世界人の友好能力',
-                ),
-            ),
-            array(
-                'condition' => '僕と契約しようよ！',
-                'way' => array(
-                    'ループ終了時にキーパーソンの上に暗躍カウンターが2個以上',
                 ),
             ),
             array(
