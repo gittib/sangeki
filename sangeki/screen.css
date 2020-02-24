@@ -747,6 +747,9 @@ body.column dl.tips > dt {
     font-weight: bold;
     font-size: 1.25rem;
 }
+body.column dl.tips > dd {
+    margin-bottom: 3.2rem;
+}
 
 
 footer {

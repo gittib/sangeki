@@ -25,6 +25,7 @@ foreach ($files as $val) {
     $aTmp[$id] = $oSangeki;
     $oSangeki = null;
 }
+
 function sangekiSetIndex($o) {
     switch ($o->set) {
     case 'FS':
@@ -46,12 +47,18 @@ function sangekiSetIndex($o) {
         return 99;
     }
 }
+function specialId($o) {
+    // 百の位は特殊な意味付けって感じ
+    return (int)(($o->id % 1000) / 100);
+}
 $fn = function($a, $b) {
     $setDiff = sangekiSetIndex($a) - sangekiSetIndex($b);  // 惨劇セット昇順
+    $specialDiff = specialId($a) - specialId($b);   // 特殊ID
     $difficulityDiff = $a->difficulity - $b->difficulity;   // 難易度昇順
     $idDiff = $a->id - $b->id; // ID昇順
 
     if ($setDiff != 0) return $setDiff;
+    else if ($specialDiff != 0) return $specialDiff;
     else if ($difficulityDiff != 0) return $difficulityDiff;
     else return $idDiff;
 };
