@@ -327,7 +327,7 @@ function rolesCountCheck($oSangeki) {
     }
     if (!empty($sCopyCatRole)) {
         // コピーキャットの役職判定
-        if (!empty($aRoleCount[$sCopyCatRole])) {
+        if (!empty($aRoleCharacter[$sCopyCatRole])) {
             // OK
         } else if ($sCopyCatRole = 'パーソン' && $bPersonExists) {
             // OK
