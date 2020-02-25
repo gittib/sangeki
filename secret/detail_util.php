@@ -58,6 +58,8 @@ function initPos($name, $aCharacter = array()) {
         case '黒猫':
         case '幻想':
         case '妹':
+        case '教祖':
+        case 'ご神木':
             return 'shrine';
         case '病院':
         case 'hospital':
@@ -100,10 +102,13 @@ function initPos($name, $aCharacter = array()) {
 }
 function characterSpec($name) {
     switch ($name) {
+        case '妹':
+            return array('少女', '妹');
         case '異世界人':
             return array('少女');
         case '男子学生':
         case 'イレギュラー':
+        case 'コピーキャット':
             return array('学生', '少年');
         case '巫女':
         case 'アイドル':
@@ -132,10 +137,13 @@ function characterSpec($name) {
         case 'ナース':
         case '情報屋':
         case '教師':
+        case '教祖':
             return array('大人', '女性');
         case 'A.I.':
         case 'AI':
             return array('造物');
+        case 'ご神木':
+            return array('樹木');
         case '神格':
             return array('男性', '女性');
         default:
@@ -270,8 +278,17 @@ function rolesCountCheck($oSangeki) {
         }
     }
 
+    $sCopyCatRole = null;
+    $bPersonExists = false;
     foreach ($oSangeki->character as $name => $chara) {
+        if ($name == 'コピーキャット') {
+            // コピーキャットは後から判定する
+            $sCopyCatRole = empty($chara['role']) ? 'パーソン' : $chara['role'];
+            continue;
+        }
+
         if (empty($chara['role']) || $chara['role'] == 'パーソン') {
+            $bPersonExists = true;
             if (in_array($name, array('イレギュラー', 'AI', 'A.I.'))) {
                 $aErrorMessage[] = "{$name}はパーソンにできません";
             }
@@ -306,6 +323,16 @@ function rolesCountCheck($oSangeki) {
             } else {
                 $aErrorMessage[] = $roleName . 'が足りません';
             }
+        }
+    }
+    if (!empty($sCopyCatRole)) {
+        // コピーキャットの役職判定
+        if (!empty($aRoleCount[$sCopyCatRole])) {
+            // OK
+        } else if ($sCopyCatRole = 'パーソン' && $bPersonExists) {
+            // OK
+        } else {
+            $aErrorMessage[] = 'コピーキャットの役職が不正です';
         }
     }
 
