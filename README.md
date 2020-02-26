@@ -7,3 +7,41 @@ git clone https://github.com/gittib/sangeki.git
 touch .env.prod
 ln -s ${YOUR_GIT_WORK_DIRECTORY}/sangeki/ ${YOUR_DOCUMENT_ROOT}/sangeki
 ```
+
+開発環境デプロイ
+```
+#!/bin/bash
+
+GIT_ROOT_DIR=/hoeghoge/fugafuga/
+SSH_KEY_PATH=piyopiyo.pem
+
+cd ${GIT_ROOT_DIR}
+
+eval $(ssh-agent)
+ssh-add ${SSH_KEY_PATH}
+
+git pull
+
+ssh-agent -k
+```
+
+本番環境デプロイ
+```
+#!/bin/bash
+
+GIT_ROOT_DIR=/hoeghoge/fugafuga/
+SSH_KEY_PATH=piyopiyo.pem
+
+read -p "update PROD env. ok? (y/N): " yn
+case "$yn" in [yY]*) ;; *) echo "abort." ; exit ;; esac
+
+cd ${GIT_ROOT_DIR}
+
+eval $(ssh-agent)
+ssh-add ${SSH_KEY_PATH}
+
+git checkout --force master
+git pull
+
+ssh-agent -k
+```
