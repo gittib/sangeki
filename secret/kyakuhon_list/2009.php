@@ -12,7 +12,7 @@ $oSangeki = (object)array(
         '死のショウタイム',
     ),
     'special_rule' => "脚本家は1ループにつき1回しか友好禁止を使用できない。",
-    'loop' => 6,
+    'loop' => 5,
     'day' => 4,
     'character' => array(
         '教祖' => array(
