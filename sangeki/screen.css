@@ -471,6 +471,8 @@ body.detail .private table.init_place span.chara {
     border-style: outset;
     border-width: 1px;
     margin-bottom: 2px;
+    min-width: 1.5em;
+    text-align: center;
     height: 1.5em;
 }
 body.detail .private table.init_place span.territory {
