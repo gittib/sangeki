@@ -7,22 +7,23 @@ $oSangeki = (object)array(
     'difficulity' => 5,
     'set' => 'MZ',
     'rule' => array(
+        '因果の絆',
         '',
-        '神のサイコロ',
         '死のショウタイム',
     ),
     'special_rule' => "",
     'loop' => 5,
-    'day' => 4,
+    'day' => 5,
     'character' => array(
         '教祖' => array(
-            'role' => 'ゼッタイシャ',
+            'role' => 'フレンド',
         ),
-        'ご神木' => array(
-            'role' => 'マジシャン',
+        'A.I.' => array(
+            'role' => 'イモータル',
         ),
-        'コピーキャット' => array(
-            'role' => 'ゼッタイシャ',
+        '大物' => array(
+            'role' => 'シリアルキラー',
+            'note' => '神社',
         ),
     ),
     'incident' => array(
@@ -36,7 +37,7 @@ $oSangeki = (object)array(
         ),
         5 => array(
             'name' => '大暴動',
-            'criminal' => 'コピーキャット',
+            'criminal' => '',
         ),
     ),
     'advice' => (object)array(
