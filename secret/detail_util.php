@@ -229,6 +229,27 @@ function getTragedySetName($setPrefix) {
     }
 }
 
+function exCharacterCheck($oSangeki) {
+    $aExCharacters = array();
+    foreach ($oSangeki->character as $name => $ch) {
+        switch($name) {
+        case '幻想':
+        case '学者':
+        case '女の子':
+        case 'ご神木':
+        case '教祖':
+        case 'コピーキャット':
+        case '妹':
+            $aExCharacters[] = $name;
+        }
+    }
+    if (empty($aExCharacters)) {
+        return '';
+    } else {
+        return 'プロモーションカード「' . implode('」「', $aExCharacters) . "」を使用します。\n";
+    }
+}
+
 function rolesCountCheck($oSangeki) {
     require(dirname(__FILE__) . '/rule_role_master.php');
 

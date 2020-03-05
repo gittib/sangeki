@@ -56,6 +56,10 @@ foreach ($oSangeki->character as $name => $val) {
     }
 }
 $aErrorMessage = rolesCountCheck($oSangeki);
+$sNotice = exCharacterCheck($oSangeki);
+if (!empty($oSangeki->advice->notice)) {
+    $sNotice .= $oSangeki->advice->notice;
+}
 ?>
 <html>
 <head>
@@ -267,9 +271,9 @@ $aErrorMessage = rolesCountCheck($oSangeki);
     </div>
     <div class="private advice">
         <h3>シナリオの特徴</h3>
-        <? if (!empty($oSangeki->advice->notice)): ?>
+        <? if (!empty($sNotice)): ?>
         <div class="notice">
-            <?= nl2br(e($oSangeki->advice->notice)) ?>
+            <?= nl2br(e($sNotice)) ?>
         </div>
         <? endif; ?>
         <div><?= empty($oSangeki->advice->summary) ? 'まだ記載がありません…' : nl2br(e($oSangeki->advice->summary)) ?></div>
