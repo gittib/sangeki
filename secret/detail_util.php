@@ -316,6 +316,14 @@ function rolesCountCheck($oSangeki) {
             continue;
         }
 
+        if ($name == '妹') {
+            $sHeart = '&#x2661;';
+            $ret = roleSpec($chara);
+            if ($ret[2] != $sHeart) {
+                $aErrorMessage[] = "{$name}は友好無視の役職にできません";
+            }
+        }
+
         $role = $chara['role'];
         if ($name == 'イレギュラー') {
             if (isset($aRoleCount[$role])) {
