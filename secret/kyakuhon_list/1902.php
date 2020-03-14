@@ -1,7 +1,7 @@
 <?
 
 $oSangeki = (object)array(
-    'title' => '',
+    'title' => '完全な闇に紛れる悪意',
     'secret' => true,
     'writer' => 'ペンスキー',
     'difficulity' => 7,
