@@ -376,6 +376,14 @@ function rolesCountCheck($oSangeki) {
             }
         }
     }
+    if (in_array('漢の戦い', $aRuleList)) {
+        $aTmp = $getCharacters('ニンジャ');
+        foreach ($aTmp as $name) {
+            if (!in_array('男性', characterSpec($name))) {
+                $aErrorMessage[] = $name . 'は男性でないため、ニンジャを割り当てられません';
+            }
+        }
+    }
     if (in_array('高貴なる血族', $aRuleList)) {
         $aVampSex = array();
         $aTmp = $getCharacters('ヴァンパイア');
