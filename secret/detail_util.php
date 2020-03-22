@@ -58,6 +58,8 @@ function initPos($name, $aCharacter = array()) {
         case '黒猫':
         case '幻想':
         case '妹':
+        case '教祖':
+        case 'ご神木':
             return 'shrine';
         case '病院':
         case 'hospital':
@@ -100,10 +102,13 @@ function initPos($name, $aCharacter = array()) {
 }
 function characterSpec($name) {
     switch ($name) {
+        case '妹':
+            return array('少女', '妹');
         case '異世界人':
             return array('少女');
         case '男子学生':
         case 'イレギュラー':
+        case 'コピーキャット':
             return array('学生', '少年');
         case '巫女':
         case 'アイドル':
@@ -132,10 +137,13 @@ function characterSpec($name) {
         case 'ナース':
         case '情報屋':
         case '教師':
+        case '教祖':
             return array('大人', '女性');
         case 'A.I.':
         case 'AI':
             return array('造物');
+        case 'ご神木':
+            return array('樹木');
         case '神格':
             return array('男性', '女性');
         default:
@@ -221,6 +229,27 @@ function getTragedySetName($setPrefix) {
     }
 }
 
+function exCharacterCheck($oSangeki) {
+    $aExCharacters = array();
+    foreach ($oSangeki->character as $name => $ch) {
+        switch($name) {
+        case '幻想':
+        case '学者':
+        case '女の子':
+        case 'ご神木':
+        case '教祖':
+        case 'コピーキャット':
+        case '妹':
+            $aExCharacters[] = $name;
+        }
+    }
+    if (empty($aExCharacters)) {
+        return '';
+    } else {
+        return 'プロモーションカード「' . implode('」「', $aExCharacters) . "」を使用します。\n\n";
+    }
+}
+
 function rolesCountCheck($oSangeki) {
     require(dirname(__FILE__) . '/rule_role_master.php');
 
@@ -270,12 +299,29 @@ function rolesCountCheck($oSangeki) {
         }
     }
 
+    $sCopyCatRole = null;
+    $bPersonExists = false;
     foreach ($oSangeki->character as $name => $chara) {
+        if ($name == 'コピーキャット') {
+            // コピーキャットは後から判定する
+            $sCopyCatRole = empty($chara['role']) ? 'パーソン' : $chara['role'];
+            continue;
+        }
+
         if (empty($chara['role']) || $chara['role'] == 'パーソン') {
+            $bPersonExists = true;
             if (in_array($name, array('イレギュラー', 'AI', 'A.I.'))) {
                 $aErrorMessage[] = "{$name}はパーソンにできません";
             }
             continue;
+        }
+
+        if ($name == '妹') {
+            $sHeart = '&#x2661;';
+            $ret = roleSpec($chara);
+            if ($ret[2] != $sHeart) {
+                $aErrorMessage[] = "{$name}は友好無視の役職にできません";
+            }
         }
 
         $role = $chara['role'];
@@ -308,6 +354,16 @@ function rolesCountCheck($oSangeki) {
             }
         }
     }
+    if (!empty($sCopyCatRole)) {
+        // コピーキャットの役職判定
+        if (!empty($aRoleCharacter[$sCopyCatRole])) {
+            // OK
+        } else if ($sCopyCatRole = 'パーソン' && $bPersonExists) {
+            // OK
+        } else {
+            $aErrorMessage[] = 'コピーキャットの役職が不正です';
+        }
+    }
 
     $getCharacters = function ($role) use ($aRoleCharacter) {
         return isset($aRoleCharacter[$role]) ? $aRoleCharacter[$role] : array();
@@ -317,6 +373,14 @@ function rolesCountCheck($oSangeki) {
         foreach ($aTmp as $name) {
             if (!in_array('少女', characterSpec($name))) {
                 $aErrorMessage[] = $name . 'は少女でないため、キーパーソンを割り当てられません';
+            }
+        }
+    }
+    if (in_array('漢の戦い', $aRuleList)) {
+        $aTmp = $getCharacters('ニンジャ');
+        foreach ($aTmp as $name) {
+            if (!in_array('男性', characterSpec($name))) {
+                $aErrorMessage[] = $name . 'は男性でないため、ニンジャを割り当てられません';
             }
         }
     }
