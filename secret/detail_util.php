@@ -229,6 +229,13 @@ function getTragedySetName($setPrefix) {
     }
 }
 
+function decorateSentence($s) {
+    $esc = nl2br(e(trim($s)));
+    $esc = str_replace('[b]', '<strong>', $esc);
+    $esc = str_replace('[/b]', '</strong>', $esc);
+    return $esc;
+}
+
 function exCharacterCheck($oSangeki) {
     $aExCharacters = array();
     foreach ($oSangeki->character as $name => $ch) {
