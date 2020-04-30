@@ -276,9 +276,9 @@ if (!empty($oSangeki->advice->notice)) {
             <?= nl2br(e($sNotice)) ?>
         </div>
         <? endif; ?>
-        <div><?= empty($oSangeki->advice->summary) ? 'まだ記載がありません…' : nl2br(e($oSangeki->advice->summary)) ?></div>
+        <div><?= empty($oSangeki->advice->summary) ? 'まだ記載がありません…' : decorateSentence($oSangeki->advice->summary) ?></div>
         <h3>脚本家への指針</h3>
-        <div><?= empty($oSangeki->advice->detail) ? 'まだ記載がありません…' : nl2br(e($oSangeki->advice->detail)) ?></div>
+        <div><?= empty($oSangeki->advice->detail) ? 'まだ記載がありません…' : decorateSentence($oSangeki->advice->detail) ?></div>
         <? if (!empty($oSangeki->advice->victoryConditions)): ?>
         <div class="victory_conditions">
             <h3>脚本家の勝利条件</h3>
