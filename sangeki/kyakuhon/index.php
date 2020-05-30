@@ -95,6 +95,9 @@ foreach ($aTmp as $val) {
                     <span class="hide_title">脚本[<?= $id ?>]</span>
                 </a>
                 <span class="writer">作者: <?= e($oSangeki->writer) ?></span>
+                <? if (!empty($oSangeki->recommended)): ?>
+                <span class="recommended">オススメ！</span>
+                <? endif; ?>
             </dt>
             <dd class="<? if(!empty($oSangeki->secret)) echo 'secret' ?>">
                 <span class="loop"><strong><?= $oSangeki->loop ?></strong>ループ</span>
