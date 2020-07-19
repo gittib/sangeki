@@ -3,73 +3,63 @@
 $oSangeki = (object)array(
     'title' => '',
     'writer' => 'ペンスキー',
-    'secret' => true,
-    'difficulity' => 6,
+    'difficulity' => 7,
     'set' => 'MZ',
     'rule' => array(
-        '漢の戦い',
-        '滅亡を謳うもの',
-        '通わぬ心',
+        '因果の絆',
+        '不定因子χ怪',
+        '憎愛スパイラル',
     ),
-    'special_rule' => "",
-    'loop' => 4,
-    'day' => 5,
+    'special_rule' => "脚本家は友好禁止を使用できない。\n友好+2は友好+3として扱う。",
+    'loop' => 6,
+    'day' => 3,
     'character' => array(
-        '黒猫' => array(
-            'role' => 'ミスリーダー',
+        '神格' => array(
+            'note' => '2ループ目',
         ),
         '異世界人' => array(
+            'role' => 'フレンド',
         ),
-        '教祖' => array(
+        '幻想' => array(
+            'role' => 'ミスリーダー',
         ),
-        '大物' => array(
-            'role' => 'プロフェシー',
-            'note' => '病院',
+        '入院患者' => array(
+            'role' => 'ゼッタイシャ',
         ),
-        'アイドル' => array(
+        '医者' => array(
+            'role' => 'ファクター',
+        ),
+        '委員長' => array(
+        ),
+        'イレギュラー' => array(
             'role' => 'マジシャン',
         ),
-        'マスコミ' => array(
+        '女の子' => array(
+            'role' => 'シリアルキラー',
         ),
-        'サラリーマン' => array(
-            'role' => 'ニンジャ',
-        ),
-        'お嬢様' => array(
+        '転校生' => array(
+            'role' => 'フレンド',
+            'note' => '2日目',
         ),
     ),
     'incident' => array(
-        1 => array(
+        2 => array(
             'name' => '不安拡大',
-            'criminal' => '異世界人',
+            'criminal' => '入院患者',
         ),
         3 => array(
-            'name' => '不安拡大',
-            'criminal' => 'アイドル',
-        ),
-        4 => array(
-            'name' => '陰謀工作',
-            'criminal' => 'サラリーマン',
-        ),
-        5 => array(
             'name' => '自殺',
-            'criminal' => '黒猫',
+            'criminal' => '転校生',
         ),
     ),
     'advice' => (object)array(
         'notice' => "",
         'summary' => "",
-        'detail' => "サラリーマンの役職を聞かれたらプロフェシーと答えます。",
+        'detail' => "",
         'template' => array(
             '基本' => array(
-                1 => array(
-                    '黒猫' => '友好禁止',
-                    '異世界人' => '不安+1',
-                ),
-                2 => array(
-                    'アイドル' => '不安+1',
-                ),
                 3 => array(
-                    'アイドル' => '不安+1',
+                    '転校生' => '不安+1',
                 ),
             ),
         ),
