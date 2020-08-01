@@ -4,9 +4,8 @@ require_once(SECRET_DIR.'common.php');
 require_once(SECRET_DIR.'kifu_util.php');
 
 $outType = $_POST['outtype'];
-$aChara = json_decode($_POST['chara_info'], true);
-$aAction = json_decode($_POST['action'], true);
-$aMemo = $_POST['memo'];
+$aChara = $_POST['chara_info'];
+$aAction = $_POST['action_info'];
 
 foreach ($aChara as $charaId => $val) {
     $aChara[$charaId]['name'] = getKifuCharaName($charaId);
@@ -14,17 +13,17 @@ foreach ($aChara as $charaId => $val) {
 
 switch ($outType) {
 case 'csv':
-    outCsv($aChara, $aAction, $aMemo);
+    outCsv($aChara, $aAction);
     break;
 case 'json':
-    outJson($aChara, $aAction, $aMemo);
+    outJson($aChara, $aAction);
     break;
 case 'html':
-    outHtml($aChara, $aAction, $aMemo);
+    outHtml($aChara, $aAction);
     break;
 }
 
-function outCsv($aChara, $aAction, $aMemo) {
+function outCsv($aChara, $aAction) {
     header('content-type: text/csv; charset=utf-8');
     echo "登場人物\n";
     echo implode(',', $aChara) . "\n\n";
@@ -61,18 +60,17 @@ function outCsv($aChara, $aAction, $aMemo) {
     }
 }
 
-function outJson($aChara, $aAction, $aMemo) {
+function outJson($aChara, $aAction) {
     header('content-type: application/json; charset=utf-8');
     echo json_encode(array(
         'loop' => $_POST['loop'],
         'day' => $_POST['day'],
         'chara' => $aChara,
         'action' => $aAction,
-        'memo' => $_POST['memo'],
     ));
 }
 
-function outHtml($aChara, $aAction, $aMemo) {
+function outHtml($aChara, $aAction) {
     $aDay = array();
     for ($l = 1 ; $l <= $_POST['loop'] ; $l++) {
         $aDay[$l] = array();
