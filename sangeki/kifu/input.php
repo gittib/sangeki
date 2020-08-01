@@ -97,7 +97,7 @@ if (empty($errors)) {
                     ルールX：<div class="ruleX">
                         <? foreach ($aRuleX as $i => $val): ?>
                             <label>
-                                <input type"checkbox" name="ruleX[]" value="<?= e($val) ?>"/><?= e($val) ?>
+                                <input type="checkbox" name="ruleX[]" value="<?= e($val) ?>"/><?= e($val) ?>
                             </label>
                             <br>
                         <? endforeach; ?>
