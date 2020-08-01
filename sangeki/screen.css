@@ -625,6 +625,9 @@ body.kifu_input .rule_wrapper ul > li {
 body.kifu_input .rule_wrapper ul > li:first-child {
     margin-top: 0;
 }
+body.kifu_input .rule_wrapper > ul > li div.rule label {
+    display: inline-block;
+}
 body.kifu_input .insident_list tbody td {
     padding: 4px;
     border: solid 1px;

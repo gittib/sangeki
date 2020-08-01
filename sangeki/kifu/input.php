@@ -84,7 +84,7 @@ if (empty($errors)) {
                 <h3>ルール一覧</h3>
                 <ul>
                   <li>
-                    ルールY ：<div class="ruleY">
+                    ルールY ：<div class="rule ruleY">
                         <? foreach ($aRuleY as $i => $val): ?>
                             <label>
                                 <input type="checkbox" name="ruleY[]" value="<?= e($val) ?>"/><?= e($val) ?>
@@ -93,7 +93,7 @@ if (empty($errors)) {
                     </div>
                   </li>
                   <li>
-                    ルールX：<div class="ruleX">
+                    ルールX：<div class="rule ruleX">
                         <? foreach ($aRuleX as $i => $val): ?>
                             <label>
                                 <input type="checkbox" name="ruleX[]" value="<?= e($val) ?>"/><?= e($val) ?>
