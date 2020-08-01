@@ -77,6 +77,10 @@ function getKifuCharaName($charaId) {
             return $aChara[$charaId];
         }
     }
+    $aBoardMaster = getBoardMaster();
+    if (array_key_exists($charaId, $aBoardMaster)) {
+        return $aBoardMaster[$charaId];
+    }
     return '';
 }
 
