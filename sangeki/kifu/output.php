@@ -12,11 +12,11 @@ foreach ($aChara as $charaId => $val) {
 }
 foreach ($aAction as $loop => $aActionInLoop) {
     foreach ($aActionInLoop as $day => $aActionInDay) {
-        foreach ($aActioninday['scriptwriter'] as $key => $chara) {
+        foreach ($aActionInDay['scriptwriter'] as $key => $chara) {
             $id = $aActionInDay['scriptwriter'][$key]['chara'];
             $aActionInDay['scriptwriter'][$key]['chara_name'] = getKifuCharaName($id);
         }
-        foreach ($aActioninday['hero'] as $key => $chara) {
+        foreach ($aActionInDay['hero'] as $key => $chara) {
             $id = $aActionInDay['hero'][$key]['chara'];
             $aActionInDay['hero'][$key]['chara_name'] = getKifuCharaName($id);
         }
