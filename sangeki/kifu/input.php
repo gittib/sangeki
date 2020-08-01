@@ -89,7 +89,6 @@ if (empty($errors)) {
                             <label>
                                 <input type="checkbox" name="ruleY[]" value="<?= e($val) ?>"/><?= e($val) ?>
                             </label>
-                            <br>
                         <? endforeach; ?>
                     </div>
                   </li>
@@ -99,7 +98,6 @@ if (empty($errors)) {
                             <label>
                                 <input type="checkbox" name="ruleX[]" value="<?= e($val) ?>"/><?= e($val) ?>
                             </label>
-                            <br>
                         <? endforeach; ?>
                     </div>
                   </li>
