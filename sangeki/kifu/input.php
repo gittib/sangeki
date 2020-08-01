@@ -374,7 +374,9 @@ if (empty($errors)) {
     $('.save_action').on('click', function () {
         $('#outtype').val($(this).data('type'));
         window.open('', 'kifu_output');
-        $('#main_form').submit();
+        var form = document.main_form;
+        form.target = 'kifu_output';
+        form.submit();
     });
 })();
 </script>
