@@ -73,7 +73,7 @@ function getAreaName($area) {
 function getKifuCharaName($charaId) {
     $aCharaMaster = getCharacterMaster();
     foreach ($aCharaMaster as $aChara) {
-        if (in_array($charaId, $aChara)) {
+        if (array_key_exists($charaId, $aChara)) {
             return $aChara[$charaId];
         }
     }
