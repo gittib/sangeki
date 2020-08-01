@@ -89,16 +89,17 @@ if (empty($errors)) {
                             <label>
                                 <input type="checkbox" name="ruleY[]" value="<?= e($val) ?>"/><?= e($val) ?>
                             </label>
+                            <br>
                         <? endforeach; ?>
                     </div>
                   </li>
                   <li>
-                    ルールX：<div class="ruleX1">
-                        <option value="">？？？？？</option>
+                    ルールX：<div class="ruleX">
                         <? foreach ($aRuleX as $i => $val): ?>
                             <label>
                                 <input type"checkbox" name="ruleX[]" value="<?= e($val) ?>"/><?= e($val) ?>
                             </label>
+                            <br>
                         <? endforeach; ?>
                     </div>
                   </li>
