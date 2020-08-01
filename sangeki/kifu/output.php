@@ -10,6 +10,18 @@ $aAction = $_POST['action_info'];
 foreach ($aChara as $charaId => $val) {
     $aChara[$charaId]['name'] = getKifuCharaName($charaId);
 }
+foreach ($aAction as $loop => $aActionInLoop) {
+    foreach ($aActionInLoop as $day => $aActionInDay) {
+        foreach ($aactioninday['scriptwriter'] as $key => $chara) {
+            $id = $aActionInDay['scriptwriter'][$key]['chara'];
+            $aActionInDay['scriptwriter'][$key]['chara_name'] = getKifuCharaName($id);
+        }
+        foreach ($aactioninday['hero'] as $key => $chara) {
+            $id = $aActionInDay['hero'][$key]['chara'];
+            $aActionInDay['hero'][$key]['chara_name'] = getKifuCharaName($id);
+        }
+    }
+}
 
 switch ($outType) {
 case 'csv':
