@@ -96,7 +96,7 @@ if (empty($errors)) {
                     ルールX1：<div class="rule ruleX1">
                         <? foreach ($aRuleX as $i => $val): ?>
                             <label>
-                                <input type="checkbox" name="ruleX[]" value="<?= e($val) ?>" checked="checked"/><?= e($val) ?>
+                                <input type="checkbox" name="ruleX1[]" value="<?= e($val) ?>" checked="checked"/><?= e($val) ?>
                             </label>
                         <? endforeach; ?>
                     </div>
@@ -106,7 +106,7 @@ if (empty($errors)) {
                     ルールX2：<div class="rule ruleX2">
                         <? foreach ($aRuleX as $i => $val): ?>
                             <label>
-                                <input type="checkbox" name="ruleX[]" value="<?= e($val) ?>" checked="checked"/><?= e($val) ?>
+                                <input type="checkbox" name="ruleX2[]" value="<?= e($val) ?>" checked="checked"/><?= e($val) ?>
                             </label>
                         <? endforeach; ?>
                     </div>
