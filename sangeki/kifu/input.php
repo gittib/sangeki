@@ -84,31 +84,24 @@ if (empty($errors)) {
                 <h3>ルール一覧</h3>
                 <ul>
                   <li>
-                    ルールY ：<select name="ruleY">
-                        <option value="">？？？？？</option>
+                    ルールY ：<div class="ruleY">
                         <? foreach ($aRuleY as $i => $val): ?>
-                            <option><?= e($val) ?></option>
+                            <label>
+                                <checkbox name="ruleY[]" value="<?= e($val) ?>"/><?= e($val) ?>
+                            </label>
                         <? endforeach; ?>
-                    </select><br>
+                    </div>
                   </li>
                   <li>
-                    ルールX1：<select name="ruleX1">
+                    ルールX：<div class="ruleX1">
                         <option value="">？？？？？</option>
                         <? foreach ($aRuleX as $i => $val): ?>
-                            <option><?= e($val) ?></option>
+                            <label>
+                                <checkbox name="ruleX[]" value="<?= e($val) ?>"/><?= e($val) ?>
+                            </label>
                         <? endforeach; ?>
-                    </select><br>
+                    </div>
                   </li>
-                  <? if ($oKifu->set != 'FS'): ?>
-                  <li>
-                    ルールX2：<select name="ruleX2">
-                        <option value="">？？？？？</option>
-                        <? foreach ($aRuleX as $i => $val): ?>
-                            <option><?= e($val) ?></option>
-                        <? endforeach; ?>
-                    </select>
-                  </li>
-                  <? endif; ?>
                 </ul>
             </div>
             <div class="insident_wrapper">
