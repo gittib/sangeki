@@ -93,7 +93,7 @@ if (empty($errors)) {
                     </div>
                   </li>
                   <li>
-                    ルールX：<div class="rule ruleX">
+                    ルールX1：<div class="rule ruleX1">
                         <? foreach ($aRuleX as $i => $val): ?>
                             <label>
                                 <input type="checkbox" name="ruleX[]" value="<?= e($val) ?>" checked="checked"/><?= e($val) ?>
@@ -101,6 +101,17 @@ if (empty($errors)) {
                         <? endforeach; ?>
                     </div>
                   </li>
+                  <?php if ($oKifu->set != 'FS'): ?>
+                  <li>
+                    ルールX2：<div class="rule ruleX2">
+                        <? foreach ($aRuleX as $i => $val): ?>
+                            <label>
+                                <input type="checkbox" name="ruleX[]" value="<?= e($val) ?>" checked="checked"/><?= e($val) ?>
+                            </label>
+                        <? endforeach; ?>
+                    </div>
+                  </li>
+                  <?php endif; ?>
                 </ul>
             </div>
             <div class="insident_wrapper">
@@ -374,6 +385,8 @@ if (empty($errors)) {
     $('.save_action').on('click', function () {
         $('#outtype').val($(this).data('type'));
         window.open('', 'kifu_output');
+
+        // name属性値指定でformを選択
         var form = document.main_form;
         form.target = 'kifu_output';
         form.submit();
