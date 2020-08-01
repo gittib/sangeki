@@ -13,12 +13,12 @@ foreach ($aChara as $charaId => $val) {
 foreach ($aAction as $loop => $aActionInLoop) {
     foreach ($aActionInLoop as $day => $aActionInDay) {
         foreach ($aActionInDay['scriptwriter'] as $key => $chara) {
-            $id = $aActionInDay['scriptwriter'][$key]['chara'];
-            $aActionInDay['scriptwriter'][$key]['chara_name'] = getKifuCharaName($id);
+            $id = $chara['chara'];
+            $aAction[$loop][$day]['scriptwriter'][$key]['chara_name'] = getKifuCharaName($id);
         }
         foreach ($aActionInDay['hero'] as $key => $chara) {
-            $id = $aActionInDay['hero'][$key]['chara'];
-            $aActionInDay['hero'][$key]['chara_name'] = getKifuCharaName($id);
+            $id = $chara['chara'];
+            $aAction[$loop][$day]['hero'][$key]['chara_name'] = getKifuCharaName($id);
         }
     }
 }
