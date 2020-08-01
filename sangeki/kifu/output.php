@@ -1,15 +1,16 @@
 <?
 define('SECRET_DIR', '../../secret/');
 require_once(SECRET_DIR.'common.php');
-
-// TODO: ちゃんと出力する
-echo '<pre>'; var_dump($_POST); exit;
-
+require_once(SECRET_DIR.'kifu_util.php');
 
 $outType = $_POST['outtype'];
-$aChara = json_decode($_POST['chara'], true);
+$aChara = json_decode($_POST['chara_info'], true);
 $aAction = json_decode($_POST['action'], true);
 $aMemo = $_POST['memo'];
+
+foreach ($aChara as $charaId => $val) {
+    $aChara[$charaId]['name'] = getKifuCharaName($charaId);
+}
 
 switch ($outType) {
 case 'csv':
