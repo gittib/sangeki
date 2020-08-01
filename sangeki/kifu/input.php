@@ -87,7 +87,7 @@ if (empty($errors)) {
                     ルールY ：<div class="ruleY">
                         <? foreach ($aRuleY as $i => $val): ?>
                             <label>
-                                <checkbox name="ruleY[]" value="<?= e($val) ?>"/><?= e($val) ?>
+                                <input type="checkbox" name="ruleY[]" value="<?= e($val) ?>"/><?= e($val) ?>
                             </label>
                         <? endforeach; ?>
                     </div>
@@ -97,7 +97,7 @@ if (empty($errors)) {
                         <option value="">？？？？？</option>
                         <? foreach ($aRuleX as $i => $val): ?>
                             <label>
-                                <checkbox name="ruleX[]" value="<?= e($val) ?>"/><?= e($val) ?>
+                                <input type"checkbox" name="ruleX[]" value="<?= e($val) ?>"/><?= e($val) ?>
                             </label>
                         <? endforeach; ?>
                     </div>
