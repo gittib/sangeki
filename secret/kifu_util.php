@@ -70,6 +70,20 @@ function getAreaName($area) {
     }
 }
 
+function getKifuCharaName($charaId) {
+    $aCharaMaster = getCharacterMaster();
+    foreach ($aCharaMaster as $aChara) {
+        if (array_key_exists($charaId, $aChara)) {
+            return $aChara[$charaId];
+        }
+    }
+    $aBoardMaster = getBoardMaster();
+    if (array_key_exists($charaId, $aBoardMaster)) {
+        return $aBoardMaster[$charaId];
+    }
+    return '';
+}
+
 function getCharacterList($aCharaIds) {
     $aSelected = array();
 

@@ -72,43 +72,47 @@ if (empty($errors)) {
                 <option value="20px">最大</option>
             </select>
         </div>
-        <form id="main_form" method="post" action="output.php" target="_blank">
+        <form id="main_form" name="main_form" method="post" action="output.php" target="_blank">
             <input type="hidden" name="outtype" id="outtype">
             <input type="hidden" name="loop" value="<?= $oKifu->loop ?>">
             <input type="hidden" name="day" value="<?= $oKifu->day ?>">
             <div class="summary">
                 <p class="tr_name">惨劇セット：<?= getTragedySetName($oKifu->set) ?></p>
+                <input type="hidden" name="set" value="<?= $oKifu->set ?>">
                 <p><?= $oKifu->loop ?>ループ <?= $oKifu->day ?>日間</p>
             </div>
             <div class="rule_wrapper">
                 <h3>ルール一覧</h3>
                 <ul>
                   <li>
-                    ルールY ：<select name="ruleY">
-                        <option value="">？？？？？</option>
+                    ルールY ：<div class="rule ruleY">
                         <? foreach ($aRuleY as $i => $val): ?>
-                            <option><?= e($val) ?></option>
+                            <label>
+                                <input type="checkbox" name="ruleY[]" value="<?= e($val) ?>" checked="checked"/><?= e($val) ?>
+                            </label>
                         <? endforeach; ?>
-                    </select><br>
+                    </div>
                   </li>
                   <li>
-                    ルールX1：<select name="ruleX1">
-                        <option value="">？？？？？</option>
+                    ルールX1：<div class="rule ruleX1">
                         <? foreach ($aRuleX as $i => $val): ?>
-                            <option><?= e($val) ?></option>
+                            <label>
+                                <input type="checkbox" name="ruleX1[]" value="<?= e($val) ?>" checked="checked"/><?= e($val) ?>
+                            </label>
                         <? endforeach; ?>
-                    </select><br>
+                    </div>
                   </li>
-                  <? if ($oKifu->set != 'FS'): ?>
+                  <?php if ($oKifu->set != 'FS'): ?>
                   <li>
-                    ルールX2：<select name="ruleX2">
-                        <option value="">？？？？？</option>
+                    ルールX2：<div class="rule ruleX2">
                         <? foreach ($aRuleX as $i => $val): ?>
-                            <option><?= e($val) ?></option>
+                            <label>
+                                <input type="checkbox" name="ruleX2[]" value="<?= e($val) ?>" checked="checked"/><?= e($val) ?>
+                            </label>
                         <? endforeach; ?>
-                    </select>
+                    </div>
                   </li>
-                  <? endif; ?>
+                  <?php endif; ?>
                 </ul>
             </div>
             <div class="insident_wrapper">
@@ -380,9 +384,19 @@ if (empty($errors)) {
         }
     });
     $('.save_action').on('click', function () {
-        $('#outtype').val($(this).data('type'));
-        window.open('', 'kifu_output');
-        $('#main_form').submit();
+        var dataType = $(this).data('type');
+        $('#outtype').val(dataType);
+
+        // name属性値指定でformを選択
+        var form = document.main_form;
+
+        if (dataType == 'csv') {
+            form.target = '_self';
+        } else {
+            window.open('', 'kifu_output');
+            form.target = 'kifu_output';
+        }
+        form.submit();
     });
 })();
 </script>

@@ -1,132 +1,241 @@
 <?
 define('SECRET_DIR', '../../secret/');
 require_once(SECRET_DIR.'common.php');
-
-// TODO: ちゃんと出力する
-echo '<pre>'; var_dump($_POST); exit;
-
+require_once(SECRET_DIR.'kifu_util.php');
+require_once(SECRET_DIR.'detail_util.php');
 
 $outType = $_POST['outtype'];
-$aChara = json_decode($_POST['chara'], true);
-$aAction = json_decode($_POST['action'], true);
-$aMemo = $_POST['memo'];
+$aChara = $_POST['chara_info'];
+$aInsidents = $_POST['insident'];
+$aAction = $_POST['action_info'];
+
+$aRule = array(
+    'ruleY' => implode('or', $_POST['ruleY']),
+    'ruleX1' => implode('or', $_POST['ruleX1']),
+    'ruleX2' => implode('or', $_POST['ruleX2']),
+);
+
+$iShinkakuLoop = $_POST['shinkaku_loop'];
+$iTenkouseiDay = $_POST['tenkousei_day'];
+
+$shinkakuId = '1001';
+if (!empty($aChara[$shinkakuId])) {
+    if (empty($iShinkakuLoop)) {
+        unset($aChara[$shinkakuId]);
+    } else {
+        $aChara[$shinkakuId]['memo'] .= "\n登場ループ：{$iShinkakuLoop}ループ";
+    }
+}
+
+$tenkouseiId = '1307';
+if (!empty($aChara[$tenkouseiId])) {
+    if (empty($iTenkouseiDay)) {
+        unset($aChara[$tenkouseiId]);
+    } else {
+        $aChara[$tenkouseiId]['memo'] .= "\n登場日：{$iTenkouseiDay}日";
+    }
+}
+
+foreach ($aChara as $charaId => $val) {
+    $aChara[$charaId]['name'] = getKifuCharaName($charaId);
+}
+
+foreach ($aInsidents as $day => $val) {
+    $aInsidents[$day]['criminal'] = getKifuCharaName($val['criminal']);
+}
+
+foreach ($aAction as $loop => $aActionInLoop) {
+    foreach ($aActionInLoop as $day => $aActionInDay) {
+        foreach ($aActionInDay['scriptwriter'] as $key => $chara) {
+            $id = $chara['chara'];
+            $aAction[$loop][$day]['scriptwriter'][$key]['chara_name'] = getKifuCharaName($id);
+        }
+        foreach ($aActionInDay['hero'] as $key => $chara) {
+            $id = $chara['chara'];
+            $aAction[$loop][$day]['hero'][$key]['chara_name'] = getKifuCharaName($id);
+        }
+    }
+}
 
 switch ($outType) {
 case 'csv':
-    outCsv($aChara, $aAction, $aMemo);
+    outCsv($aRule, $aChara, $aInsidents, $aAction);
     break;
 case 'json':
-    outJson($aChara, $aAction, $aMemo);
+    outJson($aRule, $aChara, $aInsidents, $aAction);
     break;
 case 'html':
-    outHtml($aChara, $aAction, $aMemo);
+    outHtml($aRule, $aChara, $aInsidents, $aAction, $aTopMenu);
     break;
 }
 
-function outCsv($aChara, $aAction, $aMemo) {
-    header('content-type: text/csv; charset=utf-8');
-    echo "登場人物\n";
-    echo implode(',', $aChara) . "\n\n";
+function outCsv($aRule, $aChara, $aInsidents, $aAction) {
+    $sCsv = '';
+    $sSetName = getTragedySetName($_POST['set']);
+    $sCsv .= "惨劇セット：{$sSetName}\n\n";
+    $sCsv .= "ルール\n";
+    $sCsv .= "ルールY：{$aRule['ruleY']}\n";
+    $sCsv .= "ルールX1：{$aRule['ruleX1']}\n";
+    if ($_POST['set'] != 'FS') {
+        $sCsv .= "ルールX2：{$aRule['ruleX2']}\n";
+    }
 
-    for ($d = 1 ; $d <= $_POST['day'] ; $d++) {
-        echo ',' . $d . '日目,,';
+    $sCsv .= "\n登場人物\n";
+    $sCsv .= "キャラ,役職,メモ\n";
+    foreach ($aChara as $chara) {
+        $sCsv .= '"' . implode('","', array(
+            escapeCsv($chara['name']),
+            escapeCsv($chara['role']),
+            escapeCsv($chara['memo']),
+        )) . "\"\n";
     }
-    echo "\n";
-    for ($l = 1 ; $l <= $_POST['loop'] ; $l++) {
-        echo $l . 'Loop';
-        for ($d = 1 ; $d <= $_POST['day'] ; $d++) {
-            $aScriptWriter = array('脚本家');
-            $aHero = array('主人公');
-            if (!empty($aAction[$l][$d])) {
-                foreach ($aAction[$l][$d] as $id => $val) {
-                    if (!empty($val['scriptwriter'])) {
-                        $aScriptWriter[] = $aChara[$id] . ':' . $val['scriptwriter'];
-                    }
-                    if (!empty($val['hero'])) {
-                        $aHero[] = $aChara[$id] . ':' . $val['hero'];
-                    }
-                }
+
+    $sCsv .= "\n事件\n";
+    $sCsv .= "日数,事件,犯人\n";
+    foreach ($aInsidents as $day => $insident) {
+        $sCsv .= '"' . implode('","', array(
+            escapeCsv($day),
+            escapeCsv($insident['name']),
+            escapeCsv($insident['criminal']),
+        )) . "\"\n";
+    }
+
+    $sCsv .= "\n行動カードログ\n";
+    $sCsv .= '"' . implode('","', array(
+        'ループ数',
+        '日数',
+        '脚本家対象',
+        '脚本家行動カード',
+        '主人公対象',
+        '主人公行動カード',
+    )) . "\"\n";
+    foreach ($aAction as $loop => $aActionInLoop) {
+        foreach ($aActionInLoop as $day => $aActionInDay) {
+            for ($i = 0 ; $i < 3 ; $i++) {
+                $aLine = array($loop, $day);
+
+                $aScriptWriter = $aActionInDay['scriptwriter'][$i];
+                $aLine[] = escapeCsv($aScriptWriter['chara_name']);
+                $aLine[] = escapeCsv($aScriptWriter['card']);
+
+                $aHero = $aActionInDay['hero'][$i];
+                $aLine[] = escapeCsv($aHero['chara_name']);
+                $aLine[] = escapeCsv($aHero['card']);
+                $sCsv .= '"' . implode('","', $aLine) . "\"\n";
             }
-            echo ',"' . implode("\n", $aScriptWriter);
-            echo '","' . implode("\n", $aHero);
-            echo '","';
-            if (!empty($aMemo[$l]) && !empty($aMemo[$l][$d])) {
-                echo str_replace('"', "'", $aMemo[$l][$d]);
-            }
-            echo '"';
-            echo "\n";
+            $aLine = array($loop, $day, "メモ： " . escapeCsv($aActionInDay['memo']));
+            $sCsv .= '"' . implode('","', $aLine) . "\"\n";
         }
-        echo "\n\n";
     }
+
+    $sFileName = 'sangeki_record-' . date('Ymd_His') . '.csv';
+    header('content-type: text/csv; charset=utf-8');
+    header("Content-Disposition: attachment; filename={$sFileName}");
+    echo mb_convert_encoding($sCsv, "SJIS", "UTF-8");
+
+}
+function escapeCsv($s) {
+    return str_replace('"', '""', $s);
 }
 
-function outJson($aChara, $aAction, $aMemo) {
+function outJson($aRule, $aChara, $aInsidents, $aAction) {
     header('content-type: application/json; charset=utf-8');
     echo json_encode(array(
+        'set' => $_POST['set'],
+        'set_name' => getTragedySetName($_POST['set']),
         'loop' => $_POST['loop'],
         'day' => $_POST['day'],
-        'chara' => $_POST['chara'],
-        'action' => json_decode($_POST['action']),
-        'memo' => $_POST['memo'],
+        'rule' => $aRule,
+        'chara' => $aChara,
+        'insidents' => $aInsidents,
+        'action' => $aAction,
     ));
 }
 
-function outHtml($aChara, $aAction, $aMemo) {
-    $aDay = array();
-    for ($l = 1 ; $l <= $_POST['loop'] ; $l++) {
-        $aDay[$l] = array();
-        for ($d = 1 ; $d <= $_POST['day'] ; $d++) {
-            $aDay[$l][$d] = array();
-            $aScriptWriter = array('脚本家');
-            $aHero = array('主人公');
-            if (!empty($aAction[$l][$d])) {
-                foreach ($aAction[$l][$d] as $id => $val) {
-                    if (!empty($val['scriptwriter']) && !empty($aChara[$id])) {
-                        $aScriptWriter[] = $aChara[$id] . ':' . $val['scriptwriter'];
-                    }
-                    if (!empty($val['hero']) && !empty($aChara[$id])) {
-                        $aHero[] = $aChara[$id] . ':' . $val['hero'];
-                    }
-                }
-            }
-            $aDay[$l][$d]['scriptWriter'] = implode("<br>", $aScriptWriter);
-            $aDay[$l][$d]['hero'] =  implode("<br>", $aHero);
-            $aDay[$l][$d]['memo'] = $aMemo[$l][$d];
-        }
-    }
+function outHtml($aRule, $aChara, $aInsidents, $aAction, $aTopMenu) {
 ?>
 <html>
 <head>
-<?php require(SECRET_DIR.'google_analytics.php') ?>
-    <link rel="stylesheet" href="screen.css?v=<?= filemtime(dirname(__FILE__) . '/../sangeki/screen.css') ?>">
-    <link rel="shortcut icon" href="favicon.ico" type="image/vnd.microsoft.icon" /> 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-    <meta name="viewport" content="width=1200">
-    <title>惨劇RoopeR 棋譜</title>
+<? require(SECRET_DIR.'google_analytics.php') ?>
+<? require(SECRET_DIR.'sangeki_head.php'); ?>
+    <title>惨劇RoopeR 棋譜 - <?= SITE_NAME ?></title>
 </head>
 <body class="kifu_output">
 <? require(SECRET_DIR.'sangeki_header.php'); ?>
-    <div class="kifu_out_wrapper">
+    <div class="rule_wrapper">
         <table>
+            <tr><th class="table_title" colspan="2"><p>ルール</p></th></tr>
             <tr>
-                <td>Daily Memo</td>
-                <? for ($d = 1 ; $d <= $_POST['day'] ; $d++): ?>
-                    <td colspan=3>
-                        <?= $d ?>日目
-                    </td>
-                <? endfor; ?>
+                <th>ルールY</th>
+                <td><?= $aRule['ruleY'] ?></td>
             </tr>
-            <? for ($l = 1 ; $l <= $_POST['loop'] ; $l++): ?>
-                <tr>
-                    <td><?= $l ?>Loop</td>
-                    <? for ($d = 1 ; $d <= $_POST['day'] ; $d++): ?>
-                        <td><?= $aDay[$l][$d]['scriptWriter'] ?></td>
-                        <td><?= $aDay[$l][$d]['hero'] ?></td>
-                        <td><?= $aDay[$l][$d]['memo'] ?></td>
-                    <? endfor; ?>
-                </tr>
-            <? endfor; ?>
+            <tr>
+                <th>ルールX1</th>
+                <td><?= $aRule['ruleX1'] ?></td>
+            </tr>
+            <?php if ($_POST['set'] != 'FS'): ?>
+            <tr>
+                <th>ルールX2</th>
+                <td><?= $aRule['ruleX2'] ?></td>
+            </tr>
+            <?php endif; ?>
         </table>
+    </div>
+    <div class="insident_wrapper">
+        <table>
+            <tr><th class="table_title" colspan="3"><p>事件</p></th></tr>
+            <tr>
+                <th>日数</th>
+                <th>事件</th>
+                <th>犯人</th>
+            </tr>
+            <?php foreach($aInsidents as $day => $val): ?>
+            <tr>
+                <th><?= $day ?></th>
+                <td><?= $val['name'] ?></td>
+                <td><?= $val['criminal'] ?></td>
+            </tr>
+            <?php endforeach; ?>
+        </table>
+    </div>
+    <div class="kifu_out_wrapper">
+        <h3>行動カード、その他ログ</h3>
+        <?php foreach($aAction as $loop => $aActionInLoop): ?>
+            <div>
+                <table>
+                    <tr><th class="table_title" colspan="3"><p><?= $loop ?>ループ目</p></th></tr>
+                    <tr>
+                        <th>日数</th>
+                        <th>脚本家</th>
+                        <th>主人公</th>
+                    </tr>
+                    <? foreach($aActionInLoop as $day => $aAction): ?>
+                    <? for ($i = 0 ; $i < 3 ; $i++): ?>
+                    <tr>
+                        <? if ($i == 0): ?>
+                            <th rowspan=4><?= $day ?></th>
+                        <? endif; ?>
+                        <td>
+                            <? if (!empty($aAction['scriptwriter'][$i]['chara_name']) && !empty($aAction['scriptwriter'][$i]['card'])): ?>
+                                <?= $aAction['scriptwriter'][$i]['chara_name'] ?> に
+                                <?= $aAction['scriptwriter'][$i]['card'] ?>
+                            <? endif; ?>
+                        </td>
+                        <td>
+                            <? if (!empty($aAction['hero'][$i]['chara_name']) && !empty($aAction['hero'][$i]['card'])): ?>
+                                <?= $aAction['hero'][$i]['chara_name'] ?> に
+                                <?= $aAction['hero'][$i]['card'] ?>
+                            <? endif; ?>
+                        </td>
+                    </tr>
+                    <? endfor; ?>
+                    <tr>
+                        <td colspan="2"><?= nl2br(e($aAction['memo'])) ?></td>
+                    </tr>
+                    <? endforeach; ?>
+                </table>
+            </div>
+        <?php endforeach; ?>
     </div>
 <?php require(SECRET_DIR.'sangeki_footer.php') ?>
 </body>

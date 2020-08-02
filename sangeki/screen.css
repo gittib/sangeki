@@ -625,6 +625,9 @@ body.kifu_input .rule_wrapper ul > li {
 body.kifu_input .rule_wrapper ul > li:first-child {
     margin-top: 0;
 }
+body.kifu_input .rule_wrapper > ul > li div.rule label {
+    display: inline-block;
+}
 body.kifu_input .insident_list tbody td {
     padding: 4px;
     border: solid 1px;
@@ -736,10 +739,28 @@ body.kifu_input .modal ul > li {
     background-color:white;
     float: left;
 }
-body.kifu_output .kifu_out_wrapper td {
-    min-width: 9rem;
+
+body.kifu_output h3 {
+    text-align: center;
+}
+body.kifu_output div table tr > th.table_title {
+    border: none;
+}
+body.kifu_output td {
+    min-width: 3rem;
     border: solid 1px;
     font-size: 0.8rem;
+    padding-left: 4px;
+    padding-right: 4px;
+}
+body.kifu_output .rule_wrapper,
+body.kifu_output .insident_wrapper {
+    float:left;
+    padding-top: 12px;
+}
+body.kifu_output .kifu_out_wrapper {
+    clear: both;
+    padding-top: 12px;
 }
 
 body.column h2 > span {
