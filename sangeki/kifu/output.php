@@ -38,37 +38,41 @@ case 'html':
 function outCsv($aChara, $aAction) {
     header('content-type: text/csv; charset=utf-8');
     echo "登場人物\n";
-    echo implode(',', $aChara) . "\n\n";
-
-    for ($d = 1 ; $d <= $_POST['day'] ; $d++) {
-        echo ',' . $d . '日目,,';
+    echo "キャラ,役職,メモ\n";
+    foreach ($aChara as $chara) {
+        echo '"' . implode('","', array(
+            $chara['name'],
+            $chara['role'],
+            $chara['memo'],
+        )) . "\"\n";
     }
-    echo "\n";
-    for ($l = 1 ; $l <= $_POST['loop'] ; $l++) {
-        echo $l . 'Loop';
-        for ($d = 1 ; $d <= $_POST['day'] ; $d++) {
-            $aScriptWriter = array('脚本家');
-            $aHero = array('主人公');
-            if (!empty($aAction[$l][$d])) {
-                foreach ($aAction[$l][$d] as $id => $val) {
-                    if (!empty($val['scriptwriter'])) {
-                        $aScriptWriter[] = $aChara[$id] . ':' . $val['scriptwriter'];
-                    }
-                    if (!empty($val['hero'])) {
-                        $aHero[] = $aChara[$id] . ':' . $val['hero'];
-                    }
-                }
+
+    echo "\n行動カードログ\n"
+    echo '"' . implode('","', array(
+        'ループ数',
+        '日数',
+        '脚本家対象',
+        '脚本家行動カード',
+        '主人公対象',
+        '主人公行動カード',
+    )) . "\"\n";
+    foreach ($aAction as $loop => $aActionInLoop) {
+        foreach ($aActionInLoop as $day => $aActionInDay) {
+            for ($i = 0 ; $i < 3 ; $i++) {
+                $aLine = array($loop, $day);
+
+                $aScriptWriter = $aActionInDay['scriptwriter'][$i];
+                $aLine[] = $aScriptWriter['chara_name'];
+                $aLine[] = $aScriptWriter['card'];
+
+                $aHero = $aActionInDay['hero'][$i];
+                $aLine[] = $aHero['chara_name'];
+                $aLine[] = $aHero['card'];
+                echo '"' . implode('","', $aLine) . "\"\n";
             }
-            echo ',"' . implode("\n", $aScriptWriter);
-            echo '","' . implode("\n", $aHero);
-            echo '","';
-            if (!empty($aMemo[$l]) && !empty($aMemo[$l][$d])) {
-                echo str_replace('"', "'", $aMemo[$l][$d]);
-            }
-            echo '"';
-            echo "\n";
+            $aLine = array($loop, $day, $aActionInDay['memo']);
+            echo '"' . implode('","', $aLine) . "\"\n";
         }
-        echo "\n\n";
     }
 }
 
