@@ -62,9 +62,9 @@ function outCsv($aChara, $aAction) {
     echo "キャラ,役職,メモ\n";
     foreach ($aChara as $chara) {
         echo '"' . implode('","', array(
-            $chara['name'],
-            $chara['role'],
-            $chara['memo'],
+            escapeCsv($chara['name']),
+            escapeCsv($chara['role']),
+            escapeCsv($chara['memo']),
         )) . "\"\n";
     }
 
@@ -83,18 +83,21 @@ function outCsv($aChara, $aAction) {
                 $aLine = array($loop, $day);
 
                 $aScriptWriter = $aActionInDay['scriptwriter'][$i];
-                $aLine[] = $aScriptWriter['chara_name'];
-                $aLine[] = $aScriptWriter['card'];
+                $aLine[] = escapeCsv($aScriptWriter['chara_name']);
+                $aLine[] = escapeCsv($aScriptWriter['card']);
 
                 $aHero = $aActionInDay['hero'][$i];
-                $aLine[] = $aHero['chara_name'];
-                $aLine[] = $aHero['card'];
+                $aLine[] = escapeCsv($aHero['chara_name']);
+                $aLine[] = escapeCsv($aHero['card']);
                 echo '"' . implode('","', $aLine) . "\"\n";
             }
-            $aLine = array($loop, $day, $aActionInDay['memo']);
+            $aLine = array($loop, $day, escapeCsv($aActionInDay['memo']));
             echo '"' . implode('","', $aLine) . "\"\n";
         }
     }
+}
+function escapeCsv($s) {
+    return str_replace('"', '""', $s);
 }
 
 function outJson($aChara, $aAction) {
