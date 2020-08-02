@@ -747,11 +747,20 @@ body.kifu_output div table tr > th.table_title {
     border: none;
 }
 body.kifu_output td {
-    min-width: 9rem;
+    min-width: 3rem;
     border: solid 1px;
     font-size: 0.8rem;
-    padding-left: 1px;
-    padding-right: 1px;
+    padding-left: 4px;
+    padding-right: 4px;
+}
+body.kifu_output .rule_wrapper,
+body.kifu_output .insident_wrapper {
+    float:left;
+    padding-top: 12px;
+}
+body.kifu_output .kifu_out_wrapper {
+    clear: both;
+    padding-top: 12px;
 }
 
 body.column h2 > span {
