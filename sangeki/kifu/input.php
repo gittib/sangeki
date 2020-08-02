@@ -78,6 +78,7 @@ if (empty($errors)) {
             <input type="hidden" name="day" value="<?= $oKifu->day ?>">
             <div class="summary">
                 <p class="tr_name">惨劇セット：<?= getTragedySetName($oKifu->set) ?></p>
+                <input type="hidden" name="set" value="<?= $oKifu->set ?>">
                 <p><?= $oKifu->loop ?>ループ <?= $oKifu->day ?>日間</p>
             </div>
             <div class="rule_wrapper">
