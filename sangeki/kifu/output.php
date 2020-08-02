@@ -153,32 +153,11 @@ function outJson($aRule, $aChara, $aInsidents, $aAction) {
 }
 
 function outHtml($aRule, $aChara, $aInsidents, $aAction) {
-    $aDay = array();
-    for ($l = 1 ; $l <= $_POST['loop'] ; $l++) {
-        $aDay[$l] = array();
-        for ($d = 1 ; $d <= $_POST['day'] ; $d++) {
-            $aDay[$l][$d] = array();
-            $aScriptWriter = array('脚本家');
-            $aHero = array('主人公');
-            if (!empty($aAction[$l][$d])) {
-                foreach ($aAction[$l][$d] as $id => $val) {
-                    if (!empty($val['scriptwriter']) && !empty($aChara[$id])) {
-                        $aScriptWriter[] = $aChara[$id] . ':' . $val['scriptwriter'];
-                    }
-                    if (!empty($val['hero']) && !empty($aChara[$id])) {
-                        $aHero[] = $aChara[$id] . ':' . $val['hero'];
-                    }
-                }
-            }
-            $aDay[$l][$d]['scriptWriter'] = implode("<br>", $aScriptWriter);
-            $aDay[$l][$d]['hero'] =  implode("<br>", $aHero);
-            $aDay[$l][$d]['memo'] = $aMemo[$l][$d];
-        }
-    }
 ?>
 <html>
 <head>
-<?php require(SECRET_DIR.'google_analytics.php') ?>
+<? require(SECRET_DIR.'google_analytics.php') ?>
+<? require(SECRET_DIR.'sangeki_head.php'); ?>
     <link rel="stylesheet" href="screen.css?v=<?= filemtime(dirname(__FILE__) . '/../sangeki/screen.css') ?>">
     <link rel="shortcut icon" href="favicon.ico" type="image/vnd.microsoft.icon" /> 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
@@ -241,12 +220,16 @@ function outHtml($aRule, $aChara, $aInsidents, $aAction) {
                             <td rowspan=4><?= $day ?></td>
                         <?php endif; ?>
                         <td>
-                            <?= $aAction['scriptwriter'][$i]['chara_name'] ?>に
-                            <?= $aAction['scriptwriter'][$i]['card'] ?>
+                            <?php if (!empty($aAction['scriptwriter'][$i]['chara_name']) && !empty($aAction['scriptwriter'][$i]['card'])): ?>
+                                <?= $aAction['scriptwriter'][$i]['chara_name'] ?>に
+                                <?= $aAction['scriptwriter'][$i]['card'] ?>
+                            <?php endif; ?>
                         </td>
                         <td>
-                            <?= $aAction['hero'][$i]['chara_name'] ?>に
-                            <?= $aAction['hero'][$i]['card'] ?>
+                            <?php if (!empty($aAction['hero'][$i]['chara_name']) && !empty($aAction['hero'][$i]['card'])): ?>
+                                <?= $aAction['hero'][$i]['chara_name'] ?>に
+                                <?= $aAction['hero'][$i]['card'] ?>
+                            <?php endif; ?>
                         </td>
                     </tr>
                     <? endfor; ?>
