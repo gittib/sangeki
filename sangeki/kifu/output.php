@@ -6,6 +6,7 @@ require_once(SECRET_DIR.'detail_util.php');
 
 $outType = $_POST['outtype'];
 $aChara = $_POST['chara_info'];
+$aInsidents = $_POST['insident'];
 $aAction = $_POST['action_info'];
 
 $aRule = array(
@@ -53,17 +54,17 @@ foreach ($aAction as $loop => $aActionInLoop) {
 
 switch ($outType) {
 case 'csv':
-    outCsv($aRule, $aChara, $aAction);
+    outCsv($aRule, $aChara, $aInsidents, $aAction);
     break;
 case 'json':
-    outJson($aRule, $aChara, $aAction);
+    outJson($aRule, $aChara, $aInsidents, $aAction);
     break;
 case 'html':
-    outHtml($aRule, $aChara, $aAction);
+    outHtml($aRule, $aChara, $aInsidents, $aAction);
     break;
 }
 
-function outCsv($aRule, $aChara, $aAction) {
+function outCsv($aRule, $aChara, $aInsidents, $aAction) {
     $sCsv = '';
     $sSetName = getTragedySetName($_POST['set']);
     $sCsv .= "惨劇セット：{$sSetName}\n\n";
@@ -73,6 +74,7 @@ function outCsv($aRule, $aChara, $aAction) {
     if ($_POST['set'] != 'FS') {
         $sCsv .= "ルールX2：{$aRule['ruleX2']}\n";
     }
+
     $sCsv .= "\n登場人物\n";
     $sCsv .= "キャラ,役職,メモ\n";
     foreach ($aChara as $chara) {
@@ -80,6 +82,16 @@ function outCsv($aRule, $aChara, $aAction) {
             escapeCsv($chara['name']),
             escapeCsv($chara['role']),
             escapeCsv($chara['memo']),
+        )) . "\"\n";
+    }
+
+    $sCsv .= "\n事件\n";
+    $sCsv .= "日数,事件,犯人\n";
+    foreach ($aInsidents as $day => $insident) {
+        $sCsv .= '"' . implode('","', array(
+            escapeCsv($day),
+            escapeCsv($insident['name']),
+            escapeCsv(getKifuCharaName($insident['criminal'])),
         )) . "\"\n";
     }
 
@@ -121,20 +133,21 @@ function escapeCsv($s) {
     return str_replace('"', '""', $s);
 }
 
-function outJson($aRule, $aChara, $aAction) {
+function outJson($aRule, $aChara, $aInsidents, $aAction) {
     header('content-type: application/json; charset=utf-8');
     echo json_encode(array(
         'set' => $_POST['set'],
         'set_name' => getTragedySetName($_POST['set']),
-        'rule' => $aRule,
         'loop' => $_POST['loop'],
         'day' => $_POST['day'],
+        'rule' => $aRule,
         'chara' => $aChara,
+        'insidents' => $aInsidents,
         'action' => $aAction,
     ));
 }
 
-function outHtml($aRule, $aChara, $aAction) {
+function outHtml($aRule, $aChara, $aInsidents, $aAction) {
     $aDay = array();
     for ($l = 1 ; $l <= $_POST['loop'] ; $l++) {
         $aDay[$l] = array();
