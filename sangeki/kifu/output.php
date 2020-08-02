@@ -7,6 +7,12 @@ $outType = $_POST['outtype'];
 $aChara = $_POST['chara_info'];
 $aAction = $_POST['action_info'];
 
+$aRule = array(
+    'ruleY' => implode('or', $_POST['ruleY']),
+    'ruleX1' => implode('or', $_POST['ruleX1']),
+    'ruleX2' => implode('or', $_POST['ruleX2']),
+);
+
 $iShinkakuLoop = $_POST['shinkaku_loop'];
 $iTenkouseiDay = $_POST['tenkousei_day'];
 
@@ -46,19 +52,27 @@ foreach ($aAction as $loop => $aActionInLoop) {
 
 switch ($outType) {
 case 'csv':
-    outCsv($aChara, $aAction);
+    outCsv($aRule, $aChara, $aAction);
     break;
 case 'json':
-    outJson($aChara, $aAction);
+    outJson($aRule, $aChara, $aAction);
     break;
 case 'html':
-    outHtml($aChara, $aAction);
+    outHtml($aRule, $aChara, $aAction);
     break;
 }
 
-function outCsv($aChara, $aAction) {
+function outCsv($aRule, $aChara, $aAction) {
     $sCsv = '';
-    $sCsv .= "登場人物\n";
+    $sSetName = getTragedySetName($_POST['set']);
+    $sCsv .= "惨劇セット：{$sSetName}\n\n";
+    $sCsv .= "ルール\n";
+    $sCsv .= "ルールY：{$aRule['ruleY']}\n";
+    $sCsv .= "ルールX1：{$aRule['ruleX1']}\n";
+    if ($_POST['set'] != 'FS') {
+        $sCsv .= "ルールX2：{$aRule['ruleX2']}\n";
+    }
+    $sCsv .= "\n登場人物\n";
     $sCsv .= "キャラ,役職,メモ\n";
     foreach ($aChara as $chara) {
         $sCsv .= '"' . implode('","', array(
@@ -106,9 +120,12 @@ function escapeCsv($s) {
     return str_replace('"', '""', $s);
 }
 
-function outJson($aChara, $aAction) {
+function outJson($aRule, $aChara, $aAction) {
     header('content-type: application/json; charset=utf-8');
     echo json_encode(array(
+        'set' => $_POST['set'],
+        'set_name' => getTragedySetName($_POST['set']),
+        'rule' => $aRule,
         'loop' => $_POST['loop'],
         'day' => $_POST['day'],
         'chara' => $aChara,
@@ -116,7 +133,7 @@ function outJson($aChara, $aAction) {
     ));
 }
 
-function outHtml($aChara, $aAction) {
+function outHtml($aRule, $aChara, $aAction) {
     $aDay = array();
     for ($l = 1 ; $l <= $_POST['loop'] ; $l++) {
         $aDay[$l] = array();
