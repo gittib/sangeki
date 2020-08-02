@@ -168,7 +168,7 @@ function outHtml($aRule, $aChara, $aInsidents, $aAction) {
 <? require(SECRET_DIR.'sangeki_header.php'); ?>
     <div class="rule_wrapper">
         <table>
-            <tr><th colspan="2"><p>ルール</p></th></tr>
+            <tr><th class="table_title" colspan="2"><p>ルール</p></th></tr>
             <tr>
                 <th>ルールY</th>
                 <td><?= $aRule['ruleY'] ?></td>
@@ -186,8 +186,8 @@ function outHtml($aRule, $aChara, $aInsidents, $aAction) {
         </table>
     </div>
     <div class="insident_wrapper">
-        <h3>事件</h3>
         <table>
+            <tr><th class="table_title" colspan="3"><p>事件</p></th></tr>
             <tr>
                 <th>日数</th>
                 <th>事件</th>
@@ -206,8 +206,8 @@ function outHtml($aRule, $aChara, $aInsidents, $aAction) {
         <h3>行動カード、その他ログ</h3>
         <?php foreach($aAction as $loop => $aActionInLoop): ?>
             <div>
-                <p><?= $loop ?>ループ目</p>
                 <table>
+                    <tr><th class="table_title" colspan="3"><p><?= $loop ?>ループ目</p></th></tr>
                     <tr>
                         <th>日数</th>
                         <th>脚本家</th>

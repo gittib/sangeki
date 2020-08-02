@@ -739,10 +739,19 @@ body.kifu_input .modal ul > li {
     background-color:white;
     float: left;
 }
-body.kifu_output .kifu_out_wrapper td {
+
+body.kifu_output h3 {
+    text-align: center;
+}
+body.kifu_output div table tr > th.table_title {
+    border: none;
+}
+body.kifu_output td {
     min-width: 9rem;
     border: solid 1px;
     font-size: 0.8rem;
+    padding-left: 1px;
+    padding-right: 1px;
 }
 
 body.column h2 > span {
