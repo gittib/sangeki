@@ -39,6 +39,11 @@ if (!empty($aChara[$tenkouseiId])) {
 foreach ($aChara as $charaId => $val) {
     $aChara[$charaId]['name'] = getKifuCharaName($charaId);
 }
+
+foreach ($aInsidents as $day => $val) {
+    $aInsidents[$day]['criminal'] = getKifuCharaName($val['criminal']);
+}
+
 foreach ($aAction as $loop => $aActionInLoop) {
     foreach ($aActionInLoop as $day => $aActionInDay) {
         foreach ($aActionInDay['scriptwriter'] as $key => $chara) {
@@ -91,7 +96,7 @@ function outCsv($aRule, $aChara, $aInsidents, $aAction) {
         $sCsv .= '"' . implode('","', array(
             escapeCsv($day),
             escapeCsv($insident['name']),
-            escapeCsv(getKifuCharaName($insident['criminal'])),
+            escapeCsv($insident['criminal']),
         )) . "\"\n";
     }
 
@@ -118,7 +123,7 @@ function outCsv($aRule, $aChara, $aInsidents, $aAction) {
                 $aLine[] = escapeCsv($aHero['card']);
                 $sCsv .= '"' . implode('","', $aLine) . "\"\n";
             }
-            $aLine = array($loop, $day, escapeCsv($aActionInDay['memo']));
+            $aLine = array($loop, $day, "メモ： " . escapeCsv($aActionInDay['memo']));
             $sCsv .= '"' . implode('","', $aLine) . "\"\n";
         }
     }
