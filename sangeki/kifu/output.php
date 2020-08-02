@@ -195,7 +195,7 @@ function outHtml($aRule, $aChara, $aInsidents, $aAction) {
             </tr>
             <?php foreach($aInsidents as $day => $val): ?>
             <tr>
-                <td><?= $day ?></td>
+                <th><?= $day ?></th>
                 <td><?= $val['name'] ?></td>
                 <td><?= $val['criminal'] ?></td>
             </tr>
