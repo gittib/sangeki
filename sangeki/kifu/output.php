@@ -65,7 +65,7 @@ case 'json':
     outJson($aRule, $aChara, $aInsidents, $aAction);
     break;
 case 'html':
-    outHtml($aRule, $aChara, $aInsidents, $aAction);
+    outHtml($aRule, $aChara, $aInsidents, $aAction, $aTopMenu);
     break;
 }
 
@@ -152,13 +152,13 @@ function outJson($aRule, $aChara, $aInsidents, $aAction) {
     ));
 }
 
-function outHtml($aRule, $aChara, $aInsidents, $aAction) {
+function outHtml($aRule, $aChara, $aInsidents, $aAction, $aTopMenu) {
 ?>
 <html>
 <head>
 <? require(SECRET_DIR.'google_analytics.php') ?>
 <? require(SECRET_DIR.'sangeki_head.php'); ?>
-    <title>惨劇RoopeR 棋譜</title>
+    <title>惨劇RoopeR 棋譜 - <?= SITE_NAME ?></title>
 </head>
 <body class="kifu_output">
 <? require(SECRET_DIR.'sangeki_header.php'); ?>
