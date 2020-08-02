@@ -7,6 +7,27 @@ $outType = $_POST['outtype'];
 $aChara = $_POST['chara_info'];
 $aAction = $_POST['action_info'];
 
+$iShinkakuLoop = $_POST['shinkaku_loop'];
+$iTenkouseiDay = $_POST['tenkousei_day'];
+
+$shinkakuId = '1001';
+if (!empty($aChara[$shinkakuId])) {
+    if (empty($iShinkakuLoop)) {
+        unset($aChara[$shinkakuId]);
+    } else {
+        $aChara[$shinkakuId]['memo'] .= "\n登場ループ：{$iShinkakuLoop}ループ";
+    }
+}
+
+$tenkouseiId = '1307';
+if (!empty($aChara[$tenkouseiId])) {
+    if (empty($iTenkouseiDay)) {
+        unset($aChara[$tenkouseiId]);
+    } else {
+        $aChara[$tenkouseiId]['memo'] .= "\n登場日：{$iTenkouseiDay}日";
+    }
+}
+
 foreach ($aChara as $charaId => $val) {
     $aChara[$charaId]['name'] = getKifuCharaName($charaId);
 }
