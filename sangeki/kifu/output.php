@@ -158,10 +158,6 @@ function outHtml($aRule, $aChara, $aInsidents, $aAction) {
 <head>
 <? require(SECRET_DIR.'google_analytics.php') ?>
 <? require(SECRET_DIR.'sangeki_head.php'); ?>
-    <link rel="stylesheet" href="screen.css?v=<?= filemtime(dirname(__FILE__) . '/../sangeki/screen.css') ?>">
-    <link rel="shortcut icon" href="favicon.ico" type="image/vnd.microsoft.icon" /> 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-    <meta name="viewport" content="width=1200">
     <title>惨劇RoopeR 棋譜</title>
 </head>
 <body class="kifu_output">
