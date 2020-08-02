@@ -3,7 +3,7 @@
 $oSangeki = (object)array(
     'title' => '',
     'writer' => 'ペンスキー',
-    'difficulity' => 7,
+    'difficulity' => 6,
     'set' => 'MZ',
     'rule' => array(
         '因果の絆',
@@ -29,10 +29,9 @@ $oSangeki = (object)array(
         '医者' => array(
             'role' => 'ファクター',
         ),
-        '委員長' => array(
+        '情報屋' => array(
         ),
-        'イレギュラー' => array(
-            'role' => 'マジシャン',
+        '委員長' => array(
         ),
         '女の子' => array(
             'role' => 'シリアルキラー',
@@ -54,9 +53,14 @@ $oSangeki = (object)array(
     ),
     'advice' => (object)array(
         'notice' => "",
-        'summary' => "",
+        'summary' => "非常に特殊なパズル脚本です。",
         'detail' => "",
         'template' => array(
+            '1ループ目' => array(
+                1 => array(
+                    '医者' => '暗躍+2',
+                ),
+            ),
             '基本' => array(
                 3 => array(
                     '転校生' => '不安+1',
