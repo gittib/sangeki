@@ -68,7 +68,7 @@ function outCsv($aChara, $aAction) {
         )) . "\"\n";
     }
 
-    echo "\n行動カードログ\n"
+    echo "\n行動カードログ\n";
     echo '"' . implode('","', array(
         'ループ数',
         '日数',
