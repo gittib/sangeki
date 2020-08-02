@@ -187,27 +187,76 @@ function outHtml($aRule, $aChara, $aInsidents, $aAction) {
 </head>
 <body class="kifu_output">
 <? require(SECRET_DIR.'sangeki_header.php'); ?>
-    <div class="kifu_out_wrapper">
+    <div class="rule_wrapper">
+        <h3>ルール</h3>
         <table>
             <tr>
-                <td>Daily Memo</td>
-                <? for ($d = 1 ; $d <= $_POST['day'] ; $d++): ?>
-                    <td colspan=3>
-                        <?= $d ?>日目
-                    </td>
-                <? endfor; ?>
+                <th>ルールY</th>
+                <td><?= $aRule['ruleY'] ?></td>
             </tr>
-            <? for ($l = 1 ; $l <= $_POST['loop'] ; $l++): ?>
-                <tr>
-                    <td><?= $l ?>Loop</td>
-                    <? for ($d = 1 ; $d <= $_POST['day'] ; $d++): ?>
-                        <td><?= $aDay[$l][$d]['scriptWriter'] ?></td>
-                        <td><?= $aDay[$l][$d]['hero'] ?></td>
-                        <td><?= $aDay[$l][$d]['memo'] ?></td>
-                    <? endfor; ?>
-                </tr>
-            <? endfor; ?>
+            <tr>
+                <th>ルールX1</th>
+                <td><?= $aRule['ruleX1'] ?></td>
+            </tr>
+            <?php if ($_POST['set'] != 'FS'): ?>
+            <tr>
+                <th>ルールX2</th>
+                <td><?= $aRule['ruleX2'] ?></td>
+            </tr>
+            <?php endif; ?>
         </table>
+    </div>
+    <div class="insident_wrapper">
+        <h3>事件</h3>
+        <table>
+            <tr>
+                <th>日数</th>
+                <th>事件</th>
+                <th>犯人</th>
+            </tr>
+            <?php foreach($aInsidents as $day => $val): ?>
+            <tr>
+                <td><?= $day ?></td>
+                <td><?= $val['name'] ?></td>
+                <td><?= $val['criminal'] ?></td>
+            </tr>
+            <?php endforeach; ?>
+        </table>
+    </div>
+    <div class="kifu_out_wrapper">
+        <h3>行動カード、その他ログ</h3>
+        <?php foreach($aAction as $loop => $aActionInLoop): ?>
+            <div>
+                <p><?= $loop ?>ループ目</p>
+                <table>
+                    <tr>
+                        <th>日数</th>
+                        <th>脚本家</th>
+                        <th>主人公</th>
+                    </tr>
+                    <?php foreach($aActionInLoop as $day => $aAction): ?>
+                    <? for ($i = 0 ; $i < 3 ; $i++): ?>
+                    <tr>
+                        <?php if ($i == 0): ?>
+                            <td rowspan=4><?= $day ?></td>
+                        <?php endif; ?>
+                        <td>
+                            <?= $aAction['scriptwriter'][$i]['chara_name'] ?>に
+                            <?= $aAction['scriptwriter'][$i]['card'] ?>
+                        </td>
+                        <td>
+                            <?= $aAction['hero'][$i]['chara_name'] ?>に
+                            <?= $aAction['hero'][$i]['card'] ?>
+                        </td>
+                    </tr>
+                    <? endfor; ?>
+                    <tr>
+                        <td><?= $aAction['memo'] ?></td>
+                    </tr>
+                    <?php endforeach; ?>
+                </table>
+            </div>
+        <?php endforeach; ?>
     </div>
 <?php require(SECRET_DIR.'sangeki_footer.php') ?>
 </body>
