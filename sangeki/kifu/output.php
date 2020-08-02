@@ -217,7 +217,7 @@ function outHtml($aRule, $aChara, $aInsidents, $aAction) {
                     <? for ($i = 0 ; $i < 3 ; $i++): ?>
                     <tr>
                         <?php if ($i == 0): ?>
-                            <td rowspan=4><?= $day ?></td>
+                            <th rowspan=4><?= $day ?></th>
                         <?php endif; ?>
                         <td>
                             <?php if (!empty($aAction['scriptwriter'][$i]['chara_name']) && !empty($aAction['scriptwriter'][$i]['card'])): ?>
@@ -234,7 +234,7 @@ function outHtml($aRule, $aChara, $aInsidents, $aAction) {
                     </tr>
                     <? endfor; ?>
                     <tr>
-                        <td><?= $aAction['memo'] ?></td>
+                        <td colspan="2"><?= $aAction['memo'] ?></td>
                     </tr>
                     <?php endforeach; ?>
                 </table>
