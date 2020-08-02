@@ -167,8 +167,8 @@ function outHtml($aRule, $aChara, $aInsidents, $aAction) {
 <body class="kifu_output">
 <? require(SECRET_DIR.'sangeki_header.php'); ?>
     <div class="rule_wrapper">
-        <h3>ルール</h3>
         <table>
+            <tr><th colspan="2"><p>ルール</p></th></tr>
             <tr>
                 <th>ルールY</th>
                 <td><?= $aRule['ruleY'] ?></td>
@@ -213,30 +213,30 @@ function outHtml($aRule, $aChara, $aInsidents, $aAction) {
                         <th>脚本家</th>
                         <th>主人公</th>
                     </tr>
-                    <?php foreach($aActionInLoop as $day => $aAction): ?>
+                    <? foreach($aActionInLoop as $day => $aAction): ?>
                     <? for ($i = 0 ; $i < 3 ; $i++): ?>
                     <tr>
-                        <?php if ($i == 0): ?>
+                        <? if ($i == 0): ?>
                             <th rowspan=4><?= $day ?></th>
-                        <?php endif; ?>
+                        <? endif; ?>
                         <td>
-                            <?php if (!empty($aAction['scriptwriter'][$i]['chara_name']) && !empty($aAction['scriptwriter'][$i]['card'])): ?>
-                                <?= $aAction['scriptwriter'][$i]['chara_name'] ?>に
+                            <? if (!empty($aAction['scriptwriter'][$i]['chara_name']) && !empty($aAction['scriptwriter'][$i]['card'])): ?>
+                                <?= $aAction['scriptwriter'][$i]['chara_name'] ?> に
                                 <?= $aAction['scriptwriter'][$i]['card'] ?>
-                            <?php endif; ?>
+                            <? endif; ?>
                         </td>
                         <td>
-                            <?php if (!empty($aAction['hero'][$i]['chara_name']) && !empty($aAction['hero'][$i]['card'])): ?>
-                                <?= $aAction['hero'][$i]['chara_name'] ?>に
+                            <? if (!empty($aAction['hero'][$i]['chara_name']) && !empty($aAction['hero'][$i]['card'])): ?>
+                                <?= $aAction['hero'][$i]['chara_name'] ?> に
                                 <?= $aAction['hero'][$i]['card'] ?>
-                            <?php endif; ?>
+                            <? endif; ?>
                         </td>
                     </tr>
                     <? endfor; ?>
                     <tr>
-                        <td colspan="2"><?= $aAction['memo'] ?></td>
+                        <td colspan="2"><?= nl2br(e($aAction['memo'])) ?></td>
                     </tr>
-                    <?php endforeach; ?>
+                    <? endforeach; ?>
                 </table>
             </div>
         <?php endforeach; ?>
