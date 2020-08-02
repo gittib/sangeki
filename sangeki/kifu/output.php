@@ -57,19 +57,19 @@ case 'html':
 }
 
 function outCsv($aChara, $aAction) {
-    header('content-type: text/csv; charset=utf-8');
-    echo "登場人物\n";
-    echo "キャラ,役職,メモ\n";
+    $sCsv = '';
+    $sCsv .= "登場人物\n";
+    $sCsv .= "キャラ,役職,メモ\n";
     foreach ($aChara as $chara) {
-        echo '"' . implode('","', array(
+        $sCsv .= '"' . implode('","', array(
             escapeCsv($chara['name']),
             escapeCsv($chara['role']),
             escapeCsv($chara['memo']),
         )) . "\"\n";
     }
 
-    echo "\n行動カードログ\n";
-    echo '"' . implode('","', array(
+    $sCsv .= "\n行動カードログ\n";
+    $sCsv .= '"' . implode('","', array(
         'ループ数',
         '日数',
         '脚本家対象',
@@ -89,12 +89,18 @@ function outCsv($aChara, $aAction) {
                 $aHero = $aActionInDay['hero'][$i];
                 $aLine[] = escapeCsv($aHero['chara_name']);
                 $aLine[] = escapeCsv($aHero['card']);
-                echo '"' . implode('","', $aLine) . "\"\n";
+                $sCsv .= '"' . implode('","', $aLine) . "\"\n";
             }
             $aLine = array($loop, $day, escapeCsv($aActionInDay['memo']));
-            echo '"' . implode('","', $aLine) . "\"\n";
+            $sCsv .= '"' . implode('","', $aLine) . "\"\n";
         }
     }
+
+    $sFileName = 'sangeki_record-' . date('Ymd_His') . '.csv';
+    header('content-type: text/csv; charset=utf-8');
+    header("Content-Disposition: attachment; filename={$sFileName}");
+    echo mb_convert_encoding($sCsv, "SJIS", "UTF-8");
+
 }
 function escapeCsv($s) {
     return str_replace('"', '""', $s);

@@ -383,12 +383,18 @@ if (empty($errors)) {
         }
     });
     $('.save_action').on('click', function () {
-        $('#outtype').val($(this).data('type'));
-        window.open('', 'kifu_output');
+        var dataType = $(this).data('type');
+        $('#outtype').val(dataType);
 
         // name属性値指定でformを選択
         var form = document.main_form;
-        form.target = 'kifu_output';
+
+        if (dataType == 'csv') {
+            form.target = '_self';
+        } else {
+            window.open('', 'kifu_output');
+            form.target = 'kifu_output';
+        }
         form.submit();
     });
 })();
