@@ -152,6 +152,11 @@ function outJson($aRule, $aChara, $aInsidents, $aAction) {
             if (empty($val['memo'])) {
                 $aAction[$loop][$day]['memo'] = null;
             }
+            $aAction[$loop][$day] = [
+                'name' => $val['name'],
+                'role' => $val['role'],
+                'memo' => $val['memo'],
+            ];
         }
     }
 
@@ -164,7 +169,7 @@ function outJson($aRule, $aChara, $aInsidents, $aAction) {
         'loop' => $_POST['loop'],
         'day' => $_POST['day'],
         'rule' => $aRule,
-        'chara' => $aChara,
+        'chara' => array_values($aChara),
         'insidents' => $aInsidents,
         'action' => $aAction,
     ), JSON_UNESCAPED_UNICODE);
