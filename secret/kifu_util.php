@@ -80,7 +80,7 @@ function getKifuCharaName($charaId, $bGunzouFlg) {
     $aBoardMaster = getBoardMaster();
     if (array_key_exists($charaId, $aBoardMaster)) {
         if ($bGunzouFlg) {
-            return $aBoardMaster[$charaId] 'の群像';
+            return $aBoardMaster[$charaId] . 'の群像';
         } else {
             return $aBoardMaster[$charaId];
         }
