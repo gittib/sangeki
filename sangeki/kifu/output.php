@@ -146,17 +146,17 @@ function outJson($aRule, $aChara, $aInsidents, $aAction) {
         if (empty($val['memo'])) {
             $aChara[$charaId]['memo'] = null;
         }
+        $aChara[$charaId] = [
+            'name' => $val['name'],
+            'role' => $val['role'],
+            'memo' => $val['memo'],
+        ];
     }
     foreach ($aAction as $loop => $aTmp) {
         foreach ($aTmp as $day => $val) {
             if (empty($val['memo'])) {
                 $aAction[$loop][$day]['memo'] = null;
             }
-            $aAction[$loop][$day] = [
-                'name' => $val['name'],
-                'role' => $val['role'],
-                'memo' => $val['memo'],
-            ];
         }
     }
 
