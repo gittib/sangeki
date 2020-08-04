@@ -70,7 +70,7 @@ function getAreaName($area) {
     }
 }
 
-function getKifuCharaName($charaId, $bGunzouFlg) {
+function getKifuCharaName($charaId, $bGunzouFlg = false) {
     $aCharaMaster = getCharacterMaster();
     foreach ($aCharaMaster as $aChara) {
         if (array_key_exists($charaId, $aChara)) {
