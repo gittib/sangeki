@@ -12,7 +12,7 @@ $aAction = $_POST['action_info'];
 $aRule = array(
     'ruleY' => implode('or', $_POST['ruleY']),
     'ruleX1' => implode('or', $_POST['ruleX1']),
-    'ruleX2' => implode('or', $_POST['ruleX2']),
+    'ruleX2' => implode('or', $_POST['ruleX2'] ?? []),
 );
 
 $iShinkakuLoop = $_POST['shinkaku_loop'];
@@ -142,6 +142,13 @@ function outJson($aRule, $aChara, $aInsidents, $aAction) {
     foreach ($aChara as $charaId => $val) {
         if (empty($val['memo'])) {
             $aChara[$charaId]['memo'] = null;
+        }
+    }
+    foreach ($aAction as $loop => $aTmp) {
+        foreach ($aTmp as $day => $val) {
+            if (empty($val['memo'])) {
+                $aAction[$loop][$aTmp]['memo'] = null;
+            }
         }
     }
 
