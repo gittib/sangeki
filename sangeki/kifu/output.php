@@ -139,6 +139,9 @@ function escapeCsv($s) {
 }
 
 function outJson($aRule, $aChara, $aInsidents, $aAction) {
+    if (empty($aRule['ruleX2'])) {
+        $aRule['ruleX2'] = null;
+    }
     foreach ($aChara as $charaId => $val) {
         if (empty($val['memo'])) {
             $aChara[$charaId]['memo'] = null;
@@ -147,7 +150,7 @@ function outJson($aRule, $aChara, $aInsidents, $aAction) {
     foreach ($aAction as $loop => $aTmp) {
         foreach ($aTmp as $day => $val) {
             if (empty($val['memo'])) {
-                $aAction[$loop][$aTmp]['memo'] = null;
+                $aAction[$loop][$day]['memo'] = null;
             }
         }
     }
