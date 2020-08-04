@@ -390,7 +390,7 @@ if (empty($errors)) {
         // name属性値指定でformを選択
         var form = document.main_form;
 
-        if (dataType == 'csv') {
+        if (dataType == 'csv' || dataType == 'json') {
             form.target = '_self';
         } else {
             window.open('', 'kifu_output');
