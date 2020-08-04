@@ -70,7 +70,7 @@ function getAreaName($area) {
     }
 }
 
-function getKifuCharaName($charaId) {
+function getKifuCharaName($charaId, $bGunzouFlg) {
     $aCharaMaster = getCharacterMaster();
     foreach ($aCharaMaster as $aChara) {
         if (array_key_exists($charaId, $aChara)) {
@@ -79,9 +79,13 @@ function getKifuCharaName($charaId) {
     }
     $aBoardMaster = getBoardMaster();
     if (array_key_exists($charaId, $aBoardMaster)) {
-        return $aBoardMaster[$charaId];
+        if ($bGunzouFlg) {
+            return $aBoardMaster[$charaId] 'の群像';
+        } else {
+            return $aBoardMaster[$charaId];
+        }
     }
-    return '';
+    return null;
 }
 
 function getCharacterList($aCharaIds) {

@@ -41,7 +41,7 @@ foreach ($aChara as $charaId => $val) {
 }
 
 foreach ($aInsidents as $day => $val) {
-    $aInsidents[$day]['criminal'] = getKifuCharaName($val['criminal']);
+    $aInsidents[$day]['criminal'] = getKifuCharaName($val['criminal'], true);
 }
 
 foreach ($aAction as $loop => $aActionInLoop) {
@@ -139,7 +139,15 @@ function escapeCsv($s) {
 }
 
 function outJson($aRule, $aChara, $aInsidents, $aAction) {
+    foreach ($aChara as $charaId => $val) {
+        if (empty($val['memo'])) {
+            $aChara[$charaId]['memo'] = null;
+        }
+    }
+
+    $sFileName = 'sangeki_record-' . date('Ymd_His') . '.json';
     header('content-type: application/json; charset=utf-8');
+    header("Content-Disposition: attachment; filename={$sFileName}");
     echo json_encode(array(
         'set' => $_POST['set'],
         'set_name' => getTragedySetName($_POST['set']),
