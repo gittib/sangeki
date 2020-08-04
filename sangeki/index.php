@@ -1,4 +1,4 @@
-<?
+<?php
 define('SECRET_DIR', '../secret/');
 require_once(SECRET_DIR.'common.php');
 ?>
@@ -29,6 +29,6 @@ require_once(SECRET_DIR.'common.php');
         <dd><?= nl2br(e($val->text)) ?></dd>
         <? endforeach; ?>
     </dl>
-<?php require(SECRET_DIR.'sangeki_footer.php') ?>
+<? require(SECRET_DIR.'sangeki_footer.php') ?>
 </body>
 </html>

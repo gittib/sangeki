@@ -149,7 +149,7 @@ function outJson($aRule, $aChara, $aInsidents, $aAction) {
         'chara' => $aChara,
         'insidents' => $aInsidents,
         'action' => $aAction,
-    ));
+    ), JSON_UNESCAPED_UNICODE);
 }
 
 function outHtml($aRule, $aChara, $aInsidents, $aAction, $aTopMenu) {
