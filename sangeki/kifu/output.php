@@ -221,6 +221,21 @@ function outHtml($aRule, $aChara, $aInsidents, $aAction, $aTopMenu) {
             <?php endforeach; ?>
         </table>
     </div>
+    <div class="character_role_wrapper">
+        <h3>役職の内訳</h3>
+        <table>
+            <tr>
+                <th>人物</th>
+                <th>役職</th>
+            </tr>
+            <? foreach($aChara as $chara): ?>
+            <tr>
+                <td><?= $chara['name'] ?></td>
+                <td><?= $chara['role'] ?></td>
+            </tr>
+            <? endforeach; ?>
+        </table>
+    </div>
     <div class="kifu_out_wrapper">
         <h3>行動カード、その他ログ</h3>
         <?php foreach($aAction as $loop => $aActionInLoop): ?>
