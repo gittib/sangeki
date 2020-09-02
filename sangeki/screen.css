@@ -758,6 +758,10 @@ body.kifu_output .insident_wrapper {
     float:left;
     padding-top: 12px;
 }
+body.kifu_output .character_role_wrapper {
+    clear: both;
+    padding-top: 12px;
+}
 body.kifu_output .kifu_out_wrapper {
     clear: both;
     padding-top: 12px;
