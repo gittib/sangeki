@@ -46,7 +46,7 @@ function roleSpec ($r) {
     return array($role, $sZettai, $sYuukouMushi, $sFushi);
 }
 function initPos($name, $aCharacter = array()) {
-    $name = rtrim($aCharacter['initPos'], 'ABCDE');
+    $name = rtrim($name, 'ABCDE');
     if (isset($aCharacter['initPos'])) {
         $name = $aCharacter['initPos'];
     }
