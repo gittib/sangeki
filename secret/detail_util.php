@@ -47,7 +47,7 @@ function roleSpec ($r) {
 }
 function initPos($name, $aCharacter = array()) {
     if (isset($aCharacter['initPos'])) {
-        $name = $aCharacter['initPos'];
+        $name = rtrim($aCharacter['initPos'], 'ABCDE');
     }
 
     switch ($name) {
@@ -101,7 +101,7 @@ function initPos($name, $aCharacter = array()) {
     }
 }
 function characterSpec($name) {
-    switch ($name) {
+    switch (rtrim($name, 'ABCDE')) {
         case '妹':
             return array('少女', '妹');
         case '異世界人':
@@ -239,7 +239,7 @@ function decorateSentence($s) {
 function exCharacterCheck($oSangeki) {
     $aExCharacters = array();
     foreach ($oSangeki->character as $name => $ch) {
-        switch($name) {
+        switch(rtrim($name, 'ABCDE')) {
         case '幻想':
         case '学者':
         case '女の子':
@@ -253,7 +253,7 @@ function exCharacterCheck($oSangeki) {
     if (empty($aExCharacters)) {
         return '';
     } else {
-        return 'プロモーションカード「' . implode('」「', $aExCharacters) . "」を使用します。\n\n";
+        return 'プロモーションカード「' . implode('」「', array_unique($aExCharacters)) . "」を使用します。\n\n";
     }
 }
 
@@ -309,6 +309,7 @@ function rolesCountCheck($oSangeki) {
     $sCopyCatRole = null;
     $bPersonExists = false;
     foreach ($oSangeki->character as $name => $chara) {
+        $name = rtrim($name, 'ABCDE');
         if ($name == 'コピーキャット') {
             // コピーキャットは後から判定する
             $sCopyCatRole = empty($chara['role']) ? 'パーソン' : $chara['role'];
@@ -378,6 +379,7 @@ function rolesCountCheck($oSangeki) {
     if (in_array('僕と契約しようよ！', $aRuleList) || in_array('鍵たる少女', $aRuleList)) {
         $aTmp = $getCharacters('キーパーソン');
         foreach ($aTmp as $name) {
+            $name = rtrim($name, 'ABCDE');
             if (!in_array('少女', characterSpec($name))) {
                 $aErrorMessage[] = $name . 'は少女でないため、キーパーソンを割り当てられません';
             }
@@ -386,6 +388,7 @@ function rolesCountCheck($oSangeki) {
     if (in_array('漢の戦い', $aRuleList)) {
         $aTmp = $getCharacters('ニンジャ');
         foreach ($aTmp as $name) {
+            $name = rtrim($name, 'ABCDE');
             if (!in_array('男性', characterSpec($name))) {
                 $aErrorMessage[] = $name . 'は男性でないため、ニンジャを割り当てられません';
             }
@@ -395,6 +398,7 @@ function rolesCountCheck($oSangeki) {
         $aVampSex = array();
         $aTmp = $getCharacters('ヴァンパイア');
         foreach ($aTmp as $name) {
+            $name = rtrim($name, 'ABCDE');
             $spec = characterSpec($name);
             if ($name == '神格') {
                 $aVampSex[] = '神格';
@@ -408,6 +412,7 @@ function rolesCountCheck($oSangeki) {
         }
         $aTmp = $getCharacters('キーパーソン');
         foreach ($aTmp as $name) {
+            $name = rtrim($name, 'ABCDE');
             $spec = characterSpec($name);
             if ($name == '神格') {
                 // 神格は固有の性別なのでセーフ
@@ -436,7 +441,7 @@ function rolesCountCheck($oSangeki) {
     if (in_array('狂った真実', $aRuleList)) {
         $bJohoyaExists = false;
         foreach ($oSangeki->character as $name => $chara) {
-            $bJohoyaExists |= $name == '情報屋';
+            $bJohoyaExists |= rtrim($name, 'ABCDE') == '情報屋';
         }
         if (!$bJohoyaExists) {
             $aErrorMessage[] = '「狂った真実」がありますが、情報屋が登場しません';
