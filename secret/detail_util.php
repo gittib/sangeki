@@ -46,8 +46,9 @@ function roleSpec ($r) {
     return array($role, $sZettai, $sYuukouMushi, $sFushi);
 }
 function initPos($name, $aCharacter = array()) {
+    $name = rtrim($aCharacter['initPos'], 'ABCDE');
     if (isset($aCharacter['initPos'])) {
-        $name = rtrim($aCharacter['initPos'], 'ABCDE');
+        $name = $aCharacter['initPos'];
     }
 
     switch ($name) {
@@ -239,7 +240,8 @@ function decorateSentence($s) {
 function exCharacterCheck($oSangeki) {
     $aExCharacters = array();
     foreach ($oSangeki->character as $name => $ch) {
-        switch(rtrim($name, 'ABCDE')) {
+        $name = rtrim($name, 'ABCDE');
+        switch($name) {
         case '幻想':
         case '学者':
         case '女の子':
