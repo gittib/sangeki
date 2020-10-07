@@ -1,9 +1,9 @@
 <?
 
 $oSangeki = (object)array(
-    'title' => '招集命令',
+    'title' => '狂信者たちに救済を',
     'writer' => 'ペンスキー',
-    'difficulity' => 4,
+    'difficulity' => 5,
     'set' => 'BTX',
     'rule' => array(
         '未来改変プラン',
@@ -24,9 +24,9 @@ $oSangeki = (object)array(
             'role' => 'タイムトラベラー',
         ),
         'ナース' => array(
-            'role' => 'ミスリーダー',
         ),
         '刑事' => array(
+            'role' => 'ミスリーダー',
         ),
         'サラリーマン' => array(
         ),
@@ -54,12 +54,12 @@ $oSangeki = (object)array(
             'criminal' => '男子学生',
         ),
         4 => array(
-            'name' => '蝶の羽ばたき',
-            'criminal' => '手先',
+            'name' => '不安拡大',
+            'criminal' => 'ナース',
         ),
         5 => array(
-            'name' => '流布',
-            'criminal' => '刑事',
+            'name' => '蝶の羽ばたき',
+            'criminal' => '手先',
         ),
     ),
     'advice' => (object)array(
