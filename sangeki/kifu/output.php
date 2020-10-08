@@ -12,7 +12,7 @@ $aAction = $_POST['action_info'];
 $aRule = array(
     'ruleY' => implode('or', $_POST['ruleY']),
     'ruleX1' => implode('or', $_POST['ruleX1']),
-    'ruleX2' => implode('or', $_POST['ruleX2']),
+    'ruleX2' => implode('or', $_POST['ruleX2'] ?? []),
 );
 
 $iShinkakuLoop = $_POST['shinkaku_loop'];
@@ -41,7 +41,7 @@ foreach ($aChara as $charaId => $val) {
 }
 
 foreach ($aInsidents as $day => $val) {
-    $aInsidents[$day]['criminal'] = getKifuCharaName($val['criminal']);
+    $aInsidents[$day]['criminal'] = getKifuCharaName($val['criminal'], true);
 }
 
 foreach ($aAction as $loop => $aActionInLoop) {
@@ -139,17 +139,40 @@ function escapeCsv($s) {
 }
 
 function outJson($aRule, $aChara, $aInsidents, $aAction) {
+    if (empty($aRule['ruleX2'])) {
+        $aRule['ruleX2'] = null;
+    }
+    foreach ($aChara as $charaId => $val) {
+        if (empty($val['memo'])) {
+            $aChara[$charaId]['memo'] = null;
+        }
+        $aChara[$charaId] = [
+            'name' => $val['name'],
+            'role' => $val['role'],
+            'memo' => $val['memo'],
+        ];
+    }
+    foreach ($aAction as $loop => $aTmp) {
+        foreach ($aTmp as $day => $val) {
+            if (empty($val['memo'])) {
+                $aAction[$loop][$day]['memo'] = null;
+            }
+        }
+    }
+
+    $sFileName = 'sangeki_record-' . date('Ymd_His') . '.json';
     header('content-type: application/json; charset=utf-8');
+    header("Content-Disposition: attachment; filename={$sFileName}");
     echo json_encode(array(
         'set' => $_POST['set'],
         'set_name' => getTragedySetName($_POST['set']),
         'loop' => $_POST['loop'],
         'day' => $_POST['day'],
         'rule' => $aRule,
-        'chara' => $aChara,
+        'chara' => array_values($aChara),
         'insidents' => $aInsidents,
         'action' => $aAction,
-    ));
+    ), JSON_UNESCAPED_UNICODE);
 }
 
 function outHtml($aRule, $aChara, $aInsidents, $aAction, $aTopMenu) {
@@ -196,6 +219,21 @@ function outHtml($aRule, $aChara, $aInsidents, $aAction, $aTopMenu) {
                 <td><?= $val['criminal'] ?></td>
             </tr>
             <?php endforeach; ?>
+        </table>
+    </div>
+    <div class="character_role_wrapper">
+        <h3>役職の内訳</h3>
+        <table>
+            <tr>
+                <th>人物</th>
+                <th>役職</th>
+            </tr>
+            <? foreach($aChara as $chara): ?>
+            <tr>
+                <td><?= $chara['name'] ?></td>
+                <td><?= $chara['role'] ?></td>
+            </tr>
+            <? endforeach; ?>
         </table>
     </div>
     <div class="kifu_out_wrapper">
