@@ -2,6 +2,7 @@
 
 $oSangeki = (object)array(
     'title' => '因果の途絶',
+    'secret' => true,
     'writer' => 'ペンスキー',
     'difficulity' => 6,
     'set' => 'MZ',
