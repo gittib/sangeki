@@ -1,5 +1,5 @@
 <?
-define('SECRET_DIR', '../../secret/');
+define('SECRET_DIR', realpath('../../secret').'/');
 require_once(SECRET_DIR.'common.php');
 require_once(SECRET_DIR.'sangeki_check.php');
 
@@ -21,6 +21,12 @@ foreach ($files as $val) {
             continue;
         }
     }
+
+    // 一覧で不要な情報はunsetしとく
+    unset($oSangeki->character);
+    unset($oSangeki->incident);
+    unset($oSangeki->advice);
+
     $oSangeki->id = $id;
     $aTmp[$id] = $oSangeki;
     $oSangeki = null;
