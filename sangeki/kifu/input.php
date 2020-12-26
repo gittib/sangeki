@@ -1,5 +1,5 @@
 <?
-define('SECRET_DIR', '../../secret/');
+define('SECRET_DIR', realpath('../../secret').'/');
 require_once(SECRET_DIR.'common.php');
 require_once(SECRET_DIR.'kifu_util.php');
 require_once(SECRET_DIR.'detail_util.php');
