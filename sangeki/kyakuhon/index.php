@@ -21,6 +21,12 @@ foreach ($files as $val) {
             continue;
         }
     }
+
+    // 一覧で不要な情報はunsetしとく
+    unset($oSangeki->character);
+    unset($oSangeki->incident);
+    unset($oSangeki->advice);
+
     $oSangeki->id = $id;
     $aTmp[$id] = $oSangeki;
     $oSangeki = null;
