@@ -107,7 +107,7 @@ function getKyakuhonList() {
         $fp = fopen($sKyakuhonListPath, 'w');
         fwrite($fp, '<?php $oScenario = (object)[');
         fwrite($fp, '"hash" => "'.$latestHash.'",');
-        fwrite($fp, '"list" => ["');
+        fwrite($fp, '"list" => [');
         foreach ($oScenario->list as $val) {
             fwrite($fp, '"'.$val->id.'" => (object)[');
             fwrite($fp, '"secret" =>'.$val->secret.',');
@@ -120,7 +120,7 @@ function getKyakuhonList() {
             fwrite($fp, '"day" =>'.$val->day.',');
             fwrite($fp, '],');
         }
-        fwrite($fp, '"]];');
+        fwrite($fp, ']];');
         fclose($fp);
         require($sKyakuhonListPath);
     }
