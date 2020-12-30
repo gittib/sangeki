@@ -6,7 +6,7 @@ require_once(SECRET_DIR.'sangeki_check.php');
 class ScenarioIndex {
     const SCENARIO_LIST_PATH = SECRET_DIR.'cache/kyakuhon_list.php';
 
-    public function getScenarioList() {
+    public static function getScenarioList() {
         $latestHash = 'invalid';
         $sHashFilePath = SECRET_DIR.'cache/latest_git_hash';
         if (file_exists($sHashFilePath)) {
@@ -23,13 +23,13 @@ class ScenarioIndex {
             require(self::SCENARIO_LIST_PATH);
         }
         if (empty($oScenario->hash) || $latestHash != $oScenario->hash) {
-            $this->createScenarioListCache($latestHash);
+            self::createScenarioListCache($latestHash);
             require(self::SCENARIO_LIST_PATH);
         }
         return $oScenario->list;
     }
 
-    private function createScenarioListCache($latestHash) {
+    private static function createScenarioListCache($latestHash) {
         $result = null;
         $path = SECRET_DIR . 'kyakuhon_list/';
         exec("find $path -type f", $result);
@@ -140,8 +140,7 @@ class ScenarioIndex {
     }
 }
 
-$oScenarioIndex = new ScenarioIndex();
-$aList = $oScenarioIndex->getScenarioList();
+$aList = ScenarioIndex::getScenarioList();
 $bDisplaySecret = (!isProd() && isset($_GET['s']));
 ?>
 <html>
