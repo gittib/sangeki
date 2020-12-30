@@ -36,14 +36,18 @@ function getKyakuhonPathList() {
     return $aKyakuhon['list'];
 }
 
+function getKyakuhonId($s) {
+    $sDirPath = SECRET_DIR.'kyakuhon_list/';
+    $t = str_replace($sDirPath, '', $s);
+    $t = str_replace('/', '-', $t);
+    return str_replace('.php', '', $t);
+}
+
 $aList = getKyakuhonPathList();
 $aTmp = array();
 $bDisplaySecret = (!isProd() && isset($_GET['s']));
-foreach ($aList['list'] as $val) {
-    $id = str_replace('.php', '', $val);
-    if (strpos($id, '9') === 0) {
-        continue;
-    }
+foreach ($aList as $val) {
+    $id = getKyakuhonId($val);
     require($val);
     if (empty($oSangeki) || empty($oSangeki->title)) {
         continue;
