@@ -69,9 +69,7 @@ function getKyakuhonList() {
             }
             if (!empty($oSangeki->secret)) {
                 // secretな脚本
-                if (!$bDisplaySecret) {
-                    $bSecret = true;
-                }
+                $bSecret = true;
             }
 
             $oSangeki->id = $id;
