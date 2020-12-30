@@ -94,10 +94,10 @@ class ScenarioIndex {
             fwrite($fp, '"recommended"=>'.$e($val->recommended ?? false).',');
             fwrite($fp, '"title"=>'.$e($val->title).',');
             fwrite($fp, '"writer"=>'.$e($val->writer).',');
-            fwrite($fp, '"set"=>'.$val->set.',');
-            fwrite($fp, '"difficulity"=>'.$val->difficulity.',');
-            fwrite($fp, '"loop"=>'.$val->loop.',');
-            fwrite($fp, '"day"=>'.$val->day.',');
+            fwrite($fp, '"set"=>'.$e($val->set).',');
+            fwrite($fp, '"difficulity"=>'.$e($val->difficulity).',');
+            fwrite($fp, '"loop"=>'.$e($val->loop).',');
+            fwrite($fp, '"day"=>'.$e($val->day).',');
             fwrite($fp, '],');
         }
         fwrite($fp, ']];');
