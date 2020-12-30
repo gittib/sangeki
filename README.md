@@ -23,6 +23,9 @@ ssh-add ${SSH_KEY_PATH}
 git pull
 
 ssh-agent -k
+
+chmod 777 secret/cache
+git log -n 1 --pretty=%H > secret/cache/latest_git_hash
 ```
 
 本番環境デプロイ
@@ -44,4 +47,7 @@ git checkout --force master
 git pull
 
 ssh-agent -k
+
+chmod 777 secret/cache
+git log -n 1 --pretty=%H > secret/cache/latest_git_hash
 ```
