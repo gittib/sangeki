@@ -344,13 +344,6 @@ body.detail h2 {
 body.detail h3 {
     font-size: 1.17rem;
 }
-body.detail span.difficulity_name {
-    padding: 0px 10px;
-    background-color: black;
-    color: white;
-    border-radius: 4px;
-    font-weight: bold;
-}
 body.detail table.summary th {
     padding-left: 4px;
     padding-right: 12px;
@@ -447,6 +440,13 @@ body.detail .private .title {
     text-align: center;
     border-bottom-style: double;
     margin-bottom: 16px;
+}
+body.detail .private span.difficulity span.difficulity_name {
+    padding: 0px 10px;
+    background-color: black;
+    color: white;
+    border-radius: 4px;
+    font-weight: bold;
 }
 body.detail .private table.summary.rule tr td span.note {
     font-size: 0.8rem;
