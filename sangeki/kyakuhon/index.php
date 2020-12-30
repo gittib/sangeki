@@ -4,6 +4,7 @@ require_once(SECRET_DIR.'common.php');
 require_once(SECRET_DIR.'sangeki_check.php');
 
 class ScenarioIndex {
+    const SCENARIO_LIST_PATH = SECRET_DIR.'cache/kyakuhon_list.php';
 
     public function getScenarioList() {
         $latestHash = 'invalid';
@@ -18,13 +19,12 @@ class ScenarioIndex {
             'hash' => null,
             'list' => [],
         ];
-        $sScenarioListPath = SECRET_DIR.'cache/kyakuhon_list.php';
-        if (file_exists($sScenarioListPath)) {
-            require($sScenarioListPath);
+        if (file_exists(self::SCENARIO_LIST_PATH)) {
+            require(self::SCENARIO_LIST_PATH);
         }
         if (empty($oScenario->hash) || $latestHash != $oScenario->hash) {
             $this->createScenarioListCache();
-            require($sScenarioListPath);
+            require(self::SCENARIO_LIST_PATH);
         }
         return $oScenario->list;
     }
@@ -84,7 +84,7 @@ class ScenarioIndex {
             return '"' . str_replace('"', '\"', $s) . '"';
         };
 
-        $fp = fopen($sScenarioListPath, 'w');
+        $fp = fopen(self::SCENARIO_LIST_PATH, 'w');
         fwrite($fp, '<?php $oScenario = (object)[');
         fwrite($fp, '"hash" => "'.$latestHash.'",');
         fwrite($fp, '"list" => [');
@@ -102,7 +102,7 @@ class ScenarioIndex {
         }
         fwrite($fp, ']];');
         fclose($fp);
-        chmod($sScenarioListPath, 0777);
+        chmod(self::SCENARIO_LIST_PATH, 0777);
     }
 
     private static function getScenarioId($s) {
