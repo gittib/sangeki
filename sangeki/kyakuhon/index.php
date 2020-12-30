@@ -23,7 +23,7 @@ function getKyakuhonPathList() {
     if ($latestHash != $aKyakuhon['hash']) {
         $result = null;
         $path = SECRET_DIR . 'kyakuhon_list/';
-        $exec("find $path -type f", $result);
+        exec("find $path -type f", $result);
         $fp = fopen($sKyakuhonListPath, 'w');
         fwrite($fp, '<?php $aKyakuhon = [');
         fwrite($fp, '"hash" => "'.$latestHash.'",');
