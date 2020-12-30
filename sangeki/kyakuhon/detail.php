@@ -145,17 +145,17 @@ if (!empty($oSangeki->advice->notice)) {
         <div class="private">
             <h2 class="private_sheet">非公開シート</h2>
             <h3 class="title"><?= e($oSangeki->title) ?></h3>
-            <span class="difficulity">
+            <div class="difficulity">
                 難易度：
                 <span class="difficulity_name"><?= difficulityName($oSangeki->difficulity) ?></span>
-                <? for ($i = 1 ; $i <= 8 ; $i++) {
+                <span><? for ($i = 1 ; $i <= 8 ; $i++) {
                     if ($i <= $oSangeki->difficulity) {
                         echo '★';
                     } else {
                         echo '☆';
                     }
-                } ?>
-            </span>
+                } ?></span>
+            </div>
             <table class="summary rule">
                 <tr>
                     <th>ルールY</th>
