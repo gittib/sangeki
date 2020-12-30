@@ -3,15 +3,48 @@ define('SECRET_DIR', realpath('../../secret').'/');
 require_once(SECRET_DIR.'common.php');
 require_once(SECRET_DIR.'sangeki_check.php');
 
-exec('ls '.SECRET_DIR.'kyakuhon_list/', $files);
+function getKyakuhonPathList() {
+    $latestHash = null;
+    $sHashFilePath = SECRET_DIR.'cache/latest_git_hash';
+    if (file_exists($sHashFilePath)) {
+        $fp = fopen($sHashFilePath, 'r');
+        $latestHash = trim(fgets($fp));
+        fclose($fp);
+    }
+
+    $aKyakuhon = [
+        'hash' => null,
+        'list' => [],
+    ];
+    $sKyakuhonListPath = SECRET_DIR.'cache/kyakuhon_list.php';
+    if (file_exists($sKyakuhonListPath)) {
+        require($sKyakuhonListPath);
+    }
+    if ($latestHash != $aKyakuhon['hash']) {
+        $result = null;
+        $path = SECRET_DIR . 'kyakuhon_list/';
+        $exec("find $path -type f", $result);
+        $fp = fopen($sKyakuhonListPath, 'w');
+        fwrite($fp, '<?php $aKyakuhon = [');
+        fwrite($fp, '"hash" => "'.$latestHash.'",');
+        fwrite($fp, '"list" => ["');
+        fwrite($fp, implode('","', $result));
+        fwrite($fp, '"]];');
+        fclose($fp);
+        require($sKyakuhonListPath);
+    }
+    return $aKyakuhon['list'];
+}
+
+$aList = getKyakuhonPathList();
 $aTmp = array();
 $bDisplaySecret = (!isProd() && isset($_GET['s']));
-foreach ($files as $val) {
+foreach ($aList['list'] as $val) {
     $id = str_replace('.php', '', $val);
     if (strpos($id, '9') === 0) {
         continue;
     }
-    require(SECRET_DIR.'kyakuhon_list/' . $val);
+    require($val);
     if (empty($oSangeki) || empty($oSangeki->title)) {
         continue;
     }
