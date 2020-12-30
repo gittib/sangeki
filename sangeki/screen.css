@@ -439,9 +439,12 @@ body.detail .private .title {
     width: 80%;
     text-align: center;
     border-bottom-style: double;
-    margin-bottom: 16px;
+    margin-bottom: 4px;
 }
-body.detail .private span.difficulity span.difficulity_name {
+body.detail .private .difficulity {
+    text-align: center;
+}
+body.detail .private .difficulity span.difficulity_name {
     padding: 0px 10px;
     background-color: black;
     color: white;
