@@ -154,7 +154,7 @@ $bDisplaySecret = (!isProd() && isset($_GET['s']));
     <div class="kyakuhon_list">
         <dl class="kyakuhon_list">
         <? foreach ($aList as $id => $oSangeki): ?>
-        <? if (!$bDisplaySecret): ?>
+        <? if ($bDisplaySecret || empty($oSangeki->secret)): ?>
             <dt class="<? if(!empty($oSangeki->secret)) echo 'secret' ?>">
                 <span class="rule_prefix <?= $oSangeki->set ?>"><?= $oSangeki->set ?></span>
                 <a href="./detail.php?id=<?= $id ?>">
