@@ -3,69 +3,45 @@ define('SECRET_DIR', realpath('../../secret').'/');
 require_once(SECRET_DIR.'common.php');
 require_once(SECRET_DIR.'sangeki_check.php');
 
-function getKyakuhonId($s) {
-    $sDirPath = SECRET_DIR.'kyakuhon_list/';
-    $t = str_replace($sDirPath, '', $s);
-    $t = str_replace('/', '-', $t);
-    return str_replace('.php', '', $t);
-}
+class ScenarioIndex {
 
-function sangekiSetIndex($o) {
-    switch ($o->set) {
-    case 'FS':
-        return 0;
-    case 'BTX':
-        return 1;
-    case 'MZ':
-        return 2;
-    case 'MC':
-    case 'MCX':
-        return 3;
-    case 'HSA':
-        return 4;
-    case 'WM':
-        return 5;
-    case 'UM':
-        return 6;
-    default:
-        return 99;
-    }
-}
+    public function getScenarioList() {
+        $latestHash = 'invalid';
+        $sHashFilePath = SECRET_DIR.'cache/latest_git_hash';
+        if (file_exists($sHashFilePath)) {
+            $fp = fopen($sHashFilePath, 'r');
+            $latestHash = trim(fgets($fp));
+            fclose($fp);
+        }
 
-function specialId($o) {
-    // 百の位は特殊な意味付けって感じ
-    return (int)(($o->id % 1000) / 100);
-}
-
-function getKyakuhonList() {
-    $latestHash = 'invalid';
-    $sHashFilePath = SECRET_DIR.'cache/latest_git_hash';
-    if (file_exists($sHashFilePath)) {
-        $fp = fopen($sHashFilePath, 'r');
-        $latestHash = trim(fgets($fp));
-        fclose($fp);
+        $oScenario = (object)[
+            'hash' => null,
+            'list' => [],
+        ];
+        $sScenarioListPath = SECRET_DIR.'cache/kyakuhon_list.php';
+        if (file_exists($sScenarioListPath)) {
+            require($sScenarioListPath);
+        }
+        if (empty($oScenario->hash) || $latestHash != $oScenario->hash) {
+            $this->createScenarioListCache();
+            require($sScenarioListPath);
+        }
+        return $oScenario->list;
     }
 
-    $oScenario = (object)[
-        'hash' => null,
-        'list' => [],
-    ];
-    $sKyakuhonListPath = SECRET_DIR.'cache/kyakuhon_list.php';
-    if (file_exists($sKyakuhonListPath)) {
-        require($sKyakuhonListPath);
-    }
-    if (empty($oScenario->hash) || $latestHash != $oScenario->hash) {
+    private function createScenarioListCache() {
         $result = null;
         $path = SECRET_DIR . 'kyakuhon_list/';
         exec("find $path -type f", $result);
 
-        $aTmp = array();
+        $aTmp = [];
         foreach ($result as $val) {
-            $id = getKyakuhonId($val);
+            $id = self::getScenarioId($val);
             $bSecret = false;
             require($val);
             if (empty($oSangeki) || empty($oSangeki->title)) {
-                $bSecret = true;
+                // 未完成な脚本
+                continue;
             }
             if (!empty($oSangeki->secret)) {
                 // secretな脚本
@@ -79,11 +55,11 @@ function getKyakuhonList() {
         }
 
         $fn = function($a, $b) {
-            $setDiff = sangekiSetIndex($a) - sangekiSetIndex($b);  // 惨劇セット昇順
-            $specialDiff = specialId($a) - specialId($b);   // 特殊ID
+            $setDiff = self::sangekiSetIndex($a) - self::sangekiSetIndex($b);  // 惨劇セット昇順
+            $specialDiff = self::specialId($a) - self::specialId($b);   // 特殊ID
             $difficulityDiff = $a->difficulity - $b->difficulity;   // 難易度昇順
             $idDiff = $a->id - $b->id; // ID昇順
-        
+
             if ($setDiff != 0) return $setDiff;
             else if ($specialDiff != 0) return $specialDiff;
             else if ($difficulityDiff != 0) return $difficulityDiff;
@@ -102,13 +78,13 @@ function getKyakuhonList() {
             if (is_bool($s)) {
                 if ($s) return 'true'; else return 'false';
             }
-            if (is_bool($s)) {
-                if ($s) return 'true'; else return 'false';
+            if (is_int($s)) {
+                return $s;
             }
-            return str_replace('"', '\"', $s);
+            return '"' . str_replace('"', '\"', $s) . '"';
         };
 
-        $fp = fopen($sKyakuhonListPath, 'w');
+        $fp = fopen($sScenarioListPath, 'w');
         fwrite($fp, '<?php $oScenario = (object)[');
         fwrite($fp, '"hash" => "'.$latestHash.'",');
         fwrite($fp, '"list" => [');
@@ -116,23 +92,56 @@ function getKyakuhonList() {
             fwrite($fp, '"'.$val->id.'" => (object)[');
             fwrite($fp, '"secret"=>'.$e($val->secret).',');
             fwrite($fp, '"recommended"=>'.$e($val->recommended ?? false).',');
-            fwrite($fp, '"title"=>"'.$e($val->title).'",');
-            fwrite($fp, '"writer"=>"'.$e($val->writer).'",');
-            fwrite($fp, '"set"=>"'.$val->set.'",');
+            fwrite($fp, '"title"=>'.$e($val->title).',');
+            fwrite($fp, '"writer"=>'.$e($val->writer).',');
+            fwrite($fp, '"set"=>'.$val->set.',');
             fwrite($fp, '"difficulity"=>'.$val->difficulity.',');
-            fwrite($fp, '"loop"=>"'.$val->loop.'",');
+            fwrite($fp, '"loop"=>'.$val->loop.',');
             fwrite($fp, '"day"=>'.$val->day.',');
             fwrite($fp, '],');
         }
         fwrite($fp, ']];');
         fclose($fp);
-        chmod($sKyakuhonListPath, 0777);
-        require($sKyakuhonListPath);
+        chmod($sScenarioListPath, 0777);
     }
-    return $oScenario->list;
+
+    private static function getScenarioId($s) {
+        $sDirPath = SECRET_DIR.'kyakuhon_list/';
+        $t = str_replace($sDirPath, '', $s);
+        $t = str_replace('/', '-', $t);
+        return str_replace('.php', '', $t);
+    }
+
+    private static function sangekiSetIndex($o) {
+        switch ($o->set) {
+        case 'FS':
+            return 0;
+        case 'BTX':
+            return 1;
+        case 'MZ':
+            return 2;
+        case 'MC':
+        case 'MCX':
+            return 3;
+        case 'HSA':
+            return 4;
+        case 'WM':
+            return 5;
+        case 'UM':
+            return 6;
+        default:
+            return 99;
+        }
+    }
+
+    private static function specialId($o) {
+        // 百の位は特殊な意味付けって感じ
+        return (int)(($o->id % 1000) / 100);
+    }
 }
 
-$aList = getKyakuhonList();
+$oScenarioIndex = new ScenarioIndex();
+$aList = $oScenarioIndex->getScenarioList();
 $bDisplaySecret = (!isProd() && isset($_GET['s']));
 ?>
 <html>
