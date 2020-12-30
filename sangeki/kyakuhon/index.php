@@ -101,7 +101,6 @@ function getKyakuhonList() {
         }
 
         $e = function($s) {
-            if (!isset($s)) return 'null';
             if (is_bool($s)) {
                 if ($s) return 'true'; else return 'false';
             }
@@ -115,7 +114,7 @@ function getKyakuhonList() {
         foreach ($oScenario->list as $val) {
             fwrite($fp, '"'.$val->id.'" => (object)[');
             fwrite($fp, '"secret" =>'.$e($val->secret).',');
-            fwrite($fp, '"recommended" =>'.$e($val->recommended).',');
+            fwrite($fp, '"recommended" =>'.$e($val->recommended ?? false).',');
             fwrite($fp, '"title" =>"'.$e($val->title).'",');
             fwrite($fp, '"writer" =>"'.$e($val->writer).'",');
             fwrite($fp, '"set" =>"'.$val->set.'",');
