@@ -101,10 +101,13 @@ function getKyakuhonList() {
         }
 
         $e = function($s) {
+            if (is_int($s)) {
+                return $s;
+            }
             if (is_bool($s)) {
                 if ($s) return 'true'; else return 'false';
             }
-            return str_replace('"', '\"', $s);
+            return '"' . str_replace('"', '\"', $s) . '"';
         };
 
         $fp = fopen($sKyakuhonListPath, 'w');
@@ -113,14 +116,14 @@ function getKyakuhonList() {
         fwrite($fp, '"list" => [');
         foreach ($oScenario->list as $val) {
             fwrite($fp, '"'.$val->id.'" => (object)[');
-            fwrite($fp, '"secret" =>'.$e($val->secret).',');
-            fwrite($fp, '"recommended" =>'.$e($val->recommended ?? false).',');
-            fwrite($fp, '"title" =>"'.$e($val->title).'",');
-            fwrite($fp, '"writer" =>"'.$e($val->writer).'",');
-            fwrite($fp, '"set" =>"'.$val->set.'",');
-            fwrite($fp, '"difficulity" =>'.$val->difficulity.',');
-            fwrite($fp, '"loop" =>'.$val->loop.',');
-            fwrite($fp, '"day" =>'.$val->day.',');
+            fwrite($fp, '"secret"=>'.$e($val->secret).',');
+            fwrite($fp, '"recommended"=>'.$e($val->recommended ?? false).',');
+            fwrite($fp, '"title"=>'.$e($val->title).',');
+            fwrite($fp, '"writer"=>'.$e($val->writer).',');
+            fwrite($fp, '"set"=>'.$e($val->set).',');
+            fwrite($fp, '"difficulity"=>'.$e($val->difficulity).',');
+            fwrite($fp, '"loop"=>'.$e($val->loop).',');
+            fwrite($fp, '"day"=>'.$e($val->day).',');
             fwrite($fp, '],');
         }
         fwrite($fp, ']];');
