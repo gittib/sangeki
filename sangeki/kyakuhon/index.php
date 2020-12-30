@@ -23,13 +23,13 @@ class ScenarioIndex {
             require(self::SCENARIO_LIST_PATH);
         }
         if (empty($oScenario->hash) || $latestHash != $oScenario->hash) {
-            $this->createScenarioListCache();
+            $this->createScenarioListCache($latestHash);
             require(self::SCENARIO_LIST_PATH);
         }
         return $oScenario->list;
     }
 
-    private function createScenarioListCache() {
+    private function createScenarioListCache($latestHash) {
         $result = null;
         $path = SECRET_DIR . 'kyakuhon_list/';
         exec("find $path -type f", $result);
