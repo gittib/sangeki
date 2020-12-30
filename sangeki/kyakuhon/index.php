@@ -126,6 +126,7 @@ function getKyakuhonList() {
         }
         fwrite($fp, ']];');
         fclose($fp);
+        chmod($sKyakuhonListPath, 0777);
         require($sKyakuhonListPath);
     }
     return $oScenario->list;
