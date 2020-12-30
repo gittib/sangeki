@@ -29,7 +29,7 @@ $oSangeki = (object)array(
         '軍人' => array(
         ),
         '大物' => array(
-            'note' => '病院',
+            'note' => '学校',
         ),
         '鑑識官' => array(
         ),
