@@ -36,6 +36,11 @@ class ScenarioIndex {
 
         $aTmp = [];
         foreach ($result as $val) {
+            if (!endsWith($val, 'php')) {
+                // PHPじゃない
+                continue;
+            }
+
             $id = self::getScenarioId($val);
             $bSecret = false;
             require($val);
