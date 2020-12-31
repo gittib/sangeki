@@ -84,24 +84,27 @@ class ScenarioIndex {
             return '"' . str_replace('"', '\"', $s) . '"';
         };
 
-        $fp = fopen(self::SCENARIO_LIST_PATH, 'w');
-        fwrite($fp, '<?php $oScenario = (object)[');
-        fwrite($fp, '"hash" => "'.$latestHash.'",');
-        fwrite($fp, '"list" => [');
+        $sFileText = '<?php $oScenario = (object)[';
+        $sFileText .= '"hash" => "'.$latestHash.'",';
+        $sFileText .= '"list" => [';
         foreach ($oScenario->list as $val) {
-            fwrite($fp, '"'.$val->id.'" => (object)[');
-            fwrite($fp, '"secret"=>'.$e($val->secret).',');
-            fwrite($fp, '"recommended"=>'.$e($val->recommended ?? false).',');
-            fwrite($fp, '"title"=>'.$e($val->title).',');
-            fwrite($fp, '"writer"=>'.$e($val->writer).',');
-            fwrite($fp, '"set"=>'.$e($val->set).',');
-            fwrite($fp, '"difficulity"=>'.$e($val->difficulity).',');
-            fwrite($fp, '"loop"=>'.$e($val->loop).',');
-            fwrite($fp, '"day"=>'.$e($val->day).',');
-            fwrite($fp, '],');
+            $sFileText .= '"'.$val->id.'" => (object)[';
+            $sFileText .= '"secret"=>'.$e($val->secret).',';
+            $sFileText .= '"recommended"=>'.$e($val->recommended ?? false).',';
+            $sFileText .= '"title"=>'.$e($val->title).',';
+            $sFileText .= '"writer"=>'.$e($val->writer).',';
+            $sFileText .= '"set"=>'.$e($val->set).',';
+            $sFileText .= '"difficulity"=>'.$e($val->difficulity).',';
+            $sFileText .= '"loop"=>'.$e($val->loop).',';
+            $sFileText .= '"day"=>'.$e($val->day).',';
+            $sFileText .= '],';
         }
-        fwrite($fp, ']];');
+        $sFileText .= ']];';
+
+        $fp = fopen(self::SCENARIO_LIST_PATH, 'w');
+        fwrite($fp, $sFileText);
         fclose($fp);
+
         chmod(self::SCENARIO_LIST_PATH, 0777);
     }
 
