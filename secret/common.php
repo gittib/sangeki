@@ -16,6 +16,10 @@ function e($s) {
     return htmlspecialchars($s, ENT_QUOTES);
 }
 
+function endsWith($haystack, $needle) {
+  return (strrpos($haystack, $needle) === strlen($haystack) - strlen($needle));
+}
+
 function session($key, $defaultValue = '') {
     if (isset($_SESSION[$key])) {
         return $_SESSION[$key];
