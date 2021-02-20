@@ -58,6 +58,9 @@ foreach ($oSangeki->character as $name => $val) {
 $aErrorMessage = rolesCountCheck($oSangeki);
 $sNotice = exCharacterCheck($oSangeki);
 if (!empty($oSangeki->advice->notice)) {
+    if (!empty($sNotice)) {
+        $sNotice .= "\n";
+    }
     $sNotice .= $oSangeki->advice->notice;
 }
 ?>
