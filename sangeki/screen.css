@@ -519,6 +519,7 @@ body.detail .private.advice h3 {
     margin-top: 20px;
 }
 body.detail .private.advice .notice {
+    margin-bottom: 1rem;
     color: red;
 }
 body.detail .private.advice .victory_conditions {
