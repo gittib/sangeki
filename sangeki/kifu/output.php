@@ -65,7 +65,7 @@ case 'json':
     outJson($aRule, $aChara, $aInsidents, $aAction);
     break;
 case 'html':
-    outHtml($aRule, $aChara, $aInsidents, $aAction, $aTopMenu);
+    outHtml($aRule, $aChara, $aInsidents, $aAction);
     break;
 }
 
@@ -175,16 +175,16 @@ function outJson($aRule, $aChara, $aInsidents, $aAction) {
     ), JSON_UNESCAPED_UNICODE);
 }
 
-function outHtml($aRule, $aChara, $aInsidents, $aAction, $aTopMenu) {
+function outHtml($aRule, $aChara, $aInsidents, $aAction) {
 ?>
 <html>
 <head>
-<? require(SECRET_DIR.'google_analytics.php') ?>
-<? require(SECRET_DIR.'sangeki_head.php'); ?>
+<?php require(SECRET_DIR.'google_analytics.php') ?>
+<?php require(SECRET_DIR.'sangeki_head.php'); ?>
     <title>惨劇RoopeR 棋譜 - <?= SITE_NAME ?></title>
 </head>
 <body class="kifu_output">
-<? require(SECRET_DIR.'sangeki_header.php'); ?>
+<?php require(SECRET_DIR.'sangeki_header.php'); ?>
     <div class="rule_wrapper">
         <table>
             <tr><th class="table_title" colspan="2"><p>ルール</p></th></tr>
@@ -228,12 +228,12 @@ function outHtml($aRule, $aChara, $aInsidents, $aAction, $aTopMenu) {
                 <th>人物</th>
                 <th>役職</th>
             </tr>
-            <? foreach($aChara as $chara): ?>
+            <?php foreach($aChara as $chara): ?>
             <tr>
                 <td><?= $chara['name'] ?></td>
                 <td><?= $chara['role'] ?></td>
             </tr>
-            <? endforeach; ?>
+            <?php endforeach; ?>
         </table>
     </div>
     <div class="kifu_out_wrapper">
@@ -247,30 +247,30 @@ function outHtml($aRule, $aChara, $aInsidents, $aAction, $aTopMenu) {
                         <th>脚本家</th>
                         <th>主人公</th>
                     </tr>
-                    <? foreach($aActionInLoop as $day => $aAction): ?>
-                    <? for ($i = 0 ; $i < 3 ; $i++): ?>
+                    <?php foreach($aActionInLoop as $day => $aAction): ?>
+                    <?php for ($i = 0 ; $i < 3 ; $i++): ?>
                     <tr>
-                        <? if ($i == 0): ?>
+                        <?php if ($i == 0): ?>
                             <th rowspan=4><?= $day ?></th>
-                        <? endif; ?>
+                        <?php endif; ?>
                         <td>
-                            <? if (!empty($aAction['scriptwriter'][$i]['chara_name']) && !empty($aAction['scriptwriter'][$i]['card'])): ?>
+                            <?php if (!empty($aAction['scriptwriter'][$i]['chara_name']) && !empty($aAction['scriptwriter'][$i]['card'])): ?>
                                 <?= $aAction['scriptwriter'][$i]['chara_name'] ?> に
                                 <?= $aAction['scriptwriter'][$i]['card'] ?>
-                            <? endif; ?>
+                            <?php endif; ?>
                         </td>
                         <td>
-                            <? if (!empty($aAction['hero'][$i]['chara_name']) && !empty($aAction['hero'][$i]['card'])): ?>
+                            <?php if (!empty($aAction['hero'][$i]['chara_name']) && !empty($aAction['hero'][$i]['card'])): ?>
                                 <?= $aAction['hero'][$i]['chara_name'] ?> に
                                 <?= $aAction['hero'][$i]['card'] ?>
-                            <? endif; ?>
+                            <?php endif; ?>
                         </td>
                     </tr>
-                    <? endfor; ?>
+                    <?php endfor; ?>
                     <tr>
                         <td colspan="2"><?= nl2br(e($aAction['memo'])) ?></td>
                     </tr>
-                    <? endforeach; ?>
+                    <?php endforeach; ?>
                 </table>
             </div>
         <?php endforeach; ?>

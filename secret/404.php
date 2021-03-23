@@ -1,4 +1,7 @@
-<?php require_once(dirname(__FILE__) . '/common.php'); ?>
+<?php
+require_once(dirname(__FILE__) . '/common.php');
+require(dirname(__FILE__) . '/top_menu.php');
+?>
 <html>
 <head>
 <?php require(SECRET_DIR.'google_analytics.php') ?>
