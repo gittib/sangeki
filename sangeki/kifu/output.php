@@ -9,11 +9,11 @@ $aChara = $_POST['chara_info'];
 $aInsidents = $_POST['insident'];
 $aAction = $_POST['action_info'];
 
-$aRule = array(
+$aRule = [
     'ruleY' => implode('or', $_POST['ruleY']),
     'ruleX1' => implode('or', $_POST['ruleX1']),
     'ruleX2' => implode('or', $_POST['ruleX2'] ?? []),
-);
+];
 
 $iShinkakuLoop = $_POST['shinkaku_loop'];
 $iTenkouseiDay = $_POST['tenkousei_day'];
@@ -83,36 +83,36 @@ function outCsv($aRule, $aChara, $aInsidents, $aAction) {
     $sCsv .= "\n登場人物\n";
     $sCsv .= "キャラ,役職,メモ\n";
     foreach ($aChara as $chara) {
-        $sCsv .= '"' . implode('","', array(
+        $sCsv .= '"' . implode('","', [
             escapeCsv($chara['name']),
             escapeCsv($chara['role']),
             escapeCsv($chara['memo']),
-        )) . "\"\n";
+        ]) . "\"\n";
     }
 
     $sCsv .= "\n事件\n";
     $sCsv .= "日数,事件,犯人\n";
     foreach ($aInsidents as $day => $insident) {
-        $sCsv .= '"' . implode('","', array(
+        $sCsv .= '"' . implode('","', [
             escapeCsv($day),
             escapeCsv($insident['name']),
             escapeCsv($insident['criminal']),
-        )) . "\"\n";
+        ]) . "\"\n";
     }
 
     $sCsv .= "\n行動カードログ\n";
-    $sCsv .= '"' . implode('","', array(
+    $sCsv .= '"' . implode('","', [
         'ループ数',
         '日数',
         '脚本家対象',
         '脚本家行動カード',
         '主人公対象',
         '主人公行動カード',
-    )) . "\"\n";
+    ]) . "\"\n";
     foreach ($aAction as $loop => $aActionInLoop) {
         foreach ($aActionInLoop as $day => $aActionInDay) {
             for ($i = 0 ; $i < 3 ; $i++) {
-                $aLine = array($loop, $day);
+                $aLine = [$loop, $day];
 
                 $aScriptWriter = $aActionInDay['scriptwriter'][$i];
                 $aLine[] = escapeCsv($aScriptWriter['chara_name']);
@@ -123,7 +123,7 @@ function outCsv($aRule, $aChara, $aInsidents, $aAction) {
                 $aLine[] = escapeCsv($aHero['card']);
                 $sCsv .= '"' . implode('","', $aLine) . "\"\n";
             }
-            $aLine = array($loop, $day, "メモ： " . escapeCsv($aActionInDay['memo']));
+            $aLine = [$loop, $day, "メモ： " . escapeCsv($aActionInDay['memo'])];
             $sCsv .= '"' . implode('","', $aLine) . "\"\n";
         }
     }
@@ -163,7 +163,7 @@ function outJson($aRule, $aChara, $aInsidents, $aAction) {
     $sFileName = 'sangeki_record-' . date('Ymd_His') . '.json';
     header('content-type: application/json; charset=utf-8');
     header("Content-Disposition: attachment; filename={$sFileName}");
-    echo json_encode(array(
+    echo json_encode([
         'set' => $_POST['set'],
         'set_name' => getTragedySetName($_POST['set']),
         'loop' => $_POST['loop'],
@@ -172,7 +172,7 @@ function outJson($aRule, $aChara, $aInsidents, $aAction) {
         'chara' => array_values($aChara),
         'insidents' => $aInsidents,
         'action' => $aAction,
-    ), JSON_UNESCAPED_UNICODE);
+    ], JSON_UNESCAPED_UNICODE);
 }
 
 function outHtml($aRule, $aChara, $aInsidents, $aAction) {

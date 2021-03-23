@@ -39,7 +39,5 @@ if (!empty($sLocationUrl)) {
     exit;
 } else {
     // 想定外のパターン
-    header("HTTP/1.1 404 Not Found");
-    require(SECRET_DIR.'404.php');
-    exit;
+    abort();
 }

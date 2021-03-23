@@ -13,24 +13,24 @@ $errors = isValid($_GET);
 if (empty($errors)) {
     $aSelectedCharacter = getCharacterList($_GET['ch']);
 
-    $aTmp = array();
+    $aTmp = [];
     foreach (getBoardMaster() as $key => $val) {
         $aTmp[$key] = $val;
     }
     foreach ($aSelectedCharacter as $key => $val) {
         $aTmp[$key] = $val;
     }
-    $oKifu = (object)array(
+    $oKifu = (object)[
         'set' => $_GET['set'],
         'loop' => $_GET['loop'],
         'day' => $_GET['day'],
         'chara' => $aSelectedCharacter,
         'target' => $aTmp,
-    );
+    ];
     $iRuleY = $oKifu->set == 'FS' ? 3 : 5;
-    $aRuleY = array();
-    $aRuleX = array();
-    $aRole = array();
+    $aRuleY = [];
+    $aRuleX = [];
+    $aRole = [];
     foreach ($aRuleRoleMaster[$_GET['set']] as $sRuleName => $aVal) {
         if (count($aRuleY) < $iRuleY) {
             $aRuleY[] = $sRuleName;
@@ -139,7 +139,7 @@ if (empty($errors)) {
                             <input type="hidden" name="insident[<?= $d ?>][name]" value="<?= $sInsident ?>">
                             <select name="insident[<?= $d ?>][criminal]">
                                 <option value="">？？？？？</option>
-                                <?php if (in_array($sInsident, array('狂気の夜', '呪いの目覚め', '穢れの噴出', '死者の黙示録'))): ?>
+                                <?php if (in_array($sInsident, ['狂気の夜', '呪いの目覚め', '穢れの噴出', '死者の黙示録'])): ?>
                                     <?php foreach (getBoardMaster() as $id => $board): ?>
                                     <option value="<?= $id ?>"><?= e($board) ?>の群像</option>
                                     <?php endforeach; ?>
@@ -195,7 +195,7 @@ if (empty($errors)) {
                                 </tr>
                             </thead>
                             <?php foreach ($oKifu->chara as $id => $chara): ?>
-                            <tbody data-chara_id="<?= $id ?>" <?= in_array($id, array('1001', '1307')) ? ' style="display:none;" ' : '' ?>>
+                            <tbody data-chara_id="<?= $id ?>" <?= in_array($id, ['1001', '1307']) ? ' style="display:none;" ' : '' ?>>
                                 <tr>
                                     <td class="role_select">
                                         <select name="chara_info[<?= $id ?>][role]">
