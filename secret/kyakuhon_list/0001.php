@@ -3,6 +3,7 @@
 $oSangeki = (object)[
     'title' => '学校の惨劇',
     'writer' => 'ペンスキー',
+    'secret' => true,
     'difficulity' => 1,
     'set' => 'FS',
     'rule' => [
@@ -41,5 +42,28 @@ $oSangeki = (object)[
     'advice' => (object)[
         'summary' => "",
         'detail' => "",
+        'victoryConditions' => [
+            [
+                'condition' => '守るべき場所',
+                'way' => [
+                    '学校に暗躍カウンターを２つ以上置く',
+                ],
+            ],
+            [
+                'condition' => 'キーパーソンの殺害',
+                'way' => [
+                    '自殺',
+                ],
+            ],
+        ],
+        'template' => [
+            '1ループ目' => [
+                1 => [
+                    'アイドル' => '不安+1',
+                    '学校' => '暗躍+1',
+                    '女子学生' => '不安+1',
+                ],
+            ],
+        ],
     ],
 ];
