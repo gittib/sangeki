@@ -3,13 +3,8 @@ define('SECRET_DIR', realpath('../../secret').'/');
 require_once(SECRET_DIR.'common.php');
 require_once(SECRET_DIR.'sangeki_check.php');
 
-function redirectToList() {
-    header('Location: .');
-    exit;
-}
-
 if (!isset($_GET['id'])) {
-    redirectToList();
+    abort();
 }
 
 require_once(SECRET_DIR.'detail_util.php');
@@ -17,25 +12,25 @@ require_once(SECRET_DIR.'detail_util.php');
 $id = $_GET['id'];
 $kyakuhonPath = SECRET_DIR.'kyakuhon_list/'.$id.'.php';
 if (!file_exists($kyakuhonPath)) {
-    redirectToList();
+    abort();
 }
 require($kyakuhonPath);
 if (empty($oSangeki)) {
-    redirectToList();
+    abort();
 } else if (isProd() && !empty($oSangeki->secret)) {
     // 本番環境では非公開脚本の直飛びも禁止
-    redirectToList();
+    abort();
 }
 
 $oSangeki->rule_str = getTragedySetName($oSangeki->set);
 
-$aInitPlace = array(
-    'hospital' => array(),
-    'shrine' => array(),
-    'city' => array(),
-    'school' => array(),
-    'other' => array(),
-);
+$aInitPlace = [
+    'hospital' => [],
+    'shrine' => [],
+    'city' => [],
+    'school' => [],
+    'other' => [],
+];
 $sOmonoTerritory = '';
 foreach ($oSangeki->character as $name => $val) {
     list($role, $z, $y, $f) = roleSpec($val);
@@ -58,6 +53,9 @@ foreach ($oSangeki->character as $name => $val) {
 $aErrorMessage = rolesCountCheck($oSangeki);
 $sNotice = exCharacterCheck($oSangeki);
 if (!empty($oSangeki->advice->notice)) {
+    if (!empty($sNotice)) {
+        $sNotice .= "\n";
+    }
     $sNotice .= $oSangeki->advice->notice;
 }
 ?>
@@ -95,7 +93,7 @@ if (!empty($oSangeki->advice->notice)) {
             </tr>
         </table>
         <h3>特殊ルール</h3>
-        <div class="special_rule"><?
+        <div class="special_rule"><?php
         if (!empty($oSangeki->special_rule)) {
             echo nl2br(e($oSangeki->special_rule));
         } else {
@@ -112,10 +110,10 @@ if (!empty($oSangeki->advice->notice)) {
                 </tr>
             </thead>
             <tbody>
-                <? for ($i = 1 ; $i <= $oSangeki->day ; $i++): ?>
+                <?php for ($i = 1 ; $i <= $oSangeki->day ; $i++): ?>
                 <tr>
                     <th><?= $i ?></th>
-                    <td><?
+                    <td><?php
                         if (isset($oSangeki->incident[$i])) {
                             if ($oSangeki->incident[$i]['name'] == '偽装事件' && !empty($oSangeki->incident[$i]['note'])) {
                                 echo $oSangeki->incident[$i]['note'];
@@ -126,7 +124,7 @@ if (!empty($oSangeki->advice->notice)) {
                         }
                     ?></td>
                 </tr>
-                <? endfor; ?>
+                <?php endfor; ?>
             </tbody>
         </table>
     </div>
@@ -148,7 +146,7 @@ if (!empty($oSangeki->advice->notice)) {
             <div class="difficulity">
                 難易度：
                 <span class="difficulity_name"><?= difficulityName($oSangeki->difficulity) ?></span>
-                <span><? for ($i = 1 ; $i <= 8 ; $i++) {
+                <span><?php for ($i = 1 ; $i <= 8 ; $i++) {
                     if ($i <= $oSangeki->difficulity) {
                         echo '★';
                     } else {
@@ -184,7 +182,7 @@ if (!empty($oSangeki->advice->notice)) {
                     </tr>
                 </thead>
                 <tbody>
-                    <? foreach ($oSangeki->character as $name => $val): ?>
+                    <?php foreach ($oSangeki->character as $name => $val): ?>
                     <tr>
                         <td><?= $name ?></td>
                         <td class="role <?= $val['roleClass'] ?>">
@@ -195,7 +193,7 @@ if (!empty($oSangeki->advice->notice)) {
                         </td>
                         <td><?= e(empty($val['note']) ? '' : $val['note']) ?></td>
                     </tr>
-                    <? endforeach; ?>
+                    <?php endforeach; ?>
                 </tbody>
             </table>
 
@@ -205,13 +203,13 @@ if (!empty($oSangeki->advice->notice)) {
                     <tr>
                         <td>
                         <strong class="place_name">病院</strong><?= $sOmonoTerritory == 'hospital' ? '<span class="territory">大</span>' : '' ?><br>
-                            <? foreach ($aInitPlace['hospital'] as $val) {
+                            <?php foreach ($aInitPlace['hospital'] as $val) {
                                 echo '<span class="chara">' . e($val) . '</span>';
                             } ?>
                         </td>
                         <td>
                             <strong class="place_name">神社</strong><?= $sOmonoTerritory == 'shrine' ? '<span class="territory">大</span>' : '' ?><br>
-                            <? foreach ($aInitPlace['shrine'] as $val) {
+                            <?php foreach ($aInitPlace['shrine'] as $val) {
                                 echo '<span class="chara">' . e($val) . '</span>';
                             } ?>
                         </td>
@@ -219,27 +217,27 @@ if (!empty($oSangeki->advice->notice)) {
                     <tr>
                         <td>
                             <strong class="place_name">都市</strong><?= $sOmonoTerritory == 'city' ? '<span class="territory">大</span>' : '' ?><br>
-                            <? foreach ($aInitPlace['city'] as $val) {
+                            <?php foreach ($aInitPlace['city'] as $val) {
                                 echo '<span class="chara">' . e($val) . '</span>';
                             } ?>
                         </td>
                         <td>
                             <strong class="place_name">学校</strong><?= $sOmonoTerritory == 'school' ? '<span class="territory">大</span>' : '' ?><br>
-                            <? foreach ($aInitPlace['school'] as $val) {
+                            <?php foreach ($aInitPlace['school'] as $val) {
                                 echo '<span class="chara">' . e($val) . '</span>';
                             } ?>
                         </td>
                     </tr>
-                    <? if (!empty($aInitPlace['other'])): ?>
+                    <?php if (!empty($aInitPlace['other'])): ?>
                     <tr>
                         <td colspan="2" class="special_place">
                             <strong class="place_name">特殊</strong>:
-                            <? foreach ($aInitPlace['other'] as $val) {
+                            <?php foreach ($aInitPlace['other'] as $val) {
                                 echo '<span class="chara">' . e($val) . '</span>';
                             } ?>
                         </td>
                     </tr>
-                    <? endif; ?>
+                    <?php endif; ?>
                 </tbody>
             </table>
 
@@ -253,10 +251,10 @@ if (!empty($oSangeki->advice->notice)) {
                     </tr>
                 </thead>
                 <tbody>
-                    <? foreach ($oSangeki->incident as $day => $incident): ?>
+                    <?php foreach ($oSangeki->incident as $day => $incident): ?>
                     <tr>
                         <th><?= $day ?></th>
-                        <td><?
+                        <td><?php
                             echo e($incident['name']);
                             if (!empty($incident['note'])) {
                                 echo '<br><span class="note">(' . e($incident['note']) . ')</span>';
@@ -264,66 +262,66 @@ if (!empty($oSangeki->advice->notice)) {
                         ?></td>
                         <td><?= e($incident['criminal']) ?></td>
                     </tr>
-                    <? endforeach; ?>
+                    <?php endforeach; ?>
                 </tbody>
             </table>
         </div>
     </div>
     <div class="private advice">
         <h3>シナリオの特徴</h3>
-        <? if (!empty($sNotice)): ?>
+        <?php if (!empty($sNotice)): ?>
         <div class="notice">
             <?= nl2br(e($sNotice)) ?>
         </div>
-        <? endif; ?>
+        <?php endif; ?>
         <div><?= empty($oSangeki->advice->summary) ? 'まだ記載がありません…' : decorateSentence($oSangeki->advice->summary) ?></div>
         <h3>脚本家への指針</h3>
         <div><?= empty($oSangeki->advice->detail) ? 'まだ記載がありません…' : decorateSentence($oSangeki->advice->detail) ?></div>
-        <? if (!empty($oSangeki->advice->victoryConditions)): ?>
+        <?php if (!empty($oSangeki->advice->victoryConditions)): ?>
         <div class="victory_conditions">
             <h3>脚本家の勝利条件</h3>
             <ul>
-            <? $i = 1; ?>
-            <? foreach ($oSangeki->advice->victoryConditions as $val): ?>
+            <?php $i = 1; ?>
+            <?php foreach ($oSangeki->advice->victoryConditions as $val): ?>
                 <li>
                     <div class="num"><?= $i++ ?></div>
                     <div class="condition"><?= e($val['condition']) ?></div>
                     <div class="way"><?= e(implode('、', $val['way'])) ?></div>
                 </li>
-            <? endforeach; ?>
+            <?php endforeach; ?>
             </ul>
         </div>
-        <? endif; ?>
-        <? if (!empty($oSangeki->advice->template)): ?>
+        <?php endif; ?>
+        <?php if (!empty($oSangeki->advice->template)): ?>
         <div class="template">
             <h3>置き方テンプレ</h3>
             <dl>
-                <? foreach ($oSangeki->advice->template as $loop => $aVal): ?>
+                <?php foreach ($oSangeki->advice->template as $loop => $aVal): ?>
                     <dt><?= $loop?></dt>
                     <dd><table>
-                    <? foreach ($aVal as $day => $aCards): ?>
+                    <?php foreach ($aVal as $day => $aCards): ?>
                         <tr>
-                        <? if ($day == 0): ?>
+                        <?php if ($day == 0): ?>
                             <td colspan="4">ループ開始時:<?= $aCards ?></td>
-                        <? else: ?>
+                        <?php else: ?>
                             <td><?= $day == 1 ? '初日' : $day . '日' ?></td>
-                            <?
+                            <?php
                             $aKey = array_keys($aCards);
                             for ($i = 0 ; $i < 3 ; $i++): ?>
-                                <td><? if (!empty($aKey[$i]) && !empty($aCards[$aKey[$i]])) {
+                                <td><?php if (!empty($aKey[$i]) && !empty($aCards[$aKey[$i]])) {
                                     echo $aKey[$i] . '<br>「' . $aCards[$aKey[$i]] . '」';
                                 } else {
                                     echo '　　　　';
                                 }?></td>
-                            <? endfor; ?>
-                        <? endif; ?>
+                            <?php endfor; ?>
+                        <?php endif; ?>
                         </tr>
-                    <? endforeach; ?>
+                    <?php endforeach; ?>
                     </table></dd>
-                <? endforeach; ?>
+                <?php endforeach; ?>
             </dl>
         </div>
-        <? endif; ?>
+        <?php endif; ?>
     </div>
 <?php require(SECRET_DIR.'sangeki_footer.php') ?>
     <script>

@@ -1,3 +1,4 @@
 
 secret/kyakuhon_list/9*.php
 .env.prod
+.env.dev

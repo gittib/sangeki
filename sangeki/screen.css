@@ -98,6 +98,10 @@ ul.question_list > li > div.a {
 ul.question_list > li > div.a label {
     padding-left: 8px;
 }
+img.target_blank_link {
+    display: inline-block;
+    height: 1.2rem;
+}
 
 
 
@@ -519,6 +523,7 @@ body.detail .private.advice h3 {
     margin-top: 20px;
 }
 body.detail .private.advice .notice {
+    margin-bottom: 1rem;
     color: red;
 }
 body.detail .private.advice .victory_conditions {
@@ -670,9 +675,16 @@ body.kifu_input .kifu_wrapper .character_list tbody td.role_check {
     text-align: center;
     padding: 6px;
 }
+body.kifu_input .kifu_wrapper .character_list tbody td.role_check p {
+    text-align: center;
+    height: 1.6rem;
+}
 body.kifu_input .kifu_wrapper .character_list tbody td input.memo {
     width: 95%;
     margin-left: 4px;
+}
+body.kifu_input .kifu_wrapper .character_list .ignore_role {
+    background-color: #888;
 }
 body.kifu_input .kifu_wrapper dl > dt {
     padding-top: 12px;
@@ -784,6 +796,14 @@ body.column dl.tips > dt {
 }
 body.column dl.tips > dd {
     margin-bottom: 3.2rem;
+}
+
+
+body.not_found h1 {
+    margin: 8px;
+}
+body.not_found > p {
+    margin: 16px 12px;
 }
 
 

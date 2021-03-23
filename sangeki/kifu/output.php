@@ -9,11 +9,11 @@ $aChara = $_POST['chara_info'];
 $aInsidents = $_POST['insident'];
 $aAction = $_POST['action_info'];
 
-$aRule = array(
+$aRule = [
     'ruleY' => implode('or', $_POST['ruleY']),
     'ruleX1' => implode('or', $_POST['ruleX1']),
     'ruleX2' => implode('or', $_POST['ruleX2'] ?? []),
-);
+];
 
 $iShinkakuLoop = $_POST['shinkaku_loop'];
 $iTenkouseiDay = $_POST['tenkousei_day'];
@@ -65,7 +65,7 @@ case 'json':
     outJson($aRule, $aChara, $aInsidents, $aAction);
     break;
 case 'html':
-    outHtml($aRule, $aChara, $aInsidents, $aAction, $aTopMenu);
+    outHtml($aRule, $aChara, $aInsidents, $aAction);
     break;
 }
 
@@ -83,36 +83,36 @@ function outCsv($aRule, $aChara, $aInsidents, $aAction) {
     $sCsv .= "\n登場人物\n";
     $sCsv .= "キャラ,役職,メモ\n";
     foreach ($aChara as $chara) {
-        $sCsv .= '"' . implode('","', array(
+        $sCsv .= '"' . implode('","', [
             escapeCsv($chara['name']),
             escapeCsv($chara['role']),
             escapeCsv($chara['memo']),
-        )) . "\"\n";
+        ]) . "\"\n";
     }
 
     $sCsv .= "\n事件\n";
     $sCsv .= "日数,事件,犯人\n";
     foreach ($aInsidents as $day => $insident) {
-        $sCsv .= '"' . implode('","', array(
+        $sCsv .= '"' . implode('","', [
             escapeCsv($day),
             escapeCsv($insident['name']),
             escapeCsv($insident['criminal']),
-        )) . "\"\n";
+        ]) . "\"\n";
     }
 
     $sCsv .= "\n行動カードログ\n";
-    $sCsv .= '"' . implode('","', array(
+    $sCsv .= '"' . implode('","', [
         'ループ数',
         '日数',
         '脚本家対象',
         '脚本家行動カード',
         '主人公対象',
         '主人公行動カード',
-    )) . "\"\n";
+    ]) . "\"\n";
     foreach ($aAction as $loop => $aActionInLoop) {
         foreach ($aActionInLoop as $day => $aActionInDay) {
             for ($i = 0 ; $i < 3 ; $i++) {
-                $aLine = array($loop, $day);
+                $aLine = [$loop, $day];
 
                 $aScriptWriter = $aActionInDay['scriptwriter'][$i];
                 $aLine[] = escapeCsv($aScriptWriter['chara_name']);
@@ -123,7 +123,7 @@ function outCsv($aRule, $aChara, $aInsidents, $aAction) {
                 $aLine[] = escapeCsv($aHero['card']);
                 $sCsv .= '"' . implode('","', $aLine) . "\"\n";
             }
-            $aLine = array($loop, $day, "メモ： " . escapeCsv($aActionInDay['memo']));
+            $aLine = [$loop, $day, "メモ： " . escapeCsv($aActionInDay['memo'])];
             $sCsv .= '"' . implode('","', $aLine) . "\"\n";
         }
     }
@@ -163,7 +163,7 @@ function outJson($aRule, $aChara, $aInsidents, $aAction) {
     $sFileName = 'sangeki_record-' . date('Ymd_His') . '.json';
     header('content-type: application/json; charset=utf-8');
     header("Content-Disposition: attachment; filename={$sFileName}");
-    echo json_encode(array(
+    echo json_encode([
         'set' => $_POST['set'],
         'set_name' => getTragedySetName($_POST['set']),
         'loop' => $_POST['loop'],
@@ -172,19 +172,19 @@ function outJson($aRule, $aChara, $aInsidents, $aAction) {
         'chara' => array_values($aChara),
         'insidents' => $aInsidents,
         'action' => $aAction,
-    ), JSON_UNESCAPED_UNICODE);
+    ], JSON_UNESCAPED_UNICODE);
 }
 
-function outHtml($aRule, $aChara, $aInsidents, $aAction, $aTopMenu) {
+function outHtml($aRule, $aChara, $aInsidents, $aAction) {
 ?>
 <html>
 <head>
-<? require(SECRET_DIR.'google_analytics.php') ?>
-<? require(SECRET_DIR.'sangeki_head.php'); ?>
+<?php require(SECRET_DIR.'google_analytics.php') ?>
+<?php require(SECRET_DIR.'sangeki_head.php'); ?>
     <title>惨劇RoopeR 棋譜 - <?= SITE_NAME ?></title>
 </head>
 <body class="kifu_output">
-<? require(SECRET_DIR.'sangeki_header.php'); ?>
+<?php require(SECRET_DIR.'sangeki_header.php'); ?>
     <div class="rule_wrapper">
         <table>
             <tr><th class="table_title" colspan="2"><p>ルール</p></th></tr>
@@ -228,12 +228,12 @@ function outHtml($aRule, $aChara, $aInsidents, $aAction, $aTopMenu) {
                 <th>人物</th>
                 <th>役職</th>
             </tr>
-            <? foreach($aChara as $chara): ?>
+            <?php foreach($aChara as $chara): ?>
             <tr>
                 <td><?= $chara['name'] ?></td>
                 <td><?= $chara['role'] ?></td>
             </tr>
-            <? endforeach; ?>
+            <?php endforeach; ?>
         </table>
     </div>
     <div class="kifu_out_wrapper">
@@ -247,30 +247,30 @@ function outHtml($aRule, $aChara, $aInsidents, $aAction, $aTopMenu) {
                         <th>脚本家</th>
                         <th>主人公</th>
                     </tr>
-                    <? foreach($aActionInLoop as $day => $aAction): ?>
-                    <? for ($i = 0 ; $i < 3 ; $i++): ?>
+                    <?php foreach($aActionInLoop as $day => $aAction): ?>
+                    <?php for ($i = 0 ; $i < 3 ; $i++): ?>
                     <tr>
-                        <? if ($i == 0): ?>
+                        <?php if ($i == 0): ?>
                             <th rowspan=4><?= $day ?></th>
-                        <? endif; ?>
+                        <?php endif; ?>
                         <td>
-                            <? if (!empty($aAction['scriptwriter'][$i]['chara_name']) && !empty($aAction['scriptwriter'][$i]['card'])): ?>
+                            <?php if (!empty($aAction['scriptwriter'][$i]['chara_name']) && !empty($aAction['scriptwriter'][$i]['card'])): ?>
                                 <?= $aAction['scriptwriter'][$i]['chara_name'] ?> に
                                 <?= $aAction['scriptwriter'][$i]['card'] ?>
-                            <? endif; ?>
+                            <?php endif; ?>
                         </td>
                         <td>
-                            <? if (!empty($aAction['hero'][$i]['chara_name']) && !empty($aAction['hero'][$i]['card'])): ?>
+                            <?php if (!empty($aAction['hero'][$i]['chara_name']) && !empty($aAction['hero'][$i]['card'])): ?>
                                 <?= $aAction['hero'][$i]['chara_name'] ?> に
                                 <?= $aAction['hero'][$i]['card'] ?>
-                            <? endif; ?>
+                            <?php endif; ?>
                         </td>
                     </tr>
-                    <? endfor; ?>
+                    <?php endfor; ?>
                     <tr>
                         <td colspan="2"><?= nl2br(e($aAction['memo'])) ?></td>
                     </tr>
-                    <? endforeach; ?>
+                    <?php endforeach; ?>
                 </table>
             </div>
         <?php endforeach; ?>

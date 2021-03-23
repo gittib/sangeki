@@ -255,7 +255,7 @@ function exCharacterCheck($oSangeki) {
     if (empty($aExCharacters)) {
         return '';
     } else {
-        return 'プロモーションカード「' . implode('」「', array_unique($aExCharacters)) . "」を使用します。\n\n";
+        return 'プロモーションカード「' . implode('」「', array_unique($aExCharacters)) . "」を使用します。\n";
     }
 }
 
