@@ -98,6 +98,10 @@ ul.question_list > li > div.a {
 ul.question_list > li > div.a label {
     padding-left: 8px;
 }
+img.target_blank_link {
+    display: inline-block;
+    height: 1.2rem;
+}
 
 
 

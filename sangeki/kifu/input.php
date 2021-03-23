@@ -82,7 +82,7 @@ if (empty($errors)) {
                     惨劇セット：<?= getTragedySetName($oKifu->set) ?>
                     <a href="redirect.php?type=summary&set=<?= $oKifu->set ?>" target="_blank">
                         Summary 
-                        <img src="<?= TOP_PATH ?>images/target_blank.svg">
+                        <img class="target_blank_link" src="<?= TOP_PATH ?>images/target_blank.svg">
                     </a>
                 </p>
                 <p><?= $oKifu->loop ?>ループ <?= $oKifu->day ?>日間</p>
