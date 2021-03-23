@@ -397,7 +397,7 @@ if (empty($errors)) {
     $('.role_switch').on('change', function () {
         const $self = $(this);
         const selector = '.role_index_' + $self.data('role_index');
-        if ($self.val()) {
+        if ($self.prop('checked')) {
             $(selector).removeClass('ignore_role');
         } else {
             $(selector).addClass('ignore_role');
