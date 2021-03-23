@@ -1,6 +1,10 @@
 <?php
 session_start();
 
+if (!defined('SECRET_DIR')) {
+    define('SECRET_DIR', realpath('.').'/');
+}
+
 if (!defined('SITE_NAME')) {
     define('SITE_NAME', 'ペンスキーの惨劇RoopeR脚本部屋');
     $aPath = explode('/', $_SERVER['REQUEST_URI']);
@@ -49,3 +53,8 @@ function difficulityName($difficulity) {
     }
 }
 
+function abort() {
+    header("HTTP/1.1 404 Not Found");
+    require(dirname(__FILE__) . '/404.php');
+    exit;
+}
