@@ -673,11 +673,11 @@ body.kifu_input .kifu_wrapper .character_list tbody td {
 }
 body.kifu_input .kifu_wrapper .character_list tbody td.role_check {
     text-align: center;
-    padding: 6px;
+    padding: 0 6px;
 }
 body.kifu_input .kifu_wrapper .character_list tbody td.role_check p {
     text-align: center;
-    height: 1rem;
+    height: 1.4rem;
 }
 body.kifu_input .kifu_wrapper .character_list tbody td input.memo {
     width: 95%;
