@@ -3,13 +3,14 @@ define('SECRET_DIR', realpath('../../secret').'/');
 require_once(SECRET_DIR.'common.php');
 require_once(SECRET_DIR.'sangeki_check.php');
 
-function redirectToList() {
-    header('Location: .');
+function senarioNotFound() {
+    header("HTTP/1.1 404 Not Found");
+    require(SECRET_DIR.'404.php');
     exit;
 }
 
 if (!isset($_GET['id'])) {
-    redirectToList();
+    senarioNotFound();
 }
 
 require_once(SECRET_DIR.'detail_util.php');
@@ -17,14 +18,14 @@ require_once(SECRET_DIR.'detail_util.php');
 $id = $_GET['id'];
 $kyakuhonPath = SECRET_DIR.'kyakuhon_list/'.$id.'.php';
 if (!file_exists($kyakuhonPath)) {
-    redirectToList();
+    senarioNotFound();
 }
 require($kyakuhonPath);
 if (empty($oSangeki)) {
-    redirectToList();
+    senarioNotFound();
 } else if (isProd() && !empty($oSangeki->secret)) {
     // 本番環境では非公開脚本の直飛びも禁止
-    redirectToList();
+    senarioNotFound();
 }
 
 $oSangeki->rule_str = getTragedySetName($oSangeki->set);
