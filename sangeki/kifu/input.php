@@ -180,13 +180,18 @@ if (empty($errors)) {
                         <table class="character_list">
                             <thead>
                                 <tr>
-                                    <th>役職</th>
-                                    <th>キャラ</th>
-                                    <?php foreach ($aRole as $role): ?>
-                                    <th><span class="vertical_text"><?= $role ?></span></th>
+                                    <th rowspan="2">役職</th>
+                                    <th rowspan="2">キャラ</th>
+                                    <?php foreach ($aRole as $key => $role): ?>
+                                    <th class="role_index_<?= $key ?>"><span class="vertical_text"><?= $role ?></span></th>
                                     <?php endforeach; ?>
-                                    <th>キャラ</th>
-                                    <th class="memo">備考</th>
+                                    <th rowspan="2">キャラ</th>
+                                    <th rowspan="2" class="memo">備考</th>
+                                </tr>
+                                <tr>
+                                    <?php foreach ($aRole as $key => $role): ?>
+                                    <th class="role_index_<?= $key ?>"><input class="role_switch" type="checkbox" checked="checked" data-role_index="<?= $key ?>"></th>
+                                    <?php endforeach; ?>
                                 </tr>
                             </thead>
                             <?php foreach ($oKifu->chara as $id => $chara): ?>
@@ -202,8 +207,8 @@ if (empty($errors)) {
                                         </select>
                                     </td>
                                     <td class="chara_name"><span><?= e($chara) ?></span></td>
-                                    <?php foreach ($aRole as $role): ?>
-                                    <td class="role_check"><p>　</p></td>
+                                    <?php foreach ($aRole as $key => $role): ?>
+                                    <td class="role_check role_index_<?= $key ?>"><p>　</p></td>
                                     <?php endforeach; ?>
                                     <td class="chara_name"><span><?= e($chara) ?></span></td>
                                     <td><input class="memo" type="text" name="chara_info[<?= $id ?>][memo]" placeholder="<?= e($chara) ?>に関するメモ"></td>
@@ -387,6 +392,15 @@ if (empty($errors)) {
         default:
             $self.text('○');
             break;
+        }
+    });
+    $('.role_switch').on('change', function () {
+        const $self = $(this);
+        const selector = '.role_index_' + $self.data('role_index');
+        if ($self.val()) {
+            $(selector).removeClass('ignore_role');
+        } else {
+            $(selector).addClass('ignore_role');
         }
     });
     $('.save_action').on('click', function () {
