@@ -683,6 +683,9 @@ body.kifu_input .kifu_wrapper .character_list tbody td input.memo {
     width: 95%;
     margin-left: 4px;
 }
+body.kifu_input .kifu_wrapper .character_list .ignore_role {
+    background-color: #888;
+}
 body.kifu_input .kifu_wrapper dl > dt {
     padding-top: 12px;
 }
