@@ -788,6 +788,14 @@ body.column dl.tips > dd {
 }
 
 
+body.not_found h1 {
+    margin: 8px;
+}
+body.not_found > p {
+    margin: 16px 12px;
+}
+
+
 footer {
     margin-bottom: 32px;
 }

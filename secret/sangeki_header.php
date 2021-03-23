@@ -1,4 +1,7 @@
-<?php require_once(dirname(__FILE__) . '/common.php'); ?>
+<?php
+require_once(dirname(__FILE__) . '/common.php');
+require(dirname(__FILE__) . '/top_menu.php');
+?>
 <header>
     <div id="nav-drawer">
     <h1><a href="<?= TOP_PATH ?>"><?= SITE_NAME ?></a></h1>
