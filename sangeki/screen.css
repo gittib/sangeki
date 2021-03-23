@@ -675,6 +675,10 @@ body.kifu_input .kifu_wrapper .character_list tbody td.role_check {
     text-align: center;
     padding: 6px;
 }
+body.kifu_input .kifu_wrapper .character_list tbody td.role_check p {
+    text-align: center;
+    height: 1rem;
+}
 body.kifu_input .kifu_wrapper .character_list tbody td input.memo {
     width: 95%;
     margin-left: 4px;

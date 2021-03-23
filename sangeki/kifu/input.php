@@ -203,7 +203,7 @@ if (empty($errors)) {
                                     </td>
                                     <td class="chara_name"><span><?= e($chara) ?></span></td>
                                     <?php foreach ($aRole as $role): ?>
-                                    <td class="role_check">　</td>
+                                    <td class="role_check"><p>　</p></td>
                                     <?php endforeach; ?>
                                     <td class="chara_name"><span><?= e($chara) ?></span></td>
                                     <td><input class="memo" type="text" name="chara_info[<?= $id ?>][memo]" placeholder="<?= e($chara) ?>に関するメモ"></td>
@@ -372,7 +372,7 @@ if (empty($errors)) {
             $('tbody[data-chara_id=1307]').hide();
         }
     });
-    $('.character_list .role_check').on('click', function () {
+    $('.character_list .role_check > p').on('click', function () {
         var $self = $(this);
         switch ($self.text()) {
         case '○':
