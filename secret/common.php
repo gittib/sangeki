@@ -8,6 +8,7 @@ if (!defined('SECRET_DIR')) {
 if (!defined('SITE_NAME')) {
     define('SITE_NAME', 'ペンスキーの惨劇RoopeR脚本部屋');
     $aPath = explode('/', $_SERVER['REQUEST_URI']);
+    define('SITE_DOMAIN', $aPath[0]);
     define('TOP_PATH', '/'.$aPath[1].'/');
 }
 
