@@ -40,14 +40,14 @@ $aSet = array_keys($aRuleRoleMaster);
             </select>
             <br>
             <h3>事件リスト</h3>
-            <ul class="insident_list">
+            <ul class="incident_list">
                 <?php for ($i = 1 ; $i <= 8 ; $i++): ?>
                 <li data-day="<?= $i ?>" style="display:none">
-                    <?= $i ?>日：<select class="insident" name="insident[<?= $i ?>]">
+                    <?= $i ?>日：<select class="incident" name="incident[<?= $i ?>]">
                         <option> </option>
-                        <?php foreach ($aInsidentMaster as $rule => $aInsidents): ?>
-                            <?php foreach ($aInsidents as $insident): ?>
-                                <option style="display:none;" class="<?= $rule ?>"><?= $insident ?></option>
+                        <?php foreach ($aIncidentMaster as $rule => $aIncidents): ?>
+                            <?php foreach ($aIncidents as $incident): ?>
+                                <option style="display:none;" class="<?= $rule ?>"><?= $incident ?></option>
                             <?php endforeach; ?>
                         <?php endforeach; ?>
                     </select>
@@ -79,22 +79,22 @@ $aSet = array_keys($aRuleRoleMaster);
 <?php require(SECRET_DIR.'sangeki_footer.php') ?>
 <script>
 $(function() {
-    var $aInsidents = <?= json_encode($aInsidentMaster) ?>;
+    var $aIncidents = <?= json_encode($aIncidentMaster) ?>;
     $('select[name=set]').on('change', function () {
         var s = $(this).val();
-        var $select = $('select.insident');
+        var $select = $('select.incident');
         $select.empty();
         $select.append('<option> </option>');
-        $.each($aInsidents[s], function (k,v) {
+        $.each($aIncidents[s], function (k,v) {
             $select.append('<option>'+v+'</option>');
         });
     });
     $('select[name=day]').on('change', function () {
         var day = $(this).val();
-        var $insidentPlans = $('.insident_list > li');
-        $insidentPlans.hide();
+        var $incidentPlans = $('.incident_list > li');
+        $incidentPlans.hide();
         for (var i = 1 ; i <= day ; i++) {
-            $insidentPlans.filter('[data-day='+i+']').show();
+            $incidentPlans.filter('[data-day='+i+']').show();
         }
     });
 });

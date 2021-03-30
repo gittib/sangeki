@@ -47,7 +47,7 @@ if (empty($errors)) {
     }
     $aRole = array_unique($aRole);
 
-    $aInsidents = $aInsidentMaster[$oKifu->set];
+    $aIncidents = $aIncidentMaster[$oKifu->set];
 }
 ?>
 <html>
@@ -125,25 +125,25 @@ if (empty($errors)) {
                   <?php endif; ?>
                 </ul>
             </div>
-            <div class="insident_wrapper">
+            <div class="incident_wrapper">
                 <h3>事件リスト</h3>
-                <table class="insident_list">
+                <table class="incident_list">
                     <thead>
                         <th>日付</th>
                         <th>事件名</th>
                         <th>犯人</th>
                     </thead>
                     <?php for ($d = 1 ; $d <= $oKifu->day ; $d++): ?>
-                    <?php $sInsident = empty($_GET['insident'][$d]) ? '' : $_GET['insident'][$d]; ?>
+                    <?php $sIncident = empty($_GET['incident'][$d]) ? '' : $_GET['incident'][$d]; ?>
                     <tbody>
                         <th><?= $d ?></th>
-                        <td><?= $sInsident ?></td>
+                        <td><?= $sIncident ?></td>
                         <td>
-                            <?php if (!empty($sInsident)): ?>
-                            <input type="hidden" name="insident[<?= $d ?>][name]" value="<?= $sInsident ?>">
-                            <select name="insident[<?= $d ?>][criminal]">
+                            <?php if (!empty($sIncident)): ?>
+                            <input type="hidden" name="incident[<?= $d ?>][name]" value="<?= $sIncident ?>">
+                            <select name="incident[<?= $d ?>][criminal]">
                                 <option value="">？？？？？</option>
-                                <?php if (in_array($sInsident, ['狂気の夜', '呪いの目覚め', '穢れの噴出', '死者の黙示録'])): ?>
+                                <?php if (in_array($sIncident, ['狂気の夜', '呪いの目覚め', '穢れの噴出', '死者の黙示録'])): ?>
                                     <?php foreach (getBoardMaster() as $id => $board): ?>
                                     <option value="<?= $id ?>"><?= e($board) ?>の群像</option>
                                     <?php endforeach; ?>

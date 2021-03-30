@@ -6,7 +6,7 @@ require_once(SECRET_DIR.'detail_util.php');
 
 $outType = $_POST['outtype'];
 $aChara = $_POST['chara_info'];
-$aInsidents = $_POST['insident'];
+$aIncidents = $_POST['incident'];
 $aAction = $_POST['action_info'];
 
 $aRule = [
@@ -40,8 +40,8 @@ foreach ($aChara as $charaId => $val) {
     $aChara[$charaId]['name'] = getKifuCharaName($charaId);
 }
 
-foreach ($aInsidents as $day => $val) {
-    $aInsidents[$day]['criminal'] = getKifuCharaName($val['criminal'], true);
+foreach ($aIncidents as $day => $val) {
+    $aIncidents[$day]['criminal'] = getKifuCharaName($val['criminal'], true);
 }
 
 foreach ($aAction as $loop => $aActionInLoop) {
@@ -59,17 +59,17 @@ foreach ($aAction as $loop => $aActionInLoop) {
 
 switch ($outType) {
 case 'csv':
-    outCsv($aRule, $aChara, $aInsidents, $aAction);
+    outCsv($aRule, $aChara, $aIncidents, $aAction);
     break;
 case 'json':
-    outJson($aRule, $aChara, $aInsidents, $aAction);
+    outJson($aRule, $aChara, $aIncidents, $aAction);
     break;
 case 'html':
-    outHtml($aRule, $aChara, $aInsidents, $aAction);
+    outHtml($aRule, $aChara, $aIncidents, $aAction);
     break;
 }
 
-function outCsv($aRule, $aChara, $aInsidents, $aAction) {
+function outCsv($aRule, $aChara, $aIncidents, $aAction) {
     $sCsv = '';
     $sSetName = getTragedySetName($_POST['set']);
     $sCsv .= "惨劇セット：{$sSetName}\n\n";
@@ -92,11 +92,11 @@ function outCsv($aRule, $aChara, $aInsidents, $aAction) {
 
     $sCsv .= "\n事件\n";
     $sCsv .= "日数,事件,犯人\n";
-    foreach ($aInsidents as $day => $insident) {
+    foreach ($aIncidents as $day => $incident) {
         $sCsv .= '"' . implode('","', [
             escapeCsv($day),
-            escapeCsv($insident['name']),
-            escapeCsv($insident['criminal']),
+            escapeCsv($incident['name']),
+            escapeCsv($incident['criminal']),
         ]) . "\"\n";
     }
 
@@ -138,7 +138,7 @@ function escapeCsv($s) {
     return str_replace('"', '""', $s);
 }
 
-function outJson($aRule, $aChara, $aInsidents, $aAction) {
+function outJson($aRule, $aChara, $aIncidents, $aAction) {
     if (empty($aRule['ruleX2'])) {
         $aRule['ruleX2'] = null;
     }
@@ -170,12 +170,12 @@ function outJson($aRule, $aChara, $aInsidents, $aAction) {
         'day' => $_POST['day'],
         'rule' => $aRule,
         'chara' => array_values($aChara),
-        'insidents' => $aInsidents,
+        'incidents' => $aIncidents,
         'action' => $aAction,
     ], JSON_UNESCAPED_UNICODE);
 }
 
-function outHtml($aRule, $aChara, $aInsidents, $aAction) {
+function outHtml($aRule, $aChara, $aIncidents, $aAction) {
 ?>
 <html>
 <head>
@@ -204,7 +204,7 @@ function outHtml($aRule, $aChara, $aInsidents, $aAction) {
             <?php endif; ?>
         </table>
     </div>
-    <div class="insident_wrapper">
+    <div class="incident_wrapper">
         <table>
             <tr><th class="table_title" colspan="3"><p>事件</p></th></tr>
             <tr>
@@ -212,7 +212,7 @@ function outHtml($aRule, $aChara, $aInsidents, $aAction) {
                 <th>事件</th>
                 <th>犯人</th>
             </tr>
-            <?php foreach($aInsidents as $day => $val): ?>
+            <?php foreach($aIncidents as $day => $val): ?>
             <tr>
                 <th><?= $day ?></th>
                 <td><?= $val['name'] ?></td>
