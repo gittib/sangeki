@@ -72,7 +72,6 @@ if (!empty($oSangeki->advice->notice)) {
     </div>
     <div class="public">
         <h2>公開シート</h2>
-        <a href="<?= generateQrCodeUrl($id) ?>" target="_blank">棋譜画面</a>
         <?php if (isExistSummaryQr($oSangeki->set)): ?>
         <div class="qr_wrapper">
             <img class="qr" src="<?= TOP_PATH ?>qr/<?= $oSangeki->set ?>.jpg">
@@ -129,6 +128,10 @@ if (!empty($oSangeki->advice->notice)) {
             </tbody>
         </table>
     </div>
+    <form action="qr.php" target="_blank">
+        <input type="hidden" name="id" value="<?= $id ?>">
+        <button>棋譜画面リンク</button>
+    </form>
     <button class="toggle_private">非公開シート、脚本家の指針を表示</button>
     <div class="private_sheet_wrapper">
         <?php if (!empty($aErrorMessage)): ?>

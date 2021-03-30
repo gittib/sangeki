@@ -230,12 +230,6 @@ function getTragedySetName($setPrefix) {
     }
 }
 
-function generateQrCodeUrl($id) {
-    $urlParam = 'http://'.SITE_DOMAIN.TOP_PATH.'r.php?t=m&i=' . md5($id . REDIRECT_QR_SALT);
-
-    return 'https://api.qrserver.com/v1/create-qr-code/?data='.urlencode($urlParam);
-}
-
 function decorateSentence($s) {
     $esc = nl2br(e(trim($s)));
     $esc = str_replace('[b]', '<strong>', $esc);
