@@ -5,10 +5,14 @@ require_once(SECRET_DIR.'kifu_util.php');
 require_once(SECRET_DIR.'detail_util.php');
 require_once(SECRET_DIR.'rule_role_master.php');
 
-if (empty($_GET['from']) || $_GET['from'] != 'kifu_init') {
-    header('Location: .');
-    return;
+switch ($_GET['from'] ?? '') {
+case 'kifu_init':
+case 'kifu_redirect':
+    break;
+default:
+    abort();
 }
+
 $errors = isValid($_GET);
 if (empty($errors)) {
     $aSelectedCharacter = getCharacterList($_GET['ch']);
@@ -80,7 +84,7 @@ if (empty($errors)) {
             <div class="summary">
                 <p class="tr_name">
                     惨劇セット：<?= getTragedySetName($oKifu->set) ?>
-                    <a href="redirect.php?type=summary&set=<?= $oKifu->set ?>" target="_blank">
+                    <a href="<?= TOP_PATH ?>r.php?t=s&s=<?= $oKifu->set ?>" target="_blank">
                         Summary 
                         <img class="target_blank_link" src="<?= TOP_PATH ?>images/target_blank.svg">
                     </a>
