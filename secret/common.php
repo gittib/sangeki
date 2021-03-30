@@ -2,7 +2,7 @@
 session_start();
 
 if (!defined('SECRET_DIR')) {
-    define('SECRET_DIR', realpath('.').'/');
+    define('SECRET_DIR', __DIR__ . '/');
 }
 
 if (!defined('SITE_NAME')) {
@@ -14,7 +14,7 @@ if (!defined('SITE_NAME')) {
 
 
 function isProd() {
-    return file_exists(dirname(__FILE__) . '/../.env.prod');
+    return file_exists(__DIR__ . '/../.env.prod');
 }
 
 function e($s) {
@@ -56,6 +56,6 @@ function difficulityName($difficulity) {
 
 function abort() {
     header("HTTP/1.1 404 Not Found");
-    require(dirname(__FILE__) . '/404.php');
+    require(SECRET_DIR . '404.php');
     exit;
 }
