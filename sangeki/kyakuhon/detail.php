@@ -72,6 +72,7 @@ if (!empty($oSangeki->advice->notice)) {
     </div>
     <div class="public">
         <h2>公開シート</h2>
+        <a href="<?= generateQrCodeUrl($id) ?>" target="_blank">棋譜画面</a>
         <?php if (isExistSummaryQr($oSangeki->set)): ?>
         <div class="qr_wrapper">
             <img class="qr" src="<?= TOP_PATH ?>qr/<?= $oSangeki->set ?>.jpg">
