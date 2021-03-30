@@ -26,14 +26,14 @@ function generateKifuInputUrl($hash) {
     $url .= '&loop=' . $oSangeki->loop;
     $url .= '&day=' . $oSangeki->day;
     foreach ($oSangeki->incident as $day => $val) {
-        $url .= "&incident[$day]=" . $val['name'];
+        $url .= "&incident%5B$day%5D=" . urlencode($val['name']);
     }
     $url .= '&from=kifu_redirect';
     $aCharacterMaster = getCharacterMaster();
     foreach ($aCharacterMaster as $area => $aCharacter) {
         foreach ($aCharacter as $chId => $name) {
-            if (!empty($oSangeki->character[$name])) {
-                $url .= "&ch[]=" . $name;
+            if (array_key_exists($name, $oSangeki->character)) {
+                $url .= '&ch%5B%5D=' . $chId;
             }
         }
     }
