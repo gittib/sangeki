@@ -1,4 +1,4 @@
-<?
+<?php
 
 $oSangeki = (object)array(
     'title' => 'イレギュラーの正体は？',

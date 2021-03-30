@@ -1,4 +1,4 @@
-<?
+<?php
 
 $oSangeki = (object)array(
     'title' => '悪辣なる報道',

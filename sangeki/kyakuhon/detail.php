@@ -66,7 +66,7 @@ if (!empty($oSangeki->advice->notice)) {
     <title><?= e($oSangeki->rule_str) ?> 脚本 [<?= $id ?>] - <?= SITE_NAME ?></title>
 </head>
 <body class="detail">
-<? require(SECRET_DIR.'sangeki_header.php'); ?>
+<?php require(SECRET_DIR.'sangeki_header.php'); ?>
     <div class="pankuzu_wrapper">
         <a href=".">一覧へ</a>
     </div>

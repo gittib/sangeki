@@ -1,4 +1,4 @@
-<?
+<?php
 
 $oSangeki = (object)array(
     'title' => '無血の儀式',

@@ -1,4 +1,4 @@
-<?
+<?php
 
 $oSangeki = (object)array(
     'title' => '神のみぞ知る真相',

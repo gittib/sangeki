@@ -1,4 +1,4 @@
-<?
+<?php
 
 $oSangeki = (object)array(
     'title' => '鍵を握る少女',
