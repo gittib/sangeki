@@ -413,7 +413,7 @@ body.detail .public div.special_rule {
     padding: 2px;
     box-sizing: border-box;
 }
-body.detail .public table.insident td span.note {
+body.detail .public table.incident td span.note {
     padding-left: 6px;
     font-size: 0.85em;
 }
@@ -500,10 +500,10 @@ body.detail .private table.init_place span.territory {
     height: 1rem;
     line-height: 1rem;
 }
-body.detail .private h3.insident {
+body.detail .private h3.incident {
     margin-top:16px;
 }
-body.detail .private table.insident td span.note {
+body.detail .private table.incident td span.note {
     font-size: 0.75rem;
 }
 body.detail table.character td.role span {
@@ -636,7 +636,7 @@ body.kifu_input .rule_wrapper ul > li:first-child {
 body.kifu_input .rule_wrapper > ul > li div.rule label {
     display: inline-block;
 }
-body.kifu_input .insident_list tbody td {
+body.kifu_input .incident_list tbody td {
     padding: 4px;
     border: solid 1px;
 }
@@ -769,7 +769,7 @@ body.kifu_output td {
     padding-right: 4px;
 }
 body.kifu_output .rule_wrapper,
-body.kifu_output .insident_wrapper {
+body.kifu_output .incident_wrapper {
     float:left;
     padding-top: 12px;
 }
