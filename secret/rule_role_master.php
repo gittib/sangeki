@@ -327,7 +327,7 @@
         ),
     );
 
-    $aInsidentMaster = array(
+    $aIncidentMaster = array(
         'FS' => array(
             '殺人事件',
             '不安拡大',

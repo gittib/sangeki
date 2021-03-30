@@ -103,7 +103,7 @@ if (!empty($oSangeki->advice->notice)) {
         ?></div>
 
         <h3>事件予定</h3>
-        <table class="insident">
+        <table class="incident">
             <thead>
                 <tr>
                     <th>日付</th>
@@ -121,7 +121,7 @@ if (!empty($oSangeki->advice->notice)) {
                             } else {
                                 echo $oSangeki->incident[$i]['name'];
                             }
-                            echo insidentPublicNote($oSangeki->incident[$i]);
+                            echo incidentPublicNote($oSangeki->incident[$i]);
                         }
                     ?></td>
                 </tr>
@@ -242,8 +242,8 @@ if (!empty($oSangeki->advice->notice)) {
                 </tbody>
             </table>
 
-            <h3 class="insident">事件リスト</h3>
-            <table class="insident">
+            <h3 class="incident">事件リスト</h3>
+            <table class="incident">
                 <thead>
                     <tr>
                         <th>日付</th>
