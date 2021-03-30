@@ -1,4 +1,4 @@
-<?
+<?php
 
 $oSangeki = (object)[
     'title' => 'ホシに願いを',

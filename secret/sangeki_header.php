@@ -13,9 +13,9 @@ require(dirname(__FILE__) . '/top_menu.php');
             </div>
             <ul class="top_menu">
                 <li><a href="<?= TOP_PATH ?>">TOP</a></li>
-                <? foreach ($aTopMenu as $val): ?>
+                <?php foreach ($aTopMenu as $val): ?>
                 <li><a href="<?= TOP_PATH . e($val->href) ?>"><?= e($val->link) ?></a></li>
-                <? endforeach; ?>
+                <?php endforeach; ?>
             </ul>
         </div>
     </div>

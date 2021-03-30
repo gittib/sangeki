@@ -1,4 +1,4 @@
-<?
+<?php
 define('SECRET_DIR', realpath('../../secret').'/');
 require_once(SECRET_DIR.'common.php');
 require_once(SECRET_DIR.'sangeki_check.php');
@@ -14,7 +14,7 @@ $bDisplaySecret = (!isProd() && isset($_GET['s']));
     <title>脚本リスト - <?= SITE_NAME ?></title>
 </head>
 <body class="kyakuhon_list">
-<? require(SECRET_DIR.'sangeki_header.php'); ?>
+<?php require(SECRET_DIR.'sangeki_header.php'); ?>
     <div class="top_text">
         <h2><span>ペンスキーの</span><span>脚本置き場へ</span><span>ようこそ。</span></h2>
         ここにはペンスキーの考えた、惨劇RoopeRオリジナル脚本が置かれてあります。(一部寄稿いただいたものもあります)<br>
@@ -26,24 +26,24 @@ $bDisplaySecret = (!isProd() && isset($_GET['s']));
     <button class="show_title">脚本タイトルを表示</button>
     <div class="kyakuhon_list">
         <dl class="kyakuhon_list">
-        <? foreach ($aList as $id => $oSangeki): ?>
-        <? if ($bDisplaySecret || empty($oSangeki->secret)): ?>
-            <dt class="<? if(!empty($oSangeki->secret)) echo 'secret' ?>">
+        <?php foreach ($aList as $id => $oSangeki): ?>
+        <?php if ($bDisplaySecret || empty($oSangeki->secret)): ?>
+            <dt class="<?php if(!empty($oSangeki->secret)) echo 'secret' ?>">
                 <span class="rule_prefix <?= $oSangeki->set ?>"><?= $oSangeki->set ?></span>
                 <a href="./detail.php?id=<?= $id ?>">
                     <span class="real_title"><?= e($oSangeki->title) ?></span>
                     <span class="hide_title">脚本[<?= $id ?>]</span>
                 </a>
                 <span class="writer">作者: <?= e($oSangeki->writer) ?></span>
-                <? if (!empty($oSangeki->recommended)): ?>
+                <?php if (!empty($oSangeki->recommended)): ?>
                 <span class="recommended">オススメ！</span>
-                <? endif; ?>
+                <?php endif; ?>
             </dt>
-            <dd class="<? if(!empty($oSangeki->secret)) echo 'secret' ?>">
+            <dd class="<?php if(!empty($oSangeki->secret)) echo 'secret' ?>">
                 <span class="loop"><strong><?= $oSangeki->loop ?></strong>ループ</span>
                 <span class="day"><strong><?= $oSangeki->day ?></strong>日間</span>
                 <span class="difficulity">
-                    難易度<span><? for ($i = 1 ; $i <= 8 ; $i++) {
+                    難易度<span><?php for ($i = 1 ; $i <= 8 ; $i++) {
                         if ($i <= $oSangeki->difficulity) {
                             echo '★';
                         } else {
@@ -53,8 +53,8 @@ $bDisplaySecret = (!isProd() && isset($_GET['s']));
                     <span class="tag"><?= difficulityName($oSangeki->difficulity) ?></span>
                 </span>
             </dd>
-        <? endif; ?>
-        <? endforeach; ?>
+        <?php endif; ?>
+        <?php endforeach; ?>
         </dl>
     </div>
     <button class="show_title">脚本タイトルを表示</button>

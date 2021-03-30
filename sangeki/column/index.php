@@ -1,16 +1,16 @@
-<?
+<?php
 define('SECRET_DIR', realpath('../../secret').'/');
 require_once(SECRET_DIR.'common.php');
 
 ?>
 <html>
 <head>
-<? require(SECRET_DIR.'google_analytics.php'); ?>
-<? require(SECRET_DIR.'sangeki_head.php'); ?>
+<?php require(SECRET_DIR.'google_analytics.php'); ?>
+<?php require(SECRET_DIR.'sangeki_head.php'); ?>
     <title>脚本アイディア - <?= SITE_NAME ?></title>
 </head>
 <body class="column">
-<? require(SECRET_DIR.'sangeki_header.php'); ?>
+<?php require(SECRET_DIR.'sangeki_header.php'); ?>
     <h2><span>ペンスキーの</span><span>惨劇RoopeR脚本の</span><span>組み方</span></h2>
     <div>
         ここでは、ペンスキー(<a href="https://twitter.com/gittib_gittib" target="_blank">@gittib_gittib</a>)がよく使う脚本作成のテクニックとかそんなのを紹介します。<br>

@@ -59,45 +59,45 @@ if (empty($checked) && !empty($_POST['answer'])) {
 if (empty($checked)): ?>
 <html>
 <head>
-<? require(dirname(__FILE__) . '/sangeki_head.php') ?>
+<?php require(dirname(__FILE__) . '/sangeki_head.php') ?>
     <title>惨劇RoopeR ペンスキーの脚本置き場</title>
 </head>
 <body class="sangeki_check">
-<? require(dirname(__FILE__) . '/sangeki_header.php') ?>
+<?php require(dirname(__FILE__) . '/sangeki_header.php') ?>
     <div style="margin-bottom: 16px;">
         <h2><span>ペンスキーの</span><span>脚本置き場へ</span><span>ようこそ。</span></h2>
         ここにはペンスキーの考えた、惨劇RoopeRオリジナル脚本が置かれてあります。(一部寄稿いただいたものもあります)<br>
         <span style="color:red">なお、惨劇RoopeRの脚本を見てしまうと、ゲームに参加できなくなる場合があります。</span>
         つきましては、下記の問いにお答えください。全問正解した方にのみ脚本をお見せします。
     </div>
-    <? if (!empty($errorMessage)): ?>
+    <?php if (!empty($errorMessage)): ?>
     <div class="error"><?= e($errorMessage) ?></div>
-    <? endif; ?>
+    <?php endif; ?>
     <form method="post">
         <ul class="question_list">
-            <? foreach ($aQuestions as $key => $val): ?>
+            <?php foreach ($aQuestions as $key => $val): ?>
             <li>
                 <div class="q">
                     <span class="rule_prefix <?= $val->rule ?>"><?= $val->rule ?></span>
                     <?= nl2br(e($val->q)) ?>
                 </div>
                 <div class="a">
-                    <? foreach($val->radio as $k => $row): ?>
+                    <?php foreach($val->radio as $k => $row): ?>
                         <label>
                             <input type="radio" name="answer[<?= $key ?>]" value="<?=$k?>">
                             <?=$row?>
                         </label>
-                    <? endforeach; ?>
+                    <?php endforeach; ?>
                 </div>
             </li>
-            <? endforeach; ?>
+            <?php endforeach; ?>
         </ul>
         <input class="submit_button" type="submit" value="送信">
     </form>
-<? require(dirname(__FILE__) . '/sangeki_footer.php') ?>
+<?php require(dirname(__FILE__) . '/sangeki_footer.php') ?>
 </body>
 </html>
-<?
+<?php
 exit();
 endif;
 ?>

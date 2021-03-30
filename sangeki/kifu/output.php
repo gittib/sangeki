@@ -1,4 +1,4 @@
-<?
+<?php
 define('SECRET_DIR', realpath('../../secret').'/');
 require_once(SECRET_DIR.'common.php');
 require_once(SECRET_DIR.'kifu_util.php');
