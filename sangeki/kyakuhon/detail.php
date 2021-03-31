@@ -59,7 +59,7 @@ if (!empty($oSangeki->advice->notice)) {
     $sNotice .= $oSangeki->advice->notice;
 }
 
-$kifuUrl = schema().'://'.SITE_DOMAIN.TOP_PATH.'r/?t=m&i=' . md5($id . REDIRECT_QR_SALT);
+$kifuUrl = schema().'://'.SITE_DOMAIN.TOP_PATH.'r/?t=m&i=' . shortHash($id);
 ?>
 <html>
 <head>

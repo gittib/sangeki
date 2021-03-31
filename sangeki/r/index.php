@@ -11,7 +11,7 @@ function generateKifuInputUrl($hash) {
     $id = null;
     $aList = ScenarioIndex::getScenarioList();
     foreach ($aList as $key => $ignore) {
-        if (md5($key.REDIRECT_QR_SALT) === $hash) {
+        if (shortHash($key) === $hash) {
             $id = str_replace('-', '/', $key);
             break;
         }
