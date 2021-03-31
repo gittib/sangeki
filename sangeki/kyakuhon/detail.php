@@ -58,6 +58,8 @@ if (!empty($oSangeki->advice->notice)) {
     }
     $sNotice .= $oSangeki->advice->notice;
 }
+
+$kifuUrl = 'http://'.SITE_DOMAIN.TOP_PATH.'r?t=m&i=' . md5($id . REDIRECT_QR_SALT);
 ?>
 <html>
 <head>
@@ -128,10 +130,10 @@ if (!empty($oSangeki->advice->notice)) {
             </tbody>
         </table>
     </div>
-    <form action="qr.php" target="_blank">
-        <input type="hidden" name="id" value="<?= $id ?>">
-        <button>棋譜画面リンク</button>
-    </form>
+    <div>
+        <a class="kifu_input_link" href="<?= $kifuUrl ?>" target="_blank">棋譜画面リンク</a>
+        <img class="kifu_qr" alt="クリックして棋譜画面QRコードを表示" data-src="https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=<?= urlencode($kifuUrl) ?>"><br>
+    </div>
     <button class="toggle_private">非公開シート、脚本家の指針を表示</button>
     <div class="private_sheet_wrapper">
         <?php if (!empty($aErrorMessage)): ?>
