@@ -21,13 +21,7 @@ function generateKifuInputUrl($hash) {
     require(SECRET_DIR."kyakuhon_list/$id.php");
     if (empty($oSangeki)) abort();
 
-    if (($_SERVER['SERVER_PORT'] ?? 80) == 443) {
-        $schema = 'https';
-    } else {
-        $schema = 'http';
-    }
-
-    $url = $schema.'://'.SITE_DOMAIN.TOP_PATH.'kifu/input.php';
+    $url = schema().'://'.SITE_DOMAIN.TOP_PATH.'kifu/input.php';
     $url .= '?set=' . $oSangeki->set;
     $url .= '&loop=' . $oSangeki->loop;
     $url .= '&day=' . $oSangeki->day;
