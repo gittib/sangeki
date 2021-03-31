@@ -26,7 +26,12 @@ function generateKifuInputUrl($hash) {
     $url .= '&loop=' . $oSangeki->loop;
     $url .= '&day=' . $oSangeki->day;
     foreach ($oSangeki->incident as $day => $val) {
-        $url .= "&incident%5B$day%5D=" . urlencode($val['name']);
+        if ($val['name'] == '偽装事件') {
+            $it = $val['note'] ?? $val['name'];
+        } else {
+            $it = $val['name'];
+        }
+        $url .= "&incident%5B$day%5D=" . urlencode($it);
     }
     $url .= '&from=kifu_redirect';
     $aCharacterMaster = getCharacterMaster();
