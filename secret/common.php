@@ -41,6 +41,11 @@ function schema() {
     return 'http';
 }
 
+function shortHash($s, $algo = 'CRC32') {
+    $s .= REDIRECT_QR_SALT;
+    return strtr(rtrim(base64_encode(pack('H*', hash($algo, $s))), '='), '+/', '-_');    
+}
+
 function difficulityName($difficulity) {
     switch ($difficulity) {
         case 1:
