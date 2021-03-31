@@ -346,6 +346,9 @@ $kifuUrl = schema().'://'.SITE_DOMAIN.TOP_PATH.'r/?t=m&i=' . shortHash($id);
             }
         }
     });
+    $('.qr_wrapper img').on('click', function() {
+        $(this).toggleClass('zoom');
+    });
     $('.show_kifu_qr').on('click', function() {
         const $dom = $('.kifu_link_share_wrapper');
         const $img = $dom.find('img');
