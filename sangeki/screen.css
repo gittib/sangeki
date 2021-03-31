@@ -572,6 +572,10 @@ body.detail .private.advice .template {
 body.detail .private.advice .template dl dd {
     padding-left: 1em;
 }
+body.detail img.kifu_qr {
+    width: 300px;
+    height: 300px;
+}
 body.detail .toggle_private {
     margin: 32px auto;
     display: block;
