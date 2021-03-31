@@ -21,7 +21,13 @@ function generateKifuInputUrl($hash) {
     require(SECRET_DIR."kyakuhon_list/$id.php");
     if (empty($oSangeki)) abort();
 
-    $url = 'http://'.SITE_DOMAIN.TOP_PATH.'kifu/input.php';
+    if (($_SERVER['SERVER_PORT'] ?? 80) == 443) {
+        $schema = 'https';
+    } else {
+        $schema = 'http';
+    }
+
+    $url = $schema.'://'.SITE_DOMAIN.TOP_PATH.'kifu/input.php';
     $url .= '?set=' . $oSangeki->set;
     $url .= '&loop=' . $oSangeki->loop;
     $url .= '&day=' . $oSangeki->day;
@@ -41,11 +47,15 @@ function generateKifuInputUrl($hash) {
     return $url;
 }
 
+$type = $_GET['t'] ?? '';
+$setName = $_GET['s'] ?? '';
+$hashedId = $_GET['i'] ?? '';
+
 $sLocationUrl = null;
 
-switch ($_GET['t']) {
+switch ($type) {
 case 's':
-    switch ($_GET['s']) {
+    switch ($setName) {
     case 'FS':
         $sLocationUrl = 'http://bakafire.main.jp/rooper/pdf/summary_005.pdf';
         break;
@@ -68,7 +78,7 @@ case 's':
     }
     break;
 case 'm':
-    $sLocationUrl = generateKifuInputUrl($_GET['i'] ?? '');
+    $sLocationUrl = generateKifuInputUrl($hashedId);
     break;
 }
 
