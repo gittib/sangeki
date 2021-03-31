@@ -55,6 +55,13 @@ function difficulityName($difficulity) {
     }
 }
 
+function dd($arg) {
+    echo '<html><body><pre><code>';
+    var_dump($arg);
+    echo '</code></pre></body></html>';
+    exit;
+}
+
 function abort() {
     header("HTTP/1.1 404 Not Found");
     require(SECRET_DIR . '404.php');
