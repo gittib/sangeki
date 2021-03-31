@@ -588,6 +588,9 @@ body.detail .kifu_link_share_wrapper img.kifu_qr {
     width: 300px;
     height: 300px;
 }
+body.detail .kifu_link_share_wrapper hide_kifu_qr_wrapper {
+    margin-top: 32px;
+}
 body.detail .toggle_private {
     margin: 32px auto;
     display: block;

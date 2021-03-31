@@ -132,7 +132,8 @@ $kifuUrl = schema().'://'.SITE_DOMAIN.TOP_PATH.'r/?t=m&i=' . shortHash($id);
     </div>
     <div class="kifu_link_share_wrapper">
         <p><a class="kifu_input_link" href="<?= $kifuUrl ?>" target="_blank">棋譜画面を開く</a></p>
-        <img class="kifu_qr" data-src="https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=<?= urlencode($kifuUrl) ?>"><br>
+        <img class="kifu_qr" data-src="https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=<?= urlencode($kifuUrl) ?>">
+        <p><button class="hide_kifu_qr">閉じる</button></p>
     </div>
     <p><button class="show_kifu_qr">棋譜画面URLをQRコードで共有</button></p>
     <button class="toggle_private">非公開シート、脚本家の指針を表示</button>
@@ -351,7 +352,10 @@ $kifuUrl = schema().'://'.SITE_DOMAIN.TOP_PATH.'r/?t=m&i=' . shortHash($id);
         if (!$img.attr('src')) {
             $img.attr('src', $img.data('src'));
         }
-        $dom.toggle();
+        $dom.show();
+    });
+    $('.hide_kifu_qr').on('click', function() {
+        $('.kifu_link_share_wrapper').hide();
     });
     </script>
 </body>
