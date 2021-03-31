@@ -41,9 +41,13 @@ function schema() {
     return 'http';
 }
 
-function shortHash($s, $algo = 'CRC32') {
-    $s .= REDIRECT_QR_SALT;
-    return strtr(rtrim(base64_encode(pack('H*', hash($algo, $s))), '='), '+/', '-_');    
+function shortHash($s, $salt = REDIRECT_QR_SALT, $algo = 'CRC32') {
+    $s .= $salt;
+    $s = hash($algo, $s);
+    $s = pack('H*', $s);
+    $s = base64_encode($s);
+    $s = rtrim($s, '=');
+    return strtr($s, '+/', '-_');    
 }
 
 function difficulityName($difficulity) {
