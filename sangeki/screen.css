@@ -572,7 +572,19 @@ body.detail .private.advice .template {
 body.detail .private.advice .template dl dd {
     padding-left: 1em;
 }
-body.detail img.kifu_qr {
+body.detail .kifu_link_share_wrapper {
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    position: fixed;
+    background: white;
+    padding: 32px 8px;
+    text-align: center;
+    display: none;
+}
+body.detail .kifu_link_share_wrapper img.kifu_qr {
     width: 300px;
     height: 300px;
 }
