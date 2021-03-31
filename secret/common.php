@@ -34,6 +34,13 @@ function session($key, $defaultValue = '') {
     }
 }
 
+function schema() {
+    if (($_SERVER['SERVER_PORT'] ?? 80) == 443) {
+        return 'https';
+    }
+    return 'http';
+}
+
 function difficulityName($difficulity) {
     switch ($difficulity) {
         case 1:

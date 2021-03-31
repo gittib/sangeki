@@ -84,7 +84,7 @@ if (empty($errors)) {
             <div class="summary">
                 <p class="tr_name">
                     惨劇セット：<?= getTragedySetName($oKifu->set) ?>
-                    <a href="<?= TOP_PATH ?>r?t=s&s=<?= $oKifu->set ?>" target="_blank">
+                    <a href="<?= TOP_PATH ?>r/?t=s&s=<?= $oKifu->set ?>" target="_blank">
                         Summary 
                         <img class="target_blank_link" src="<?= TOP_PATH ?>images/target_blank.svg">
                     </a>
