@@ -130,12 +130,15 @@ $kifuUrl = schema().'://'.SITE_DOMAIN.TOP_PATH.'r/?t=m&i=' . shortHash($id);
             </tbody>
         </table>
     </div>
+
     <div class="kifu_link_share_wrapper">
-        <p><a class="kifu_input_link" href="<?= $kifuUrl ?>" target="_blank">棋譜画面を開く</a></p>
+        <p><a href="<?= $kifuUrl ?>" target="_blank">棋譜画面を開く</a></p>
+        <p class="kifu_qr_title">棋譜画面 QRコード</p>
         <img class="kifu_qr" data-src="https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=<?= urlencode($kifuUrl) ?>">
         <p class="hide_kifu_qr_wrapper"><button class="hide_kifu_qr">閉じる</button></p>
     </div>
     <p><button class="show_kifu_qr">棋譜画面URLをQRコードで共有</button></p>
+
     <button class="toggle_private">非公開シート、脚本家の指針を表示</button>
     <div class="private_sheet_wrapper">
         <?php if (!empty($aErrorMessage)): ?>
