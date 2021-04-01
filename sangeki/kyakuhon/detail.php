@@ -135,6 +135,7 @@ $kifuUrl = schema().'://'.SITE_DOMAIN.TOP_PATH.'r/?t=m&i=' . shortHash($id);
         <p><a href="<?= $kifuUrl ?>" target="_blank">棋譜画面を開く</a></p>
         <p class="kifu_qr_title">棋譜画面 QRコード</p>
         <img class="kifu_qr" data-src="https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=<?= urlencode($kifuUrl) ?>">
+        <p class="kifu_qr_explain"><span>このQRコードを読み込むと、</span><span>脚本に対応した</span><span>棋譜入力画面を</span><span>開くことができます。</span></p>
         <p class="hide_kifu_qr_wrapper"><button class="hide_kifu_qr">閉じる</button></p>
     </div>
     <p><button class="show_kifu_qr">棋譜画面URLをQRコードで共有</button></p>
