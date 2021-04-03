@@ -1,4 +1,4 @@
-<?
+<?php
 
 $oSangeki = (object)[
     'title' => '脚本家の真実',

@@ -5,10 +5,14 @@ require_once(SECRET_DIR.'kifu_util.php');
 require_once(SECRET_DIR.'detail_util.php');
 require_once(SECRET_DIR.'rule_role_master.php');
 
-if (empty($_GET['from']) || $_GET['from'] != 'kifu_init') {
-    header('Location: .');
-    return;
+switch ($_GET['from'] ?? '') {
+case 'kifu_init':
+case 'kifu_redirect':
+    break;
+default:
+    abort();
 }
+
 $errors = isValid($_GET);
 if (empty($errors)) {
     $aSelectedCharacter = getCharacterList($_GET['ch']);
@@ -23,10 +27,14 @@ if (empty($errors)) {
     $oKifu = (object)[
         'set' => $_GET['set'],
         'loop' => $_GET['loop'],
+        'iLoop' => (int)$_GET['loop'],
         'day' => $_GET['day'],
         'chara' => $aSelectedCharacter,
         'target' => $aTmp,
     ];
+    if ($oKifu->loop == '∞') {
+        $oKifu->iLoop = 8;
+    }
     $iRuleY = $oKifu->set == 'FS' ? 3 : 5;
     $aRuleY = [];
     $aRuleX = [];
@@ -43,7 +51,7 @@ if (empty($errors)) {
     }
     $aRole = array_unique($aRole);
 
-    $aInsidents = $aInsidentMaster[$oKifu->set];
+    $aIncidents = $aIncidentMaster[$oKifu->set];
 }
 ?>
 <html>
@@ -80,7 +88,7 @@ if (empty($errors)) {
             <div class="summary">
                 <p class="tr_name">
                     惨劇セット：<?= getTragedySetName($oKifu->set) ?>
-                    <a href="redirect.php?type=summary&set=<?= $oKifu->set ?>" target="_blank">
+                    <a href="<?= TOP_PATH ?>r/?t=s&s=<?= $oKifu->set ?>" target="_blank">
                         Summary 
                         <img class="target_blank_link" src="<?= TOP_PATH ?>images/target_blank.svg">
                     </a>
@@ -121,25 +129,25 @@ if (empty($errors)) {
                   <?php endif; ?>
                 </ul>
             </div>
-            <div class="insident_wrapper">
+            <div class="incident_wrapper">
                 <h3>事件リスト</h3>
-                <table class="insident_list">
+                <table class="incident_list">
                     <thead>
                         <th>日付</th>
                         <th>事件名</th>
                         <th>犯人</th>
                     </thead>
                     <?php for ($d = 1 ; $d <= $oKifu->day ; $d++): ?>
-                    <?php $sInsident = empty($_GET['insident'][$d]) ? '' : $_GET['insident'][$d]; ?>
+                    <?php $sIncident = empty($_GET['incident'][$d]) ? '' : $_GET['incident'][$d]; ?>
                     <tbody>
                         <th><?= $d ?></th>
-                        <td><?= $sInsident ?></td>
+                        <td><?= $sIncident ?></td>
                         <td>
-                            <?php if (!empty($sInsident)): ?>
-                            <input type="hidden" name="insident[<?= $d ?>][name]" value="<?= $sInsident ?>">
-                            <select name="insident[<?= $d ?>][criminal]">
+                            <?php if (!empty($sIncident)): ?>
+                            <input type="hidden" name="incident[<?= $d ?>][name]" value="<?= $sIncident ?>">
+                            <select name="incident[<?= $d ?>][criminal]">
                                 <option value="">？？？？？</option>
-                                <?php if (in_array($sInsident, ['狂気の夜', '呪いの目覚め', '穢れの噴出', '死者の黙示録'])): ?>
+                                <?php if (in_array($sIncident, ['狂気の夜', '呪いの目覚め', '穢れの噴出', '死者の黙示録'])): ?>
                                     <?php foreach (getBoardMaster() as $id => $board): ?>
                                     <option value="<?= $id ?>"><?= e($board) ?>の群像</option>
                                     <?php endforeach; ?>
@@ -162,7 +170,7 @@ if (empty($errors)) {
                         神格登場ループ：
                         <select name="shinkaku_loop" id="shinkaku_loop">
                             <option></option>
-                            <?php for ($l = 1 ; $l <= $oKifu->loop ; $l++): ?>
+                            <?php for ($l = 1 ; $l <= $oKifu->iLoop ; $l++): ?>
                             <option value="<?= $l ?>"><?= $l ?>ループ目</option>
                             <?php endfor; ?>
                         </select>
@@ -219,7 +227,7 @@ if (empty($errors)) {
                     </div>
                 </div>
                 <dl>
-                <?php for ($l = 1 ; $l <= $oKifu->loop ; $l++): ?>
+                <?php for ($l = 1 ; $l <= $oKifu->iLoop ; $l++): ?>
                     <dt><?= $l ?>ループ目</dt>
                     <dd>
                         <div>

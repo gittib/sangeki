@@ -58,6 +58,8 @@ if (!empty($oSangeki->advice->notice)) {
     }
     $sNotice .= $oSangeki->advice->notice;
 }
+
+$kifuUrl = schema().'://'.SITE_DOMAIN.TOP_PATH.'r/?t=m&i=' . shortHash($id);
 ?>
 <html>
 <head>
@@ -66,7 +68,7 @@ if (!empty($oSangeki->advice->notice)) {
     <title><?= e($oSangeki->rule_str) ?> 脚本 [<?= $id ?>] - <?= SITE_NAME ?></title>
 </head>
 <body class="detail">
-<? require(SECRET_DIR.'sangeki_header.php'); ?>
+<?php require(SECRET_DIR.'sangeki_header.php'); ?>
     <div class="pankuzu_wrapper">
         <a href=".">一覧へ</a>
     </div>
@@ -102,7 +104,7 @@ if (!empty($oSangeki->advice->notice)) {
         ?></div>
 
         <h3>事件予定</h3>
-        <table class="insident">
+        <table class="incident">
             <thead>
                 <tr>
                     <th>日付</th>
@@ -120,7 +122,7 @@ if (!empty($oSangeki->advice->notice)) {
                             } else {
                                 echo $oSangeki->incident[$i]['name'];
                             }
-                            echo insidentPublicNote($oSangeki->incident[$i]);
+                            echo incidentPublicNote($oSangeki->incident[$i]);
                         }
                     ?></td>
                 </tr>
@@ -128,6 +130,16 @@ if (!empty($oSangeki->advice->notice)) {
             </tbody>
         </table>
     </div>
+
+    <div class="kifu_link_share_wrapper">
+        <p><a href="<?= $kifuUrl ?>" target="_blank">棋譜画面を開く</a></p>
+        <p class="kifu_qr_title">棋譜画面 QRコード</p>
+        <img class="kifu_qr" data-src="https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=<?= urlencode($kifuUrl) ?>">
+        <p class="kifu_qr_explain"><span>このQRコードを読み込むと、</span><span>脚本に対応した</span><span>棋譜入力画面を</span><span>開くことができます。</span></p>
+        <p class="hide_kifu_qr_wrapper"><button class="hide_kifu_qr">閉じる</button></p>
+    </div>
+    <p><button class="show_kifu_qr">棋譜画面URLをQRコードで共有</button></p>
+
     <button class="toggle_private">非公開シート、脚本家の指針を表示</button>
     <div class="private_sheet_wrapper">
         <?php if (!empty($aErrorMessage)): ?>
@@ -241,8 +253,8 @@ if (!empty($oSangeki->advice->notice)) {
                 </tbody>
             </table>
 
-            <h3 class="insident">事件リスト</h3>
-            <table class="insident">
+            <h3 class="incident">事件リスト</h3>
+            <table class="incident">
                 <thead>
                     <tr>
                         <th>日付</th>
@@ -340,6 +352,17 @@ if (!empty($oSangeki->advice->notice)) {
     });
     $('.qr_wrapper img').on('click', function() {
         $(this).toggleClass('zoom');
+    });
+    $('.show_kifu_qr').on('click', function() {
+        const $dom = $('.kifu_link_share_wrapper');
+        const $img = $dom.find('img');
+        if (!$img.attr('src')) {
+            $img.attr('src', $img.data('src'));
+        }
+        $dom.show();
+    });
+    $('.hide_kifu_qr').on('click', function() {
+        $('.kifu_link_share_wrapper').hide();
     });
     </script>
 </body>

@@ -413,7 +413,7 @@ body.detail .public div.special_rule {
     padding: 2px;
     box-sizing: border-box;
 }
-body.detail .public table.insident td span.note {
+body.detail .public table.incident td span.note {
     padding-left: 6px;
     font-size: 0.85em;
 }
@@ -500,10 +500,10 @@ body.detail .private table.init_place span.territory {
     height: 1rem;
     line-height: 1rem;
 }
-body.detail .private h3.insident {
+body.detail .private h3.incident {
     margin-top:16px;
 }
-body.detail .private table.insident td span.note {
+body.detail .private table.incident td span.note {
     font-size: 0.75rem;
 }
 body.detail table.character td.role span {
@@ -572,6 +572,37 @@ body.detail .private.advice .template {
 body.detail .private.advice .template dl dd {
     padding-left: 1em;
 }
+body.detail .kifu_link_share_wrapper {
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    position: fixed;
+    background: white;
+    padding: 32px 0;
+    text-align: center;
+    display: none;
+}
+body.detail .kifu_link_share_wrapper .kifu_qr_title {
+    margin-top: 20px;
+}
+body.detail .kifu_link_share_wrapper img.kifu_qr {
+    padding: 4px;
+    border: solid darkslateblue 3px;
+    width: 300px;
+    height: 300px;
+}
+body.detail .kifu_link_share_wrapper .kifu_qr_explain > span {
+    display: inline-block;
+}
+body.detail .kifu_link_share_wrapper .hide_kifu_qr_wrapper {
+    margin-top: 32px;
+}
+body.detail .show_kifu_qr {
+    margin: 0 auto;
+    display: block;
+}
 body.detail .toggle_private {
     margin: 32px auto;
     display: block;
@@ -636,7 +667,7 @@ body.kifu_input .rule_wrapper ul > li:first-child {
 body.kifu_input .rule_wrapper > ul > li div.rule label {
     display: inline-block;
 }
-body.kifu_input .insident_list tbody td {
+body.kifu_input .incident_list tbody td {
     padding: 4px;
     border: solid 1px;
 }
@@ -769,7 +800,7 @@ body.kifu_output td {
     padding-right: 4px;
 }
 body.kifu_output .rule_wrapper,
-body.kifu_output .insident_wrapper {
+body.kifu_output .incident_wrapper {
     float:left;
     padding-top: 12px;
 }

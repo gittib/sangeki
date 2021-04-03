@@ -1,4 +1,4 @@
-<?
+<?php
 
 $oSangeki = (object)array(
     'title' => '教祖様がぴょんぴょんするんじゃぁ^～',

@@ -2,18 +2,20 @@
 session_start();
 
 if (!defined('SECRET_DIR')) {
-    define('SECRET_DIR', realpath('.').'/');
+    define('SECRET_DIR', __DIR__ . '/');
 }
 
 if (!defined('SITE_NAME')) {
+    define('SITE_DOMAIN', $_SERVER['SERVER_NAME']);
     define('SITE_NAME', 'ペンスキーの惨劇RoopeR脚本部屋');
     $aPath = explode('/', $_SERVER['REQUEST_URI']);
     define('TOP_PATH', '/'.$aPath[1].'/');
+    define('REDIRECT_QR_SALT', 'sda27');
 }
 
 
 function isProd() {
-    return file_exists(dirname(__FILE__) . '/../.env.prod');
+    return file_exists(__DIR__ . '/../.env.prod');
 }
 
 function e($s) {
@@ -30,6 +32,22 @@ function session($key, $defaultValue = '') {
     } else {
         return $defaultValue;
     }
+}
+
+function schema() {
+    if (($_SERVER['SERVER_PORT'] ?? 80) == 443) {
+        return 'https';
+    }
+    return 'http';
+}
+
+function shortHash($s, $salt = REDIRECT_QR_SALT, $algo = 'CRC32') {
+    $s .= $salt;
+    $s = hash($algo, $s);
+    $s = pack('H*', $s);
+    $s = base64_encode($s);
+    $s = rtrim($s, '=');
+    return strtr($s, '+/', '-_');    
 }
 
 function difficulityName($difficulity) {
@@ -53,8 +71,15 @@ function difficulityName($difficulity) {
     }
 }
 
+function dd($arg) {
+    echo '<html><body><pre><code>';
+    var_dump($arg);
+    echo '</code></pre></body></html>';
+    exit;
+}
+
 function abort() {
     header("HTTP/1.1 404 Not Found");
-    require(dirname(__FILE__) . '/404.php');
+    require(SECRET_DIR . '404.php');
     exit;
 }

@@ -160,9 +160,9 @@ function getRuleWithNote($sRule) {
         echo e(trim($sRule));
     }
 }
-function insidentPublicNote($insident) {
+function incidentPublicNote($incident) {
     $sBikou = '';
-    switch ($insident['name']) {
+    switch ($incident['name']) {
     case '穢れの噴出':
     case '死者の黙示録':
         $sBikou = '(必要死体:2)';
@@ -462,7 +462,7 @@ function rolesCountCheck($oSangeki) {
         if ($date > $oSangeki->day) {
             $aErrorMessage[] = '最終日より後に'.$aIns['name'].'が設定されています';
         }
-        if (!in_array($aIns['name'], $aInsidentMaster[$oSangeki->set])) {
+        if (!in_array($aIns['name'], $aIncidentMaster[$oSangeki->set])) {
             $aErrorMessage[] = '「'.$aIns['name'].'」という名前の事件はありません';
         }
         if (!in_array($aIns['criminal'], $aTmpChara)) {
