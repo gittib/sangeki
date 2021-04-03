@@ -27,10 +27,14 @@ if (empty($errors)) {
     $oKifu = (object)[
         'set' => $_GET['set'],
         'loop' => $_GET['loop'],
+        'iLoop' => (int)$_GET['loop'],
         'day' => $_GET['day'],
         'chara' => $aSelectedCharacter,
         'target' => $aTmp,
     ];
+    if ($oKifu->loop == '∞') {
+        $oKifu->iLoop = 8;
+    }
     $iRuleY = $oKifu->set == 'FS' ? 3 : 5;
     $aRuleY = [];
     $aRuleX = [];
@@ -166,7 +170,7 @@ if (empty($errors)) {
                         神格登場ループ：
                         <select name="shinkaku_loop" id="shinkaku_loop">
                             <option></option>
-                            <?php for ($l = 1 ; $l <= $oKifu->loop ; $l++): ?>
+                            <?php for ($l = 1 ; $l <= $oKifu->iLoop ; $l++): ?>
                             <option value="<?= $l ?>"><?= $l ?>ループ目</option>
                             <?php endfor; ?>
                         </select>
@@ -223,7 +227,7 @@ if (empty($errors)) {
                     </div>
                 </div>
                 <dl>
-                <?php for ($l = 1 ; $l <= $oKifu->loop ; $l++): ?>
+                <?php for ($l = 1 ; $l <= $oKifu->iLoop ; $l++): ?>
                     <dt><?= $l ?>ループ目</dt>
                     <dd>
                         <div>
