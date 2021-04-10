@@ -3,9 +3,9 @@ define('SECRET_DIR', realpath('../secret').'/');
 require_once(SECRET_DIR.'common.php');
 
 $appUA = ' SangekiRooperAndroid ';
-//if (strpos($_SERVER['HTTP_USER_AGENT'], $appUA) === false) {
-//    abort();
-//}
+if (strpos($_SERVER['HTTP_USER_AGENT'], $appUA) === false) {
+    abort();
+}
 
 switch ($_SERVER['REQUEST_METHOD']) {
 case 'GET':
