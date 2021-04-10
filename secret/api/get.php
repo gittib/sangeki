@@ -17,6 +17,9 @@ function senarioList() {
         require($kyakuhonPath);
         if (!empty($oSangeki)) {
             $oSangeki->id = $id;
+            if (empty($oSangeki->difficulty)) {
+                $oSangeki->difficulty = $oSangeki->difficulity;
+            }
             foreach ($oSangeki->character as $k => $v) {
                 $oSangeki->character[$k]['name'] = $k;
             }
@@ -24,22 +27,26 @@ function senarioList() {
                 $oSangeki->incident[$k]['day'] = $k;
             }
             $oSangeki->template_info = [];
-            foreach ($oSangeki->template ?? [] as $loop => $v) {
-                foreach ($v as $day => $vv) {
-                    $aSet = [];
-                    foreach ($vv as $target => $card) {
-                        $aSet[] = [
-                            'taget' => $target,
-                            'card' => $card,
+            if (!empty($oSangeki->advice->template)) {
+                foreach ($oSangeki->advice->template as $loop => $v) {
+                    foreach ($v as $day => $vv) {
+                        $aSet = [];
+                        foreach ($vv as $target => $card) {
+                            $aSet[] = [
+                                'taget' => $target,
+                                'card' => $card,
+                            ];
+                        }
+                        $oSangeki->template_info[] = [
+                            'loop' => $loop,
+                            'day' => $day,
+                            'set' => $aSet,
                         ];
                     }
-                    $oSangeki->template_info[] = [
-                        'loop' => $loop,
-                        'day' => $day,
-                        'set' => $aSet,
-                    ];
                 }
+                unset($oSangeki->advice->template);
             }
+
             $ret[] = $oSangeki;
 
             unset($oSangeki);
