@@ -26,7 +26,7 @@ function senarioList() {
             foreach ($oSangeki->incident as $k => $v) {
                 $oSangeki->incident[$k]['day'] = $k;
             }
-            $oSangeki->template_info = [];
+            $oSangeki->templateInfo = [];
             if (!empty($oSangeki->advice->template)) {
                 foreach ($oSangeki->advice->template as $loop => $v) {
                     foreach ($v as $day => $vv) {
@@ -37,7 +37,7 @@ function senarioList() {
                                 'card' => $card,
                             ];
                         }
-                        $oSangeki->template_info[] = [
+                        $oSangeki->templateInfo[] = [
                             'loop' => $loop,
                             'day' => $day,
                             'set' => $aSet,
