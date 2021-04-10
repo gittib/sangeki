@@ -20,11 +20,15 @@ function senarioList() {
             if (empty($oSangeki->difficulty)) {
                 $oSangeki->difficulty = $oSangeki->difficulity;
             }
+            $oSangeki->characterList = [];
             foreach ($oSangeki->character as $k => $v) {
-                $oSangeki->character[$k]['name'] = $k;
+                $v['name'] = $k;
+                $oSangeki->characterList[] = $v;
             }
+            $oSangeki->incidentList = [];
             foreach ($oSangeki->incident as $k => $v) {
-                $oSangeki->incident[$k]['day'] = $k;
+                $v['day'] = $k;
+                $oSangeki->incidentList[] = $v;
             }
             $oSangeki->templateInfo = [];
             if (!empty($oSangeki->advice->template)) {
