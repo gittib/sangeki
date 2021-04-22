@@ -50,8 +50,8 @@ function senarioList() {
                         }
                         $aSetPerLoop['perDay'][] = $aSet;
                     }
+                    $oSangeki->templateInfo[] = $aSetPerLoop;
                 }
-                $oSangeki->templateInfo[] = $aSetPerLoop;
                 unset($oSangeki->advice->template);
             }
 
