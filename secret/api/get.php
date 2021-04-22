@@ -44,7 +44,7 @@ function senarioList() {
                         ];
                         foreach ($vv as $target => $card) {
                             $aSet['pattern'][] = [
-                                'taget' => $target,
+                                'target' => $target,
                                 'card' => $card,
                             ];
                         }
