@@ -35,20 +35,25 @@ function senarioList() {
                 foreach ($oSangeki->advice->template as $loop => $v) {
                     $aSetPerLoop = [
                         'loop' => $loop,
+                        'standby' => null,
                         'perDay' => [],
                     ];
                     foreach ($v as $day => $vv) {
-                        $aSet = [
-                            'day' => $day,
-                            'pattern' => [],
-                        ];
-                        foreach ($vv as $target => $card) {
-                            $aSet['pattern'][] = [
-                                'target' => $target,
-                                'card' => $card,
+                        if (is_string($vv)) {
+                            $aSetPerLoop['standby'] = $vv;
+                        } else {
+                            $aSet = [
+                                'day' => $day,
+                                'pattern' => [],
                             ];
+                            foreach ($vv as $target => $card) {
+                                $aSet['pattern'][] = [
+                                    'target' => $target,
+                                    'card' => $card,
+                                ];
+                            }
+                            $aSetPerLoop['perDay'][] = $aSet;
                         }
-                        $aSetPerLoop['perDay'][] = $aSet;
                     }
                     $oSangeki->templateInfo[] = $aSetPerLoop;
                 }
