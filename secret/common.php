@@ -1,6 +1,9 @@
 <?php
 session_start();
 
+if (!defined('PUBLIC_DIR')) {
+    define('PUBLIC_DIR', realpath(__DIR__ . '/../sangeki') . '/');
+}
 if (!defined('SECRET_DIR')) {
     define('SECRET_DIR', __DIR__ . '/');
 }
