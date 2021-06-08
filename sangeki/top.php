@@ -2,7 +2,7 @@
 require_once('../secret/common.php');
 require(SECRET_DIR.'top_menu.php');
 
-$topPageUrl = (empty($_SERVER["HTTPS"]) ? "http://" : "https://") . $_SERVER["HTTP_HOST"] . TOP_PATH;
+$topPageUrl = schema() . '://' . $_SERVER["HTTP_HOST"] . TOP_PATH;
 
 ?>
 <html>
