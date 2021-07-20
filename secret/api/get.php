@@ -5,6 +5,9 @@ switch ($_GET['type']) {
 case 'list':
     senarioList();
     break;
+case 'rule':
+    ruleMaster();
+    break;
 default:
     abort();
 }
@@ -64,6 +67,30 @@ function senarioList() {
 
             unset($oSangeki);
         }
+    }
+    echo json_encode($ret, JSON_UNESCAPED_UNICODE);
+    exit;
+}
+
+function ruleMaster() {
+    require(SECRET_DIR.'rule_role_master.php');
+    $ret = [];
+    foreach ($aRuleRoleMaster as $setName => $rules) {
+        $setInfo = [
+            "setName" => $setName,
+            "rules" => [],
+        ];
+        foreach ($rules as $ruleName => $roles) {
+            $ruleInfo = [
+                "ruleName" => $ruleName,
+                "roles" => [],
+            ];
+            foreach ($roles as $roleName) {
+                $ruleInfo["roles"][] = $roleName;
+            }
+            $setInfo["rules"][] = $ruleInfo;
+        }
+        $ret[] = $setInfo;
     }
     echo json_encode($ret, JSON_UNESCAPED_UNICODE);
     exit;
