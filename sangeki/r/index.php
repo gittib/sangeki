@@ -69,6 +69,7 @@ case 's':
         $sLocationUrl = 'http://bakafire.main.jp/rooper/pdf/summary_002.pdf';
         break;
     case 'HS':
+    case 'HSA':
         $sLocationUrl = 'http://bakafire.main.jp/rooper/pdf/summary_009.pdf';
         break;
     case 'WM':
