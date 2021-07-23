@@ -6,7 +6,7 @@ $aUrl = parse_url($url);
 $aUrl['segments'] = explode('/', trim($aUrl['path'], '/ '));
 if ($aUrl['path'] == TOP_PATH) {
     require(PUBLIC_DIR.'top.php');
-} else if ($aUrl['path'] == TOP_PATH.'/s.apk') {
+} else if ($aUrl['path'] == TOP_PATH.'s.apk') {
     require(PUBLIC_DIR.'apk.php');
 } else {
     abort();
