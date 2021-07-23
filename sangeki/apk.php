@@ -12,6 +12,8 @@ header('Content-Type: text/html; charset=utf-8');
     <link rel="canonical" href="<?= $canonicalUrl ?>">
 </head>
 <body class="apk" style="padding: 16px;">
-    <a href="apks/sangeki.apk">惨劇RoopeR Androidアプリ APKファイル</a>
+    <h1>Android アプリAPK置き場</h1>
+    <div>APKファイルやandroidアプリのインストールについて詳しい方は、こちらのリンクからペンスキー自作の惨劇RoopeRアプリをダウンロードできます。</div>
+    <a href="sangeki.apk">惨劇RoopeR Androidアプリ APKファイル</a>
 </body>
 </html>
