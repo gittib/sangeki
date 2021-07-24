@@ -12,6 +12,6 @@ $canonicalUrl = schema() . '://' . $_SERVER["HTTP_HOST"] . '/apk.php';
 <body class="apk" style="padding: 16px;">
     <h1>Android アプリAPK置き場</h1>
     <div>APKファイルやandroidアプリのインストールについて詳しい方は、こちらのリンクからペンスキー自作の惨劇RoopeRアプリをダウンロードできます。</div>
-    <a href="sangeki.apk?v=3">惨劇RoopeR Androidアプリ APKファイル</a>
+    <a href="sangeki.apk?v=3" type="application/vnd.android.package-archive">惨劇RoopeR Androidアプリ APKファイル</a>
 </body>
 </html>
