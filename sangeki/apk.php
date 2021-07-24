@@ -1,8 +1,6 @@
 <?php
 require_once(__DIR__ . '/../secret/common.php');
 $canonicalUrl = schema() . '://' . $_SERVER["HTTP_HOST"] . '/apk.php';
-
-header('Content-Type: text/html; charset=utf-8');
 ?>
 <html>
 <head>
