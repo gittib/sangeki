@@ -14,6 +14,6 @@ header('Content-Type: text/html; charset=utf-8');
 <body class="apk" style="padding: 16px;">
     <h1>Android アプリAPK置き場</h1>
     <div>APKファイルやandroidアプリのインストールについて詳しい方は、こちらのリンクからペンスキー自作の惨劇RoopeRアプリをダウンロードできます。</div>
-    <a href="sangeki.apk">惨劇RoopeR Androidアプリ APKファイル</a>
+    <a href="sangeki.apk?v=3">惨劇RoopeR Androidアプリ APKファイル</a>
 </body>
 </html>
