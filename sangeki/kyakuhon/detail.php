@@ -1,6 +1,5 @@
 <?php
-define('SECRET_DIR', realpath('../../secret').'/');
-require_once(SECRET_DIR.'common.php');
+require_once(realpath(__DIR__.'/../../secret/common.php'));
 require_once(SECRET_DIR.'sangeki_check.php');
 
 if (!isset($_GET['id'])) {
@@ -10,7 +9,7 @@ if (!isset($_GET['id'])) {
 require_once(SECRET_DIR.'detail_util.php');
 
 $id = $_GET['id'];
-$kyakuhonPath = SECRET_DIR.'kyakuhon_list/'.$id.'.php';
+$kyakuhonPath = SECRET_DIR.'kyakuhon_list/'.str_replace('-', '/', $id).'.php';
 if (!file_exists($kyakuhonPath)) {
     abort();
 }
