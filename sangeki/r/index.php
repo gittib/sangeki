@@ -2,8 +2,7 @@
 /**
  * リダイレクト用ページ
  */
-define('SECRET_DIR', realpath('../../secret').'/');
-require_once(SECRET_DIR.'common.php');
+require_once(__DIR__.'/../../secret/common.php');
 require_once(SECRET_DIR.'kifu_util.php');
 require_once(SECRET_DIR.'class/ScenarioIndex.php');
 

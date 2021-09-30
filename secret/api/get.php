@@ -16,7 +16,7 @@ function senarioList() {
     $aScenario = ScenarioIndex::getScenarioList();
     $ret = [];
     foreach ($aScenario as $id => $val) {
-        $kyakuhonPath = SECRET_DIR.'kyakuhon_list/'.$id.'.php';
+        $kyakuhonPath = SECRET_DIR.'kyakuhon_list/'.str_replace('-', '/', $id).'.php';
         require($kyakuhonPath);
         if (!empty($oSangeki)) {
             $oSangeki->id = $id;
