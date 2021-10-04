@@ -9,7 +9,11 @@ if (!isset($_GET['id'])) {
 require_once(SECRET_DIR.'detail_util.php');
 
 $id = $_GET['id'];
-$kyakuhonPath = SECRET_DIR.'kyakuhon_list/'.str_replace('-', '/', $id).'.php';
+$fileName = $id.'.php';
+$kyakuhonPath = SECRET_DIR.'kyakuhon_list/';
+$files = [];
+exec("find ${kyakuhonPath} -type f -name ${fileName}", $files);
+dd($files);
 if (!file_exists($kyakuhonPath)) {
     abort();
 }

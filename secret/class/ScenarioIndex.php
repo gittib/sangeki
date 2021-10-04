@@ -114,7 +114,7 @@ class ScenarioIndex {
     private static function getScenarioId($s) {
         $sDirPath = SECRET_DIR.'kyakuhon_list/';
         $t = str_replace($sDirPath, '', $s);
-        $t = str_replace('/', '-', $t);
+        $t = preg_replace(';^.*/;', '', $t);
         return str_replace('.php', '', $t);
     }
 
