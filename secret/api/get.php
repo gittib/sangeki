@@ -16,8 +16,14 @@ function senarioList() {
     $aScenario = ScenarioIndex::getScenarioList();
     $ret = [];
     foreach ($aScenario as $id => $val) {
-        $kyakuhonPath = SECRET_DIR.'kyakuhon_list/'.str_replace('-', '/', $id).'.php';
-        require($kyakuhonPath);
+        $kyakuhonPath = SECRET_DIR.'kyakuhon_list/';
+        $fileName = $id.'.php';
+        $files = [];
+        exec("find ${kyakuhonPath} -type f -name ${fileName}", $files);
+        if (count($files) <= 0 || !file_exists($files[0])) {
+            continue;
+        }
+        require($files[0]);
         if (!empty($oSangeki)) {
             $oSangeki->id = $id;
             if (empty($oSangeki->difficulty)) {
