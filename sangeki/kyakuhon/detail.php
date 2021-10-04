@@ -13,11 +13,10 @@ $fileName = $id.'.php';
 $kyakuhonPath = SECRET_DIR.'kyakuhon_list/';
 $files = [];
 exec("find ${kyakuhonPath} -type f -name ${fileName}", $files);
-dd($files);
-if (!file_exists($kyakuhonPath)) {
+if (count($files) <= 0 || !file_exists($files[0])) {
     abort();
 }
-require($kyakuhonPath);
+require($files[0]);
 if (empty($oSangeki)) {
     abort();
 } else if (isProd() && !empty($oSangeki->secret)) {
