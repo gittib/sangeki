@@ -1,6 +1,7 @@
 <?php
 require_once(realpath(__DIR__.'/../../secret/common.php'));
 require_once(SECRET_DIR.'sangeki_check.php');
+require_once(SECRET_DIR.'class/ScenarioIndex.php');
 
 if (!isset($_GET['id'])) {
     abort();
