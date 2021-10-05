@@ -33,15 +33,15 @@ class ScenarioIndex {
         exec("find $path -type f", $result);
 
         $aTmp = [];
-        foreach ($result as $val) {
-            if (!endsWith($val, 'php')) {
+        foreach ($result as $fullPath) {
+            if (!endsWith($fullPath, 'php')) {
                 // PHPじゃない
                 continue;
             }
 
-            $id = self::getScenarioId($val);
+            $id = self::getScenarioId($fullPath);
             $bSecret = false;
-            require($val);
+            require($fullPath);
             if (empty($oSangeki) || empty($oSangeki->title)) {
                 // 未完成な脚本
                 continue;
@@ -53,6 +53,7 @@ class ScenarioIndex {
 
             $oSangeki->id = $id;
             $oSangeki->secret = $bSecret;
+            $oSangeki->path = $fullPath;
             $aTmp[$id] = $oSangeki;
             $oSangeki = null;
         }
@@ -100,6 +101,7 @@ class ScenarioIndex {
             $sFileText .= '"difficulity"=>'.$e($val->difficulity).',';
             $sFileText .= '"loop"=>'.$e($val->loop).',';
             $sFileText .= '"day"=>'.$e($val->day).',';
+            $sFileText .= '"path"=>'.$e($val->path).',';
             $sFileText .= '],';
         }
         $sFileText .= ']];';
