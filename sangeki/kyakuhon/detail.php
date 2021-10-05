@@ -8,15 +8,12 @@ if (!isset($_GET['id'])) {
 
 require_once(SECRET_DIR.'detail_util.php');
 
+$aScenario = ScenarioIndex::getScenarioList();
 $id = $_GET['id'];
-$fileName = $id.'.php';
-$kyakuhonPath = SECRET_DIR.'kyakuhon_list/';
-$files = [];
-exec("find ${kyakuhonPath} -type f -name ${fileName}", $files);
-if (count($files) <= 0 || !file_exists($files[0])) {
+if (empty($aScenario[$id]) || empty($aScenario[$id]->path) || !file_exists($aScenario[$id]->path)) {
     abort();
 }
-require($files[0]);
+require($aScenario[$id]->path);
 if (empty($oSangeki)) {
     abort();
 } else if (isProd() && !empty($oSangeki->secret)) {
