@@ -1,4 +1,5 @@
 <?php
+require_once(realpath(__DIR__.'/../common.php'));
 require_once(SECRET_DIR.'class/ScenarioIndex.php');
 
 switch ($_GET['type']) {
@@ -19,7 +20,7 @@ function senarioList() {
         if (!file_exists($val->path)) {
             continue;
         }
-        require($files[0]);
+        require($val->path);
         if (!empty($oSangeki)) {
             $oSangeki->id = $id;
             if (empty($oSangeki->difficulty)) {
