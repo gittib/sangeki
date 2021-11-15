@@ -1,6 +1,6 @@
 <?php
 require_once(SECRET_DIR.'common.php');
-$url = schema() . '://' . $_SERVER["HTTP_HOST"] . '/zakkan/20211116';
+$url = schema() . '://' . $_SERVER["HTTP_HOST"] . TOP_PATH.'zakkan/20211116';
 ?>
 <html>
 <head>
