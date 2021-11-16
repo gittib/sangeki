@@ -9,4 +9,6 @@
 
   gtag('config', 'UA-53206929-3');
 </script>
+<?php else: ?>
+<meta name="robots" content="noindex">
 <?php endif; ?>
