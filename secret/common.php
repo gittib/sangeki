@@ -1,5 +1,6 @@
 <?php
 session_start();
+ob_start();
 
 if (!defined('PUBLIC_DIR')) {
     define('PUBLIC_DIR', realpath(__DIR__ . '/../sangeki') . '/');
@@ -26,7 +27,7 @@ function e($s) {
 }
 
 function endsWith($haystack, $needle) {
-  return (strrpos($haystack, $needle) === strlen($haystack) - strlen($needle));
+    return (strrpos($haystack, $needle) === strlen($haystack) - strlen($needle));
 }
 
 function session($key, $defaultValue = '') {
@@ -75,13 +76,14 @@ function difficulityName($difficulity) {
 }
 
 function dd($arg) {
-    echo '<html><body><pre><code>';
+    ob_end_clean();
+    header("Content-Type: text/plain");
     var_dump($arg);
-    echo '</code></pre></body></html>';
     exit;
 }
 
 function abort() {
+    ob_end_clean();
     header("HTTP/1.1 404 Not Found");
     require(SECRET_DIR . '404.php');
     exit;
