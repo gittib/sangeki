@@ -1,5 +1,5 @@
 <?php
-require_once(realpath(__DIR__.'/../../secret/common.php'));
+require_once(__DIR__.'/../../secret/common.php');
 require_once(SECRET_DIR.'sangeki_check.php');
 require_once(SECRET_DIR.'class/ScenarioIndex.php');
 
@@ -60,12 +60,14 @@ if (!empty($oSangeki->advice->notice)) {
 }
 
 $kifuUrl = schema().'://'.SITE_DOMAIN.TOP_PATH.'r/?t=m&i=' . shortHash($id);
+$canonicalUrl = schema().'://'.SITE_DOMAIN.TOP_PATH.'kyakuhon/detail.php?id='.$id;
 ?>
 <html>
 <head>
 <?php require(SECRET_DIR.'google_analytics.php') ?>
 <?php require(SECRET_DIR.'sangeki_head.php') ?>
     <title><?= e($oSangeki->rule_str) ?> 脚本 [<?= $id ?>] - <?= SITE_NAME ?></title>
+    <link rel="canonical" href="<?= $canonicalUrl ?>">
 </head>
 <body class="detail">
 <?php require(SECRET_DIR.'sangeki_header.php'); ?>

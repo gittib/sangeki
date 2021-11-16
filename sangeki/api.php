@@ -1,6 +1,5 @@
 <?php
-define('SECRET_DIR', realpath('../secret').'/');
-require_once(SECRET_DIR.'common.php');
+require_once(__DIR__ . '/../secret/common.php');
 
 $appUA = ' SangekiRooperAndroid ';
 if (strpos($_SERVER['HTTP_USER_AGENT'], $appUA) === false) {
