@@ -1,6 +1,5 @@
 <?php
-require_once(SECRET_DIR.'common.php');
-$canonicalUrl = schema() . '://' . $_SERVER["HTTP_HOST"] . TOP_PATH.'zakkan/20211116';
+$canonicalUrl = schema().'://'.SITE_DOMAIN.TOP_PATH.'zakkan/20211116';
 ?>
 <html>
 <head>
@@ -23,7 +22,7 @@ $canonicalUrl = schema() . '://' . $_SERVER["HTTP_HOST"] . TOP_PATH.'zakkan/2021
         <dd>
             <p class="loops_for_rule">稼げるループ数：２～３</p>
             イノセントは死亡するタイムトラベラーという雰囲気。友好積まなきゃいけないのは同じなので、死亡するぶん脚本家よりになっている(ループ数が増える)。
-            マリスが安定して1ループ稼いでくれるのがでかい。ただし1人上限なので、悪意の檻や悪性惨劇臨界点と組み合わせた場合は稼げるループ数は1ループ減る計算。
+            マリスが配役次第では安定して1ループ稼いでくれるのがでかい。ただし1人上限なので、悪意の檻や悪性惨劇臨界点と組み合わせた場合は稼げるループ数は1ループ減る計算。
         </dd>
         <dt>袋小路の世界</dt>
         <dd>

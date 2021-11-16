@@ -16,6 +16,7 @@ require(dirname(__FILE__) . '/top_menu.php');
                 <?php foreach ($aTopMenu as $val): ?>
                 <li><a href="<?= TOP_PATH . e($val->href) ?>"><?= e($val->link) ?></a></li>
                 <?php endforeach; ?>
+                <li><a href="<?= TOP_PATH ?>zakkan">雑記帳</a></li>
             </ul>
         </div>
     </div>
