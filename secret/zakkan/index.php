@@ -14,7 +14,7 @@ $url = schema() . '://' . $_SERVER["HTTP_HOST"] . TOP_PATH.'zakkan';
     <h2>雑記帳</h2>
     <div>惨劇RoopeRについて、ツイートするには長い話をつらつらするところ。</div>
     <ul>
-        <li><a href="<?= $url ?>/20211116">れうさんの惨劇セット雑感</a></li>
+        <li><a href="<?= $url ?>/1">れうさんの惨劇セット雑感</a></li>
     </ul>
 </body>
 </html>
