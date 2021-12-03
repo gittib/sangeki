@@ -412,7 +412,7 @@ function rolesCountCheck($oSangeki) {
                 }
             }
             if (!$extraRoleChecked) {
-                $aErrorMessage[] = 'シークレットがいませんが、嘘憑きの秘密の追加役職も追加されていません'
+                $aErrorMessage[] = 'シークレットがいませんが、嘘憑きの秘密の追加役職も追加されていません';
             }
         }
     }
