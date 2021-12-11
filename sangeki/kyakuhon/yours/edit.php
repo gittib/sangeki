@@ -75,13 +75,13 @@ $aChara = [
         <p>ループ数：
             <select name="loop">
                 <?php for($i = 1 ; $i <= 8 ; $i++): ?>
-                <option><?= $i ?>ループ</option>
+                <option value="<?= $i ?>"><?= $i ?>ループ</option>
                 <?php endfor; ?>
             </select>
             日数：
             <select name="day">
                 <?php for($i = 1 ; $i <= 8 ; $i++): ?>
-                <option><?= $i ?>日</option>
+                <option value="<?= $i ?>"><?= $i ?>日</option>
                 <?php endfor; ?>
             </select>
         </p>

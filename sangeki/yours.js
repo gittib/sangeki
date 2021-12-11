@@ -91,9 +91,11 @@ if ($('body').hasClass('your_kyakuhon_list')) {
 }
 if ($('body').hasClass('your_kyakuhon_edit')) {
     var scenario = scenarioList.find(item => item.id == scenarioId);
+    console.log(scenario);
     $('[name=title]').val(scenario.title);
     $('[name=loop]').val(scenario.loop);
     $('[name=day]').val(scenario.day);
+    $('[name=difficulty]').val(scenario.difficulty);
     $('.add_chara').on('click', function() {
     });
     $('.add_incident').on('click', function() {
