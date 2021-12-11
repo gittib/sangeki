@@ -64,5 +64,6 @@ if ($('body').hasClass('your_kyakuhon_list')) {
             'incidents': [],
         });
         localStorage.setItem('scenarioList', JSON.stringify(scenarioList));
+        reloadScenarioList();
     });
 }
