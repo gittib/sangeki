@@ -29,7 +29,7 @@ if ($('body').hasClass('your_kyakuhon_list')) {
             $dom.find('.rule_prefix').text(item.set);
             $dom.find('.rule_prefix').addClass(item.set);
             $dom.find('a.view').attr('href', './preview.php?id='+item.id);
-            $dom.find('a.edit').attr('href', './detail.php?id='+item.id);
+            $dom.find('a.edit').attr('href', './edit.php?id='+item.id);
             $dom.find('.title').text('['+item.id+']'+item.title);
             $dom.find('.loop > strong').text(item.loop);
             $dom.find('.day > strong').text(item.day);
@@ -60,6 +60,11 @@ if ($('body').hasClass('your_kyakuhon_list')) {
     });
 
     $('.create_new').on('click', function() {
+        const setName = $('select[name=set]').val();
+        if (!setName) {
+            alert('惨劇セットを指定して下さい。');
+            return;
+        }
         let maxId = 0;
         scenarioList.forEach(item => {
             if (maxId < item.id) maxId = item.id;
@@ -67,7 +72,7 @@ if ($('body').hasClass('your_kyakuhon_list')) {
         scenarioList.push({
             'id': maxId+1,
             'title': '新規脚本',
-            'set': 'BTX',
+            'set': setName,
             'loop': 1,
             'day': 1,
             'difficulty': 1,
