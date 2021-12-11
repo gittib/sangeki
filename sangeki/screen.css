@@ -859,12 +859,13 @@ body.zakkan dl.tips > dd {
 
 body.your_kyakuhon_list #kyakuhon_list {
     border-bottom: solid 1px;
-    margin-bottom: 8px;
+    margin: 8px 28px;
 }
 body.your_kyakuhon_list #kyakuhon_list > li {
     padding-top: 4px;
     padding-bottom: 20px;
     border-top: solid 1px;
+    text-align: center;
 }
 body.your_kyakuhon_list #kyakuhon_list > li a.link {
     display: block;
@@ -882,6 +883,12 @@ body.your_kyakuhon_list #kyakuhon_list > li .difficulty .tag {
 body.your_kyakuhon_list p.notice {
     margin-top: 20px;
     font-size: 0.9rem;
+}
+
+
+body.your_kyakuhon_edit .editor span.column_name {
+    display: inline-block;
+    vertical-align: top;
 }
 
 
