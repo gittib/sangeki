@@ -3,7 +3,7 @@ if ($('body').hasClass('your_kyakuhon_list')) {
 
     // 自作脚本リストの処理
     JSON.parse(localStorage.getItem('scenarioList') || '[]').forEach((item) => {
-        let $dom = $('#clone_base-kyakuhon_column');
+        let $dom = $('#clone_base-kyakuhon_column').clone();
         $dom.removeAttr('id');
         $dom.find('a.link').attr('href', './detail.php?id='+item.id);
         $dom.find('.title').text(item.title);
