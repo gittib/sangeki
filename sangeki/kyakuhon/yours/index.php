@@ -17,7 +17,7 @@ require_once(__DIR__.'/../../../secret/common.php');
         <ul id="kyakuhon_list">
         </ul>
         <div class="console">
-            <button>新しい脚本を作る</button>
+            <button class="create_new">新しい脚本を作る</button>
         </div>
         <p class="notice">脚本データの管理には、localStorageという技術を利用しています。脚本データは端末に保存されますので、異なる端末・ブラウザからアクセスすると、データが引き継がれません。</p>
     </div>
