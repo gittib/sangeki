@@ -76,6 +76,8 @@ if ($('body').hasClass('your_kyakuhon_list')) {
             'ruleX2': '',
             'characters': [],
             'incidents': [],
+            'note': '',
+            'advice': '',
         });
         localStorage.setItem('scenarioList', JSON.stringify(scenarioList));
         reloadScenarioList();
