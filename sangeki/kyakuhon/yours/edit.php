@@ -1,5 +1,6 @@
 <?php
 require_once(__DIR__.'/../../../secret/common.php');
+require_once(SECRET_DIR.'detail_util.php');
 require(SECRET_DIR.'rule_role_master.php');
 $setName = $_GET['set'] ?? 'BTX';
 $aMaster = $aRuleRoleMaster[$setName];
@@ -69,7 +70,7 @@ $aChara = [
         あなたの考えた脚本を、このサイトで作成・編集・管理できます。
     </div>
     <div class="editor">
-        <p>惨劇セット：<span class="set"></span></p>
+        <p>惨劇セット：<?= getTragedySetName($setName) ?></p>
         <p>ループ数：
             <select name="loop">
                 <?php for($i = 1 ; $i <= 8 ; $i++): ?>
