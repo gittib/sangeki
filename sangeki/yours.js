@@ -24,6 +24,8 @@ if ($('body').hasClass('your_kyakuhon_list')) {
         scenarioList.forEach((item) => {
             let $dom = $('#clone_base-kyakuhon_column').clone();
             $dom.removeAttr('id');
+            $dom.find('.rule_prefix').text(item.set);
+            $dom.find('.rule_prefix').addClass(item.set);
             $dom.find('a.link').attr('href', './detail.php?id='+item.id);
             $dom.find('.title').text(item.title);
             $dom.find('.loop > strong').text(item.loop);
