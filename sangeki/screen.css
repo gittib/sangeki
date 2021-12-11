@@ -857,12 +857,19 @@ body.zakkan dl.tips > dd {
 }
 
 
+body.your_kyakuhon_list #kyakuhon_list {
+    border-bottom: solid 1px;
+    margin-bottom: 8px;
+}
 body.your_kyakuhon_list #kyakuhon_list > li {
     padding-top: 4px;
     padding-bottom: 12px;
     border-top: solid 1px;
 }
-body.your_kyakuhon_list .difficulty .tag {
+body.your_kyakuhon_list #kyakuhon_list > li a.link {
+    display: block;
+}
+body.your_kyakuhon_list #kyakuhon_list > li .difficulty .tag {
     background-color: black;
     color: white;
     padding: 0 3px;

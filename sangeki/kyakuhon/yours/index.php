@@ -25,14 +25,14 @@ require_once(__DIR__.'/../../../secret/common.php');
     <div id="clone_parts_wrapper" style="display:none;">
         <ul>
             <li id="clone_base-kyakuhon_column">
-                <span class="rule_prefix">BTX</span>
-                <a class="link" href="./detail.php?id=0">
-                    <span class="title">あなたのオリジナル脚本</span>
-                </a>
                 <p>
+                    <span class="rule_prefix">BTX</span>
                     <span class="loop"><strong>4</strong>ループ</span>
                     <span class="day"><strong>5</strong>日間</span>
                 </p>
+                <a class="link" href="./detail.php?id=0">
+                    <span class="title">あなたのオリジナル脚本</span>
+                </a>
                 <p class="difficulty">
                     難易度<span class="star">★★★★☆☆☆☆</span>
                     <span class="tag">普通</span>
