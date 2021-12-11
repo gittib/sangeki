@@ -890,6 +890,9 @@ body.your_kyakuhon_edit .editor span.column_name {
     display: inline-block;
     vertical-align: top;
 }
+body.your_kyakuhon_edit .editor textarea {
+    width: 95%;
+}
 
 
 
