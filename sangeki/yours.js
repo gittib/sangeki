@@ -29,7 +29,7 @@ if ($('body').hasClass('your_kyakuhon_list')) {
             $dom.find('.rule_prefix').text(item.set);
             $dom.find('.rule_prefix').addClass(item.set);
             $dom.find('a.link').attr('href', './detail.php?id='+item.id);
-            $dom.find('.title').text(item.title);
+            $dom.find('.title').text('['+item.id+']'+item.title);
             $dom.find('.loop > strong').text(item.loop);
             $dom.find('.day > strong').text(item.day);
 
