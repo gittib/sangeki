@@ -90,14 +90,53 @@ if ($('body').hasClass('your_kyakuhon_list')) {
     });
 }
 if ($('body').hasClass('your_kyakuhon_edit')) {
+    const scenarioIndex = (function() {
+        let idx = 0;
+        let target = 0;
+        scenarioList.forEach(item => {
+            if (item.id == scenarioId) {
+                target = idx;
+            }
+            idx++;
+        });
+        return target;
+    })();
     var scenario = scenarioList.find(item => item.id == scenarioId);
     console.log(scenario);
     $('[name=title]').val(scenario.title);
+    $('[name=title]').on('change', function() {
+        scenario.title = $(this).val();
+    });
     $('[name=loop]').val(scenario.loop);
+    $('[name=loop]').on('change', function() {
+        scenario.loop = $(this).val();
+    });
     $('[name=day]').val(scenario.day);
+    $('[name=day]').on('change', function() {
+        scenario.day = $(this).val();
+    });
     $('[name=difficulty]').val(scenario.difficulty);
+    $('[name=difficulty]').on('change', function() {
+        scenario.difficulty = $(this).val();
+    });
+    $('[name=ruleY]').val(scenario.ruleY);
+    $('[name=ruleY]').on('change', function() {
+        scenario.ruleY = $(this).val();
+    });
+    $('[name=ruleX1]').val(scenario.ruleX1);
+    $('[name=ruleX1]').on('change', function() {
+        scenario.ruleX1 = $(this).val();
+    });
+    $('[name=ruleX2]').val(scenario.ruleX2);
+    $('[name=ruleX2]').on('change', function() {
+        scenario.ruleX2 = $(this).val();
+    });
     $('.add_chara').on('click', function() {
     });
     $('.add_incident').on('click', function() {
     });
+
+    function updateScenario() {
+        scenarioList.splice(scenarioIndex, 1, scenario);
+    }
 }
