@@ -31,7 +31,7 @@ require_once(__DIR__.'/../../../secret/common.php');
                 </a>
                 <span class="loop"><strong>4</strong>ループ</span>
                 <span class="day"><strong>5</strong>日間</span>
-                <span class="difficulity">
+                <span class="difficulty">
                     難易度<span class="star">★★★★☆☆☆☆</span>
                     <span class="tag">普通</span>
                 </span>
