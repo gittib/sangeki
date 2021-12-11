@@ -28,8 +28,8 @@ if ($('body').hasClass('your_kyakuhon_list')) {
             $dom.find('button.delete').attr('data-id', item.id);
             $dom.find('.rule_prefix').text(item.set);
             $dom.find('.rule_prefix').addClass(item.set);
-            $dom.find('a.view').attr('href', './preview.php?id='+item.id);
-            $dom.find('a.edit').attr('href', './edit.php?id='+item.id);
+            $dom.find('a.view').attr('href', './preview.php?id='+item.id+'&set='+item.set);
+            $dom.find('a.edit').attr('href', './edit.php?id='+item.id+'&set='+item.set);
             $dom.find('.title').text('['+item.id+']'+item.title);
             $dom.find('.loop > strong').text(item.loop);
             $dom.find('.day > strong').text(item.day);
