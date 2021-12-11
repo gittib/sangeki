@@ -30,14 +30,11 @@ require_once(SECRET_DIR.'sangeki_check.php');
                 </span>
             </li>
         </ul>
+        <div class="console">
+            <button>新しい脚本を作る</button>
+        </div>
     </div>
 <?php require(SECRET_DIR.'sangeki_footer.php') ?>
-<script>
-let scenarioList = localStorage.getItem('scenarioList');
-let $dom = $('#clone_base-kyakuhon_column');
-$dom.removeAttr('id');
-$dom.removeAttr('style');
-$('#kyakuhon_list').append($dom);
-</script>
+<script src="<?= TOP_PATH ?>yours.js?v=<?= filemtime(PUBLIC_DIR.'yours.js') ?>"></script>
 </body>
 </html>
