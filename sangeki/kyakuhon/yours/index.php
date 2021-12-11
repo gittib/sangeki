@@ -17,7 +17,20 @@ require_once(__DIR__.'/../../../secret/common.php');
         <ul id="kyakuhon_list">
         </ul>
         <div class="console">
-            <button class="create_new">新しい脚本を作る</button>
+            <p>新しい脚本を作る</p>
+            <select name="set">
+                <option value="">脚本を作る惨劇セットを選択</option>
+                <option value="FS">First Steps</option>
+                <option value="BTX">Basic Tragedy Χ</option>
+                <option value="MZ">Midnight Zone</option>
+                <option value="MCX">Mistery Circle Χ</option>
+                <option value="HSA">Hounted State Again</option>
+                <option value="WM">Weird Mythology</option>
+                <option value="AHR">Another Horizon Revised</option>
+                <option value="LL">Last Liar</option>
+                <option value="UM">Unvoiced Malice</option>
+            </select>
+            <button class="create_new">作成開始</button>
         </div>
         <p class="notice">脚本データの管理には、localStorageという技術を利用しています。脚本データは端末に保存されますので、異なる端末・ブラウザからアクセスすると、データが引き継がれません。</p>
     </div>
@@ -38,7 +51,7 @@ require_once(__DIR__.'/../../../secret/common.php');
                     <span class="tag">普通</span>
                 </p>
                 <p class="button_wrapper">
-                    <a class="edit" href="./detail.php?id=0">脚本を編集</a>
+                    <a class="edit" href="./edit.php?id=0">脚本を編集</a>
                     <button class="delete">削除</button>
                 </p>
             </li>
