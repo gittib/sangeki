@@ -118,12 +118,18 @@ if ($('body').hasClass('your_kyakuhon_edit')) {
         scenario.ruleY = $('[name=ruleY]').val();
         scenario.ruleX1 = $('[name=ruleX1]').val();
         scenario.ruleX2 = $('[name=ruleX2]').val();
+        scenario.note = $('[name=note]').val();
+        scenario.advice = $('[name=advice]').val();
         updateScenario();
     }, 2000);
 
     $('.add_chara').on('click', function() {
+        // TODO キャラ追加
+        updateScenario();
     });
     $('.add_incident').on('click', function() {
+        // TODO 事件追加
+        updateScenario();
     });
 
     function updateScenario() {
