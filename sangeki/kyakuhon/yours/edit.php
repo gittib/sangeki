@@ -71,6 +71,7 @@ $aChara = [
     </div>
     <div class="editor">
         <p>惨劇セット：<?= getTragedySetName($setName) ?></p>
+        <p>脚本タイトル：<input type="text" name="title"></p>
         <p>ループ数：
             <select name="loop">
                 <?php for($i = 1 ; $i <= 8 ; $i++): ?>
@@ -98,51 +99,39 @@ $aChara = [
             </select>
         </p>
         <p><span class="column_name">ルール</span>
-            ルールY：
-            <select name="ruleY">
-                <?php foreach($aRuleY as $rule): ?>
-                <option><?= $rule ?></option>
-                <?php endforeach; ?>
-            </select>
-            ルールX1：
-            <select name="ruleX1">
-                <?php foreach($aRuleX as $rule): ?>
-                <option><?= $rule ?></option>
-                <?php endforeach; ?>
-            </select>
-            ルールX2：
-            <select name="ruleX2">
-                <?php foreach($aRuleX as $rule): ?>
-                <option><?= $rule ?></option>
-                <?php endforeach; ?>
-            </select>
+            <ul>
+                <li>
+                    ルールY：<select name="ruleY">
+                        <?php foreach($aRuleY as $rule): ?>
+                        <option><?= $rule ?></option>
+                        <?php endforeach; ?>
+                    </select>
+                </li>
+                <li>
+                    ルールX1：<select name="ruleX1">
+                        <?php foreach($aRuleX as $rule): ?>
+                        <option><?= $rule ?></option>
+                        <?php endforeach; ?>
+                    </select>
+                </li>
+                <li>
+                    ルールX2：<select name="ruleX2">
+                        <?php foreach($aRuleX as $rule): ?>
+                        <option><?= $rule ?></option>
+                        <?php endforeach; ?>
+                    </select>
+                </li>
+            </ul>
         </p>
         <p>キャラクター一覧
-            <table class="characer_list">
-                <thead>
-                    <tr>
-                        <th>キャラ</th>
-                        <th>役職</th>
-                        <th>備考</th>
-                    </tr>
-                </thead>
-                <tbody>
-                </tbody>
-            </table>
+            <ul class="characer_list">
+            </ul>
+            <button class="add_chara">キャラクター追加</button>
         </p>
         <p>事件リスト
-            <table class="incident_list">
-                <thead>
-                    <tr>
-                        <th>日数</th>
-                        <th>事件名</th>
-                        <th>犯人</th>
-                        <th>備考</th>
-                    </tr>
-                </thead>
-                <tbody>
-                </tbody>
-            </table>
+            <ul class="incident_list">
+            </ul>
+            <button class="add_incident">事件追加</button>
         </p>
         <p><span class="column_name">脚本の特徴など：</span><textarea name="note" cols=25 rows=8 placeholder="どんな主人公に向けた脚本なのか等を簡単に説明します"></textarea></p>
         <p><span class="column_name">脚本家への指針：</span><textarea name="advice" cols=25 rows=16 placeholder="脚本家が目指すべき敗北条件や、脚本家カードの置き方、立ち回りについて解説します"></textarea></p>
@@ -151,45 +140,46 @@ $aChara = [
     <div id="clone_parts_wrapper" style="display:none;">
         <table>
             <tbody>
-                <tr id="clone_base-character_row">
-                    <td><select class="chara_name">
+                <li id="clone_base-character_row">
+                    <p><select class="chara_name">
                         <?php foreach ($aChara as $chara): ?>
                         <option><?= $chara ?></option>
                         <?php endforeach; ?>
-                    </select></td>
-                    <td><select class="chara_role">
-                        <option>パーソン</option>
+                    </select></p>
+                    <p><select class="chara_role">
+                        <option value="">パーソン</option>
                         <?php foreach ($aRole as $role): ?>
                         <option><?= $role ?></option>
                         <?php endforeach; ?>
-                    </select></td>
-                    <td><input type="text" class="chara_note"></td>
-                </tr>
-                <tr id="clone_base-incident_row">
-                    <td><select class="day">
+                    </select></p>
+                    <p><input type="text" class="chara_note"></p>
+                </li>
+                <li id="clone_base-incident_row">
+                    <p><select class="day">
                         <?php for ($i = 1 ; $i <= 8 ; $i++): ?>
                         <option><?= $i ?></option>
                         <?php endfor; ?>
-                    </select></td>
-                    <td><select class="incident_name">
+                    </select></p>
+                    <p><select class="incident_name">
                         <?php foreach ($aIncident as $incident): ?>
                         <option><?= $incident ?></option>
                         <?php endforeach; ?>
-                    </select></td>
-                    <td><select class="chara_name">
+                    </select></p>
+                    <p><select class="chara_name">
                         <?php foreach ($aChara as $chara): ?>
                         <option><?= $chara ?></option>
                         <?php endforeach; ?>
-                    </select></td>
-                    <td><input type="text" class="incident_note"></td>
-                </tr>
+                    </select></p>
+                    <p><input type="text" class="incident_note"></p>
+                </li>
             </tbody>
         </table>
     </div>
 <?php require(SECRET_DIR.'sangeki_footer.php') ?>
 <script>const ruleMaster = <?php
 echo json_encode($aMaster, JSON_UNESCAPED_UNICODE);
-?></script>
+?>;
+const scenarioId = <?= $_GET['id'] ?>;</script>
 <script src="<?= TOP_PATH ?>yours.js?v=<?= filemtime(PUBLIC_DIR.'yours.js') ?>"></script>
 </body>
 </html>
