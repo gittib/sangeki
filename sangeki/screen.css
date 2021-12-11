@@ -857,6 +857,21 @@ body.zakkan dl.tips > dd {
 }
 
 
+body.your_kyakuhon_list {
+}
+body.your_kyakuhon_list .difficulity .tag {
+    background-color: black;
+    color: white;
+    padding: 0 3px;
+    font-weight: bold;
+    min-width: 42px;
+    display: inline-block;
+    text-align: center;
+    border-radius: 4px;
+}
+
+
+
 body.not_found h1 {
     margin: 8px;
 }
