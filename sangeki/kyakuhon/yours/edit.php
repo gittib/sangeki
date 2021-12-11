@@ -29,6 +29,18 @@ require_once(__DIR__.'/../../../secret/common.php');
             </select>
         </p>
         <p>特殊ルール：<textarea name="special_rule"></textarea></p>
+        <p>難易度：
+            <select name="difficulty">
+                <?php for ($i = 1 ; $i <= 8 ; $i++): ?>
+                <option value="<?= $i ?>"><?= difficulityName($i) ?>　<?php
+                for ($j = 1 ; $j <= 8 ; $j++) {
+                    if ($j <= $i) echo '★';
+                    else echo '☆';
+                } ?></option>
+                <?php endfor; ?>
+                <option value="0">特殊　☆☆☆☆☆☆☆☆</option>
+            </select>
+        </p>
         <p>キャラクター一覧
             <table class="characer_list">
                 <thead>

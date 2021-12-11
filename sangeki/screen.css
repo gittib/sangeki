@@ -880,6 +880,7 @@ body.your_kyakuhon_list #kyakuhon_list > li .difficulty .tag {
     border-radius: 4px;
 }
 body.your_kyakuhon_list p.notice {
+    margin-top: 20px;
     font-size: 0.9rem;
 }
 
