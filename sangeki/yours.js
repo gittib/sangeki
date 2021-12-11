@@ -49,7 +49,7 @@ if ($('body').hasClass('your_kyakuhon_list')) {
     }
     reloadScenarioList();
 
-    $('button.delete[data-id]').on('click', function () {
+    $('#kyakuhon_list').on('click', 'button.delete[data-id]', function () {
         const id = $(this).attr('data-id');
         if (confirm('ID:['+id+']の脚本を削除しますか？')) {
             scenarioList = scenarioList.filter(item => item.id != id);
