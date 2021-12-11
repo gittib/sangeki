@@ -101,19 +101,19 @@ $aChara = [
             <select name="ruleY">
                 <?php foreach($aRuleY as $rule): ?>
                 <option><?= $rule ?></option>
-                <?php endfor; ?>
+                <?php endforeach; ?>
             </select>
             ルールX1：
             <select name="ruleX1">
                 <?php foreach($aRuleX as $rule): ?>
                 <option><?= $rule ?></option>
-                <?php endfor; ?>
+                <?php endforeach; ?>
             </select>
             ルールX2：
             <select name="ruleX2">
                 <?php foreach($aRuleX as $rule): ?>
                 <option><?= $rule ?></option>
-                <?php endfor; ?>
+                <?php endforeach; ?>
             </select>
         </p>
         <p>キャラクター一覧
