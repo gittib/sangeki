@@ -14,8 +14,7 @@ require_once(__DIR__.'/../../../secret/common.php');
         あなたの考えた脚本を、このサイトで作成・編集・管理できます。
     </div>
     <div class="kyakuhon_list">
-        <ul id="kyakuhon_list">
-        </ul>
+        <ul id="kyakuhon_list"></ul>
         <div class="console">
             <p>新しい脚本を作る</p>
             <select name="set">
