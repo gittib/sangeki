@@ -30,7 +30,7 @@ require_once(__DIR__.'/../../../secret/common.php');
                     <span class="loop"><strong>4</strong>ループ</span>
                     <span class="day"><strong>5</strong>日間</span>
                 </p>
-                <a class="link" href="./detail.php?id=0">
+                <a class="view" href="./preview.php?id=0">
                     <span class="title">あなたのオリジナル脚本</span>
                 </a>
                 <p class="difficulty">
@@ -38,7 +38,7 @@ require_once(__DIR__.'/../../../secret/common.php');
                     <span class="tag">普通</span>
                 </p>
                 <p class="button_wrapper">
-                    <button class="edit">編集</button>
+                    <a class="edit" href="./detail.php?id=0">脚本を編集</a>
                     <button class="delete">削除</button>
                 </p>
             </li>
