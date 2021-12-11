@@ -1,6 +1,5 @@
 <?php
 require_once(__DIR__.'/../../../secret/common.php');
-require_once(SECRET_DIR.'sangeki_check.php');
 ?>
 <html>
 <head>
@@ -13,7 +12,6 @@ require_once(SECRET_DIR.'sangeki_check.php');
     <div class="top_text">
         <h2>あなたの脚本リスト</h2>
         あなたの考えた脚本を、このサイトで作成・編集・管理できます。
-        <p class="notice">脚本データの管理には、localStorageという技術を利用しています。脚本データは端末に保存されますので、異なる端末・ブラウザからアクセスすると、データが引き継がれません。</p>
     </div>
     <div class="kyakuhon_list">
         <ul id="kyakuhon_list">
@@ -33,6 +31,7 @@ require_once(SECRET_DIR.'sangeki_check.php');
         <div class="console">
             <button>新しい脚本を作る</button>
         </div>
+        <p class="notice">脚本データの管理には、localStorageという技術を利用しています。脚本データは端末に保存されますので、異なる端末・ブラウザからアクセスすると、データが引き継がれません。</p>
     </div>
 <?php require(SECRET_DIR.'sangeki_footer.php') ?>
 <script src="<?= TOP_PATH ?>yours.js?v=<?= filemtime(PUBLIC_DIR.'yours.js') ?>"></script>
