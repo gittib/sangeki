@@ -59,7 +59,10 @@ if ($('body').hasClass('your_kyakuhon_list')) {
     });
 
     $('.create_new').on('click', function() {
-        let maxId = Math.max(scenarioList.map(item => item.id));
+        let maxId = 0;
+        scenarioList.forEach(item => {
+            if (maxId < item.id) maxId = item.id;
+        });
         scenarioList.push({
             'id': maxId+1,
             'title': '新規脚本',
