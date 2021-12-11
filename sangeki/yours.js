@@ -24,6 +24,8 @@ if ($('body').hasClass('your_kyakuhon_list')) {
         scenarioList.forEach((item) => {
             let $dom = $('#clone_base-kyakuhon_column').clone();
             $dom.removeAttr('id');
+            $dom.attr('data-id', item.id);
+            $dom.find('button.delete').attr('data-id', item.id);
             $dom.find('.rule_prefix').text(item.set);
             $dom.find('.rule_prefix').addClass(item.set);
             $dom.find('a.link').attr('href', './detail.php?id='+item.id);
@@ -46,6 +48,15 @@ if ($('body').hasClass('your_kyakuhon_list')) {
         });
     }
     reloadScenarioList();
+
+    $('button.delete[data-id]').on('click', function () {
+        const id = $(this).attr('data-id');
+        if (confirm('ID:['+id+']の脚本を削除しますか？')) {
+            scenarioList = scenarioList.filter(item => item.id != id);
+            localStorage.setItem('scenarioList', JSON.stringify(scenarioList));
+            reloadScenarioList();
+        }
+    });
 
     $('.create_new').on('click', function() {
         let maxId = Math.max(scenarioList.map(item => item.id));

@@ -37,6 +37,7 @@ require_once(__DIR__.'/../../../secret/common.php');
                     難易度<span class="star">★★★★☆☆☆☆</span>
                     <span class="tag">普通</span>
                 </p>
+                <p><button class="delete">削除</button></p>
             </li>
         </ul>
     </div>
