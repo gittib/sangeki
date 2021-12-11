@@ -1,5 +1,5 @@
 function difficultyName(difficulty) {
-    switch (difficulty) {
+    switch (Number(difficulty)) {
     case 1: return '練習用';
     case 2: return '簡単';
     case 3: return '易しい';
