@@ -29,12 +29,14 @@ require_once(__DIR__.'/../../../secret/common.php');
                 <a class="link" href="./detail.php?id=0">
                     <span class="title">あなたのオリジナル脚本</span>
                 </a>
-                <span class="loop"><strong>4</strong>ループ</span>
-                <span class="day"><strong>5</strong>日間</span>
-                <span class="difficulty">
+                <p>
+                    <span class="loop"><strong>4</strong>ループ</span>
+                    <span class="day"><strong>5</strong>日間</span>
+                </p>
+                <p class="difficulty">
                     難易度<span class="star">★★★★☆☆☆☆</span>
                     <span class="tag">普通</span>
-                </span>
+                </p>
             </li>
         </ul>
     </div>

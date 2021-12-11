@@ -862,9 +862,6 @@ body.your_kyakuhon_list #kyakuhon_list > li {
     padding-bottom: 12px;
     border-top: solid 1px;
 }
-body.your_kyakuhon_list #kyakuhon_list li span.difficulty {
-    display: block;
-}
 body.your_kyakuhon_list .difficulty .tag {
     background-color: black;
     color: white;
@@ -874,6 +871,9 @@ body.your_kyakuhon_list .difficulty .tag {
     display: inline-block;
     text-align: center;
     border-radius: 4px;
+}
+body.your_kyakuhon_list p.notice {
+    font-size: 0.9rem;
 }
 
 
