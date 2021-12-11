@@ -72,6 +72,8 @@ function difficulityName($difficulity) {
             return '惨劇';
         case 8:
             return '悪夢';
+        default:
+            return '特殊';
     }
 }
 

@@ -79,6 +79,13 @@ span.rule_prefix.HSA {
 span.rule_prefix.WM {
     background-color: darkgreen;
 }
+span.rule_prefix.LL {
+    background-color: #B2B8B8;
+}
+span.rule_prefix.AH,
+span.rule_prefix.AHR {
+    background-color: #DAB300;
+}
 ul.question_list {
     padding: 8px;
 }

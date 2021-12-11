@@ -11,6 +11,7 @@ function roleSpec ($r) {
         case 'ウィッチ':
         case 'ゼッタイシャ':
         case 'パラノイア':
+        case 'ジョーカー':
             $sZettai = '◆';
         case 'キラー':
         case 'クロマク':
@@ -26,6 +27,11 @@ function roleSpec ($r) {
         case 'アベンジャー':
             $sYuukouMushi = '<span class="black_heart">&#x1f5a4;</span>';
             break;
+        case 'マリオネット':
+        case 'ナーサリーライム':
+            $sZettai = '◆';
+            $sYuukouMushi = '<span class="black_heart">&#x1f5a4;</span>';
+            break;
     }
 
     switch ($role) {
@@ -39,6 +45,10 @@ function roleSpec ($r) {
         case 'フェイスレス':
         case 'イレイザー':
         case 'パイドパイパー':
+        case 'カタリベ':
+        case 'プレインシフター':
+        case 'ウォッチャー':
+        case 'ジョーカー':
             $sFushi = '★';
             break;
     }
@@ -61,6 +71,7 @@ function initPos($name, $aCharacter = array()) {
         case '妹':
         case '教祖':
         case 'ご神木':
+        case '上位存在':
             return 'shrine';
         case '病院':
         case 'hospital':
@@ -82,6 +93,9 @@ function initPos($name, $aCharacter = array()) {
         case 'マスコミ':
         case '鑑識官':
         case 'コピーキャット':
+        case 'アルバイト':
+        case 'アルバイト？':
+        case '従者':
             return 'city';
         case '学校':
         case 'school':
@@ -104,13 +118,15 @@ function initPos($name, $aCharacter = array()) {
 function characterSpec($name) {
     switch (rtrim($name, 'ABCDE')) {
         case '妹':
-            return array('少女', '妹');
+            return ['少女', '妹'];
         case '異世界人':
-            return array('少女');
+        case '上位存在':
+        case 'アルバイト？':
+            return ['少女'];
         case '男子学生':
         case 'イレギュラー':
         case 'コピーキャット':
-            return array('学生', '少年');
+            return ['学生', '少年'];
         case '巫女':
         case 'アイドル':
         case '女子学生':
@@ -118,13 +134,13 @@ function characterSpec($name) {
         case '委員長':
         case '女の子':
         case '転校生':
-            return array('学生', '少女');
+            return ['学生', '少女'];
         case '黒猫':
-            return array('動物');
+            return ['動物'];
         case '幻想':
-            return array('虚構', '女性');
+            return ['虚構', '女性'];
         case '入院患者':
-            return array('少年');
+            return ['少年'];
         case '医者':
         case '軍人':
         case '学者':
@@ -134,21 +150,23 @@ function characterSpec($name) {
         case 'マスコミ':
         case '鑑識官':
         case '手先':
-            return array('大人', '男性');
+        case 'アルバイト':
+            return ['大人', '男性'];
         case 'ナース':
         case '情報屋':
         case '教師':
         case '教祖':
-            return array('大人', '女性');
+        case '従者':
+            return ['大人', '女性'];
         case 'A.I.':
         case 'AI':
-            return array('造物');
+            return ['造物'];
         case 'ご神木':
-            return array('樹木');
+            return ['樹木'];
         case '神格':
-            return array('男性', '女性');
+            return ['男性', '女性'];
         default:
-            return array();
+            return [];
     }
 }
 function getRuleWithNote($sRule) {
@@ -176,6 +194,7 @@ function incidentPublicNote($incident) {
     case '遂行者':
     case '前兆':
     case '悪魔との契約':
+    case '衝動殺人':
         $sBikou = '(不安臨界-1)';
         break;
     case '猟奇殺人':
@@ -185,7 +204,11 @@ function incidentPublicNote($incident) {
     case '陰謀工作':
     case '猟犬の嗅覚':
     case '模倣犯':
+    case '空想事件':
         $sBikou = '(暗躍で判定)';
+        break;
+    case '希望の光':
+        $sBikou = '(友好で判定)';
         break;
     }
     if (!empty($sBikou)) {
@@ -225,6 +248,10 @@ function getTragedySetName($setPrefix) {
         return 'Weird Mythology';
     case 'UM':
         return 'Unvoiced Malice';
+    case 'AHR':
+        return 'Another Horizon Revised';
+    case 'LL':
+        return 'Last Liar';
     default:
         return '謎の惨劇セット';
     }
@@ -260,14 +287,14 @@ function exCharacterCheck($oSangeki) {
 }
 
 function rolesCountCheck($oSangeki) {
-    require(dirname(__FILE__) . '/rule_role_master.php');
+    require(__DIR__ . '/rule_role_master.php');
 
     $aRuleList = array();
     $aRoleCharacter = array();
     $aErrorMessage = array();
     $aRoleCount = array();
 
-    $addRole = function ($role) use (&$aRoleCount) {
+    $addRole = function ($role) use (&$aRoleCount, $oSangeki) {
         if (!isset($aRoleCount[$role])) {
             $aRoleCount[$role] = 1;
         } else {
@@ -286,7 +313,15 @@ function rolesCountCheck($oSangeki) {
         case 'ウィザード':
         case 'センドウシャ':
         case 'トラブルメイカー':
+        case 'ウォッチャー':
+        case 'ジョーカー':
+        case 'ゴシップ':
             if ($aRoleCount[$role] > 1) $aRoleCount[$role] = 1;
+            break;
+        case 'シリアルキラー':
+            if ($oSangeki->set == 'LL') {
+                if ($aRoleCount[$role] > 1) $aRoleCount[$role] = 1;
+            }
             break;
         }
     };
@@ -353,6 +388,35 @@ function rolesCountCheck($oSangeki) {
         }
         $aRoleCharacter[$role][] = $name;
     }
+
+    // 嘘憑きの秘密はシークレットの有無によって追加役職が変動する
+    if (in_array('嘘憑きの秘密', $aRuleList)) {
+        $isExistSecret = false;
+        foreach ($aRoleCount as $roleName => $n) {
+            if ($roleName == 'シークレット') {
+                $isExistSecret = true;
+                break;
+            }
+        }
+        if (!$isExistSecret) {
+            // シークレットがいないので追加役職がちゃんと追加されてるかチェック
+            $extraRoleChecked = false;
+            foreach ($aRoleCount as $roleName => $n) {
+                if ($roleName == 'クロマク' || $roleName == 'キラー' || $roleName == 'フラグメント') {
+                    if ($n == -1) {
+                        if (!$extraRoleChecked) {
+                            $aRoleCount[$roleName] = 0;
+                            $extraRoleChecked = true;
+                        }
+                    }
+                }
+            }
+            if (!$extraRoleChecked) {
+                $aErrorMessage[] = 'シークレットがいませんが、嘘憑きの秘密の追加役職も追加されていません';
+            }
+        }
+    }
+
     foreach ($aRoleCount as $roleName => $n) {
         if ($n < 0) {
             $aErrorMessage[] = $roleName . 'が多すぎます';
