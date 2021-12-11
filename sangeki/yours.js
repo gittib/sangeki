@@ -111,13 +111,13 @@ if ($('body').hasClass('your_kyakuhon_edit')) {
     $('[name=ruleX2]').val(scenario.ruleX2);
 
     setInterval(function() {
-        scenario.title = $('[name=title]');
-        scenario.loop = $('[name=loop]');
-        scenario.day = $('[name=day]');
-        scenario.difficulty = $('[name=difficulty]');
-        scenario.ruleY = $('[name=ruleY]');
-        scenario.ruleX1 = $('[name=ruleX1]');
-        scenario.ruleX2 = $('[name=ruleX2]');
+        scenario.title = $('[name=title]').val();
+        scenario.loop = $('[name=loop]').val();
+        scenario.day = $('[name=day]').val();
+        scenario.difficulty = $('[name=difficulty]').val();
+        scenario.ruleY = $('[name=ruleY]').val();
+        scenario.ruleX1 = $('[name=ruleX1]').val();
+        scenario.ruleX2 = $('[name=ruleX2]').val();
         updateScenario();
     }, 2000);
 
