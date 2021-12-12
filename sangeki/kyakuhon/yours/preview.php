@@ -1,5 +1,6 @@
 <?php
 require_once(__DIR__.'/../../../secret/common.php');
+require_once(SECRET_DIR.'detail_util.php');
 ?>
 <html>
 <head>
@@ -18,7 +19,7 @@ require_once(__DIR__.'/../../../secret/common.php');
         <table class="summary">
             <tr>
                 <th>惨劇セット</th>
-                <td class="tragedy_set"></td>
+                <td class="tragedy_set"><?= e(getTragedySetName($_GET['set'])) ?></td>
             </tr>
             <tr>
                 <th>ループ回数</th>
