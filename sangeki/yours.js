@@ -241,7 +241,11 @@ if ($('body').hasClass('your_kyakuhon_preview')) {
         $dom.removeAttr('id');
         $dom.removeAttr('style');
         $dom.find('.incident_day').text(incident.day);
-        $dom.find('.incident_name').text(incident.name);
+        if (incident.name == '偽装事件') {
+            $dom.find('.incident_name').text(incident.note || '＞突然の死＜');
+        } else {
+            $dom.find('.incident_name').text(incident.name);
+        }
         $incidentOpenList.append($dom);
 
         $dom = $('#clone_base-incident_hidden').clone();
