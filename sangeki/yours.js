@@ -128,7 +128,7 @@ if ($('body').hasClass('your_kyakuhon_edit')) {
         // キャラ追加
         let chara = {
             'name': '',
-            'role': 'パーソン',
+            'role': '',
             'note': '',
         };
         let $dom = $('#clone_base-character_row').clone();
