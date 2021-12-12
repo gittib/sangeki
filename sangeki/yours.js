@@ -101,30 +101,66 @@ if ($('body').hasClass('your_kyakuhon_edit')) {
         });
         return target;
     })();
+    const $charaList = $('.characer_list');
     var scenario = scenarioList.find(item => item.id == scenarioId);
     $('[name=title]').val(scenario.title);
     $('[name=loop]').val(scenario.loop);
     $('[name=day]').val(scenario.day);
+    $('[name=specialRule]').val(scenario.specialRule);
     $('[name=difficulty]').val(scenario.difficulty);
     $('[name=ruleY]').val(scenario.ruleY);
     $('[name=ruleX1]').val(scenario.ruleX1);
     $('[name=ruleX2]').val(scenario.ruleX2);
+    $('[name=scenarioNote]').val(scenario.note);
+    $('[name=advice]').val(scenario.advice);
+    scenario.characters.forEach(chara => {
+        let $dom = $('#clone_base-character_row').clone();
+        $dom.find('select[name=chara_name]').val(chara.name);
+        $dom.find('select[name=chara_role]').val(chara.role);
+        $dom.find('input[name=chara_note]').val(chara.note);
+        $charaList.append($dom);
+        idx++;
+    });
 
     setInterval(function() {
         scenario.title = $('[name=title]').val();
         scenario.loop = $('[name=loop]').val();
         scenario.day = $('[name=day]').val();
+        scenario.specialRule = $('[name=specialRule]').val();
         scenario.difficulty = $('[name=difficulty]').val();
         scenario.ruleY = $('[name=ruleY]').val();
         scenario.ruleX1 = $('[name=ruleX1]').val();
         scenario.ruleX2 = $('[name=ruleX2]').val();
-        scenario.note = $('[name=note]').val();
+        scenario.note = $('[name=scenarioNote]').val();
         scenario.advice = $('[name=advice]').val();
+
+        let charas = {};
+        $charaList.children().each(function() {
+            let $dom = $(this);
+            charas.add({
+                'name': $dom.find('select[name=chara_name]').val(),
+                'role': $dom.find('select[name=chara_role]').val(),
+                'note': $dom.find('input[name=chara_note]').val(),
+            });
+        });
+        scenario.characters = charas;
+
         updateScenario();
     }, 2000);
 
     $('.add_chara').on('click', function() {
-        // TODO キャラ追加
+        // キャラ追加
+        let chara = {
+            'name': '',
+            'role': 'パーソン',
+            'note': '',
+        };
+        let $dom = $('#clone_base-character_row').clone();
+        $dom.find('select[name=chara_name]').val(chara.name);
+        $dom.find('select[name=chara_role]').val(chara.role);
+        $dom.find('input[name=chara_note]').val(chara.note);
+        $charaList.append($dom);
+        scenario.characters.add(chara);
         updateScenario();
     });
     $('.add_incident').on('click', function() {
