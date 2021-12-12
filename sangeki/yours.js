@@ -268,6 +268,7 @@ if ($('body').hasClass('your_kyakuhon_preview')) {
         $incidentHiddenList.append($dom);
     });
 
+    $('h3.title').text(scenario.title);
     $('.scenario_note').text(scenario.note);
-    $('.advice').text(scenario.advice);
+    $('.scenario_advice').text(scenario.advice);
 }

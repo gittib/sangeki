@@ -171,7 +171,7 @@ require_once(SECRET_DIR.'detail_util.php');
         <h3>シナリオの特徴</h3>
         <div class="scenario_note"></div>
         <h3>脚本家への指針</h3>
-        <div class="advice"></div>
+        <div class="scenario_advice"></div>
     </div>
 <?php require(SECRET_DIR.'sangeki_footer.php') ?>
     <script>
