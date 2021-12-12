@@ -102,6 +102,7 @@ if ($('body').hasClass('your_kyakuhon_edit')) {
         return target;
     })();
     const $charaList = $('.characer_list');
+    const $incidentList = $('.incident_list');
     var scenario = scenarioList.find(item => item.id == scenarioId);
     $('[name=title]').val(scenario.title);
     $('[name=loop]').val(scenario.loop);
@@ -116,10 +117,21 @@ if ($('body').hasClass('your_kyakuhon_edit')) {
     Object.keys(scenario.characters).forEach(key => {
         const chara = scenario.characters[key];
         let $dom = $('#clone_base-character_row').clone();
+        $dom.removeAttr('id');
         $dom.find('select[name=chara_name]').val(chara.name);
         $dom.find('select[name=chara_role]').val(chara.role);
         $dom.find('input[name=chara_note]').val(chara.note);
         $charaList.append($dom);
+    });
+    Object.keys(scenario.incidents).forEach(key => {
+        const incident = scenario.incidents[key];
+        let $dom = $('#clone_base-incident_row').clone();
+        $dom.removeAttr('id');
+        $dom.find('select[name=incident_day]').val(incident.day);
+        $dom.find('select[name=incident_name]').val(incident.name);
+        $dom.find('select[name=criminal_name]').val(incident.criminal);
+        $dom.find('input[name=incident_note]').val(incident.note);
+        $incidentList.append($dom);
     });
 
     setInterval(function() { updateScenario(); }, 2000);
@@ -132,6 +144,7 @@ if ($('body').hasClass('your_kyakuhon_edit')) {
             'note': '',
         };
         let $dom = $('#clone_base-character_row').clone();
+        $dom.removeAttr('id');
         $dom.find('select[name=chara_name]').val(chara.name);
         $dom.find('select[name=chara_role]').val(chara.role);
         $dom.find('input[name=chara_note]').val(chara.note);
@@ -140,13 +153,28 @@ if ($('body').hasClass('your_kyakuhon_edit')) {
         updateScenario();
     });
     $('.add_incident').on('click', function() {
-        // TODO 事件追加
+        // 事件追加
+        let incident = {
+            'day': 1,
+            'name': '',
+            'criminal': '',
+            'note': '',
+        };
+        let $dom = $('#clone_base-incident_row').clone();
+        $dom.removeAttr('id');
+        $dom.find('select[name=incident_day]').val(incident.day);
+        $dom.find('select[name=incident_name]').val(incident.name);
+        $dom.find('select[name=criminal_name]').val(incident.criminal);
+        $dom.find('input[name=incident_note]').val(incident.note);
+        $incidentList.append($dom);
+        scenario.incidents.push(incident);
         updateScenario();
     });
 
     $('div.editor').on('click', 'button.delete', function() {
         if (confirm('削除しますか？')) {
             $(this).closest('li').remove();
+            updateScenario();
         }
     });
 
@@ -172,6 +200,18 @@ if ($('body').hasClass('your_kyakuhon_edit')) {
             });
         });
         scenario.characters = charas;
+
+        let incidents = [];
+        $incidentList.children().each(function() {
+            let $dom = $(this);
+            incidents.push({
+                'day': $dom.find('select[name=incident_day]').val(),
+                'name': $dom.find('select[name=incident_name]').val(),
+                'criminal': $dom.find('select[name=criminal_name]').val(),
+                'note': $dom.find('input[name=incident_note]').val(),
+            });
+        });
+        scenario.incidents = incidents;
 
         scenarioList.splice(scenarioIndex, 1, scenario);
         localStorage.setItem('scenarioList', JSON.stringify(scenarioList));
