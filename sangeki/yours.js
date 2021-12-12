@@ -28,7 +28,7 @@ if ($('body').hasClass('your_kyakuhon_list')) {
             $dom.find('button.delete').attr('data-id', item.id);
             $dom.find('.rule_prefix').text(item.set);
             $dom.find('.rule_prefix').addClass(item.set);
-            $dom.find('a.view').attr('href', './preview.php?id='+item.id);
+            $dom.find('a.view').attr('href', './preview.php?id='+item.id+'&set='+item.set);
             $dom.find('a.edit').attr('href', './edit.php?id='+item.id+'&set='+item.set);
             $dom.find('.title').text('['+item.id+']'+item.title);
             $dom.find('.loop > strong').text(item.loop);
@@ -219,6 +219,13 @@ if ($('body').hasClass('your_kyakuhon_edit')) {
 }
 if ($('body').hasClass('your_kyakuhon_preview')) {
     const scenario = scenarioList.find(item => item.id == scenarioId);
+
+    $('.summary .loop').text(scenario.loop+'ループ');
+    $('.summary .day').text(scenario.day+'日');
+    $('.special_rule').text(scenario.specialRule);
+    $('.ruleY').text(scenario.ruleY);
+    $('.ruleX1').text(scenario.ruleX1);
+    $('.ruleX2').text(scenario.ruleX2);
 
     let $charaList = $('#character_list');
     Object.keys(scenario.characters).forEach(key => {
