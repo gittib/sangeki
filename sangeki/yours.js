@@ -28,7 +28,7 @@ if ($('body').hasClass('your_kyakuhon_list')) {
             $dom.find('button.delete').attr('data-id', item.id);
             $dom.find('.rule_prefix').text(item.set);
             $dom.find('.rule_prefix').addClass(item.set);
-            $dom.find('a.view').attr('href', './preview.php?d='+JSON.stringify(item));
+            $dom.find('a.view').attr('href', './preview.php?id='+item.id);
             $dom.find('a.edit').attr('href', './edit.php?id='+item.id+'&set='+item.set);
             $dom.find('.title').text('['+item.id+']'+item.title);
             $dom.find('.loop > strong').text(item.loop);
@@ -216,4 +216,47 @@ if ($('body').hasClass('your_kyakuhon_edit')) {
         scenarioList.splice(scenarioIndex, 1, scenario);
         localStorage.setItem('scenarioList', JSON.stringify(scenarioList));
     }
+}
+if ($('body').hasClass('your_kyakuhon_preview')) {
+    const scenario = scenarioList.find(item => item.id == scenarioId);
+
+    let $charaList = $('#character_list');
+    Object.keys(scenario.characters).forEach(key => {
+        const chara = scenario.characters[key];
+        let $dom = $('#clone_base-character').clone();
+        $dom.removeAttr('id');
+        $dom.removeAttr('style');
+        $dom.find('.chara_name').text(chara.name);
+        $dom.find('.role_name').text(chara.role);
+        $dom.find('.chara_note').text(chara.note);
+        $charaList.append($dom);
+    });
+
+    let $incidentOpenList = $('#incident_open_list');
+    let $incidentHiddenList = $('#incident_hidden_list');
+    Object.keys(scenario.incidents).forEach(key => {
+        const incident = scenario.incidents[key];
+
+        let $dom = $('#clone_base-incident_open').clone();
+        $dom.removeAttr('id');
+        $dom.removeAttr('style');
+        $dom.find('.incident_day').text(incident.day);
+        $dom.find('.incident_name').text(incident.name);
+        $incidentOpenList.append($dom);
+
+        $dom = $('#clone_base-incident_hidden').clone();
+        $dom.removeAttr('id');
+        $dom.removeAttr('style');
+        $dom.find('.incident_day').text(incident.day);
+        $dom.find('.incident_name').text(incident.name);
+        $dom.find('.incident_criminal').text(incident.criminal);
+        if (incident.note) {
+            $dom.find('.incident_note').text('('+incident.note+')');
+            $dom.find('br').removeAttr('style');
+        }
+        $incidentHiddenList.append($dom);
+    });
+
+    $('.scenario_note').text(scenario.note);
+    $('.advice').text(scenario.advice);
 }
