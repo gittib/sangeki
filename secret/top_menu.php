@@ -8,6 +8,13 @@ $aTopMenu = array(
         'text' => "主にペンスキーの考えた自作脚本が転がってます。一部寄稿いただいた脚本もあります。紙の用意がいらないので、ペンスキーの脚本はほぼ全てここに集約されてる模様。",
     ),
     (object)array(
+        'href' => 'kyakuhon/yours/',
+        'link' => 'あなたのオリジナル脚本',
+        'img_src' => 'images/makeKyakuhon.png',
+        'img_alt' => '惨劇脚本作成',
+        'text' => "あなたの考えたオリジナル脚本を、このサイトで管理・表示できます。\n脚本データは端末に保存されるため、作成した脚本が誰かに公開される事はありません。",
+    ),
+    (object)array(
         'href' => 'kifu/',
         'link' => '棋譜記録機能',
         'img_src' => 'images/heros.png',
