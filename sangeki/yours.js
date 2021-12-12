@@ -113,13 +113,13 @@ if ($('body').hasClass('your_kyakuhon_edit')) {
     $('[name=ruleX2]').val(scenario.ruleX2);
     $('[name=scenarioNote]').val(scenario.note);
     $('[name=advice]').val(scenario.advice);
-    scenario.characters.forEach(chara => {
+    Object.keys(scenario.characters).forEach(key => {
+        const chara = scenario.characters[key];
         let $dom = $('#clone_base-character_row').clone();
         $dom.find('select[name=chara_name]').val(chara.name);
         $dom.find('select[name=chara_role]').val(chara.role);
         $dom.find('input[name=chara_note]').val(chara.note);
         $charaList.append($dom);
-        idx++;
     });
 
     setInterval(function() {
@@ -134,7 +134,7 @@ if ($('body').hasClass('your_kyakuhon_edit')) {
         scenario.note = $('[name=scenarioNote]').val();
         scenario.advice = $('[name=advice]').val();
 
-        let charas = {};
+        let charas = [];
         $charaList.children().each(function() {
             let $dom = $(this);
             charas.push({
@@ -160,7 +160,7 @@ if ($('body').hasClass('your_kyakuhon_edit')) {
         $dom.find('select[name=chara_role]').val(chara.role);
         $dom.find('input[name=chara_note]').val(chara.note);
         $charaList.append($dom);
-        scenario.characters.add(chara);
+        scenario.characters.push(chara);
         updateScenario();
     });
     $('.add_incident').on('click', function() {
