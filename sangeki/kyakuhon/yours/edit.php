@@ -85,7 +85,7 @@ $aChara = [
                 <?php endfor; ?>
             </select>
         </p>
-        <p><span class="column_name">特殊ルール：</span><textarea name="special_rule" cols=25 rows=4></textarea></p>
+        <p><span class="column_name">特殊ルール：</span><textarea name="specialRule" cols=25 rows=4></textarea></p>
         <p>難易度：
             <select name="difficulty">
                 <?php for ($i = 1 ; $i <= 8 ; $i++): ?>
@@ -133,47 +133,47 @@ $aChara = [
             </ul>
             <button class="add_incident">事件追加</button>
         </p>
-        <p><span class="column_name">脚本の特徴など：</span><textarea name="note" cols=25 rows=8 placeholder="どんな主人公に向けた脚本なのか等を簡単に説明します"></textarea></p>
+        <p><span class="column_name">脚本の特徴など：</span><textarea name="scenarioNote" cols=25 rows=8 placeholder="惨劇セット初挑戦の主人公に向けた脚本、などの特徴を説明します。狂った真実などの補足もこちらへお書きください"></textarea></p>
         <p><span class="column_name">脚本家への指針：</span><textarea name="advice" cols=25 rows=16 placeholder="脚本家が目指すべき敗北条件や、脚本家カードの置き方、立ち回りについて解説します"></textarea></p>
     </div>
 
     <div id="clone_parts_wrapper" style="display:none;">
-        <table>
-            <tbody>
-                <li id="clone_base-character_row">
-                    <p><select class="chara_name">
-                        <?php foreach ($aChara as $chara): ?>
-                        <option><?= $chara ?></option>
-                        <?php endforeach; ?>
-                    </select></p>
-                    <p><select class="chara_role">
-                        <option value="">パーソン</option>
-                        <?php foreach ($aRole as $role): ?>
-                        <option><?= $role ?></option>
-                        <?php endforeach; ?>
-                    </select></p>
-                    <p><input type="text" class="chara_note"></p>
-                </li>
-                <li id="clone_base-incident_row">
-                    <p><select class="day">
-                        <?php for ($i = 1 ; $i <= 8 ; $i++): ?>
-                        <option><?= $i ?></option>
-                        <?php endfor; ?>
-                    </select></p>
-                    <p><select class="incident_name">
-                        <?php foreach ($aIncident as $incident): ?>
-                        <option><?= $incident ?></option>
-                        <?php endforeach; ?>
-                    </select></p>
-                    <p><select class="chara_name">
-                        <?php foreach ($aChara as $chara): ?>
-                        <option><?= $chara ?></option>
-                        <?php endforeach; ?>
-                    </select></p>
-                    <p><input type="text" class="incident_note"></p>
-                </li>
-            </tbody>
-        </table>
+        <ul>
+            <li id="clone_base-character_row" class="character_row">
+                <span><select name="chara_name">
+                    <?php foreach ($aChara as $chara): ?>
+                    <option><?= $chara ?></option>
+                    <?php endforeach; ?>
+                </select></span>
+                <span><select name="chara_role">
+                    <option value="">パーソン</option>
+                    <?php foreach ($aRole as $role): ?>
+                    <option><?= $role ?></option>
+                    <?php endforeach; ?>
+                </select></span>
+                <span><input type="text" name="chara_note"></span>
+                <span><button class="delete">削除</button></span>
+            </li>
+            <li id="clone_base-incident_row">
+                <span><select name="incident_day">
+                    <?php for ($i = 1 ; $i <= 8 ; $i++): ?>
+                    <option><?= $i ?></option>
+                    <?php endfor; ?>
+                </select></span>
+                <span><select name="incident_name">
+                    <?php foreach ($aIncident as $incident): ?>
+                    <option><?= $incident ?></option>
+                    <?php endforeach; ?>
+                </select></span>
+                <span><select name="criminal_name">
+                    <?php foreach ($aChara as $chara): ?>
+                    <option><?= $chara ?></option>
+                    <?php endforeach; ?>
+                </select></span>
+                <span><input type="text" name="incident_note"></span>
+                <span><button class="delete">削除</button></span>
+            </li>
+        </ul>
     </div>
 <?php require(SECRET_DIR.'sangeki_footer.php') ?>
 <script>const ruleMaster = <?php
