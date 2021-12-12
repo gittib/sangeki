@@ -896,6 +896,10 @@ body.your_kyakuhon_edit .editor span.column_name {
 body.your_kyakuhon_edit .editor textarea {
     width: 95%;
 }
+body.your_kyakuhon_edit .editor .character_list .character_row,
+body.your_kyakuhon_edit .editor .incident_list .incident_row {
+    padding-bottom: 12px;
+}
 body.your_kyakuhon_edit .editor .character_list .character_row > span,
 body.your_kyakuhon_edit .editor .incident_list .incident_row > span {
     display: inline-block;
