@@ -119,7 +119,7 @@ if ($('body').hasClass('your_kyakuhon_edit')) {
         let $dom = $('#clone_base-character_row').clone();
         $dom.removeAttr('id');
         $dom.find('select[name=chara_name]').val(chara.name);
-        $dom.find('select[name=chara_role]').val(chara.role || 'パーソン');
+        $dom.find('select[name=chara_role]').val(chara.role);
         $dom.find('input[name=chara_note]').val(chara.note);
         $charaList.append($dom);
     });
@@ -234,7 +234,7 @@ if ($('body').hasClass('your_kyakuhon_preview')) {
         $dom.removeAttr('id');
         $dom.removeAttr('style');
         $dom.find('.chara_name').text(chara.name);
-        $dom.find('.role_name').text(chara.role);
+        $dom.find('.role_name').text(chara.role || 'パーソン');
         $dom.find('.chara_note').text(chara.note);
         $charaList.append($dom);
     });
@@ -271,4 +271,14 @@ if ($('body').hasClass('your_kyakuhon_preview')) {
     $('h3.title').text(scenario.title);
     $('.scenario_note').text(scenario.note);
     $('.scenario_advice').text(scenario.advice);
+    $('.difficulity_name').text(difficultyName(scenario.difficulty))
+    let star = '';
+    for (let i = 1 ; i <= 8 ; i++) {
+        if (i <= scenario.difficulty) {
+            star += '★';
+        } else {
+            star += '☆';
+        }
+    }
+    $('.difficulty_star').text(star)
 }
