@@ -114,6 +114,7 @@ $aChara = [
                         <?php endforeach; ?>
                     </select>
                 </li>
+                <?php if (($_GET['set'] ?? '') != 'FS'): ?>
                 <li>
                     ルールX2：<select name="ruleX2">
                         <?php foreach($aRuleX as $rule): ?>
@@ -121,6 +122,7 @@ $aChara = [
                         <?php endforeach; ?>
                     </select>
                 </li>
+                <?php endif; ?>
             </ul>
         </p>
         <p>キャラクター一覧
@@ -151,7 +153,7 @@ $aChara = [
                     <option><?= $role ?></option>
                     <?php endforeach; ?>
                 </select></span>
-                <span><input type="text" name="chara_note"></span>
+                <span><input type="text" name="chara_note" placeholder="備考欄(大物のテリトリー等)"></span>
                 <span><button class="delete">削除</button></span>
             </li>
             <li id="clone_base-incident_row" class="incident_row">
