@@ -122,7 +122,35 @@ if ($('body').hasClass('your_kyakuhon_edit')) {
         $charaList.append($dom);
     });
 
-    setInterval(function() {
+    setInterval(function() { updateScenario(); }, 2000);
+
+    $('.add_chara').on('click', function() {
+        // キャラ追加
+        let chara = {
+            'name': '',
+            'role': 'パーソン',
+            'note': '',
+        };
+        let $dom = $('#clone_base-character_row').clone();
+        $dom.find('select[name=chara_name]').val(chara.name);
+        $dom.find('select[name=chara_role]').val(chara.role);
+        $dom.find('input[name=chara_note]').val(chara.note);
+        $charaList.append($dom);
+        scenario.characters.push(chara);
+        updateScenario();
+    });
+    $('.add_incident').on('click', function() {
+        // TODO 事件追加
+        updateScenario();
+    });
+
+    $('div.editor').on('click', 'button.delete', function() {
+        if (confirm('削除しますか？')) {
+            $(this).closest('li').remove();
+        }
+    });
+
+    function updateScenario() {
         scenario.title = $('[name=title]').val();
         scenario.loop = $('[name=loop]').val();
         scenario.day = $('[name=day]').val();
@@ -145,30 +173,6 @@ if ($('body').hasClass('your_kyakuhon_edit')) {
         });
         scenario.characters = charas;
 
-        updateScenario();
-    }, 2000);
-
-    $('.add_chara').on('click', function() {
-        // キャラ追加
-        let chara = {
-            'name': '',
-            'role': 'パーソン',
-            'note': '',
-        };
-        let $dom = $('#clone_base-character_row').clone();
-        $dom.find('select[name=chara_name]').val(chara.name);
-        $dom.find('select[name=chara_role]').val(chara.role);
-        $dom.find('input[name=chara_note]').val(chara.note);
-        $charaList.append($dom);
-        scenario.characters.push(chara);
-        updateScenario();
-    });
-    $('.add_incident').on('click', function() {
-        // TODO 事件追加
-        updateScenario();
-    });
-
-    function updateScenario() {
         scenarioList.splice(scenarioIndex, 1, scenario);
         localStorage.setItem('scenarioList', JSON.stringify(scenarioList));
     }
