@@ -101,7 +101,7 @@ if ($('body').hasClass('your_kyakuhon_edit')) {
         });
         return target;
     })();
-    const $charaList = $('.characer_list');
+    const $charaList = $('.character_list');
     const $incidentList = $('.incident_list');
     var scenario = scenarioList.find(item => item.id == scenarioId);
     $('[name=title]').val(scenario.title);

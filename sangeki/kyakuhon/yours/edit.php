@@ -124,7 +124,7 @@ $aChara = [
             </ul>
         </p>
         <p>キャラクター一覧
-            <ul class="characer_list">
+            <ul class="character_list">
             </ul>
             <button class="add_chara">キャラクター追加</button>
         </p>
@@ -154,7 +154,7 @@ $aChara = [
                 <span><input type="text" name="chara_note"></span>
                 <span><button class="delete">削除</button></span>
             </li>
-            <li id="clone_base-incident_row">
+            <li id="clone_base-incident_row" class="incident_row">
                 <span>発生日：<select name="incident_day">
                     <?php for ($i = 1 ; $i <= 8 ; $i++): ?>
                     <option value="<?= $i ?>"><?= $i ?>日目</option>
