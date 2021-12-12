@@ -119,7 +119,7 @@ if ($('body').hasClass('your_kyakuhon_edit')) {
         let $dom = $('#clone_base-character_row').clone();
         $dom.removeAttr('id');
         $dom.find('select[name=chara_name]').val(chara.name);
-        $dom.find('select[name=chara_role]').val(chara.role);
+        $dom.find('select[name=chara_role]').val(chara.role || 'パーソン');
         $dom.find('input[name=chara_note]').val(chara.note);
         $charaList.append($dom);
     });

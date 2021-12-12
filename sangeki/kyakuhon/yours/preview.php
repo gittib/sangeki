@@ -54,7 +54,7 @@ require_once(SECRET_DIR.'detail_util.php');
     <div class="private_sheet_wrapper">
         <div class="private">
             <h2 class="private_sheet">非公開シート</h2>
-            <h3 class="title"><?= e($oSangeki->title) ?></h3>
+            <h3 class="title"></h3>
             <div class="difficulity">
                 難易度：
                 <span class="difficulity_name"></span>
