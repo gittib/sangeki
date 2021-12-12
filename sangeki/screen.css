@@ -857,6 +857,56 @@ body.zakkan dl.tips > dd {
 }
 
 
+body.your_kyakuhon_list #kyakuhon_list {
+    border-bottom: solid 1px;
+    margin: 8px 28px;
+}
+body.your_kyakuhon_list #kyakuhon_list > li {
+    padding-top: 4px;
+    padding-bottom: 20px;
+    border-top: solid 1px;
+    text-align: center;
+}
+body.your_kyakuhon_list #kyakuhon_list > li a.link {
+    display: block;
+}
+body.your_kyakuhon_list #kyakuhon_list > li .difficulty .tag {
+    background-color: black;
+    color: white;
+    padding: 0 3px;
+    font-weight: bold;
+    min-width: 42px;
+    display: inline-block;
+    text-align: center;
+    border-radius: 4px;
+}
+body.your_kyakuhon_list p.notice {
+    margin-top: 20px;
+    font-size: 0.9rem;
+}
+
+
+body.your_kyakuhon_edit .editor > p {
+    padding: 6px 0;
+}
+body.your_kyakuhon_edit .editor span.column_name {
+    display: inline-block;
+    vertical-align: top;
+}
+body.your_kyakuhon_edit .editor textarea {
+    width: 95%;
+}
+body.your_kyakuhon_edit .editor .character_list .character_row,
+body.your_kyakuhon_edit .editor .incident_list .incident_row {
+    padding-bottom: 12px;
+}
+body.your_kyakuhon_edit .editor .character_list .character_row > span,
+body.your_kyakuhon_edit .editor .incident_list .incident_row > span {
+    display: inline-block;
+}
+
+
+
 body.not_found h1 {
     margin: 8px;
 }
