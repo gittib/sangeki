@@ -137,7 +137,7 @@ if ($('body').hasClass('your_kyakuhon_edit')) {
         let charas = {};
         $charaList.children().each(function() {
             let $dom = $(this);
-            charas.add({
+            charas.push({
                 'name': $dom.find('select[name=chara_name]').val(),
                 'role': $dom.find('select[name=chara_role]').val(),
                 'note': $dom.find('input[name=chara_note]').val(),
