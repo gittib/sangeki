@@ -69,10 +69,12 @@ require_once(SECRET_DIR.'detail_util.php');
                     <th>ルールX1</th>
                     <td class="ruleX1"></td>
                 </tr>
+                <?php if ($_GET['set'] != 'FS'): ?>
                 <tr>
                     <th>ルールX2</th>
                     <td class="ruleX2"></td>
                 </tr>
+                <?php endif; ?>
             </table>
 
             <h3 class="people_title">キャラクター一覧</h3>
