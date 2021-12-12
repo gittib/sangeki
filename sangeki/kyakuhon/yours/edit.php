@@ -155,17 +155,17 @@ $aChara = [
                 <span><button class="delete">削除</button></span>
             </li>
             <li id="clone_base-incident_row">
-                <span><select name="incident_day">
+                <span>発生日：<select name="incident_day">
                     <?php for ($i = 1 ; $i <= 8 ; $i++): ?>
-                    <option><?= $i ?></option>
+                    <option value="<?= $i ?>"><?= $i ?>日目</option>
                     <?php endfor; ?>
                 </select></span>
-                <span><select name="incident_name">
-                    <?php foreach ($aIncident as $incident): ?>
+                <span>事件名：<select name="incident_name">
+                    <?php foreach ($aIncidents as $incident): ?>
                     <option><?= $incident ?></option>
                     <?php endforeach; ?>
                 </select></span>
-                <span><select name="criminal_name">
+                <span>犯人：<select name="criminal_name">
                     <?php foreach ($aChara as $chara): ?>
                     <option><?= $chara ?></option>
                     <?php endforeach; ?>
