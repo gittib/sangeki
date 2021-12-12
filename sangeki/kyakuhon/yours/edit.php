@@ -170,7 +170,7 @@ $aChara = [
                     <option><?= $chara ?></option>
                     <?php endforeach; ?>
                 </select></span>
-                <span><input type="text" name="incident_note"></span>
+                <span><input type="text" name="incident_note" placeholder="備考または偽装事件の公開名"></span>
                 <span><button class="delete">削除</button></span>
             </li>
         </ul>
