@@ -156,7 +156,7 @@ if ($('body').hasClass('your_kyakuhon_edit')) {
         // 事件追加
         let maxDay = 0;
         $incidentList.find('select[name=incident_day]').each(function() {
-            const day = $(this).val();
+            const day = Number($(this).val());
             if (day > maxDay) {
                 maxDay = day;
             }
