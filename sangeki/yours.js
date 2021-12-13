@@ -179,6 +179,24 @@ if ($('body').hasClass('your_kyakuhon_edit')) {
         updateScenario();
     });
 
+    $('div.editor').on('click', 'button.character_sort_up', function() {
+        let $dom = $(this).closest('.character_row');
+        let $prev = $dom.prev();
+        if ($prev) {
+            $prev.before($dom.clone());
+            $dom.remove();
+            updateScenario();
+        }
+    });
+    $('div.editor').on('click', 'button.character_sort_down', function() {
+        let $dom = $(this).closest('.character_row');
+        let $next = $dom.next();
+        if ($next) {
+            $next.after($dom.clone());
+            $dom.remove();
+            updateScenario();
+        }
+    });
     $('div.editor').on('click', 'button.delete', function() {
         if (confirm('削除しますか？')) {
             $(this).closest('li').remove();
