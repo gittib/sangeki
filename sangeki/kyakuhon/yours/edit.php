@@ -126,13 +126,12 @@ $aChara = [
             </ul>
         </p>
         <p>キャラクター一覧
-            <ul class="character_list">
-            </ul>
+            <ul class="character_list"></ul>
+            <p class="character_count">登場キャラクター数：<span>0</span>人</p>
             <button class="add_chara">キャラクター追加</button>
         </p>
         <p>事件リスト
-            <ul class="incident_list">
-            </ul>
+            <ul class="incident_list"></ul>
             <button class="add_incident">事件追加</button>
         </p>
         <p><span class="column_name">脚本の特徴など：</span><textarea name="scenarioNote" cols=25 rows=8 placeholder="惨劇セット初挑戦の主人公に向けた脚本、などの特徴を説明します。狂った真実などの補足もこちらへお書きください"></textarea></p>
