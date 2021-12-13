@@ -234,28 +234,36 @@ if ($('body').hasClass('your_kyakuhon_preview')) {
         $dom.removeAttr('id');
         $dom.removeAttr('style');
         $dom.find('.chara_name').text(chara.name);
-        $dom.find('.role_name').text(chara.role || 'パーソン');
+        const role = chara.role || 'パーソン';
+        $dom.find('.role_name').text(role);
+        if (role != 'パーソン') {
+            $dom.find('.chara_role').addClass('special');
+        }
         $dom.find('.chara_note').text(chara.note);
         $charaList.append($dom);
     });
 
     let $incidentOpenList = $('#incident_open_list');
+    for (let i = 1 ; i <= scenario.day ; i++) {
+        let $dom = $('#clone_base-incident_open').clone();
+        $dom.removeAttr('id');
+        $dom.removeAttr('style');
+        $dom.find('.incident_day').text(i);
+        const incident = scenario.incidents.find(item => item.day == i);
+        if (incident) {
+            if (incident.name == '偽装事件') {
+                $dom.find('.incident_name').text(incident.note || '＞突然の死＜');
+            } else {
+                $dom.find('.incident_name').text(incident.name);
+            }
+        }
+        $incidentOpenList.append($dom);
+    }
     let $incidentHiddenList = $('#incident_hidden_list');
     Object.keys(scenario.incidents).forEach(key => {
         const incident = scenario.incidents[key];
 
-        let $dom = $('#clone_base-incident_open').clone();
-        $dom.removeAttr('id');
-        $dom.removeAttr('style');
-        $dom.find('.incident_day').text(incident.day);
-        if (incident.name == '偽装事件') {
-            $dom.find('.incident_name').text(incident.note || '＞突然の死＜');
-        } else {
-            $dom.find('.incident_name').text(incident.name);
-        }
-        $incidentOpenList.append($dom);
-
-        $dom = $('#clone_base-incident_hidden').clone();
+        let $dom = $('#clone_base-incident_hidden').clone();
         $dom.removeAttr('id');
         $dom.removeAttr('style');
         $dom.find('.incident_day').text(incident.day);
