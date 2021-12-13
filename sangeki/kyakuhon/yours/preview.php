@@ -1,13 +1,14 @@
 <?php
 require_once(__DIR__.'/../../../secret/common.php');
 require_once(SECRET_DIR.'detail_util.php');
+$setName = getTragedySetName($_GET['set']);
 ?>
 <html>
 <head>
 <?php require(SECRET_DIR.'google_analytics.php') ?>
 <?php require(SECRET_DIR.'sangeki_head.php') ?>
     <meta name="robots" content="noindex">
-    <title><?= e($oSangeki->rule_str) ?> 脚本 [<?= $id ?>] - <?= SITE_NAME ?></title>
+    <title><?= e($setName) ?> 脚本 - <?= SITE_NAME ?></title>
 </head>
 <body class="detail your_kyakuhon_preview">
 <?php require(SECRET_DIR.'sangeki_header.php'); ?>
@@ -19,7 +20,7 @@ require_once(SECRET_DIR.'detail_util.php');
         <table class="summary">
             <tr>
                 <th>惨劇セット</th>
-                <td class="tragedy_set"><?= e(getTragedySetName($_GET['set'])) ?></td>
+                <td class="tragedy_set"><?= e($setName) ?></td>
             </tr>
             <tr>
                 <th>ループ回数</th>
@@ -160,8 +161,8 @@ require_once(SECRET_DIR.'detail_util.php');
                     <tr id="clone_base-incident_hidden" style="display:none;">
                         <th class="incident_day"></th>
                         <td>
-                            <span class="incident_name"></span><br style="display:none;">
-                            <span class="incident_note"></span>
+                            <p class="incident_name"></p>
+                            <p class="incident_note" style="display:none;"></p>
                         </td>
                         <td class="incident_criminal"></td>
                     </tr>

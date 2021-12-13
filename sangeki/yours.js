@@ -11,12 +11,21 @@ function difficultyName(difficulty) {
     default: return '特殊';
     }
 }
+function difficultyStar(difficulty) {
+    let star = '';
+    for (let i = 1 ; i <= 8 ; i++) {
+        if (i <= Number(difficulty)) {
+            star += '★';
+        } else {
+            star += '☆';
+        }
+    }
+    return star;
+}
 
 var scenarioList = JSON.parse(localStorage.getItem('scenarioList') || '[]');
 
 if ($('body').hasClass('your_kyakuhon_list')) {
-    console.log('自作脚本リスト');
-
     // 自作脚本リストの処理
     function reloadScenarioList() {
         scenarioList = JSON.parse(localStorage.getItem('scenarioList') || '[]');
@@ -33,16 +42,7 @@ if ($('body').hasClass('your_kyakuhon_list')) {
             $dom.find('.title').text('['+item.id+']'+item.title);
             $dom.find('.loop > strong').text(item.loop);
             $dom.find('.day > strong').text(item.day);
-
-            let difficultyStar = '';
-            for (let i = 1 ; i <= 8 ; i++) {
-                if (i <= item.difficulty) {
-                    difficultyStar += '★';
-                } else {
-                    difficultyStar += '☆';
-                }
-            }
-            $dom.find('.difficulty .star').text(difficultyStar);
+            $dom.find('.difficulty .star').text(difficultyStar(item.difficulty));
             $dom.find('.difficulty .tag').text(difficultyName(item.difficulty));
 
             $('#kyakuhon_list').append($dom);
@@ -227,7 +227,7 @@ if ($('body').hasClass('your_kyakuhon_preview')) {
     $('.ruleX1').text(scenario.ruleX1);
     $('.ruleX2').text(scenario.ruleX2);
 
-    let $charaList = $('#character_list');
+    const $charaList = $('#character_list');
     Object.keys(scenario.characters).forEach(key => {
         const chara = scenario.characters[key];
         let $dom = $('#clone_base-character').clone();
@@ -243,7 +243,7 @@ if ($('body').hasClass('your_kyakuhon_preview')) {
         $charaList.append($dom);
     });
 
-    let $incidentOpenList = $('#incident_open_list');
+    const $incidentOpenList = $('#incident_open_list');
     for (let i = 1 ; i <= scenario.day ; i++) {
         let $dom = $('#clone_base-incident_open').clone();
         $dom.removeAttr('id');
@@ -259,7 +259,7 @@ if ($('body').hasClass('your_kyakuhon_preview')) {
         }
         $incidentOpenList.append($dom);
     }
-    let $incidentHiddenList = $('#incident_hidden_list');
+    const $incidentHiddenList = $('#incident_hidden_list');
     Object.keys(scenario.incidents).forEach(key => {
         const incident = scenario.incidents[key];
 
@@ -271,7 +271,7 @@ if ($('body').hasClass('your_kyakuhon_preview')) {
         $dom.find('.incident_criminal').text(incident.criminal);
         if (incident.note) {
             $dom.find('.incident_note').text('('+incident.note+')');
-            $dom.find('br').removeAttr('style');
+            $dom.find('.incident_note').removeAttr('style');
         }
         $incidentHiddenList.append($dom);
     });
@@ -279,14 +279,6 @@ if ($('body').hasClass('your_kyakuhon_preview')) {
     $('h3.title').text(scenario.title);
     $('.scenario_note').text(scenario.note);
     $('.scenario_advice').text(scenario.advice);
-    $('.difficulity_name').text(difficultyName(scenario.difficulty))
-    let star = '';
-    for (let i = 1 ; i <= 8 ; i++) {
-        if (i <= scenario.difficulty) {
-            star += '★';
-        } else {
-            star += '☆';
-        }
-    }
-    $('.difficulty_star').text(star)
+    $('.difficulity_name').text(difficultyName(scenario.difficulty));
+    $('.difficulty_star').text(difficultyStar(scenario.difficulty));
 }
