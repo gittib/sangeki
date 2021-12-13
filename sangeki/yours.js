@@ -181,16 +181,25 @@ if ($('body').hasClass('your_kyakuhon_edit')) {
 
     $('div.editor').on('click', 'button.character_sort_up', function() {
         let $dom = $(this).closest('.character_row');
-        let $prev = $dom.prev();
-        if ($prev) {
-            $prev.before($dom.clone());
+        const $prev = $dom.prev('.character_row');
+        let chara = {
+            $dom.find('select[name=chara_name]').val(),
+            $dom.find('select[name=chara_role]').val(),
+            $dom.find('input[name=chara_note]').val(),
+        };
+        if ($prev && $prev.length > 0) {
             $dom.remove();
+            $dom = $('#clone_base-character_row').clone();
+            $dom.find('select[name=chara_name]').val(chara.name);
+            $dom.find('select[name=chara_role]').val(chara.role);
+            $dom.find('input[name=chara_note]').val(chara.note);
+            $prev.before($dom);
             updateScenario();
         }
     });
     $('div.editor').on('click', 'button.character_sort_down', function() {
         let $dom = $(this).closest('.character_row');
-        let $next = $dom.next();
+        let $next = $dom.next('.character_row');
         if ($next) {
             $next.after($dom.clone());
             $dom.remove();
