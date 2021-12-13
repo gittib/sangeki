@@ -16,7 +16,7 @@ require_once(__DIR__.'/../../../secret/common.php');
     <div class="kyakuhon_list">
         <ul id="kyakuhon_list"></ul>
         <div class="console">
-            <p>新しい脚本を作る</p>
+            <div>新しい脚本を作る</div>
             <select name="set">
                 <option value="">脚本を作る惨劇セットを選択</option>
                 <option value="FS">First Steps</option>
@@ -31,28 +31,28 @@ require_once(__DIR__.'/../../../secret/common.php');
             </select>
             <button class="create_new">作成開始</button>
         </div>
-        <p class="notice">脚本データの管理には、localStorageという技術を利用しています。脚本データは端末に保存されますので、異なる端末・ブラウザからアクセスすると、データが引き継がれません。</p>
+        <div class="notice">脚本データの管理には、localStorageという技術を利用しています。脚本データは端末に保存されますので、異なる端末・ブラウザからアクセスすると、データが引き継がれません。</div>
     </div>
 
     <div id="clone_parts_wrapper" style="display:none;">
         <ul>
             <li id="clone_base-kyakuhon_column">
-                <p>
+                <div>
                     <span class="rule_prefix">BTX</span>
                     <span class="loop"><strong>4</strong>ループ</span>
                     <span class="day"><strong>5</strong>日間</span>
-                </p>
+                </div>
                 <a class="view" href="./preview.php?id=0">
                     <span class="title">あなたのオリジナル脚本</span>
                 </a>
-                <p class="difficulty">
+                <div class="difficulty">
                     難易度<span class="star">★★★★☆☆☆☆</span>
                     <span class="tag">普通</span>
-                </p>
-                <p class="button_wrapper">
+                </div>
+                <div class="button_wrapper">
                     <a class="edit" href="./edit.php?id=0">脚本を編集</a>
                     <button class="delete">削除</button>
-                </p>
+                </div>
             </li>
         </ul>
     </div>
