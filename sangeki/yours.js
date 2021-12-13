@@ -179,6 +179,42 @@ if ($('body').hasClass('your_kyakuhon_edit')) {
         updateScenario();
     });
 
+    $('div.editor').on('click', 'button.character_sort_up', function() {
+        let $dom = $(this).closest('.character_row');
+        const $prev = $dom.prev('.character_row');
+        if ($prev && $prev.length > 0) {
+            let chara = {
+                'name': $dom.find('select[name=chara_name]').val(),
+                'role': $dom.find('select[name=chara_role]').val(),
+                'note': $dom.find('input[name=chara_note]').val(),
+            };
+            $dom.remove();
+            $dom = $('#clone_base-character_row').clone();
+            $dom.find('select[name=chara_name]').val(chara.name);
+            $dom.find('select[name=chara_role]').val(chara.role);
+            $dom.find('input[name=chara_note]').val(chara.note);
+            $prev.before($dom);
+            updateScenario();
+        }
+    });
+    $('div.editor').on('click', 'button.character_sort_down', function() {
+        let $dom = $(this).closest('.character_row');
+        const $next = $dom.next('.character_row');
+        if ($next && $next.length > 0) {
+            let chara = {
+                'name': $dom.find('select[name=chara_name]').val(),
+                'role': $dom.find('select[name=chara_role]').val(),
+                'note': $dom.find('input[name=chara_note]').val(),
+            };
+            $dom.remove();
+            $dom = $('#clone_base-character_row').clone();
+            $dom.find('select[name=chara_name]').val(chara.name);
+            $dom.find('select[name=chara_role]').val(chara.role);
+            $dom.find('input[name=chara_note]').val(chara.note);
+            $next.after($dom);
+            updateScenario();
+        }
+    });
     $('div.editor').on('click', 'button.delete', function() {
         if (confirm('削除しますか？')) {
             $(this).closest('li').remove();

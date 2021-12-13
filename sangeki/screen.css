@@ -892,6 +892,12 @@ body.your_kyakuhon_edit .editor > div {
 body.your_kyakuhon_edit .editor > div .character_count {
     font-size: 0.9rem;
 }
+body.your_kyakuhon_edit .editor select,
+body.your_kyakuhon_edit .editor input,
+body.your_kyakuhon_edit .editor button {
+    min-width: 2rem;
+    min-height: 2rem;
+}
 body.your_kyakuhon_edit .editor span.column_name {
     display: inline-block;
     vertical-align: top;
