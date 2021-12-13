@@ -11,12 +11,21 @@ function difficultyName(difficulty) {
     default: return '特殊';
     }
 }
+function difficultyStar(difficulty) {
+    let star = '';
+    for (let i = 1 ; i <= 8 ; i++) {
+        if (i <= Number(difficulty)) {
+            star += '★';
+        } else {
+            star += '☆';
+        }
+    }
+    return star;
+}
 
 var scenarioList = JSON.parse(localStorage.getItem('scenarioList') || '[]');
 
 if ($('body').hasClass('your_kyakuhon_list')) {
-    console.log('自作脚本リスト');
-
     // 自作脚本リストの処理
     function reloadScenarioList() {
         scenarioList = JSON.parse(localStorage.getItem('scenarioList') || '[]');
@@ -33,16 +42,7 @@ if ($('body').hasClass('your_kyakuhon_list')) {
             $dom.find('.title').text('['+item.id+']'+item.title);
             $dom.find('.loop > strong').text(item.loop);
             $dom.find('.day > strong').text(item.day);
-
-            let difficultyStar = '';
-            for (let i = 1 ; i <= 8 ; i++) {
-                if (i <= item.difficulty) {
-                    difficultyStar += '★';
-                } else {
-                    difficultyStar += '☆';
-                }
-            }
-            $dom.find('.difficulty .star').text(difficultyStar);
+            $dom.find('.difficulty .star').text(difficultyStar(item.difficulty));
             $dom.find('.difficulty .tag').text(difficultyName(item.difficulty));
 
             $('#kyakuhon_list').append($dom);
@@ -154,8 +154,16 @@ if ($('body').hasClass('your_kyakuhon_edit')) {
     });
     $('.add_incident').on('click', function() {
         // 事件追加
+        let maxDay = 0;
+        $incidentList.find('select[name=incident_day]').each(function() {
+            const day = Number($(this).val());
+            if (day > maxDay) {
+                maxDay = day;
+            }
+        });
+        if (maxDay >= 8) maxDay = 7;
         let incident = {
-            'day': 1,
+            'day': maxDay+1,
             'name': '',
             'criminal': '',
             'note': '',
@@ -178,6 +186,7 @@ if ($('body').hasClass('your_kyakuhon_edit')) {
         }
     });
 
+    const $charaCount = $('.character_count span');
     function updateScenario() {
         scenario.title = $('[name=title]').val();
         scenario.loop = $('[name=loop]').val();
@@ -200,16 +209,18 @@ if ($('body').hasClass('your_kyakuhon_edit')) {
             });
         });
         scenario.characters = charas;
+        $charaCount.text(charas.length);
 
         let incidents = [];
         $incidentList.children().each(function() {
             let $dom = $(this);
-            incidents.push({
+            let i = {
                 'day': $dom.find('select[name=incident_day]').val(),
                 'name': $dom.find('select[name=incident_name]').val(),
                 'criminal': $dom.find('select[name=criminal_name]').val(),
                 'note': $dom.find('input[name=incident_note]').val(),
-            });
+            };
+            incidents.push(i);
         });
         scenario.incidents = incidents;
 
@@ -227,35 +238,43 @@ if ($('body').hasClass('your_kyakuhon_preview')) {
     $('.ruleX1').text(scenario.ruleX1);
     $('.ruleX2').text(scenario.ruleX2);
 
-    let $charaList = $('#character_list');
+    const $charaList = $('#character_list');
     Object.keys(scenario.characters).forEach(key => {
         const chara = scenario.characters[key];
         let $dom = $('#clone_base-character').clone();
         $dom.removeAttr('id');
         $dom.removeAttr('style');
         $dom.find('.chara_name').text(chara.name);
-        $dom.find('.role_name').text(chara.role || 'パーソン');
+        const role = chara.role || 'パーソン';
+        $dom.find('.role_name').text(role);
+        if (role != 'パーソン') {
+            $dom.find('.chara_role').addClass('special');
+        }
         $dom.find('.chara_note').text(chara.note);
         $charaList.append($dom);
     });
 
-    let $incidentOpenList = $('#incident_open_list');
-    let $incidentHiddenList = $('#incident_hidden_list');
-    Object.keys(scenario.incidents).forEach(key => {
-        const incident = scenario.incidents[key];
-
+    const $incidentOpenList = $('#incident_open_list');
+    for (let i = 1 ; i <= scenario.day ; i++) {
         let $dom = $('#clone_base-incident_open').clone();
         $dom.removeAttr('id');
         $dom.removeAttr('style');
-        $dom.find('.incident_day').text(incident.day);
-        if (incident.name == '偽装事件') {
-            $dom.find('.incident_name').text(incident.note || '＞突然の死＜');
-        } else {
-            $dom.find('.incident_name').text(incident.name);
+        $dom.find('.incident_day').text(i);
+        const incident = scenario.incidents.find(item => item.day == i);
+        if (incident) {
+            if (incident.name == '偽装事件') {
+                $dom.find('.incident_name').text(incident.note || '＞突然の死＜');
+            } else {
+                $dom.find('.incident_name').text(incident.name);
+            }
         }
         $incidentOpenList.append($dom);
+    }
+    const $incidentHiddenList = $('#incident_hidden_list');
+    Object.keys(scenario.incidents).forEach(key => {
+        const incident = scenario.incidents[key];
 
-        $dom = $('#clone_base-incident_hidden').clone();
+        let $dom = $('#clone_base-incident_hidden').clone();
         $dom.removeAttr('id');
         $dom.removeAttr('style');
         $dom.find('.incident_day').text(incident.day);
@@ -263,7 +282,7 @@ if ($('body').hasClass('your_kyakuhon_preview')) {
         $dom.find('.incident_criminal').text(incident.criminal);
         if (incident.note) {
             $dom.find('.incident_note').text('('+incident.note+')');
-            $dom.find('br').removeAttr('style');
+            $dom.find('.incident_note').removeAttr('style');
         }
         $incidentHiddenList.append($dom);
     });
@@ -271,14 +290,6 @@ if ($('body').hasClass('your_kyakuhon_preview')) {
     $('h3.title').text(scenario.title);
     $('.scenario_note').text(scenario.note);
     $('.scenario_advice').text(scenario.advice);
-    $('.difficulity_name').text(difficultyName(scenario.difficulty))
-    let star = '';
-    for (let i = 1 ; i <= 8 ; i++) {
-        if (i <= scenario.difficulty) {
-            star += '★';
-        } else {
-            star += '☆';
-        }
-    }
-    $('.difficulty_star').text(star)
+    $('.difficulity_name').text(difficultyName(scenario.difficulty));
+    $('.difficulty_star').text(difficultyStar(scenario.difficulty));
 }

@@ -880,14 +880,17 @@ body.your_kyakuhon_list #kyakuhon_list > li .difficulty .tag {
     text-align: center;
     border-radius: 4px;
 }
-body.your_kyakuhon_list p.notice {
+body.your_kyakuhon_list div.notice {
     margin-top: 20px;
     font-size: 0.9rem;
 }
 
 
-body.your_kyakuhon_edit .editor > p {
+body.your_kyakuhon_edit .editor > div {
     padding: 6px 0;
+}
+body.your_kyakuhon_edit .editor > div .character_count {
+    font-size: 0.9rem;
 }
 body.your_kyakuhon_edit .editor span.column_name {
     display: inline-block;
