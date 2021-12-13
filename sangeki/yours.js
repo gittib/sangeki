@@ -183,9 +183,9 @@ if ($('body').hasClass('your_kyakuhon_edit')) {
         let $dom = $(this).closest('.character_row');
         const $prev = $dom.prev('.character_row');
         let chara = {
-            $dom.find('select[name=chara_name]').val(),
-            $dom.find('select[name=chara_role]').val(),
-            $dom.find('input[name=chara_note]').val(),
+            'name': $dom.find('select[name=chara_name]').val(),
+            'role': $dom.find('select[name=chara_role]').val(),
+            'note': $dom.find('input[name=chara_note]').val(),
         };
         if ($prev && $prev.length > 0) {
             $dom.remove();
