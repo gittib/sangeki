@@ -178,6 +178,7 @@ if ($('body').hasClass('your_kyakuhon_edit')) {
         }
     });
 
+    const $charaCount = $('.character_count span');
     function updateScenario() {
         scenario.title = $('[name=title]').val();
         scenario.loop = $('[name=loop]').val();
@@ -200,16 +201,18 @@ if ($('body').hasClass('your_kyakuhon_edit')) {
             });
         });
         scenario.characters = charas;
+        $charaCount.text(charas.length);
 
         let incidents = [];
         $incidentList.children().each(function() {
             let $dom = $(this);
-            incidents.push({
+            let i = {
                 'day': $dom.find('select[name=incident_day]').val(),
                 'name': $dom.find('select[name=incident_name]').val(),
                 'criminal': $dom.find('select[name=criminal_name]').val(),
                 'note': $dom.find('input[name=incident_note]').val(),
-            });
+            };
+            incidents.push(i);
         });
         scenario.incidents = incidents;
 
