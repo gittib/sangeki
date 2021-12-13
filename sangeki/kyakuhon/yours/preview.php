@@ -161,8 +161,8 @@ $setName = getTragedySetName($_GET['set']);
                     <tr id="clone_base-incident_hidden" style="display:none;">
                         <th class="incident_day"></th>
                         <td>
-                            <p class="incident_name"></p>
-                            <p class="incident_note" style="display:none;"></p>
+                            <div class="incident_name"></div>
+                            <div class="incident_note" style="display:none;"></div>
                         </td>
                         <td class="incident_criminal"></td>
                     </tr>
