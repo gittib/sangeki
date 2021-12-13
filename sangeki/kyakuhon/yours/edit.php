@@ -153,6 +153,10 @@ $aChara = [
                     <?php endforeach; ?>
                 </select></span>
                 <span><input type="text" name="chara_note" placeholder="備考欄(大物のテリトリー等)"></span>
+                <span>
+                    <button class="character_sort_up">↑</button>
+                    <button class="character_sort_down">↓</button>
+                </span>
                 <span><button class="delete">削除</button></span>
             </li>
             <li id="clone_base-incident_row" class="incident_row">
