@@ -154,8 +154,16 @@ if ($('body').hasClass('your_kyakuhon_edit')) {
     });
     $('.add_incident').on('click', function() {
         // 事件追加
+        let maxDay = 0;
+        $incidentList.find('select[name=incident_day]').each(function() {
+            const day = $(this).val();
+            if (day > maxDay) {
+                maxDay = day;
+            }
+        });
+        if (maxDay >= 8) maxDay = 7;
         let incident = {
-            'day': 1,
+            'day': maxDay+1,
             'name': '',
             'criminal': '',
             'note': '',
