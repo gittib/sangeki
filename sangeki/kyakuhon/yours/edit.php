@@ -128,11 +128,11 @@ $aChara = [
         <div>キャラクター一覧
             <ul class="character_list"></ul>
             <div class="character_count">登場キャラクター数：<span>0</span>人</div>
-            <button class="add_chara">キャラクター追加</button>
+            <button class="add_chara">キャラクター追加<i class="fas fa-user-plus"></i></button>
         </div>
         <div>事件リスト
             <ul class="incident_list"></ul>
-            <button class="add_incident">事件追加</button>
+            <button class="add_incident">事件追加<i class="fas fa-plus-square"></i></button>
         </div>
         <div><span class="column_name">脚本の特徴など：</span><textarea name="scenarioNote" cols=25 rows=8 placeholder="惨劇セット初挑戦の主人公に向けた脚本、などの特徴を説明します。狂った真実などの補足もこちらへお書きください"></textarea></div>
         <div><span class="column_name">脚本家への指針：</span><textarea name="advice" cols=25 rows=16 placeholder="脚本家が目指すべき敗北条件や、脚本家カードの置き方、立ち回りについて解説します"></textarea></div>
