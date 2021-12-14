@@ -51,7 +51,7 @@ require_once(__DIR__.'/../../../secret/common.php');
                 </div>
                 <div class="button_wrapper">
                     <a class="edit" href="./edit.php?id=0">脚本を編集</a>
-                    <button class="delete">削除</button>
+                    <button class="delete"><i class="fas fa-trash-alt"></i></button>
                 </div>
             </li>
         </ul>
