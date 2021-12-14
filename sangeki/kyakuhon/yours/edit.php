@@ -154,10 +154,10 @@ $aChara = [
                 </select></span>
                 <span><input type="text" name="chara_note" placeholder="備考欄(大物のテリトリー等)"></span>
                 <span>
-                    <button class="character_sort_up"><i class="fas fa-arrow-alt-circle-up"></i></button>
-                    <button class="character_sort_down"><i class="fas fa-arrow-alt-circle-down"></i></button>
+                    <button class="character_sort_up icon"><i class="fas fa-arrow-alt-circle-up"></i></button>
+                    <button class="character_sort_down icon"><i class="fas fa-arrow-alt-circle-down"></i></button>
                 </span>
-                <span><button class="delete"><i class="fas fa-trash-alt"></i></button></span>
+                <span><button class="delete icon"><i class="fas fa-trash-alt"></i></button></span>
             </li>
             <li id="clone_base-incident_row" class="incident_row">
                 <span>発生日：<select name="incident_day">
@@ -176,7 +176,7 @@ $aChara = [
                     <?php endforeach; ?>
                 </select></span>
                 <span><input type="text" name="incident_note" placeholder="備考または偽装事件の公開名"></span>
-                <span><button class="delete"><i class="fas fa-trash-alt"></i></button></span>
+                <span><button class="delete icon"><i class="fas fa-trash-alt"></i></button></span>
             </li>
         </ul>
     </div>
