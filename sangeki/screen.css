@@ -903,6 +903,9 @@ body.your_kyakuhon_edit .editor button.icon {
     border: none;
     border-radius: 8px;
 }
+body.your_kyakuhon_edit .editor button.icon i {
+    padding: 0 4px;
+}
 body.your_kyakuhon_edit .editor textarea {
     width: 95%;
 }
