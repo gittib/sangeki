@@ -90,7 +90,7 @@ if ($('body').hasClass('your_kyakuhon_list')) {
     });
 }
 if ($('body').hasClass('your_kyakuhon_edit')) {
-    const scenarioIndex = (function() {
+    const scenarioIndex = (() => {
         let idx = 0;
         let target = 0;
         scenarioList.forEach(item => {
@@ -102,6 +102,7 @@ if ($('body').hasClass('your_kyakuhon_edit')) {
         return target;
     })();
     const $charaList = $('.character_list');
+    const $charaCount = $('.character_count span');
     const $incidentList = $('.incident_list');
     var scenario = scenarioList.find(item => item.id == scenarioId);
     $('[name=title]').val(scenario.title);
@@ -123,6 +124,7 @@ if ($('body').hasClass('your_kyakuhon_edit')) {
         $dom.find('input[name=chara_note]').val(chara.note);
         $charaList.append($dom);
     });
+    $charaCount.text(scenario.characters.length);
     Object.keys(scenario.incidents).forEach(key => {
         const incident = scenario.incidents[key];
         let $dom = $('#clone_base-incident_row').clone();
@@ -222,7 +224,6 @@ if ($('body').hasClass('your_kyakuhon_edit')) {
         }
     });
 
-    const $charaCount = $('.character_count span');
     function updateScenario() {
         scenario.title = $('[name=title]').val();
         scenario.loop = $('[name=loop]').val();

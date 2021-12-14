@@ -4,6 +4,7 @@
 <link rel="shortcut icon" href="<?= TOP_PATH ?>favicon.ico" type="image/vnd.microsoft.icon" /> 
 <link rel="icon" href="<?= TOP_PATH ?>favicon.ico" type="image/vnd.microsoft.icon" />
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script src="https://kit.fontawesome.com/2899befb82.js" crossorigin="anonymous"></script>
 <?php if (!isProd()): ?>
 <script>
 $(function() {

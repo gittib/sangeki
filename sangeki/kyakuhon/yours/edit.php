@@ -128,11 +128,11 @@ $aChara = [
         <div>キャラクター一覧
             <ul class="character_list"></ul>
             <div class="character_count">登場キャラクター数：<span>0</span>人</div>
-            <button class="add_chara">キャラクター追加</button>
+            <button class="add_chara">キャラクター追加<i class="fas fa-user-plus"></i></button>
         </div>
         <div>事件リスト
             <ul class="incident_list"></ul>
-            <button class="add_incident">事件追加</button>
+            <button class="add_incident">事件追加<i class="fas fa-plus-square"></i></button>
         </div>
         <div><span class="column_name">脚本の特徴など：</span><textarea name="scenarioNote" cols=25 rows=8 placeholder="惨劇セット初挑戦の主人公に向けた脚本、などの特徴を説明します。狂った真実などの補足もこちらへお書きください"></textarea></div>
         <div><span class="column_name">脚本家への指針：</span><textarea name="advice" cols=25 rows=16 placeholder="脚本家が目指すべき敗北条件や、脚本家カードの置き方、立ち回りについて解説します"></textarea></div>
@@ -154,10 +154,10 @@ $aChara = [
                 </select></span>
                 <span><input type="text" name="chara_note" placeholder="備考欄(大物のテリトリー等)"></span>
                 <span>
-                    <button class="character_sort_up">↑</button>
-                    <button class="character_sort_down">↓</button>
+                    <button class="character_sort_up icon"><i class="fas fa-arrow-alt-circle-up"></i></button>
+                    <button class="character_sort_down icon"><i class="fas fa-arrow-alt-circle-down"></i></button>
                 </span>
-                <span><button class="delete">削除</button></span>
+                <span><button class="delete icon"><i class="fas fa-trash-alt"></i></button></span>
             </li>
             <li id="clone_base-incident_row" class="incident_row">
                 <span>発生日：<select name="incident_day">
@@ -176,7 +176,7 @@ $aChara = [
                     <?php endforeach; ?>
                 </select></span>
                 <span><input type="text" name="incident_note" placeholder="備考または偽装事件の公開名"></span>
-                <span><button class="delete">削除</button></span>
+                <span><button class="delete icon"><i class="fas fa-trash-alt"></i></button></span>
             </li>
         </ul>
     </div>
