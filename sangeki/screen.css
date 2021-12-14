@@ -897,6 +897,7 @@ body.your_kyakuhon_edit .editor input,
 body.your_kyakuhon_edit .editor button {
     min-width: 2rem;
     min-height: 2rem;
+    margin: 2px;
 }
 body.your_kyakuhon_edit .editor span.column_name {
     display: inline-block;
