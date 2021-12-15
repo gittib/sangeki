@@ -517,9 +517,6 @@ body.detail table.character td.role span {
     display: inline-block;
     width: 12px;
 }
-body.detail table.character td.role span.black_heart {
-    font-size: 0.6rem;
-}
 body.detail table.character td.special {
     font-weight: bold;
 }

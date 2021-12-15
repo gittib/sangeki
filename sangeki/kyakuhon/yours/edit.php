@@ -65,6 +65,9 @@ $aChara = [
 </head>
 <body class="your_kyakuhon_edit">
 <?php require(SECRET_DIR.'sangeki_header.php'); ?>
+    <div class="pankuzu_wrapper">
+        <a href=".">一覧へ</a>
+    </div>
     <div class="top_text">
         <h2>あなたの脚本を編集</h2>
         あなたの考えた脚本を、このサイトで作成・編集・管理できます。
