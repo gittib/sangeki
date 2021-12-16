@@ -883,6 +883,9 @@ body.your_kyakuhon_list div.notice {
 }
 
 
+body.your_kyakuhon_edit .pankuzu_wrapper {
+    margin: 12px;
+}
 body.your_kyakuhon_edit .editor > div {
     padding: 6px 0;
 }

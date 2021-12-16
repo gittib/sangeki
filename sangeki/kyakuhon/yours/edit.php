@@ -177,6 +177,10 @@ $aChara = [
                     <?php foreach ($aChara as $chara): ?>
                     <option><?= $chara ?></option>
                     <?php endforeach; ?>
+                    <option>神社の群像</option>
+                    <option>病院の群像</option>
+                    <option>都市の群像</option>
+                    <option>学校の群像</option>
                 </select></span>
                 <span><input type="text" name="incident_note" placeholder="備考または偽装事件の公開名"></span>
                 <span><button class="delete icon"><i class="fas fa-trash-alt"></i></button></span>
