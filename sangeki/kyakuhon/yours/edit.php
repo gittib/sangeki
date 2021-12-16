@@ -56,11 +56,29 @@ $aChara = [
     '手先',
     '従者',
 ];
+switch ($setName) {
+case 'FS': $summaryLink = 'http://bakafire.main.jp/rooper/pdf/summary_005.pdf';
+case 'BTX': $summaryLink = 'http://bakafire.main.jp/rooper/pdf/summary_004.pdf';
+case 'MZ': $summaryLink = 'http://bakafire.main.jp/rooper/pdf/summary_007.pdf';
+case 'MCX': $summaryLink = 'http://bakafire.main.jp/rooper/pdf/summary_002.pdf';
+case 'HSA': $summaryLink = 'http://bakafire.main.jp/rooper/pdf/summary_009.pdf';
+case 'WM': $summaryLink = 'http://bakafire.main.jp/rooper/pdf/summary_008.pdf';
+case 'AHR': $summaryLink = 'http://bakafire.main.jp/rooper/pdf/summary_011.pdf';
+case 'LL': $summaryLink = 'http://bakafire.main.jp/rooper/pdf/summary_010.pdf';
+}
+if (!empty($summaryLink))
+$summaryLinkDom = <<<_DOC_
+<p><a href="${summaryLink}" target="_blank">
+    <i class="fas fa-file-alt"></i><br>
+    <span>サマリー</span>
+</a></p>
+_DOC_;
 ?>
 <html>
 <head>
 <?php require(SECRET_DIR.'google_analytics.php') ?>
 <?php require(SECRET_DIR.'sangeki_head.php') ?>
+    <meta name="robots" content="noindex,nofollow">
     <title>あなたの脚本を編集 - <?= SITE_NAME ?></title>
 </head>
 <body class="your_kyakuhon_edit">
@@ -101,6 +119,7 @@ $aChara = [
                 <option value="0">☆☆☆☆☆☆☆☆　特殊</option>
             </select>
         </div>
+        <?= $summaryLinkDom ?>
         <div><span class="column_name">ルール</span>
             <ul>
                 <li>
@@ -128,12 +147,13 @@ $aChara = [
                 <?php endif; ?>
             </ul>
         </div>
-        <div>キャラクター一覧
+        <div><span class="column_name">キャラクター一覧</span>
             <ul class="character_list"></ul>
             <div class="character_count">登場キャラクター数：<span>0</span>人</div>
             <button class="add_chara">キャラクター追加<i class="fas fa-user-plus"></i></button>
         </div>
-        <div>事件リスト
+        <?= $summaryLinkDom ?>
+        <div><span class="column_name">事件リスト</span>
             <ul class="incident_list"></ul>
             <button class="add_incident">事件追加<i class="fas fa-plus-square"></i></button>
         </div>
