@@ -192,6 +192,7 @@ if ($('body').hasClass('your_kyakuhon_edit')) {
             };
             $dom.remove();
             $dom = $('#clone_base-character_row').clone();
+            $dom.removeAttr('id');
             $dom.find('select[name=chara_name]').val(chara.name);
             $dom.find('select[name=chara_role]').val(chara.role);
             $dom.find('input[name=chara_note]').val(chara.note);
@@ -210,6 +211,7 @@ if ($('body').hasClass('your_kyakuhon_edit')) {
             };
             $dom.remove();
             $dom = $('#clone_base-character_row').clone();
+            $dom.removeAttr('id');
             $dom.find('select[name=chara_name]').val(chara.name);
             $dom.find('select[name=chara_role]').val(chara.role);
             $dom.find('input[name=chara_note]').val(chara.note);
