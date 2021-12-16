@@ -56,15 +56,37 @@ $aChara = [
     '手先',
     '従者',
 ];
+switch ($setName) {
+case 'FS': $summaryLink = 'http://bakafire.main.jp/rooper/pdf/summary_005.pdf'; break;
+case 'BTX': $summaryLink = 'http://bakafire.main.jp/rooper/pdf/summary_004.pdf'; break;
+case 'MZ': $summaryLink = 'http://bakafire.main.jp/rooper/pdf/summary_007.pdf'; break;
+case 'MCX': $summaryLink = 'http://bakafire.main.jp/rooper/pdf/summary_002.pdf'; break;
+case 'HSA': $summaryLink = 'http://bakafire.main.jp/rooper/pdf/summary_009.pdf'; break;
+case 'WM': $summaryLink = 'http://bakafire.main.jp/rooper/pdf/summary_008.pdf'; break;
+case 'AHR': $summaryLink = 'http://bakafire.main.jp/rooper/pdf/summary_011.pdf'; break;
+case 'LL': $summaryLink = 'http://bakafire.main.jp/rooper/pdf/summary_010.pdf'; break;
+}
+if (!empty($summaryLink)) {
+    $summaryLinkDom = <<<_DOC_
+    <p class="summary_link"><a href="${summaryLink}" target="_blank">
+        <span>サマリー</span>
+        <i class="fas fa-file-alt"></i>
+    </a></p>
+_DOC_;
+}
 ?>
 <html>
 <head>
 <?php require(SECRET_DIR.'google_analytics.php') ?>
 <?php require(SECRET_DIR.'sangeki_head.php') ?>
+    <meta name="robots" content="noindex,nofollow">
     <title>あなたの脚本を編集 - <?= SITE_NAME ?></title>
 </head>
 <body class="your_kyakuhon_edit">
 <?php require(SECRET_DIR.'sangeki_header.php'); ?>
+    <div class="pankuzu_wrapper">
+        <a href=".">一覧へ</a>
+    </div>
     <div class="top_text">
         <h2>あなたの脚本を編集</h2>
         あなたの考えた脚本を、このサイトで作成・編集・管理できます。
@@ -99,6 +121,7 @@ $aChara = [
             </select>
         </div>
         <div><span class="column_name">ルール</span>
+            <?= $summaryLinkDom ?? '' ?>
             <ul>
                 <li>
                     ルールY：<select name="ruleY">
@@ -125,12 +148,14 @@ $aChara = [
                 <?php endif; ?>
             </ul>
         </div>
-        <div>キャラクター一覧
+        <div><span class="column_name">キャラクター一覧</span>
+            <?= $summaryLinkDom ?? '' ?>
             <ul class="character_list"></ul>
             <div class="character_count">登場キャラクター数：<span>0</span>人</div>
             <button class="add_chara">キャラクター追加<i class="fas fa-user-plus"></i></button>
         </div>
-        <div>事件リスト
+        <div><span class="column_name">事件リスト</span>
+            <?= $summaryLinkDom ?? '' ?>
             <ul class="incident_list"></ul>
             <button class="add_incident">事件追加<i class="fas fa-plus-square"></i></button>
         </div>
@@ -174,6 +199,10 @@ $aChara = [
                     <?php foreach ($aChara as $chara): ?>
                     <option><?= $chara ?></option>
                     <?php endforeach; ?>
+                    <option>神社の群像</option>
+                    <option>病院の群像</option>
+                    <option>都市の群像</option>
+                    <option>学校の群像</option>
                 </select></span>
                 <span><input type="text" name="incident_note" placeholder="備考または偽装事件の公開名"></span>
                 <span><button class="delete icon"><i class="fas fa-trash-alt"></i></button></span>

@@ -3,8 +3,8 @@
 function roleSpec ($r) {
     $role = isset($r['role']) ? $r['role'] : 'パーソン';
     $sZettai = '◇';
-    $sYuukouMushi = '&#x2661;';
-    $sFushi = '☆';
+    $sYuukouMushi = '<i class="far fa-heart"></i>';
+    $sFushi = '<i class="far fa-star"></i>';
 
     switch ($role) {
         case 'カルティスト':
@@ -25,12 +25,12 @@ function roleSpec ($r) {
         case 'フェイスレス':
         case 'イレイザー':
         case 'アベンジャー':
-            $sYuukouMushi = '<span class="black_heart">&#x1f5a4;</span>';
+            $sYuukouMushi = '<i class="fas fa-heart-broken"></i>';
             break;
         case 'マリオネット':
         case 'ナーサリーライム':
             $sZettai = '◆';
-            $sYuukouMushi = '<span class="black_heart">&#x1f5a4;</span>';
+            $sYuukouMushi = '<i class="fas fa-heart-broken"></i>';
             break;
     }
 
@@ -49,7 +49,7 @@ function roleSpec ($r) {
         case 'プレインシフター':
         case 'ウォッチャー':
         case 'ジョーカー':
-            $sFushi = '★';
+            $sFushi = '<i class="fas fa-star"></i>';
             break;
     }
 
