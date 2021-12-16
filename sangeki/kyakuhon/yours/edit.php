@@ -57,22 +57,23 @@ $aChara = [
     '従者',
 ];
 switch ($setName) {
-case 'FS': $summaryLink = 'http://bakafire.main.jp/rooper/pdf/summary_005.pdf';
-case 'BTX': $summaryLink = 'http://bakafire.main.jp/rooper/pdf/summary_004.pdf';
-case 'MZ': $summaryLink = 'http://bakafire.main.jp/rooper/pdf/summary_007.pdf';
-case 'MCX': $summaryLink = 'http://bakafire.main.jp/rooper/pdf/summary_002.pdf';
-case 'HSA': $summaryLink = 'http://bakafire.main.jp/rooper/pdf/summary_009.pdf';
-case 'WM': $summaryLink = 'http://bakafire.main.jp/rooper/pdf/summary_008.pdf';
-case 'AHR': $summaryLink = 'http://bakafire.main.jp/rooper/pdf/summary_011.pdf';
-case 'LL': $summaryLink = 'http://bakafire.main.jp/rooper/pdf/summary_010.pdf';
+case 'FS': $summaryLink = 'http://bakafire.main.jp/rooper/pdf/summary_005.pdf'; break;
+case 'BTX': $summaryLink = 'http://bakafire.main.jp/rooper/pdf/summary_004.pdf'; break;
+case 'MZ': $summaryLink = 'http://bakafire.main.jp/rooper/pdf/summary_007.pdf'; break;
+case 'MCX': $summaryLink = 'http://bakafire.main.jp/rooper/pdf/summary_002.pdf'; break;
+case 'HSA': $summaryLink = 'http://bakafire.main.jp/rooper/pdf/summary_009.pdf'; break;
+case 'WM': $summaryLink = 'http://bakafire.main.jp/rooper/pdf/summary_008.pdf'; break;
+case 'AHR': $summaryLink = 'http://bakafire.main.jp/rooper/pdf/summary_011.pdf'; break;
+case 'LL': $summaryLink = 'http://bakafire.main.jp/rooper/pdf/summary_010.pdf'; break;
 }
-if (!empty($summaryLink))
-$summaryLinkDom = <<<_DOC_
-<p class="summary_link"><a href="${summaryLink}" target="_blank">
-    <span>サマリー</span>
-    <i class="fas fa-file-alt"></i>
-</a></p>
+if (!empty($summaryLink)) {
+    $summaryLinkDom = <<<_DOC_
+    <p class="summary_link"><a href="${summaryLink}" target="_blank">
+        <span>サマリー</span>
+        <i class="fas fa-file-alt"></i>
+    </a></p>
 _DOC_;
+}
 ?>
 <html>
 <head>
@@ -120,7 +121,7 @@ _DOC_;
             </select>
         </div>
         <div><span class="column_name">ルール</span>
-            <?= $summaryLinkDom ?>
+            <?= $summaryLinkDom ?? '' ?>
             <ul>
                 <li>
                     ルールY：<select name="ruleY">
@@ -148,13 +149,13 @@ _DOC_;
             </ul>
         </div>
         <div><span class="column_name">キャラクター一覧</span>
-            <?= $summaryLinkDom ?>
+            <?= $summaryLinkDom ?? '' ?>
             <ul class="character_list"></ul>
             <div class="character_count">登場キャラクター数：<span>0</span>人</div>
             <button class="add_chara">キャラクター追加<i class="fas fa-user-plus"></i></button>
         </div>
         <div><span class="column_name">事件リスト</span>
-            <?= $summaryLinkDom ?>
+            <?= $summaryLinkDom ?? '' ?>
             <ul class="incident_list"></ul>
             <button class="add_incident">事件追加<i class="fas fa-plus-square"></i></button>
         </div>
