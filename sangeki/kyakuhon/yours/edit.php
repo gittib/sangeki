@@ -119,8 +119,8 @@ _DOC_;
                 <option value="0">☆☆☆☆☆☆☆☆　特殊</option>
             </select>
         </div>
-        <?= $summaryLinkDom ?>
         <div><span class="column_name">ルール</span>
+            <?= $summaryLinkDom ?>
             <ul>
                 <li>
                     ルールY：<select name="ruleY">
@@ -148,12 +148,13 @@ _DOC_;
             </ul>
         </div>
         <div><span class="column_name">キャラクター一覧</span>
+            <?= $summaryLinkDom ?>
             <ul class="character_list"></ul>
             <div class="character_count">登場キャラクター数：<span>0</span>人</div>
             <button class="add_chara">キャラクター追加<i class="fas fa-user-plus"></i></button>
         </div>
-        <?= $summaryLinkDom ?>
         <div><span class="column_name">事件リスト</span>
+            <?= $summaryLinkDom ?>
             <ul class="incident_list"></ul>
             <button class="add_incident">事件追加<i class="fas fa-plus-square"></i></button>
         </div>

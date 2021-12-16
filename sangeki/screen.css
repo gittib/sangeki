@@ -888,6 +888,7 @@ body.your_kyakuhon_edit .pankuzu_wrapper {
 }
 body.your_kyakuhon_edit .editor > div {
     padding: 6px 0;
+    position: relative;
 }
 body.your_kyakuhon_edit .editor > div .character_count {
     font-size: 0.9rem;
@@ -922,7 +923,9 @@ body.your_kyakuhon_edit .editor .incident_list .incident_row > span {
     display: inline-block;
 }
 body.your_kyakuhon_edit .editor .summary_link {
-    text-align: right;
+    position: absolute;
+    top: 0;
+    right: 0;
 }
 body.your_kyakuhon_edit .editor .summary_link span {
     font-size: 0.8rem;
