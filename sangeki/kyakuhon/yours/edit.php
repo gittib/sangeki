@@ -68,9 +68,9 @@ case 'LL': $summaryLink = 'http://bakafire.main.jp/rooper/pdf/summary_010.pdf';
 }
 if (!empty($summaryLink))
 $summaryLinkDom = <<<_DOC_
-<p><a href="${summaryLink}" target="_blank">
-    <i class="fas fa-file-alt"></i><br>
+<p class="summary_link"><a href="${summaryLink}" target="_blank">
     <span>サマリー</span>
+    <i class="fas fa-file-alt"></i>
 </a></p>
 _DOC_;
 ?>

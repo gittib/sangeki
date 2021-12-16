@@ -921,6 +921,12 @@ body.your_kyakuhon_edit .editor .character_list .character_row > span,
 body.your_kyakuhon_edit .editor .incident_list .incident_row > span {
     display: inline-block;
 }
+body.your_kyakuhon_edit .editor .summary_link {
+    text-align: right;
+}
+body.your_kyakuhon_edit .editor .summary_link span {
+    font-size: 0.8rem;
+}
 
 
 
