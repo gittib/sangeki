@@ -110,18 +110,42 @@ if ($('body').hasClass('your_kyakuhon_list')) {
     });
 
     $('.add_scenario_from_file').on('change', function(e) {
+        const $self = $(this);
         const fileReader = new FileReader();
         fileReader.addEventListener('load', data => {
-            console.log(data.target.result);
             try {
-                let json = JSON.parse(data.target.result);
-                if (json.thisIs == 'sangekiRoopeR' && json.scenarioList) {
+                const fileData = JSON.parse(data.target.result);
+                if (fileData.thisIs == 'sangekiRoopeR' && fileData.scenarioList) {
                     console.log('valid file');
-                    console.log(typeof json.scenarioList);
+                    if (confirm('ファイルから読み込んだ脚本データを追加します。よろしいですか？')) {
+                        const listForThisBrowser = JSON.parse(localStorage.scenarioList || '[]');
+                        let addId = 1;
+                        listForThisBrowser.forEach(item => {
+                            if (addId <= item.id) addId = item.id + 1;
+                        });
+                        Object.keys(scenario.characters).forEach(key => {
+                            const item = scenario.characters[key];
+                            item.id = addId;
+                            listForThisBrowser.push(item);
+                            addId++;
+                        });
+                        localStorage.scenarioList = JSON.stringify(listForThisBrowser);
+                        reloadScenarioList();
+                    }
                 }
             } catch (ignore) {}
+            $self.val('');
         });
         fileReader.readAsText(e.target.files[0]);
+    });
+
+    $('.clear_scenario_list').on('click', () => {
+        if (confirm('このブラウザに保存されている脚本データを全て削除します。\nよろしいですか？')) {
+            if (confirm('削除された脚本データを元に戻す事はできません。\n後悔しませんね？')) {
+                localStorage.removeItem('scenarioList');
+                reloadScenarioList();
+            }
+        }
     });
 }
 if ($('body').hasClass('your_kyakuhon_edit')) {
