@@ -92,7 +92,11 @@ if ($('body').hasClass('your_kyakuhon_list')) {
 
     $('.save_as').on('click', () => {
         // 脚本データ文字列を取得
-        const txt = localStorage.scenarioList;
+        const json = {
+            'thisIs': 'sangekiRoopeR',
+            'scenarioList': JSON.parse(localStorage.scenarioList),
+        };
+        const txt = JSON.stringify(json);
         if (!txt) return;
 
         // 文字列をBlob化
@@ -103,6 +107,20 @@ if ($('body').hasClass('your_kyakuhon_list')) {
         a.href =  URL.createObjectURL(blob);
         a.download = 'sangekiRoopeR_myScenario.json';
         a.click();
+    });
+
+    $('.add_scenario_from_file').on('change', function() {
+        const fileLoader = new FileLoader();
+        fileLoader.addEventListener('load', data => {
+            console.log(data.target.result);
+            try {
+                let json = JSON.parse(data.target.result);
+                if (json.thisIs == 'sangekiRoopeR' && json.scenarioList) {
+                    console.log('valid file');
+                    console.log(typeof json.scenarioList);
+                }
+            } catch (ignore) {}
+        });
     });
 }
 if ($('body').hasClass('your_kyakuhon_edit')) {
