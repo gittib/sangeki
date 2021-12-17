@@ -30,6 +30,7 @@ require_once(__DIR__.'/../../../secret/common.php');
                 <option value="UM">Unvoiced Malice</option>
             </select>
             <button class="create_new">作成開始</button>
+            <button class="save_as">脚本データをファイル保存</div>
         </div>
         <div class="notice">脚本データの管理には、localStorageという技術を利用しています。脚本データは端末に保存されますので、異なる端末・ブラウザからアクセスすると、データが引き継がれません。</div>
     </div>
