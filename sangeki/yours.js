@@ -123,8 +123,8 @@ if ($('body').hasClass('your_kyakuhon_list')) {
                         listForThisBrowser.forEach(item => {
                             if (addId <= item.id) addId = item.id + 1;
                         });
-                        Object.keys(scenario.characters).forEach(key => {
-                            const item = scenario.characters[key];
+                        Object.keys(fileData.scenarioList).forEach(key => {
+                            const item = fileData.scenarioList[key];
                             item.id = addId;
                             listForThisBrowser.push(item);
                             addId++;

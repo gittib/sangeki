@@ -33,7 +33,7 @@ require_once(__DIR__.'/../../../secret/common.php');
             <button class="save_as">脚本データをファイル保存</div>
             <div>
                 <p>ファイルから脚本データをリストア</p>
-                <p>以下のファイル選択欄にsangekiRoopeR_myScenario.jsonを入力することで、脚本データを</p>
+                <p>以下のファイル選択欄にsangekiRoopeR_myScenario.jsonを入力することで、脚本データをこのブラウザへ追加できます。</p>
                 <input type="file" class="add_scenario_from_file">
             </div>
             <button class="clear_scenario_list">脚本データを全削除</div>
