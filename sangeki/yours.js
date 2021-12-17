@@ -132,8 +132,12 @@ if ($('body').hasClass('your_kyakuhon_list')) {
                         localStorage.scenarioList = JSON.stringify(listForThisBrowser);
                         reloadScenarioList();
                     }
+                } else {
+                    throw new Error();
                 }
-            } catch (ignore) {}
+            } catch (ignore) {
+                alert('ファイルの読み込みに失敗しました。');
+            }
             $self.val('');
         });
         fileReader.readAsText(e.target.files[0]);
