@@ -109,9 +109,9 @@ if ($('body').hasClass('your_kyakuhon_list')) {
         a.click();
     });
 
-    $('.add_scenario_from_file').on('change', function() {
-        const fileLoader = new FileLoader();
-        fileLoader.addEventListener('load', data => {
+    $('.add_scenario_from_file').on('change', function(e) {
+        const fileReader = new FileReader();
+        fileReader.addEventListener('load', data => {
             console.log(data.target.result);
             try {
                 let json = JSON.parse(data.target.result);
@@ -121,6 +121,7 @@ if ($('body').hasClass('your_kyakuhon_list')) {
                 }
             } catch (ignore) {}
         });
+        fileReader.readAsText(e.target.files[0]);
     });
 }
 if ($('body').hasClass('your_kyakuhon_edit')) {
