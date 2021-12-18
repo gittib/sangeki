@@ -1,6 +1,6 @@
 <?php
 require_once(__DIR__.'/../../../secret/common.php');
-$pubKey = '/tmp/rsa_2048_pub.pem';
+$pubKey = '/tmp/sangeki_rsa_2048_pub.pem';
 ?>
 <html>
 <head>
