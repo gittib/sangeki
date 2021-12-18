@@ -139,15 +139,18 @@ if ($('body').hasClass('your_kyakuhon_list')) {
                 if (fileData.thisIs == 'sangekiRoopeR' && fileData.scenarioList) {
                     if (confirm('ファイルから読み込んだ脚本データを追加します。よろしいですか？')) {
                         const listForThisBrowser = JSON.parse(localStorage.scenarioList || '[]');
+                        const hashes = listForThisBrowser.map(i => i.hash || '');
                         let addId = 1;
                         listForThisBrowser.forEach(item => {
                             if (addId <= item.id) addId = item.id + 1;
                         });
                         Object.keys(fileData.scenarioList).forEach(key => {
                             const item = fileData.scenarioList[key];
-                            item.id = addId;
-                            listForThisBrowser.push(item);
-                            addId++;
+                            if (hashes.indexOf(item.hash || '') == -1) {
+                                item.id = addId;
+                                listForThisBrowser.push(item);
+                                addId++;
+                            }
                         });
                         localStorage.scenarioList = JSON.stringify(listForThisBrowser);
                         reloadScenarioList();
