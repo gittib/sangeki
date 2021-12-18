@@ -1,3 +1,5 @@
+const SCENARIO_LIST_FILE_NAME = 'sangekiRoopeR_myScenario.json';
+
 function difficultyName(difficulty) {
     switch (Number(difficulty)) {
     case 1: return '練習用';
@@ -22,6 +24,19 @@ function difficultyStar(difficulty) {
     }
     return star;
 }
+function dateStr() {
+    const e = s -> ("0"+s).slice(-2);
+    const d = new Date();
+    const yyyy = d.getFullYear();
+    const mm = d.getMonth() + 1;
+    const dd = d.getDate();
+    const hh = d.getHours();
+    const ii = d.getMinutes();
+    const ss = d.getSeconds();
+    return yyyy+e(mm)+e(dd)+e(hh)+e(ii)+e(ss);
+}
+
+console.log(dateStr());
 
 var scenarioList = JSON.parse(localStorage.getItem('scenarioList') || '[]');
 
@@ -50,6 +65,8 @@ if ($('body').hasClass('your_kyakuhon_list')) {
         });
     }
     reloadScenarioList();
+
+    $('.download_file_name').text(SCENARIO_LIST_FILE_NAME);
 
     $('#kyakuhon_list').on('click', 'button.delete[data-id]', function () {
         const id = $(this).attr('data-id');
@@ -105,7 +122,7 @@ if ($('body').hasClass('your_kyakuhon_list')) {
         // ダウンロード用のaタグ生成
         const a = document.createElement('a');
         a.href =  URL.createObjectURL(blob);
-        a.download = 'sangekiRoopeR_myScenario.json';
+        a.download = SCENARIO_LIST_FILE_NAME;
         a.click();
     });
 
@@ -116,7 +133,6 @@ if ($('body').hasClass('your_kyakuhon_list')) {
             try {
                 const fileData = JSON.parse(data.target.result);
                 if (fileData.thisIs == 'sangekiRoopeR' && fileData.scenarioList) {
-                    console.log('valid file');
                     if (confirm('ファイルから読み込んだ脚本データを追加します。よろしいですか？')) {
                         const listForThisBrowser = JSON.parse(localStorage.scenarioList || '[]');
                         let addId = 1;
