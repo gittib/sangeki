@@ -1,3 +1,5 @@
+const SCENARIO_LIST_FILE_NAME = 'sangekiRoopeR_myScenario.json';
+
 function difficultyName(difficulty) {
     switch (Number(difficulty)) {
     case 1: return '練習用';
@@ -22,12 +24,25 @@ function difficultyStar(difficulty) {
     }
     return star;
 }
+function dateStr() {
+    const e = s => ("0"+s).slice(-2);
+    const d = new Date();
+    const yyyy = d.getFullYear();
+    const mm = d.getMonth() + 1;
+    const dd = d.getDate();
+    const hh = d.getHours();
+    const ii = d.getMinutes();
+    const ss = d.getSeconds();
+    return e(yyyy)+e(mm)+e(dd)+e(hh)+e(ii)+e(ss);
+}
 
 var scenarioList = JSON.parse(localStorage.getItem('scenarioList') || '[]');
 
 if ($('body').hasClass('your_kyakuhon_list')) {
     // 自作脚本リストの処理
+
     function reloadScenarioList() {
+        const hash = () => dateStr() + Math.random().toString(10).slice(2);
         scenarioList = JSON.parse(localStorage.getItem('scenarioList') || '[]');
         $('#kyakuhon_list').empty();
         scenarioList.forEach((item) => {
@@ -46,9 +61,16 @@ if ($('body').hasClass('your_kyakuhon_list')) {
             $dom.find('.difficulty .tag').text(difficultyName(item.difficulty));
 
             $('#kyakuhon_list').append($dom);
+
+            if (!item.hash) {
+                item.hash = hash();
+            }
         });
+        localStorage.scenarioList = JSON.stringify(scenarioList);
     }
     reloadScenarioList();
+
+    $('.download_file_name').text(SCENARIO_LIST_FILE_NAME);
 
     $('#kyakuhon_list').on('click', 'button.delete[data-id]', function () {
         const id = $(this).attr('data-id');
@@ -87,6 +109,66 @@ if ($('body').hasClass('your_kyakuhon_list')) {
         });
         localStorage.setItem('scenarioList', JSON.stringify(scenarioList));
         reloadScenarioList();
+    });
+
+    $('.open_export_console').on('click', () => {
+        $('.open_export_console').remove();
+        $('.export_console').removeAttr('style');
+    });
+
+    $('.save_as').on('click', () => {
+        // 脚本データ文字列を取得
+        const json = {
+            'thisIs': 'sangekiRoopeR',
+            'scenarioList': JSON.parse(localStorage.scenarioList),
+        };
+        const txt = JSON.stringify(json);
+        if (!txt) return;
+
+        // 文字列をBlob化
+        const blob = new Blob([txt], { type: 'text/plain' });
+
+        // ダウンロード用のaタグ生成
+        const a = document.createElement('a');
+        a.href =  URL.createObjectURL(blob);
+        a.download = SCENARIO_LIST_FILE_NAME;
+        a.click();
+    });
+
+    $('.add_scenario_from_file').on('change', function(e) {
+        const $self = $(this);
+        const fileReader = new FileReader();
+        fileReader.addEventListener('load', data => {
+            try {
+                const fileData = JSON.parse(data.target.result);
+                if (fileData.thisIs == 'sangekiRoopeR' && fileData.scenarioList) {
+                    if (confirm('ファイルから読み込んだ脚本データを追加します。よろしいですか？')) {
+                        const listForThisBrowser = JSON.parse(localStorage.scenarioList || '[]');
+                        const hashes = listForThisBrowser.map(i => i.hash || '');
+                        let addId = 1;
+                        listForThisBrowser.forEach(item => {
+                            if (addId <= item.id) addId = item.id + 1;
+                        });
+                        Object.keys(fileData.scenarioList).forEach(key => {
+                            const item = fileData.scenarioList[key];
+                            if (hashes.indexOf(item.hash || '') == -1) {
+                                item.id = addId;
+                                listForThisBrowser.push(item);
+                                addId++;
+                            }
+                        });
+                        localStorage.scenarioList = JSON.stringify(listForThisBrowser);
+                        reloadScenarioList();
+                    }
+                } else {
+                    throw new Error();
+                }
+            } catch (ignore) {
+                alert('ファイルの読み込みに失敗しました。');
+            }
+            $self.val('');
+        });
+        fileReader.readAsText(e.target.files[0]);
     });
 }
 if ($('body').hasClass('your_kyakuhon_edit')) {

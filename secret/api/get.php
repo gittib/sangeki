@@ -131,6 +131,16 @@ function isRuleY($ruleName) {
         case '高貴なる血族':
         case '黄衣の王':
         case '黒の学園':
+        case '閉ざされた未来':
+        case '御伽噺の殺人鬼':
+        case 'マザーグースミステリー':
+        case '次元併合プラン':
+        case '虚ろいゆく世界':
+        case '最終計画':
+        case '封印されし終末':
+        case '叛逆の世界':
+        case '悪魔の脚本':
+        case '巨大時限爆弾Zの存在':
             return true;
         default:
             return false;
