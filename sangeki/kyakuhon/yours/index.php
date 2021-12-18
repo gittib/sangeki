@@ -1,6 +1,5 @@
 <?php
 require_once(__DIR__.'/../../../secret/common.php');
-$pubKey = '/tmp/sangeki_rsa_2048_pub.pem';
 ?>
 <html>
 <head>
@@ -66,10 +65,5 @@ $pubKey = '/tmp/sangeki_rsa_2048_pub.pem';
     </div>
 <?php require(SECRET_DIR.'sangeki_footer.php') ?>
 <script src="<?= TOP_PATH ?>yours.js?v=<?= filemtime(PUBLIC_DIR.'yours.js') ?>"></script>
-<?php if (file_exists($pubKey)): ?>
-<script>
-const PublickKey = `<?= file_get_contents($pubKey) ?>`;
-</script>
-<?php endif; ?>
 </body>
 </html>
