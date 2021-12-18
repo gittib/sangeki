@@ -42,6 +42,7 @@ if ($('body').hasClass('your_kyakuhon_list')) {
     // 自作脚本リストの処理
 
     function reloadScenarioList() {
+        const hash = () => dateStr()+"-"+Math.random();
         scenarioList = JSON.parse(localStorage.getItem('scenarioList') || '[]');
         $('#kyakuhon_list').empty();
         scenarioList.forEach((item) => {
@@ -60,7 +61,12 @@ if ($('body').hasClass('your_kyakuhon_list')) {
             $dom.find('.difficulty .tag').text(difficultyName(item.difficulty));
 
             $('#kyakuhon_list').append($dom);
+
+            if (!item.hash) {
+                item.hash = hash();
+            }
         });
+        localStorage.scenarioList = JSON.stringify(scenarioList);
     }
     reloadScenarioList();
 
