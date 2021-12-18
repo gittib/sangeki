@@ -25,7 +25,9 @@ function difficultyStar(difficulty) {
     return star;
 }
 function dateStr() {
-    const e = s -> ("0"+s).slice(-2);
+    const e = s -> {
+        return ("0"+s).slice(-2);
+    };
     const d = new Date();
     const yyyy = d.getFullYear();
     const mm = d.getMonth() + 1;
