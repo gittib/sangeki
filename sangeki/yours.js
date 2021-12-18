@@ -42,7 +42,7 @@ if ($('body').hasClass('your_kyakuhon_list')) {
     // 自作脚本リストの処理
 
     function reloadScenarioList() {
-        const hash = () => dateStr()+"-"+Math.random();
+        const hash = () => dateStr() + Math.random().toString(10).slice(2);
         scenarioList = JSON.parse(localStorage.getItem('scenarioList') || '[]');
         $('#kyakuhon_list').empty();
         scenarioList.forEach((item) => {
