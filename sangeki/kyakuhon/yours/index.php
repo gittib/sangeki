@@ -36,7 +36,6 @@ require_once(__DIR__.'/../../../secret/common.php');
                 <p>以下のファイル選択欄に<span class="download_file_name"></span>を入力することで、脚本データをこのブラウザへ追加できます。</p>
                 <input type="file" class="add_scenario_from_file">
             </div>
-            <button class="clear_scenario_list">脚本データを全削除</div>
         </div>
         <div class="notice">脚本データの管理には、localStorageという技術を利用しています。脚本データは端末に保存されますので、異なる端末・ブラウザからアクセスすると、データが引き継がれません。</div>
     </div>

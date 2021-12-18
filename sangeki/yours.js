@@ -25,9 +25,7 @@ function difficultyStar(difficulty) {
     return star;
 }
 function dateStr() {
-    const e = s -> {
-        return ("0"+s).slice(-2);
-    };
+    const e = s => ("0"+s).slice(-2);
     const d = new Date();
     const yyyy = d.getFullYear();
     const mm = d.getMonth() + 1;
@@ -37,8 +35,6 @@ function dateStr() {
     const ss = d.getSeconds();
     return yyyy+e(mm)+e(dd)+e(hh)+e(ii)+e(ss);
 }
-
-console.log(dateStr());
 
 var scenarioList = JSON.parse(localStorage.getItem('scenarioList') || '[]');
 
@@ -159,15 +155,6 @@ if ($('body').hasClass('your_kyakuhon_list')) {
             $self.val('');
         });
         fileReader.readAsText(e.target.files[0]);
-    });
-
-    $('.clear_scenario_list').on('click', () => {
-        if (confirm('このブラウザに保存されている脚本データを全て削除します。\nよろしいですか？')) {
-            if (confirm('削除された脚本データを元に戻す事はできません。\n後悔しませんね？')) {
-                localStorage.removeItem('scenarioList');
-                reloadScenarioList();
-            }
-        }
     });
 }
 if ($('body').hasClass('your_kyakuhon_edit')) {
