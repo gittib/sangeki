@@ -877,6 +877,18 @@ body.your_kyakuhon_list #kyakuhon_list > li .difficulty .tag {
     text-align: center;
     border-radius: 4px;
 }
+body.your_kyakuhon_list .open_export_console {
+    display: block;
+    margin: 20px 0;
+}
+body.your_kyakuhon_list .export_console {
+    margin: 32px 4px;
+    border: solid 1px;
+    padding: 8px;
+}
+body.your_kyakuhon_list .export_console > p {
+    margin-top: 20px;
+}
 body.your_kyakuhon_list div.notice {
     margin-top: 20px;
     font-size: 0.9rem;

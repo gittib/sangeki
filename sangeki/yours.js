@@ -33,7 +33,7 @@ function dateStr() {
     const hh = d.getHours();
     const ii = d.getMinutes();
     const ss = d.getSeconds();
-    return yyyy+e(mm)+e(dd)+e(hh)+e(ii)+e(ss);
+    return e(yyyy)+e(mm)+e(dd)+e(hh)+e(ii)+e(ss);
 }
 
 var scenarioList = JSON.parse(localStorage.getItem('scenarioList') || '[]');
@@ -109,6 +109,11 @@ if ($('body').hasClass('your_kyakuhon_list')) {
         });
         localStorage.setItem('scenarioList', JSON.stringify(scenarioList));
         reloadScenarioList();
+    });
+
+    $('.open_export_console').on('click', () => {
+        $('.open_export_console').remove();
+        $('.export_console').removeAttr('style');
     });
 
     $('.save_as').on('click', () => {

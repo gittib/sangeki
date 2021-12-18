@@ -30,9 +30,10 @@ require_once(__DIR__.'/../../../secret/common.php');
                 <option value="UM">Unvoiced Malice</option>
             </select>
             <button class="create_new">作成開始</button>
-            <button class="save_as">脚本データをファイル保存</div>
-            <div>
-                <p>ファイルから脚本データをリストア</p>
+            <a href="javascript:void(0)" class="open_export_console">脚本データの引き継ぎ・バックアップ</a>
+            <div class="export_console" style="display:none;">
+                <p>このボタンを押すと、脚本リストをファイルとして保存できます。</p>
+                <button class="save_as">脚本データをファイル保存</div>
                 <p>以下のファイル選択欄に<span class="download_file_name"></span>を入力することで、脚本データをこのブラウザへ追加できます。</p>
                 <input type="file" class="add_scenario_from_file">
             </div>
