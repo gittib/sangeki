@@ -39,6 +39,9 @@ $pubKey = '/tmp/sangeki_rsa_2048_pub.pem';
                     URLが発行されるので、ダウンロードしたい端末でそのURLへアクセスすると脚本データをダウンロードできます。
                     <span class="notice">※アップロードされた脚本データは、一定期間後に削除されます。</span>
                     <button class="upload_scenario">脚本データをアップロード</button>
+                    <form action="<?= TOP_PATH ?>kyakuhon/yours/upload.php" method="post">
+                        <input type="hidden" name="scenario_list">
+                    </form>
                 </p>
                 <p>このボタンを押すと、脚本リストをファイルとして保存できます。</p>
                 <button class="save_as">脚本データをファイル保存</button>

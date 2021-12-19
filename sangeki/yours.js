@@ -116,38 +116,10 @@ if ($('body').hasClass('your_kyakuhon_list')) {
         $('.export_console').removeAttr('style');
     });
     $('.upload_scenario').on('click', () => {
-        function str2ab(str) {
-            const buf = new ArrayBuffer(str.length);
-            const bufView = new Uint8Array(buf);
-            for (let i = 0, strLen = str.length; i < strLen; i++) {
-                bufView[i] = str.charCodeAt(i);
-            }
-            return buf;
-        }
-        function publicPem2binaryDer(pem) {
-            const pemHeader = "-----BEGIN PUBLIC KEY-----";
-            const pemFooter = "-----END PUBLIC KEY-----";
-            const pemContents = pem.substring(pemHeader.length, pem.length - pemFooter.length);
-            // base64 decode the string to get the binary data
-            const binaryDerString = atob(pemContents);
-            // convert from a binary string to an ArrayBuffer
-            return str2ab(binaryDerString);
-        }
-
-        const encode = "spki";
-        const ec = {
-            name: "RSA-OAEP",
-            namedCurve: "HSA-256",
-        };
-        const usage = ["encrypt"];
-        const binaryDer = publicPem2binaryDer(PublickKey);
-
-        (async () => {
-            const data = JSON.stringify(scenarioList);
-            const importKey = await crypto.subtle.importKey(encode, binaryDer, ec, false, usage);
-            const encData = await crypto.subtle.encrypt(ec, importKey, str2ab(data));
-            console.log(encData);
-        })();
+        const data = JSON.stringify(scenarioList);
+        const $dom = $('[name=scenario_list]');
+        $dom.val(data);
+        $dom.closest('form').submit();
     });
 
     $('.save_as').on('click', () => {
