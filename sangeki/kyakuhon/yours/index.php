@@ -32,6 +32,13 @@ require_once(__DIR__.'/../../../secret/common.php');
             <button class="create_new">作成開始</button>
             <a href="javascript:void(0)" class="open_export_console">脚本データの引き継ぎ・バックアップ</a>
             <div class="export_console" style="display:none;">
+                <span>脚本データの引き継ぎ・バックアップ</span>
+                <p>
+                    このボタンを押すと、脚本データをサーバーへアップロードできます。<br>
+                    URLが発行されるので、ダウンロードしたい端末でそのURLへアクセスすると脚本データをダウンロードできます。
+                    <span class="notice">※アップロードされた脚本データは、一定期間後に削除されます。</span>
+                    <button class="upload_scenario">脚本データをアップロード</button>
+                </p>
                 <p>このボタンを押すと、脚本リストをファイルとして保存できます。</p>
                 <button class="save_as">脚本データをファイル保存</button>
                 <p>以下のファイル選択欄に<span class="download_file_name"></span>を入力することで、脚本データをこのブラウザへ追加できます。</p>
