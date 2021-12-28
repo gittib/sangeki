@@ -1,5 +1,6 @@
 <?php
 require_once(__DIR__.'/../../../secret/common.php');
+$pubKey = '/tmp/sangeki_rsa_2048_pub.pem';
 ?>
 <html>
 <head>
@@ -32,6 +33,18 @@ require_once(__DIR__.'/../../../secret/common.php');
             <button class="create_new">作成開始</button>
             <a href="javascript:void(0)" class="open_export_console">脚本データの引き継ぎ・バックアップ</a>
             <div class="export_console" style="display:none;">
+                <span>脚本データの引き継ぎ・バックアップ</span>
+<?php /*
+                <p>
+                    このボタンを押すと、脚本データをサーバーへアップロードできます。<br>
+                    URLが発行されるので、ダウンロードしたい端末でそのURLへアクセスすると脚本データをダウンロードできます。
+                    <span class="notice">※アップロードされた脚本データは、一定期間後に削除されます。</span>
+                    <button class="upload_scenario">脚本データをアップロード</button>
+                    <form action="<?= TOP_PATH ?>kyakuhon/yours/upload.php" method="post">
+                        <input type="hidden" name="scenario_list">
+                    </form>
+                </p>
+ */?>
                 <p>このボタンを押すと、脚本リストをファイルとして保存できます。</p>
                 <button class="save_as">脚本データをファイル保存</button>
                 <p>以下のファイル選択欄に<span class="download_file_name"></span>を入力することで、脚本データをこのブラウザへ追加できます。</p>
@@ -65,5 +78,10 @@ require_once(__DIR__.'/../../../secret/common.php');
     </div>
 <?php require(SECRET_DIR.'sangeki_footer.php') ?>
 <script src="<?= TOP_PATH ?>yours.js?v=<?= filemtime(PUBLIC_DIR.'yours.js') ?>"></script>
+<?php if (file_exists($pubKey)): ?>
+<script>
+const PublickKey = `<?= file_get_contents($pubKey) ?>`;
+</script>
+<?php endif; ?>
 </body>
 </html>

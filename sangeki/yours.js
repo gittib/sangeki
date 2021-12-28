@@ -115,6 +115,12 @@ if ($('body').hasClass('your_kyakuhon_list')) {
         $('.open_export_console').remove();
         $('.export_console').removeAttr('style');
     });
+    $('.upload_scenario').on('click', () => {
+        const data = JSON.stringify(scenarioList);
+        const $dom = $('[name=scenario_list]');
+        $dom.val(data);
+        $dom.closest('form').submit();
+    });
 
     $('.save_as').on('click', () => {
         // 脚本データ文字列を取得
