@@ -34,6 +34,7 @@ $pubKey = '/tmp/sangeki_rsa_2048_pub.pem';
             <a href="javascript:void(0)" class="open_export_console">脚本データの引き継ぎ・バックアップ</a>
             <div class="export_console" style="display:none;">
                 <span>脚本データの引き継ぎ・バックアップ</span>
+<?php /*
                 <p>
                     このボタンを押すと、脚本データをサーバーへアップロードできます。<br>
                     URLが発行されるので、ダウンロードしたい端末でそのURLへアクセスすると脚本データをダウンロードできます。
@@ -43,6 +44,7 @@ $pubKey = '/tmp/sangeki_rsa_2048_pub.pem';
                         <input type="hidden" name="scenario_list">
                     </form>
                 </p>
+ */?>
                 <p>このボタンを押すと、脚本リストをファイルとして保存できます。</p>
                 <button class="save_as">脚本データをファイル保存</button>
                 <p>以下のファイル選択欄に<span class="download_file_name"></span>を入力することで、脚本データをこのブラウザへ追加できます。</p>
