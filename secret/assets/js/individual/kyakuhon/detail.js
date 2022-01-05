@@ -1,4 +1,4 @@
-if ($('body').hasClass('sangeki_kyakuhon_detail')) {
+if ($('body').hasClass('sangeki-kyakuhon-detail')) {
     // 脚本詳細画面の処理
 
     $('.toggle_private').on('click', function() {

@@ -10,7 +10,7 @@ $setName = getTragedySetName($_GET['set']);
     <meta name="robots" content="noindex">
     <title><?= e($setName) ?> 脚本 - <?= SITE_NAME ?></title>
 </head>
-<body class="detail your_kyakuhon_preview">
+<body class="detail sangeki-kyakuhon-yours-preview">
 <?php require(SECRET_DIR.'sangeki_header.php'); ?>
     <div class="pankuzu_wrapper">
         <a href=".">一覧へ</a>

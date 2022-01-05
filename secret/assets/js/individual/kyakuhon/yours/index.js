@@ -1,4 +1,4 @@
-if ($('body').hasClass('your_kyakuhon_list')) {
+if ($('body').hasClass('sangeki-kyakuhon-yours-index')) {
     // 自作脚本リストの処理
 
     var scenarioList = JSON.parse(localStorage.scenarioList || '[]');

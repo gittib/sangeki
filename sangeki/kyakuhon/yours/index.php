@@ -8,7 +8,7 @@ $pubKey = '/tmp/sangeki_rsa_2048_pub.pem';
 <?php require(SECRET_DIR.'sangeki_head.php') ?>
     <title>あなたの脚本リスト - <?= SITE_NAME ?></title>
 </head>
-<body class="your_kyakuhon_list">
+<body class="sangeki-kyakuhon-yours-index">
 <?php require(SECRET_DIR.'sangeki_header.php'); ?>
     <div class="top_text">
         <h2>あなたの脚本リスト</h2>

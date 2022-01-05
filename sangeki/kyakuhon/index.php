@@ -12,7 +12,7 @@ $bDisplaySecret = (!isProd() && isset($_GET['s']));
 <?php require(SECRET_DIR.'sangeki_head.php') ?>
     <title>脚本リスト - <?= SITE_NAME ?></title>
 </head>
-<body class="kyakuhon_list">
+<body class="kyakuhon_list sangeki-kyakuhon-index">
 <?php require(SECRET_DIR.'sangeki_header.php'); ?>
     <div class="top_text">
         <h2><span>ペンスキーの</span><span>脚本置き場へ</span><span>ようこそ。</span></h2>
@@ -58,20 +58,5 @@ $bDisplaySecret = (!isProd() && isset($_GET['s']));
     </div>
     <button class="show_title">脚本タイトルを表示</button>
 <?php require(SECRET_DIR.'sangeki_footer.php') ?>
-    <script>
-    $('.show_title').on('click', function() {
-        if ($('.hide_title').is(':visible')) {
-            if (confirm('脚本タイトルを表示するとネタバレになる可能性があります。\nよろしいですか？')) {
-                $('.real_title').show();
-                $('.hide_title').hide();
-                $('.show_title').text('脚本タイトルを隠す');
-            }
-        } else {
-            $('.real_title').hide();
-            $('.hide_title').show();
-            $('.show_title').text('脚本タイトルを表示');
-        }
-    });
-    </script>
 </body>
 </html>

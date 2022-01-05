@@ -69,7 +69,7 @@ $canonicalUrl = schema().'://'.SITE_DOMAIN.TOP_PATH.'kyakuhon/detail.php?id='.$i
     <title><?= e($oSangeki->rule_str) ?> 脚本 [<?= $id ?>] - <?= SITE_NAME ?></title>
     <link rel="canonical" href="<?= $canonicalUrl ?>">
 </head>
-<body class="detail sangeki_kyakuhon_detail">
+<body class="detail sangeki-kyakuhon-detail">
 <?php require(SECRET_DIR.'sangeki_header.php'); ?>
     <div class="pankuzu_wrapper">
         <a href=".">一覧へ</a>

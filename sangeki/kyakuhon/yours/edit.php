@@ -82,7 +82,7 @@ _DOC_;
     <meta name="robots" content="noindex,nofollow">
     <title>あなたの脚本を編集 - <?= SITE_NAME ?></title>
 </head>
-<body class="your_kyakuhon_edit">
+<body class="sangeki-kyakuhon-yours-edit">
 <?php require(SECRET_DIR.'sangeki_header.php'); ?>
     <div class="pankuzu_wrapper">
         <a href=".">一覧へ</a>
