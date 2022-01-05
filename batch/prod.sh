@@ -17,3 +17,8 @@ ssh-agent -k
 
 chmod 777 secret/cache
 git log -n 1 --pretty=%H > secret/cache/latest_git_hash
+
+cp /dev/null sangeki/all.js
+find secret/assets/js/functions/ -type f | grep js | xargs cat >> sangeki/all.js
+find secret/assets/js/individual/ -type f | grep js | xargs cat >> sangeki/all.js
+
