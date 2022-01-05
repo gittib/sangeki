@@ -1,4 +1,4 @@
-if ($('body').hasClass('your_kyakuhon_edit')) {
+if ($('body').hasClass('sangeki-kyakuhon-yours-edit')) {
     // 自作脚本編集画面の処理
 
     var scenarioList = JSON.parse(localStorage.scenarioList || '[]');
