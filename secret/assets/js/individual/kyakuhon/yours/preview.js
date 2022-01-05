@@ -65,4 +65,18 @@ if ($('body').hasClass('your_kyakuhon_preview')) {
     $('.scenario_advice').text(scenario.advice);
     $('.difficulity_name').text(difficultyName(scenario.difficulty));
     $('.difficulty_star').text(difficultyStar(scenario.difficulty));
+
+    $('.toggle_private').on('click', function() {
+        var $self = $(this);
+        var $p = $('.private');
+        if ($p.is(':visible')) {
+            $p.hide();
+            $self.text('非公開シート、脚本家の指針を表示');
+        } else {
+            if (confirm('非公開シートを表示します。よろしいですか？')) {
+                $p.show();
+                $self.text('非公開シート、脚本家の指針を隠す');
+            }
+        }
+    });
 }

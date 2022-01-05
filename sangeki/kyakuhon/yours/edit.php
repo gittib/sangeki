@@ -209,9 +209,8 @@ _DOC_;
             </li>
         </ul>
     </div>
-<?php require(SECRET_DIR.'sangeki_footer.php') ?>
 <script>const ruleMaster = <?= json_encode($aMaster, JSON_UNESCAPED_UNICODE) ?>;
 const scenarioId = <?= $_GET['id'] ?>;</script>
-<script src="<?= TOP_PATH ?>yours.js?v=<?= filemtime(PUBLIC_DIR.'yours.js') ?>"></script>
+<?php require(SECRET_DIR.'sangeki_footer.php') ?>
 </body>
 </html>

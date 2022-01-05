@@ -77,6 +77,17 @@ function difficulityName($difficulity) {
     }
 }
 
+function gitHash() {
+    $latestHash = 'invalid';
+    $sHashFilePath = SECRET_DIR.'cache/latest_git_hash';
+    if (file_exists($sHashFilePath)) {
+        $fp = fopen($sHashFilePath, 'r');
+        $latestHash = trim(fgets($fp));
+        fclose($fp);
+    }
+    return $latestHash;
+}
+
 function dd($arg) {
     ob_end_clean();
     header("Content-Type: text/plain");

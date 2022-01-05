@@ -77,7 +77,6 @@ $pubKey = '/tmp/sangeki_rsa_2048_pub.pem';
         </ul>
     </div>
 <?php require(SECRET_DIR.'sangeki_footer.php') ?>
-<script src="<?= TOP_PATH ?>yours.js?v=<?= filemtime(PUBLIC_DIR.'yours.js') ?>"></script>
 <?php if (file_exists($pubKey)): ?>
 <script>
 const PublickKey = `<?= file_get_contents($pubKey) ?>`;
