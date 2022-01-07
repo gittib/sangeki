@@ -3,6 +3,7 @@ require_once(__DIR__.'/../../../secret/common.php');
 require_once(SECRET_DIR.'detail_util.php');
 require(SECRET_DIR.'rule_role_master.php');
 $setName = $_GET['set'] ?? 'BTX';
+$isPlus = $_GET['plus'] ?? false;
 $aMaster = $aRuleRoleMaster[$setName];
 $iRuleY = $setName == 'FS' ? 3 : 5;
 $aRuleY = [];
@@ -20,6 +21,14 @@ foreach ($aMaster as $sRuleName => $aVal) {
 }
 $aRole = array_unique($aRole);
 $aIncidents = $aIncidentMaster[$setName];
+
+if ($isPlus) {
+    $aRuleX[] = '世界線を越えて';
+    $aIncidents[] = '希望の光';
+    $aIncidents[] = '絶望の闇';
+    $aRole[] = 'フラグメント';
+}
+
 $aChara = [
     '神格',
     '巫女',

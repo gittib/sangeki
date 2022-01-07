@@ -9,13 +9,14 @@ if ($('body').hasClass('sangeki-kyakuhon-yours-index')) {
         $('#kyakuhon_list').empty();
         scenarioList.forEach((item) => {
             let $dom = $('#clone_base-kyakuhon_column').clone();
+            const isPlus = item.plus || 0;
             $dom.removeAttr('id');
             $dom.attr('data-id', item.id);
             $dom.find('button.delete').attr('data-id', item.id);
-            $dom.find('.rule_prefix').text(item.set);
+            $dom.find('.rule_prefix').text(item.set+(isPlus ? '＋' : ''));
             $dom.find('.rule_prefix').addClass(item.set);
-            $dom.find('a.view').attr('href', './preview.php?id='+item.id+'&set='+item.set);
-            $dom.find('a.edit').attr('href', './edit.php?id='+item.id+'&set='+item.set);
+            $dom.find('a.view').attr('href', './preview.php?id='+item.id+'&set='+item.set+'&plus='+isPlus);
+            $dom.find('a.edit').attr('href', './edit.php?id='+item.id+'&set='+item.set+'&plus='+isPlus);
             $dom.find('.title').text('['+item.id+']'+item.title);
             $dom.find('.loop > strong').text(item.loop);
             $dom.find('.day > strong').text(item.day);
@@ -44,7 +45,9 @@ if ($('body').hasClass('sangeki-kyakuhon-yours-index')) {
     });
 
     $('.create_new').on('click', function() {
-        const setName = $('select[name=set]').val();
+        var tmp = $('select[name=set]').val().split('-');
+        const setName = tmp[0];
+        const isPlus = (tmp[1] == 'plus');
         if (!setName) {
             alert('惨劇セットを指定して下さい。');
             return;
@@ -57,6 +60,7 @@ if ($('body').hasClass('sangeki-kyakuhon-yours-index')) {
             'id': maxId+1,
             'title': '新規脚本',
             'set': setName,
+            'plus': isPlus,
             'loop': 1,
             'day': 1,
             'difficulty': 1,
