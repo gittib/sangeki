@@ -10,6 +10,7 @@ if ($('body').hasClass('sangeki-kyakuhon-yours-preview')) {
     $('.ruleY').text(scenario.ruleY);
     $('.ruleX1').text(scenario.ruleX1);
     $('.ruleX2').text(scenario.ruleX2);
+    if (scenario.plus) $('.tragedy_set .plus').text('＋');
 
     const $charaList = $('#character_list');
     Object.keys(scenario.characters).forEach(key => {
