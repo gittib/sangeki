@@ -14,7 +14,7 @@ $aSet = array_keys($aRuleRoleMaster);
 <?php require(SECRET_DIR.'sangeki_head.php') ?>
     <title>惨劇RoopeR 棋譜初期化 - <?= SITE_NAME ?></title>
 </head>
-<body class="kifu_init">
+<body class="kifu_init sangeki-kifu-index">
 <?php require(SECRET_DIR.'sangeki_header.php'); ?>
     <h2>惨劇RoopeR 棋譜 初期化画面</h2>
     <form action="input.php" method="get">
@@ -76,28 +76,7 @@ $aSet = array_keys($aRuleRoleMaster);
         </div>
         <input type="hidden" name="from" value="kifu_init">
     </form>
+<script> const aIncidents = <?= json_encode($aIncidentMaster) ?>; </script>
 <?php require(SECRET_DIR.'sangeki_footer.php') ?>
-<script>
-$(function() {
-    var $aIncidents = <?= json_encode($aIncidentMaster) ?>;
-    $('select[name=set]').on('change', function () {
-        var s = $(this).val();
-        var $select = $('select.incident');
-        $select.empty();
-        $select.append('<option> </option>');
-        $.each($aIncidents[s], function (k,v) {
-            $select.append('<option>'+v+'</option>');
-        });
-    });
-    $('select[name=day]').on('change', function () {
-        var day = $(this).val();
-        var $incidentPlans = $('.incident_list > li');
-        $incidentPlans.hide();
-        for (var i = 1 ; i <= day ; i++) {
-            $incidentPlans.filter('[data-day='+i+']').show();
-        }
-    });
-});
-</script>
 </body>
 </html>
