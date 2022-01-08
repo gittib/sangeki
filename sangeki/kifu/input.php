@@ -60,7 +60,7 @@ if (empty($errors)) {
 <?php require(SECRET_DIR.'sangeki_head.php') ?>
     <title>惨劇RoopeR 棋譜記録用 - <?= SITE_NAME ?></title>
 </head>
-<body class="kifu_input">
+<body class="kifu_input sangeki-kifu-input">
 <?php require(SECRET_DIR.'sangeki_header.php'); ?>
     <?php if (!empty($errors)): ?>
         <div class="error">
@@ -282,6 +282,8 @@ if (empty($errors)) {
                                                     <option>移動斜め</option>
                                                     <option>暗躍+1</option>
                                                     <option>暗躍+2</option>
+                                                    <option>友好+1</option>
+                                                    <option>絶望+1</option>
                                                 </select>
                                                 <br>
                                             </li><?php endfor; ?>
@@ -305,6 +307,8 @@ if (empty($errors)) {
                                                         <option>暗躍禁止</option>
                                                         <option>不安-1</option>
                                                         <option>不安+1</option>
+                                                        <option>不安+2</option>
+                                                        <option>希望+1</option>
                                                     </select>
                                             </li><?php endfor; ?>
                                         </ul>
@@ -346,6 +350,8 @@ if (empty($errors)) {
         <li>移動斜め</li>
         <li>暗躍+1</li>
         <li>暗躍+2</li>
+        <li>友好+1</li>
+        <li>絶望+1</li>
     </ul>
 </div>
 <div id="hero_action_list" class="modal">
@@ -363,70 +369,9 @@ if (empty($errors)) {
         <li>暗躍禁止</li>
         <li>不安 -1</li>
         <li>不安+1</li>
+        <li>不安+2</li>
+        <li>希望+1</li>
     </ul>
 </div>
-<script>
-(function() {
-    $('#font_size_change').on('change', function () {
-        $('html').css('font-size', $(this).val());
-    });
-
-    $('#shinkaku_loop').on('change', function() {
-        if ($(this).val()) {
-            $('tbody[data-chara_id=1001]').show();
-        } else {
-            $('tbody[data-chara_id=1001]').hide();
-        }
-    });
-    $('#tenkousei_day').on('change', function() {
-        if ($(this).val()) {
-            $('tbody[data-chara_id=1307]').show();
-        } else {
-            $('tbody[data-chara_id=1307]').hide();
-        }
-    });
-    $('.character_list .role_check > p').on('click', function () {
-        var $self = $(this);
-        switch ($self.text()) {
-        case '○':
-            $self.text('×');
-            break;
-        case '×':
-            $self.text('？');
-            break;
-        case '？':
-            $self.text('　');
-            break;
-        default:
-            $self.text('○');
-            break;
-        }
-    });
-    $('.role_switch').on('change', function () {
-        const $self = $(this);
-        const selector = '.role_index_' + $self.data('role_index');
-        if ($self.prop('checked')) {
-            $(selector).removeClass('ignore_role');
-        } else {
-            $(selector).addClass('ignore_role');
-        }
-    });
-    $('.save_action').on('click', function () {
-        var dataType = $(this).data('type');
-        $('#outtype').val(dataType);
-
-        // name属性値指定でformを選択
-        var form = document.main_form;
-
-        if (dataType == 'csv' || dataType == 'json') {
-            form.target = '_self';
-        } else {
-            window.open('', 'kifu_output');
-            form.target = 'kifu_output';
-        }
-        form.submit();
-    });
-})();
-</script>
 </body>
 </html>

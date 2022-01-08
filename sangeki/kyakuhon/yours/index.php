@@ -8,7 +8,7 @@ $pubKey = '/tmp/sangeki_rsa_2048_pub.pem';
 <?php require(SECRET_DIR.'sangeki_head.php') ?>
     <title>あなたの脚本リスト - <?= SITE_NAME ?></title>
 </head>
-<body class="your_kyakuhon_list">
+<body class="sangeki-kyakuhon-yours-index">
 <?php require(SECRET_DIR.'sangeki_header.php'); ?>
     <div class="top_text">
         <h2>あなたの脚本リスト</h2>
@@ -26,6 +26,12 @@ $pubKey = '/tmp/sangeki_rsa_2048_pub.pem';
                 <option value="MCX">Mistery Circle Χ</option>
                 <option value="HSA">Hounted State Again</option>
                 <option value="WM">Weird Mythology</option>
+                <option value="FS-plus">First Steps ＋</option>
+                <option value="BTX-plus">Basic Tragedy Χ ＋</option>
+                <option value="MZ-plus">Midnight Zone ＋</option>
+                <option value="MCX-plus">Mistery Circle Χ ＋</option>
+                <option value="HSA-plus">Hounted State Again ＋</option>
+                <option value="WM-plus">Weird Mythology ＋</option>
                 <option value="AHR">Another Horizon Revised</option>
                 <option value="LL">Last Liar</option>
                 <option value="UM">Unvoiced Malice</option>
@@ -77,7 +83,6 @@ $pubKey = '/tmp/sangeki_rsa_2048_pub.pem';
         </ul>
     </div>
 <?php require(SECRET_DIR.'sangeki_footer.php') ?>
-<script src="<?= TOP_PATH ?>yours.js?v=<?= filemtime(PUBLIC_DIR.'yours.js') ?>"></script>
 <?php if (file_exists($pubKey)): ?>
 <script>
 const PublickKey = `<?= file_get_contents($pubKey) ?>`;

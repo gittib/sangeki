@@ -10,7 +10,7 @@ $setName = getTragedySetName($_GET['set']);
     <meta name="robots" content="noindex">
     <title><?= e($setName) ?> 脚本 - <?= SITE_NAME ?></title>
 </head>
-<body class="detail your_kyakuhon_preview">
+<body class="detail sangeki-kyakuhon-yours-preview">
 <?php require(SECRET_DIR.'sangeki_header.php'); ?>
     <div class="pankuzu_wrapper">
         <a href=".">一覧へ</a>
@@ -20,7 +20,10 @@ $setName = getTragedySetName($_GET['set']);
         <table class="summary">
             <tr>
                 <th>惨劇セット</th>
-                <td class="tragedy_set"><?= e($setName) ?></td>
+                <td class="tragedy_set">
+                    <span><?= e($setName) ?></span>
+                    <span class="plus"></span>
+                </td>
             </tr>
             <tr>
                 <th>ループ回数</th>
@@ -176,24 +179,7 @@ $setName = getTragedySetName($_GET['set']);
         <h3>脚本家への指針</h3>
         <div class="scenario_advice"></div>
     </div>
+    <script> const scenarioId = <?= $_GET['id'] ?>; </script>
 <?php require(SECRET_DIR.'sangeki_footer.php') ?>
-    <script>
-    $('.toggle_private').on('click', function() {
-        var $self = $(this);
-        var $p = $('.private');
-        if ($p.is(':visible')) {
-            $p.hide();
-            $self.text('非公開シート、脚本家の指針を表示');
-        } else {
-            if (confirm('非公開シートを表示します。よろしいですか？')) {
-                $p.show();
-                $self.text('非公開シート、脚本家の指針を隠す');
-            }
-        }
-    });
-
-    const scenarioId = <?= $_GET['id'] ?>;
-    </script>
-<script src="<?= TOP_PATH ?>yours.js?v=<?= filemtime(PUBLIC_DIR.'yours.js') ?>"></script>
 </body>
 </html>

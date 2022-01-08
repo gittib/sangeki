@@ -854,20 +854,20 @@ body.zakkan dl.tips > dd {
 }
 
 
-body.your_kyakuhon_list #kyakuhon_list {
+body.sangeki-kyakuhon-yours-index #kyakuhon_list {
     border-bottom: solid 1px;
     margin: 8px 28px;
 }
-body.your_kyakuhon_list #kyakuhon_list > li {
+body.sangeki-kyakuhon-yours-index #kyakuhon_list > li {
     padding-top: 4px;
     padding-bottom: 20px;
     border-top: solid 1px;
     text-align: center;
 }
-body.your_kyakuhon_list #kyakuhon_list > li a.link {
+body.sangeki-kyakuhon-yours-index #kyakuhon_list > li a.link {
     display: block;
 }
-body.your_kyakuhon_list #kyakuhon_list > li .difficulty .tag {
+body.sangeki-kyakuhon-yours-index #kyakuhon_list > li .difficulty .tag {
     background-color: black;
     color: white;
     padding: 0 3px;
@@ -877,69 +877,69 @@ body.your_kyakuhon_list #kyakuhon_list > li .difficulty .tag {
     text-align: center;
     border-radius: 4px;
 }
-body.your_kyakuhon_list .open_export_console {
+body.sangeki-kyakuhon-yours-index .open_export_console {
     display: block;
     margin: 20px 0;
 }
-body.your_kyakuhon_list .export_console {
+body.sangeki-kyakuhon-yours-index .export_console {
     margin: 32px 4px;
     border: solid 1px;
     padding: 8px;
 }
-body.your_kyakuhon_list .export_console > p {
+body.sangeki-kyakuhon-yours-index .export_console > p {
     margin-top: 20px;
 }
-body.your_kyakuhon_list div.notice {
+body.sangeki-kyakuhon-yours-index div.notice {
     margin-top: 20px;
     font-size: 0.9rem;
 }
 
 
-body.your_kyakuhon_edit .pankuzu_wrapper {
+body.sangeki-kyakuhon-yours-edit .pankuzu_wrapper {
     margin: 12px;
 }
-body.your_kyakuhon_edit .editor > div {
+body.sangeki-kyakuhon-yours-edit .editor > div {
     padding: 6px 0;
     position: relative;
 }
-body.your_kyakuhon_edit .editor > div .character_count {
+body.sangeki-kyakuhon-yours-edit .editor > div .character_count {
     font-size: 0.9rem;
 }
-body.your_kyakuhon_edit .editor select,
-body.your_kyakuhon_edit .editor input,
-body.your_kyakuhon_edit .editor button {
+body.sangeki-kyakuhon-yours-edit .editor select,
+body.sangeki-kyakuhon-yours-edit .editor input,
+body.sangeki-kyakuhon-yours-edit .editor button {
     min-width: 2rem;
     min-height: 2rem;
     margin: 2px;
 }
-body.your_kyakuhon_edit .editor button.icon {
+body.sangeki-kyakuhon-yours-edit .editor button.icon {
     border: none;
     border-radius: 8px;
 }
-body.your_kyakuhon_edit .editor button i {
+body.sangeki-kyakuhon-yours-edit .editor button i {
     padding: 0 4px;
 }
-body.your_kyakuhon_edit .editor textarea {
+body.sangeki-kyakuhon-yours-edit .editor textarea {
     width: 95%;
 }
-body.your_kyakuhon_edit .editor span.column_name {
+body.sangeki-kyakuhon-yours-edit .editor span.column_name {
     display: inline-block;
     vertical-align: top;
 }
-body.your_kyakuhon_edit .editor .character_list .character_row,
-body.your_kyakuhon_edit .editor .incident_list .incident_row {
+body.sangeki-kyakuhon-yours-edit .editor .character_list .character_row,
+body.sangeki-kyakuhon-yours-edit .editor .incident_list .incident_row {
     padding-bottom: 12px;
 }
-body.your_kyakuhon_edit .editor .character_list .character_row > span,
-body.your_kyakuhon_edit .editor .incident_list .incident_row > span {
+body.sangeki-kyakuhon-yours-edit .editor .character_list .character_row > span,
+body.sangeki-kyakuhon-yours-edit .editor .incident_list .incident_row > span {
     display: inline-block;
 }
-body.your_kyakuhon_edit .editor .summary_link {
+body.sangeki-kyakuhon-yours-edit .editor .summary_link {
     position: absolute;
     top: 0;
     right: 0;
 }
-body.your_kyakuhon_edit .editor .summary_link span {
+body.sangeki-kyakuhon-yours-edit .editor .summary_link span {
     font-size: 0.8rem;
 }
 

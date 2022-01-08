@@ -5,13 +5,7 @@ class ScenarioIndex {
     const SCENARIO_LIST_PATH = SECRET_DIR.'cache/kyakuhon_list.php';
 
     public static function getScenarioList() {
-        $latestHash = 'invalid';
-        $sHashFilePath = SECRET_DIR.'cache/latest_git_hash';
-        if (file_exists($sHashFilePath)) {
-            $fp = fopen($sHashFilePath, 'r');
-            $latestHash = trim(fgets($fp));
-            fclose($fp);
-        }
+        $latestHash = gitHash();
 
         $oScenario = (object)[
             'hash' => null,
