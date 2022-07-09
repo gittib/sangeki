@@ -548,11 +548,11 @@ body.detail .private.advice .victory_conditions > ul {
 body.detail .private.advice .victory_conditions > ul > li {
     margin-top: 6px;
     min-height: 3.6rem;
-}
-body.detail .private.advice .victory_conditions > ul > li > div.num {
     background: black;
     color: white;
-    border-radius: 10px 0 0 10px;
+    border-radius: 10px;
+}
+body.detail .private.advice .victory_conditions > ul > li > div.num {
     font-size: 1.9rem;
     width: 30px;
     height: 3.5rem;
@@ -561,11 +561,10 @@ body.detail .private.advice .victory_conditions > ul > li > div.num {
     float: left;
 }
 body.detail .private.advice .victory_conditions > ul > li > div.condition {
-    background: black;
-    color: white;
-    border-radius: 10px 10px 0 0;
 }
 body.detail .private.advice .victory_conditions > ul > li > div.way {
+    background: white;
+    color: black;
     font-size: 0.9rem;
     padding-left: 32px;
 }
