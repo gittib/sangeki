@@ -547,7 +547,6 @@ body.detail .private.advice .victory_conditions > ul {
 }
 body.detail .private.advice .victory_conditions > ul > li {
     margin-top: 6px;
-    min-height: 3.6rem;
     background: black;
     color: white;
     border-radius: 10px;
@@ -555,7 +554,6 @@ body.detail .private.advice .victory_conditions > ul > li {
 body.detail .private.advice .victory_conditions > ul > li > div.num {
     font-size: 1.9rem;
     width: 30px;
-    height: 3.5rem;
     text-align: center;
     display: inline-block;
     float: left;
@@ -566,7 +564,8 @@ body.detail .private.advice .victory_conditions > ul > li > div.way {
     background: white;
     color: black;
     font-size: 0.9rem;
-    padding-left: 32px;
+    margin-left: 32px;
+    padding: 2px;
 }
 body.detail .private.advice .template {
     max-width: 512px;
