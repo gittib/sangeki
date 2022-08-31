@@ -941,6 +941,15 @@ body.sangeki-kyakuhon-yours-edit .editor .summary_link span {
     font-size: 0.8rem;
 }
 
+body.privacy ol {
+    padding: 20px;
+}
+body.privacy ol > li {
+    list-style: inside;
+    list-style-type: auto;
+    margin-bottom: 12px;
+}
+
 
 
 body.not_found h1 {
