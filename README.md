@@ -8,47 +8,5 @@ cp .env.example .env.prod
 #cp .env.example .env.dev
 ln -s ${YOUR_GIT_WORK_DIRECTORY}/sangeki/ ${YOUR_DOCUMENT_ROOT}/sangeki
 ```
-
-開発環境デプロイ
-```
-#!/bin/bash
-
-GIT_ROOT_DIR=/hoeghoge/fugafuga/
-SSH_KEY_PATH=piyopiyo.pem
-
-cd ${GIT_ROOT_DIR}
-
-eval $(ssh-agent)
-ssh-add ${SSH_KEY_PATH}
-
-git pull
-
-ssh-agent -k
-
-chmod 777 secret/cache
-git log -n 1 --pretty=%H > secret/cache/latest_git_hash
-```
-
-本番環境デプロイ
-```
-#!/bin/bash
-
-GIT_ROOT_DIR=/hoeghoge/fugafuga/
-SSH_KEY_PATH=piyopiyo.pem
-
-read -p "update PROD env. ok? (y/N): " yn
-case "$yn" in [yY]*) ;; *) echo "abort." ; exit ;; esac
-
-cd ${GIT_ROOT_DIR}
-
-eval $(ssh-agent)
-ssh-add ${SSH_KEY_PATH}
-
-git checkout --force master
-git pull
-
-ssh-agent -k
-
-chmod 777 secret/cache
-git log -n 1 --pretty=%H > secret/cache/latest_git_hash
-```
+開発環境、本番環境のデプロイはbatch/配下のシェルで行う
+環境に応じた.envファイルにSSH_KEY_PATHを定義する

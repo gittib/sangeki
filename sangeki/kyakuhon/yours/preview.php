@@ -20,7 +20,10 @@ $setName = getTragedySetName($_GET['set']);
         <table class="summary">
             <tr>
                 <th>惨劇セット</th>
-                <td class="tragedy_set"><?= e($setName) ?></td>
+                <td class="tragedy_set">
+                    <span><?= e($setName) ?></span>
+                    <span class="plus"></span>
+                </td>
             </tr>
             <tr>
                 <th>ループ回数</th>
