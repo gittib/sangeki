@@ -20,6 +20,10 @@ $topPageUrl = schema() . '://' . $_SERVER["HTTP_HOST"] . TOP_PATH;
         惨劇RoopeRへの興味を深めてもらえれば嬉しい限りです。
         <a href="http://bakafire.main.jp/rooper/sr_top.htm" target="_blank">惨劇RoopeRってなんぞ？という方は公式サイトをどうぞ</a>
     </div>
+    <div class="script_site_is_now_open">
+        新しいサイトを作りました！<a href="<?= SCRIPT_SHARE_SITE_URL ?>"><?= SCRIPT_SHARE_SITE_URL ?></a><br>
+        こちらのサイトでは、自分で考えた脚本を投稿することができます。もちろん、他の方々が作られた脚本を閲覧することもできます。
+    </div>
     <dl>
         <?php foreach ($aTopMenu as $val): ?>
         <dt><a href="<?= e($val->href) ?>">
