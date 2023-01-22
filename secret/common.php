@@ -15,6 +15,8 @@ if (!defined('SITE_NAME')) {
     $aPath = explode('/', $_SERVER['REQUEST_URI']);
     define('TOP_PATH', '/'.$aPath[1].'/');
     define('REDIRECT_QR_SALT', 'sda27');
+
+    define('SCRIPT_SHARE_SITE_URL', 'https://sangeki.boardgame.work');
 }
 
 
