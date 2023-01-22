@@ -232,6 +232,12 @@ body.top .top_text h2 {
 body.top .top_text h2 > span {
     display: inline-block;
 }
+body.top .script_site_is_now_open {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    border: double 3px;
+    padding: 8px;
+}
 body.top dl {
     margin: 8px;
     border-top: solid;
